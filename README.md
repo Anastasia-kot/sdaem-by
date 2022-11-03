@@ -1,3 +1,30 @@
+# Веб-сайт риелторской компании  
+### [ссылка на деплой](# "ссылка")
+
+## Использованный стек/ технические требования:
++ Pixel-perfect вёрстка;
++ По [макету Figma](https://www.figma.com/file/KA7GM9MwNHEfiPcgKNLzPf/%C2%ABSDAEM.BY%C2%BB---%D1%81%D1%82%D0%B0%D0%B6%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0?node-id=305%3A2080 "https://www.figma.com/file/KA7GM9MwNHEfiPcgKNLzPf/%C2%ABSDAEM.BY%C2%BB---%D1%81%D1%82%D0%B0%D0%B6%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0?node-id=305%3A2080")
++ Next.js;
++ Redux;
++ Стилизация с помощью CSS модулей;
++ S-CSS;
++ Кроссбраузерность в последних версиях браузеров (chrome, firefox, safari, edge);
++ TypeScript; 
++ тесты; `(в процессе покрытия тестами)`
+
+ ## Главная страница
+![image](#)
+`+ Описание функционала`
+
+ ## Другие страницы
+![image](#)
+`+ Описание функционала`
+
+
+
+
+## Запуск приложения (техническая информация)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
