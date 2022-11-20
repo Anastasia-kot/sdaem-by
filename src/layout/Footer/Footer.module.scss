@@ -1,0 +1,222 @@
+.Footer {
+    width: 100%;
+    min-width: 393px;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    height: 250px;
+    box-shadow: 0px -11px 40px rgba(39, 95, 158, 0.05);
+    padding-left: 80px;
+    padding-right: 161px;
+    padding-top: 39px;
+
+    display: grid;
+    grid-template-areas:
+        "c n "
+        "c sp ";
+    grid-template-columns: 330px 1fr;
+    grid-template-rows: 142px 1fr;
+
+    .CompanyInfo {
+        grid-area: c;
+        width: 297px;
+
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 15px;
+        /* identical to box height */
+
+
+        /* Style */
+
+        color: #8291A3;
+
+        h3 {
+            margin-top: 7px;
+            margin-bottom: 35px;
+        }
+
+        div {
+            font-family: 'Inter',
+                sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 13px;
+
+            /* Style */
+
+            color: #8291A3;
+
+            p {
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+    .Navigation {
+        grid-area: n;
+
+        display: flex;
+
+        .NavigationCatrgoriesList,
+        .NavigationLocationsList,
+        .NavigationLinksList {
+
+            height: 92px;
+            min-width: 156px;
+
+
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            /* identical to box height */
+
+
+            color: #8291A3;
+        }
+
+
+
+        .NavigationCatrgoriesList {
+            margin-right: 58px;
+
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;
+            /* identical to box height */
+
+
+            /* Style */
+
+            color: #1E2123;
+
+            li {
+                margin-bottom: 23px;
+            }
+        }
+
+
+        .NavigationLocations {
+                margin-right: 240px;
+            h3 {
+                margin-bottom: 15px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 17px;
+                /* identical to box height */
+
+
+                /* Style */
+
+                color: #1E2123;
+            }
+
+            .NavigationLocationsList {
+
+                height: 92px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+
+
+
+
+
+
+                /* Style */
+
+                color: #1E2123;
+
+                li {
+                    margin-bottom: 8px;
+                    margin-right: 70px;
+
+
+                font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 17px;
+                    /* identical to box height */
+                
+                 
+                    /* Style */
+                
+                    color: #8291A3;
+                }
+            }
+        }
+
+.NavigationLinksList{
+    margin-top: 9px;
+    li{
+
+        margin-bottom: 8px;
+        font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            /* identical to box height */
+        
+        
+            /* Style */
+        
+            color: #8291A3;
+    }
+}
+
+        li {
+            text-align: left;
+        }
+    }
+ 
+ 
+    .SocialsAndPayment {
+        grid-area: sp;
+        display: flex;
+        justify-content: space-between;
+
+        .Socials {
+
+            display: flex;
+            .SocialsHeader {
+                display: inline;
+                margin-right: 25px;
+            }
+
+            .SocialsList {
+                display: flex;
+                width: 110px;
+                justify-content: space-between;
+
+            }
+
+        }
+
+        .Payment {
+            display: flex;
+                            justify-content: space-between;
+                            // align-items: center;
+            width: 339px;
+
+            li {
+                &:last-child{
+                    margin-top: -10px;
+                }
+            }
+
+        }
+    }
+}

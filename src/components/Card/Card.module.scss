@@ -1,0 +1,121 @@
+.Card {
+    width: 406px;
+    height: 500px;
+    border-radius: 10px;
+ 
+    position: relative;
+
+    img {
+        width: 406px;
+        height: 227px;
+        border-radius: 10px;
+
+    }
+
+    .CardContent {
+        margin: 0 20px;
+        margin-top: 24px;
+
+
+        height: 245px;
+
+        h3 {
+
+            margin-bottom: 17px;
+
+            font-family: 'Inter', 'sans-serif';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+
+            /* Style */
+
+            color: #1E2123;
+        }
+
+        p {
+
+            margin-bottom: 17px;
+
+            font-family: 'Inter', 'sans-serif';            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+
+            /* Style */
+
+            color: #686868;
+        }
+
+
+
+        .CardContentFooter {
+
+            position: absolute;
+            bottom: 22px;
+            width: 366px;
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                width: 109px;
+                height: 17px;
+
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 12px 8px;
+                gap: 10px;
+
+
+
+                background: #F8F8F8;
+                border-radius: 18px;
+
+
+
+            font-family: 'Inter', 'sans-serif';                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 17px;
+                /* identical to box height */
+
+                text-align: right;
+
+                /* Style */
+
+                color: #8291A3;
+            }
+
+            button {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 10px 15px;
+                gap: 10px;
+
+
+
+                background: rgba(102, 78, 249, 0.1);
+                border-radius: 17px;
+
+
+            font-family: 'Inter', 'sans-serif';                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 17px;
+                /* identical to box height */
+
+
+                /* #664EF9 */
+
+                color: #664EF9;
+            }
+
+        }
+
+
+    }
+}

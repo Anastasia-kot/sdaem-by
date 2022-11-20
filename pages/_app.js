@@ -1,7 +1,18 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
+import { FC, useEffect, useRef } from 'react';
+import {Layout} from '../src/layout/Layout';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+
+
+
+const MyApp = ({ Component }) => {
+  return (<Layout>
+      <Component/> 
+          </Layout>
+  )
 }
 
-export default MyApp
+
+MyApp.displayName = 'MyApp';
+
+export default MyApp;

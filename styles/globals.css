@@ -4,7 +4,12 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  
 }
+
+ 
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
+ 
 
 a {
   color: inherit;
@@ -24,3 +29,36 @@ a {
     background: black;
   }
 }
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  padding: none;
+  margin: none;
+  background-color: none;
+}
+ 
+h1, h2, h3, p {
+    margin: 0;
+      padding: 0;
+}
+
+
+
+@import url(../src/assets/fonts/Inter/inter.css);
