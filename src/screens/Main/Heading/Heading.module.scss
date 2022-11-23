@@ -1,0 +1,342 @@
+.MainHeaderBlock {
+    width: 100%;
+    height: 430px;
+    background-color: white;
+    margin-bottom: 85px;
+
+    .MainHeader {
+        width: 1283px;
+        height: 100%;
+        background:
+            url(../../../assets/images/404/city-map.png),
+            url(../../../assets/images/404/background.png);
+        // background-size: auto,  cover;
+
+        padding-left: 10px;
+        margin: 0 auto;
+        border-radius: 0px 0px 40px 40px;
+
+        .MainHeaderText {
+            padding: 0;
+            padding-top: 82px;
+            margin: 0;
+            margin-bottom: 50px;
+            text-align: center;
+
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 36px;
+            text-align: center;
+
+            color: #FFFFFF;
+
+            text-shadow: 0px 2px 5px rgba(0, 14, 142, 0.3);
+
+            .yellow {
+                color: #FFD54F
+            }
+
+        }
+
+        .MainForm {
+            width: 1062px;
+            height: (54px + 100px);
+            // background-color: white;
+            display: block;
+            margin: 0 auto;
+
+            ul {
+                display: flex;
+                // flex-wrap: nowrap;
+                height: 54px;
+                border-radius: 10px 10px 0px 0px;
+                // width: 637px;
+
+                li {
+                    display: block;
+                    padding: 13px 20px;
+                    gap: 10px;
+
+                    width: 187px;
+                    height: 54px;
+
+                    background: rgba(45, 57, 136, 0.5);
+
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 17px;
+                    /* identical to box height */
+
+
+                    color: #FFFFFF;
+
+                    &:first-child {
+                        width: (174px);
+                    }
+
+                    &:nth-child(2) {
+                        width: (187px);
+                    }
+
+                    &:nth-child(3) {
+                        width: (133px);
+                    }
+
+                    &:nth-child(4) {
+                        width: (143px);
+                        border-radius: 0px 10px 0px 0px;
+                    }
+
+                    &.active {
+                        width: 174px;
+                        height: 54px;
+
+                        background: #FFFFFF;
+                        border-radius: 10px 10px 0px 0px;
+
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 17px;
+                        /* identical to box height */
+
+
+                        /* #664EF9 */
+
+                        color: #664EF9;
+                    }
+                }
+            }
+
+            .MainFormSettings {
+                background-color: white;
+                height: 100px;
+                position: relative;
+                top: -10px;
+                border-radius: 10px;
+
+                display: flex;
+ 
+
+                div {
+
+                    margin: 16px;
+                    display: inline-block;
+
+
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 17px;
+                    /* identical to box height */
+
+
+                    /* Gray 4 */
+
+                    color: #BDBDBD;
+
+
+                    label {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 11px;
+                        // min-width: 150px;
+
+                    }
+
+                    &.CityBlock {
+                        width: 180px;
+                         display: block;
+                        padding-left: 8px;
+                        border-right: 1px solid rgb(102, 78, 249, 0.1);
+
+                        .CityBlockLabelSelect {
+                            box-sizing: border-box;
+                            padding: 0 10px;
+
+
+                            width: 150px;
+                            height: 37px;
+
+
+                            background: #FFFFFF;
+                            border: 2px solid rgba(102, 78, 249, 0.8);
+                            border-radius: 20px;
+                        }
+
+
+                    }
+
+                    &.RoomsBlock {
+                        min-width: 170px;
+                        border-right: 1px solid rgb(102, 78, 249, 0.1);
+                        margin-left: 0;
+
+                        select {
+
+                            width: 150px;
+                            height: 37px;
+                            padding: 0 10px;
+
+
+                            background: #F8F8F8;
+                            border-radius: 20px;
+
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                            /* identical to box height */
+
+
+                            /* Style */
+
+                            color: #686868;
+                        }
+                    }
+
+                    &.PriceBlock {
+                        min-width: 200px;
+                        border-right: 1px solid rgb(102, 78, 249, 0.1);
+                        margin-left: 0;
+
+                        label {
+
+                            flex-direction: column;
+                            // gap: 11px;
+                            min-width: 150px;
+
+                            span {
+                                padding-left: 8px;
+                            }
+
+                            div {
+                                margin: 0;
+                                display: flex;
+                                justify-content: space-between;
+                                width: 180px;
+
+
+                                input {
+                                    width: 80px;
+                                    height: 37px;
+                                    padding: 0 15px;
+
+
+                                    background: #F8F8F8;
+                                    border-radius: 20px;
+                                }
+                            }
+                        }
+
+
+
+
+                    }
+
+
+                    &.MoreOptionsBlock,
+                    &.ToMapBlock {
+                        align-self: center;
+                        padding: 0;
+                        margin-left: 0;
+
+                        button {
+                            background: none;
+                            display: flex;
+                            gap: 5px;
+ 
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                            /* identical to box height */
+
+
+                            /* Style */
+
+                            color: #1E2123;
+
+
+                            /* Inside auto layout */
+
+                            flex: none;
+                            order: 0;
+                            flex-grow: 0;
+
+                        }
+                    }
+
+                    &.MoreOptionsBlock {
+                        min-width: 158px;
+                        border-right: 1px solid rgb(102, 78, 249, 0.1);
+                        margin-left: 0;
+
+
+                    }
+
+                    &.ToMapBlock {
+                        max-width: 115px;
+                    }
+
+                    &.ToShowBlock {
+                        // width: 123px;
+                        // height: 37px;
+                        align-self: center;
+
+                        button {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            padding: 9px 16px;
+                            gap: 5px;
+                            margin: 0 auto;
+
+
+                            width: 123px;
+
+                            top: 344.5px;
+
+                            /* #FFD54F */
+
+                            background: #FFD54F;
+                            border-radius: 22px;
+
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 14px;
+                            line-height: 17px;
+                            /* identical to box height */
+
+
+                            color: #242424;
+
+
+                            /* Inside auto layout */
+
+                            flex: none;
+                            order: 0;
+                            flex-grow: 0;
+                        }
+                    }
+
+
+
+
+
+
+                }
+            }
+        }
+    }
+}

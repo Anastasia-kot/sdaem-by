@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React from "react";
 import styles from './Footer.module.scss';
-const logo = require('../../images/logo.png');
-const belkart = require('../../images/payment/belkart.png');
-const mastercard = require('../../images/payment/mastercard.png');
-const securecode = require('../../images/payment/securecode.png');
-const verified = require('../../images/payment/verified-by-visa.png');
-const visa = require('../../images/payment/visa.png');
-const webpay = require('../../images/payment/webpay.png');
+const logo = require('../../assets/images/logo.png');
+const belkart = require('../../assets/images/payment/belkart.png');
+const mastercard = require('../../assets/images/payment/mastercard.png');
+const securecode = require('../../assets/images/payment/securecode.png');
+const verified = require('../../assets/images/payment/verified-by-visa.png');
+const visa = require('../../assets/images/payment/visa.png');
+const webpay = require('../../assets/images/payment/webpay.png');
 
 
 const Footer = () => {

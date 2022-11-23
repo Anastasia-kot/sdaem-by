@@ -2,7 +2,7 @@
     width: 406px;
     height: 500px;
     border-radius: 10px;
- 
+
     position: relative;
 
     img {
@@ -38,7 +38,8 @@
 
             margin-bottom: 17px;
 
-            font-family: 'Inter', 'sans-serif';            font-style: normal;
+            font-family: 'Inter', 'sans-serif';
+            font-style: normal;
             font-weight: 400;
             font-size: 14px;
             line-height: 17px;
@@ -53,43 +54,39 @@
         .CardContentFooter {
 
             position: absolute;
-            bottom: 22px;
+            bottom: 21px;
             width: 366px;
             display: flex;
             justify-content: space-between;
 
-            span {
-                width: 109px;
-                height: 17px;
+
+            &::before{position: absolute;
+            content: '';
+            height: 2px;
+            background-color: #F8F8F8;
+            width: 367.25px;
+            top:-20px;
+        }
+            .Date {
+                // width: 125px;
+                //   height: 17px;
 
 
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 12px 8px;
-                gap: 10px;
 
-
-
+                padding: 11px 8px;
+                text-align: center;
                 background: #F8F8F8;
                 border-radius: 18px;
 
-
-
-            font-family: 'Inter', 'sans-serif';                font-style: normal;
+                font-family: 'Inter', 'sans-serif';
+                font-style: normal;
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 17px;
-                /* identical to box height */
-
-                text-align: right;
-
-                /* Style */
-
                 color: #8291A3;
             }
 
-            button {
+            .ReadButton {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -102,7 +99,8 @@
                 border-radius: 17px;
 
 
-            font-family: 'Inter', 'sans-serif';                font-style: normal;
+                font-family: 'Inter', 'sans-serif';
+                font-style: normal;
                 font-weight: 700;
                 font-size: 14px;
                 line-height: 17px;
