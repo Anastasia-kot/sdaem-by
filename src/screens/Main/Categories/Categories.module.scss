@@ -1,3 +1,144 @@
-.Categories{
-    background-color: aqua;
+.Categories {
+    background-color: white;
+    width: 100%;
+    padding: 0;
+    padding-left: 80px;
+    padding-right: 63px;
+    display: flex;
+    gap: 30px;
+    margin-bottom: 38px;
+
+    .CategoriesCardsList {
+        margin-top: 2px;
+        min-width: 953px;
+        gap: 30px;
+        // display: flex;
+        // flex-wrap: wrap;
+        // justify-content: space-between;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 407px 1fr 407px;
+        grid-template-areas:
+            ' a  b'
+            'c d';
+
+        li {
+            &:first-child {
+                grid-area: a;
+                grid-column: 1 / 3;
+            }
+
+            &:nth-child(2) {
+                grid-area: b;
+                grid-column: 3 / 4;
+            }
+
+            &:nth-child(3) {
+                grid-area: c;
+                grid-column: 1 / 2;
+                        margin-top: -2px;
+            }
+
+            &:nth-child(4) {
+                grid-area: d;
+                grid-column: 2 / 4;
+                        margin-top: -2px;
+            }
+
+
+        }
+
+
+    }
+
+    .CategoriesBlock {
+        margin-top: 1px;
+
+        .CategoriesList {
+
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+
+
+            li {
+                h3 {
+                    margin-bottom: 15px;
+
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 22px;
+                    /* identical to box height */
+
+
+                    /* Gray 1 */
+
+                    color: #333333;
+                }
+
+                ul {
+                    li {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 10px;
+
+
+
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 17px;
+                        /* identical to box height */
+                        color: #FEB700;
+
+                        span {
+                                &:nth-of-type(1) {
+                                    &:hover{
+                                            transform: translate(30px, 0);
+                                    }
+                                }
+                            &:nth-of-type(2) {
+                                font-family: 'Inter';
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 14px;
+                                line-height: 17px;
+                                color: #BDBDBD;
+                            }
+                        }
+                    }
+
+                }
+
+                &:nth-child(2) {
+                    ul{
+                        li:last-child {
+                            width: 41px;
+                            align-items: center;
+                            margin-top: 10px;
+                            border-bottom: 1px solid #FEB700;
+                            padding-bottom: 1px;
+                            padding-top: 5px;
+
+                            &:hover {
+                                    transform: translate(30px, 0);
+                                }
+                        }
+                    }
+                }
+             
+            }
+
+
+
+
+
+        }
+
+
+    }
 }

@@ -88,29 +88,13 @@
                         color: #1E2123;
                     }
 
-                    .TitleShareList {
-                        display: flex;
-                        justify-content: space-between;
-                        flex-wrap: wrap;
-                        gap: 20px;
-
-                        .TitleShareItem {
-                            height: 34px;
-                            width: 34px;
-                            background: rgba(102, 78, 249, 0.1);
-                            border-radius: 19px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-
-
-                        }
+                  
                     }
                 }
 
             }
         }
-    }
+    
 
     .ContentBlock {
         position: relative;

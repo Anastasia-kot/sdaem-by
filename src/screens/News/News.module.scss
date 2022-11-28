@@ -85,55 +85,6 @@
         // max-width: 100px;
     }
 
-    .Pagination {
-        margin-bottom: 63px;
-        margin-left: 6px;
-        display: flex;
-
-
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 22px;
-        /* identical to box height */
-
-
-        /* Style */
-
-        color: #686868;
-
-        li {
-            margin-right: 15px;
-        }
-
-    
-
-        .active {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 22px;
-            /* identical to box height */
-
-
-            color: #000000;
-
-            position: relative;
-
-            &::after {
-                position: absolute;
-                bottom: -1px;
-                left: -5px;
-                content: ' ';
-                height: 2px;
-                width: 22px;
-                background: #FFD54F;
-
-
-            }
-        }
-    }
+ 
 
 }

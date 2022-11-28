@@ -1,0 +1,51 @@
+.Socials_sharing {
+    display: flex;
+    min-width: 344px;
+    height: 34.15px;
+    justify-content: space-between;
+    align-items: center;
+
+    .TitleShareSpan {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        /* identical to box height */
+
+        text-align: right;
+
+        color: #686868;
+    }
+
+    .ShareList {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 240px;
+
+        .ShareItem {
+            height: 34px;
+            width: 34px;
+            background: #F4F5FA;
+            border-radius: 19px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+                fill: #1E2123
+            }
+
+            &:hover {
+                background: rgba(102, 78, 249, 0.1);
+
+                svg {
+                    fill: #664EF9
+                }
+            }
+
+
+        }
+    }
+}

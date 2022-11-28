@@ -1,0 +1,439 @@
+.Contacts {
+    width: 100%;
+    height: 688px;
+    padding: 77px 80px;
+    background-image: url(../../assets/images/404/city-map.png), url(../../assets/images/404/background.png);
+    background-size: cover;
+    display: flex;
+    gap: 31px;
+
+    @media (max-width: 864px) {
+        padding: 106px 89px;
+    }
+
+    @media (max-width: 392px) {
+        padding: 76px 19px;
+    }
+
+    .ContactsModalWrapper{
+            position: absolute;
+                top: 0;
+                 left: 0;
+                  width: 100%;
+                  height: 100%;
+            background: rgba(46, 46, 46, 0.7);
+                 z-index:  1;
+        .ContactsModal {
+                height: 313px;
+                width: 406px;
+        
+                border-radius: 10px;
+                position: absolute;
+                left: 35.9%;
+                right: 35.9%;
+                top: 27.46%;
+                bottom: 42.39%;
+                z-index: 1;
+        
+                background: #FFFEFE;
+                box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.2);
+                border-radius: 10px;
+
+                text-align: center;
+                padding: 50px;
+
+                h2 {
+                    margin-bottom: 20px;
+
+                font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 25px;
+                    line-height: 30px;
+                    text-align: center;
+                
+                    color: #000000;
+                }
+                p{
+                    margin-bottom: 30px;
+
+                    font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 17px;
+                        text-align: center;
+                    
+                        /* Style */
+                    
+                        color: #686868;
+                }
+
+                button {
+                    display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding: 12px 24px;
+                        gap: 10px;
+                        margin: 0 auto;
+                    
+                         width: 161px;
+                        height: 48px;
+                    
+                    
+                        /* #FFD54F */
+                    
+                        background: #FFD54F;
+                        border-radius: 33px;
+
+
+
+
+
+                        font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 16px;
+                            line-height: 24px;
+                            /* identical to box height, or 150% */
+                        
+                            display: flex;
+                            align-items: center;
+                            text-align: center;
+                        
+                            /* Style */
+                        
+                            color: #1E2123;
+                }
+        
+             }
+    }
+
+          
+    .InfoBlock {
+        min-width: 515px;
+        width: 515px;
+
+        h1 {
+            margin-bottom: 31px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 100%;
+            /* identical to box height, or 30px */
+
+            display: flex;
+            align-items: center;
+
+            color: #FFFFFF;
+
+        }
+
+
+
+        .Description {
+            margin-bottom: 30px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 150%;
+            /* or 24px */
+
+
+            color: #FFFFFF;
+
+
+
+        }
+
+        .ContactsList {
+            margin-bottom: 30px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            /* or 27px */
+
+
+            color: #FFFFFF;
+
+            .ContactsListItem {
+                margin-bottom: 11px;
+                display: flex;
+                gap: 20px;
+                align-items: center;
+
+                .thin {
+                    font-weight: 400;
+                }
+
+                .SvgWrapper {
+                    height: 30px;
+                    width: 30px;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 17px;
+
+
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                }
+
+                .MessengersList {
+                    display: flex;
+                    gap: 10px;
+
+                    li {
+                        height: 30px;
+                        width: 30px;
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 17px;
+
+
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                }
+
+
+            }
+
+        }
+
+        .EntrepreneurInfo {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 150%;
+            /* or 21px */
+
+
+            color: #FFFFFF;
+
+            &:last-of-type {
+                margin-bottom: 39px;
+            }
+        }
+
+        .Alert {
+            height: 90px;
+            width: 515px;
+
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px 27px;
+            gap: 23px;
+
+
+            background: rgba(80, 57, 189, 0.5);
+            border-radius: 10px;
+
+            p {
+                max-width: 85%;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 150%;
+                /* or 24px */
+
+
+                color: #FFFFFF;
+            }
+        }
+    }
+
+
+    .Form {
+        width: 625px;
+        height: 516px;
+        padding: 39px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 115px 1fr 48px;
+
+
+        background: #FFFEFE;
+        box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.2);
+        border-radius: 10px;
+
+        label {
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: 49px;
+                left: 20px;
+            }
+
+            &:first-of-type,
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 17px;
+                /* identical to box height */
+
+
+                /* Style */
+
+                color: #686868;
+
+
+
+
+            }
+
+            &:first-of-type {
+                margin-right: 28px;
+            }
+
+            &:nth-of-type(3) {
+                grid-column: 1/3;
+            }
+
+            input,
+            textarea {
+                box-sizing: border-box;
+                padding: 15px 20px;
+                border-radius: 30px;
+
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 17px;
+
+
+                background: #F8F8F8;
+                font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: #686868;
+                    border: none;
+
+            }
+
+
+
+            input {
+                padding-left: 50px;
+
+                width: 260px;
+                height: 50px;
+            }
+
+            textarea {
+                height: 200px;
+                width: 548px;
+
+            }
+ 
+            input:focus,
+            input:hover, 
+            input:active, 
+
+            textarea:focus,    
+            textarea:hover,   
+            textarea:active {
+                background: #FFFFFF;
+                border: 2px solid rgba(102, 78, 249, 0.8);
+                color: #1E2123;
+            }
+
+        }
+
+        button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 20px;
+            gap: 10px;
+
+            position: absolute;
+            width: 200px;
+            height: 48px;
+            left: 839px;
+            top: 601px;
+
+            /* #664EF9 */
+
+            background: #664EF9;
+            border-radius: 33px;
+
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 24px;
+            /* identical to box height, or 150% */
+
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+            color: #FFFFFF;
+        }
+
+
+
+    }
+
+.SocialsBlock{
+    ul {
+        margin-left: 33px;
+        display: flex;
+        flex-direction: column;
+        gap:15px;
+
+                .SvgWrapper {
+                        height: 45px;
+                        width: 45px;
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 50%;
+                
+                
+                
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                
+                    }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+}

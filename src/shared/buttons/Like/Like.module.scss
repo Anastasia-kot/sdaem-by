@@ -1,0 +1,28 @@
+.Button {
+    border-radius: 22px;
+    padding: 9px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 9px;
+    gap: 10px;
+
+
+    // width: 33px;
+    height: 33px;
+
+
+    background: rgba(235, 87, 87, 0.1);
+    border-radius: 22px;
+    transform: rotate(0.25deg);
+
+
+    span {
+
+        font-weight: 600;
+
+        color: #EB5757;
+    }
+
+ 
+}

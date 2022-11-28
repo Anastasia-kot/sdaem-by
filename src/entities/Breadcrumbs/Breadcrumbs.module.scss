@@ -2,11 +2,25 @@
        display: flex;
        margin-bottom: 13px;
 
-       li {
+    font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        /* identical to box height, or 14px */
+    
+        display: flex;
+        align-items: center;
+    
+        /* Style */
+    
+        color: #686868;
+
+       .BreadCrumbsItem {
            margin-right: 4px;
        }
 
-       li+li::before {
+       .BreadCrumbsItem+.BreadCrumbsItem::before {
            display: inline-block;
            content: ' ';
            width: 3px;

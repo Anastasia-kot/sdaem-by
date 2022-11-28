@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Breadcrumbs } from '../../entities/Breadcrumbs/Breadcrumbs'
 import { NewsCard } from '../../entities/NewsCard/NewsCard.tsx'
+import { Pagination } from '../../shared/Pagination/Pagination'
 import styles from './News.module.scss'
 
 export const News = () => {
@@ -35,12 +36,9 @@ export const News = () => {
                  
             </div>
 
-            <ol className={styles.Pagination}>
-                <li className={styles.active}>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-            </ol>
+  <Pagination
+                totalCount={6}
+                currentPage={1} />
 
         </main>
     )

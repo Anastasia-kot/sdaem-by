@@ -63,40 +63,50 @@ export const Categories = () => {
 
     return (
         <div className={styles.Categories}>
-            <div className={styles.CategoriesCardsList}>
-                <CategoryCard
-                    header='Квартиры на сутки'
-                    additional_header='СНЯТЬ КВАРТИРУ'
-                    hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест', 'Могилев']}
-                    background=''
-                    arrow_button={false}
-                />
-                <CategoryCard
-                    header='Коттеджи и усадьбы'
-                    additional_header='СНЯТЬ коттедж НА ПРАЗДНИК'
-                    // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
-                    background=''
-                    arrow_button={true}
-                />
-                <CategoryCard
-                    header='Бани и сауны'
-                    additional_header='ПОПАРИТЬСЯ В БанЕ С ДРУЗЬЯМИ'
-                    // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
-                    background=''
-                    arrow_button={true}
-                />
-                <CategoryCard
-                    header='Авто на прокат'
-                    additional_header='еСЛИ СРОЧНО НУЖНА МАШИНА'
-                    // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
-                    background=''
-                    arrow_button={true}
-                />
+            <ul className={styles.CategoriesCardsList}>
+                <li>
+                    <CategoryCard
+                        header='Квартиры на сутки'
+                        additional_header='СНЯТЬ КВАРТИРУ'
+                        hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест', 'Могилев']}
+                        background=''
+                        arrow_button={false}
+                       
+                    />
+                </li>
+                <li>
+                    <CategoryCard
+                        header='Коттеджи и усадьбы'
+                        additional_header='СНЯТЬ коттедж НА ПРАЗДНИК'
+                        // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
+                        background=''
+                        arrow_button={true}
+ 
+                    />
+                </li>
+                <li>
+                    <CategoryCard
+                        header='Бани и сауны'
+                        additional_header='ПОПАРИТЬСЯ В БанЕ С ДРУЗЬЯМИ'
+                        // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
+                        background=''
+                        arrow_button={true}
+                     />
+                </li>
+                <li>
+                    <CategoryCard
+                        header='Авто на прокат'
+                        additional_header='еСЛИ СРОЧНО НУЖНА МАШИНА'
+                        // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
+                        background=''
+                        arrow_button={true}
+ 
+                    />
+                </li>
+            </ul>
 
-            </div>
-
-            <aside>
-                <ul>
+            <aside className={styles.CategoriesBlock}>
+                <ul className={styles.CategoriesList}>
                     <li>
                         <h3>Квартиры</h3>
                         <ul>

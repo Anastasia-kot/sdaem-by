@@ -1,119 +1,115 @@
 .Card {
-    width: 406px;
-    height: 500px;
+    height: 270px;
     border-radius: 10px;
+    background-color: #dbdee2;
 
     position: relative;
 
     img {
-        width: 406px;
-        height: 227px;
-        border-radius: 10px;
+        // width: 406px;
+        // height: 227px;
+        // border-radius: 10px;
 
     }
 
     .CardContent {
-        margin: 0 20px;
-        margin-top: 24px;
-
-
+        margin: 18px 35px;
         height: 245px;
 
-        h3 {
+        h2 {
 
-            margin-bottom: 17px;
+            margin-bottom: 15px;
 
-            font-family: 'Inter', 'sans-serif';
+            font-family: 'Inter';
             font-style: normal;
             font-weight: 700;
-            font-size: 16px;
-            line-height: 19px;
+            font-size: 13px;
+            line-height: 16px;
+            /* identical to box height */
 
-            /* Style */
+            text-transform: uppercase;
 
-            color: #1E2123;
+            /* Linear */
+
+            background: linear-gradient(90deg, #9D94FF 0%, #6B50E9 94.5%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
 
-        p {
+        h1 {
+            margin-bottom: 27px;
 
-            margin-bottom: 17px;
 
-            font-family: 'Inter', 'sans-serif';
+            font-family: 'Inter';
             font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 17px;
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 30px;
 
-            /* Style */
+            color: #FFFFFF;
 
-            color: #686868;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-
-
-        .CardContentFooter {
-
-            position: absolute;
-            bottom: 21px;
-            width: 366px;
+        ul {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap:15px;
+
+            li {
+                width: auto;
+                // display: flex;
+                // flex-direction: row;
+                // align-items: center;
+                padding: 8px 14px;
+                // gap: 6px;
 
 
-            &::before{position: absolute;
-            content: '';
-            height: 2px;
-            background-color: #F8F8F8;
-            width: 367.25px;
-            top:-20px;
-        }
-            .Date {
-                // width: 125px;
-                //   height: 17px;
+                width: 73px;
+                height: 33px;
+ 
 
+                /* #664EF9 */
 
+                background: #664EF9;
+                border-radius: 16px;
 
-                padding: 11px 8px;
-                text-align: center;
-                background: #F8F8F8;
-                border-radius: 18px;
-
-                font-family: 'Inter', 'sans-serif';
+                font-family: 'Inter';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 14px;
-                line-height: 17px;
-                color: #8291A3;
-            }
-
-            .ReadButton {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 10px 15px;
-                gap: 10px;
-
-
-
-                background: rgba(102, 78, 249, 0.1);
-                border-radius: 17px;
-
-
-                font-family: 'Inter', 'sans-serif';
-                font-style: normal;
-                font-weight: 700;
                 font-size: 14px;
                 line-height: 17px;
                 /* identical to box height */
 
 
-                /* #664EF9 */
+                color: rgba(255, 255, 255, 0.7);
 
-                color: #664EF9;
+
+ 
+              
             }
-
         }
+
+button {
+    position: absolute;
+    bottom: 21px;
+    right: 20px;
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    height: 39.42856979370117px;
+    width: 39.42856979370117px;
+  
+    border-radius: 50% ;
+        box-sizing: border-box;
+
+}
 
 
     }
+
+
 }
