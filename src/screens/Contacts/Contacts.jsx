@@ -29,7 +29,7 @@ export const Contacts = () => {
                     <p>
                         Какое-то сообщение о том, что письмо отправлено, какое-то сообщение, что письмо отправлено.
                     </p>
-                    <button onClick={setIsModal(false)}>
+                    <button onClick={()=>setIsModal(false)}>
                         Закрыть окно
                     </button>
 
@@ -128,7 +128,7 @@ export const Contacts = () => {
                     imageSrc={avatar} 
                 />
                 <InputBlock
-                    type={'text'}
+                    type={'email'}
                     label={'Ваша электронная почта'}
                     placeholder={'Введите'}
                     flexDirection={'column'}

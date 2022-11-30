@@ -16,9 +16,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 0;
-            padding-left:  80px;
-            padding-right:  63px;
-             height: 100%;
+            padding-left: 80px;
+            padding-right: 63px;
+            height: 100%;
 
             background: #F8F8F8;
             font-family: 'Inter', sans-serif;
@@ -193,20 +193,33 @@
             .HeaderNavigationList2 {
                 li {
                     &:first-child {
+                        height: 100%;
                         margin-right: 40px;
-                        width: 94px;
-                        display: flex;
-                        justify-content: space-between;
+                            width: 105px;
 
-                        span {
-                            margin-right: 6px;
+                        a{
+                        height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    span {
+        margin-right: 6px;
+    }
+
+    button {
+        background: none;
+    }
                         }
+                      
 
                     }
 
 
 
                 }
+
 
 
 
@@ -226,9 +239,10 @@
         .HeaderCategoriesList {
             display: flex;
             justify-content: space-between;
-    padding: 0;
-        padding-left: 80px;
-        padding-right: 63px;            height: 100%;
+            padding: 0;
+            padding-left: 80px;
+            padding-right: 63px;
+            height: 100%;
             flex-direction: row;
             flex-wrap: wrap;
             align-items: center;
