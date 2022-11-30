@@ -235,6 +235,9 @@ export const Rent = () => {
 
                 <div className={styles.ItemCardBlock}>
                     <div className={styles.ItemCardList}>
+
+                    {/* props */}
+
                     <CatalogueCard
                         isListView={false}
                         isWithLikeButton={false}

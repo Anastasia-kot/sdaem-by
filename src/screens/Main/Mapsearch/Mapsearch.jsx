@@ -258,6 +258,8 @@ export const Mapsearch = () => {
             </button>
 
             <div className={styles.PreferenceCardList}>
+                {/* props */}
+
                 {pref_cards.map(pc => <PreferenceCard
                     key={pref_cards.indexOf(pc)}
                     logo={pc.logo}

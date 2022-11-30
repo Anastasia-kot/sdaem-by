@@ -118,6 +118,8 @@ export const Contacts = () => {
                 </div>
             </address>
             <form className={styles.Form} onSubmit={e => handleSubmit(e)}>
+                {/* props */}
+
                 <InputBlock
                     type={'text'}
                     label={'Ваше имя'}

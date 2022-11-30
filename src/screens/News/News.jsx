@@ -36,6 +36,7 @@ export const News = () => {
                  
             </div>
 
+            {/* props */}
   <Pagination
                 totalCount={6}
                 currentPage={1} />
