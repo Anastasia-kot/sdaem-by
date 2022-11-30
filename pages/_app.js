@@ -1,14 +1,18 @@
 import '../styles/globals.css';
-import { FC, useEffect, useRef } from 'react';
-import {Layout} from '../src/layout/Layout';
+import { Layout } from '../src/layout/Layout';
+import { Provider } from 'react-redux'
+import { store } from '../src/store/store'
 
 
 
 
 const MyApp = ({ Component }) => {
-  return (<Layout>
-            <Component/> 
-          </Layout>
+  return (
+    <Provider store={store}>
+      <Layout>
+        <Component />
+      </Layout>
+    </Provider>
   )
 }
 
