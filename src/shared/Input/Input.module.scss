@@ -1,0 +1,56 @@
+label {
+
+    span {}
+
+    .InputWrapper {
+        position: relative;
+
+        .SvgImage {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+
+
+        }
+
+        input,
+        textarea {
+            box-sizing: border-box;
+            padding: 15px 20px;
+            border-radius: 30px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+
+
+            background: #F8F8F8;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            color: #686868;
+            border: 2px solid rgb(0, 255, 255, 0);
+            outline: none;
+
+
+        }
+
+
+        input:focus,
+        input:hover,
+        input:active,
+
+        textarea:focus,
+        textarea:hover,
+        textarea:active {
+            background: #FFFFFF;
+            border: 2px solid rgba(102, 78, 249, 0.8);
+            color: #1E2123;
+        }
+    }
+}

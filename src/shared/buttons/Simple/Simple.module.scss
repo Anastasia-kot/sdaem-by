@@ -3,10 +3,8 @@
     min-width: 110px;
 
 
-    text-align: center;
-    padding-left: 15px;
+    text-align: center; 
 
-    background: rgba(255, 213, 79, 0.1);
     border-radius: 17px;
 
     font-family: 'Inter';
@@ -14,10 +12,13 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 17px;
-    color: #FEC100;
+ 
+}
 
-    &:hover {
+.Yellow {
+    background: rgba(255, 213, 79, 0.1);
+    color: #FEC100;
+    &:active, &:focus, &:hover{
         background: rgba(255, 213, 79, 0.2);
     }
-
 }

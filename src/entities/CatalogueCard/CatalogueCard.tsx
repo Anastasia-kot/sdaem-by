@@ -3,9 +3,10 @@ import Image from 'next/image'
 import { useState } from 'react';
 import { ContactsButton } from '../../shared/buttons/Contacts/Contacts';
 import { LikeButton } from '../../shared/buttons/Like/Like';
-import { MoreButton } from '../../shared/buttons/More/More';
+import { SimpleButton } from '../../shared/buttons/Simple/Simple';
 import styles from './CatalogueCard.module.scss'
 const room = require('../../assets/images/room.png');
+const avatar = require('../../assets/images/avatar.png');
 
 
 type Props = {
@@ -66,7 +67,7 @@ export const CatalogueCard = (
                     top: isListView ? ' -70px' : '150px',
                     right: isListView ? ' 600px' : '-51px',
                     }}>
-                <Image src={room} alt="" />
+                <Image src={avatar} alt="" />
                 <p className={styles.ModalOwnerStatus}>Владелец</p>
                 <p className={styles.ModalName}>Dmitriy</p>
                 <p className={styles.ModalPhone}> +375 (29) 291-14-44</p>
@@ -113,8 +114,8 @@ export const CatalogueCard = (
                     margin: isListView ? '0 15px' : '0 20px',
                     height: isListView ? '100%' : '245px',
                     width: isListView ? '690px' : '366px',
-                    'gridTemplateRows': isListView ? '51px 34px 55px 73px 1fr' : '66px 30px 41px 85px 1fr',
-                    'grid-template-columns': isListView ? '1fr 150px' : '150px 1fr',
+                    gridTemplateRows: isListView ? '51px 34px 55px 73px 1fr' : '66px 30px 41px 85px 1fr',
+                    gridTemplateColumns: isListView ? '1fr 150px' : '150px 1fr',
 
                 }}>
 
@@ -235,7 +236,12 @@ export const CatalogueCard = (
                             onClick={() => setIsShownContact(actual => { return (!actual) })}
                         />
  
-                        <MoreButton />
+                        <SimpleButton 
+                            text={'Подробнее'}
+                            width={110}
+                            colorScheme={'yellow'}
+                        
+                        />
 
  
                         {isWithLikeButton &&

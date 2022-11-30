@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import styles from './Header.module.scss';
 import Link from "../../../node_modules/next/link";
-import { useRouter } from "../../../node_modules/next/router";
 import Image from "next/image";
 import classNames from "classnames";
+import { useRouter } from "next/router";
 const logo = require('../../assets/images/logo.png');
 const heart = require('../../assets/images/heart.png');
 
 
 
 const Header = () => {
-    
+
     const [activeState, setActiveState] = useState(false);
-   
+
     const onBurgerClick = () => {
         setActiveState(prev => !prev);
     }
-     
 
-    return( 
+   
+
+
+
+    return (
         <header className={styles.Header}>
             <nav className={styles.HeaderNavigation}>
                 <ul className={styles.HeaderNavigationList}>
@@ -33,33 +36,50 @@ const Header = () => {
                         <span></span>
                         <span></span>
                     </div>
-                    <ul 
+                    <ul
                         className={classNames(
                             styles.HeaderNavigationList1,
                             { [styles.active]: activeState },
                         )}
                     >
-            
-                        <li>Главная</li>
-                        <li>Новости</li>
-                        <li>Размещение и тарифы</li>
+
+                        <li>
+                            <Link href='/'>
+                                Главная
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href='/news'>
+                                Новости                        </Link>
+                        </li>
+                        <li>                        <Link href='/catalogue'>
+                            Размещение и тарифы                        </Link>
+                        </li>
                         <li className={styles.NavigationItemActive}>
                             <svg width="9" height="10" viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7.33796 1.74419C6.6054 0.627907 5.3961 0 4.03564 0C2.6868 0 1.4775 0.627907 0.721683 1.74419C-0.0341305 2.83721 -0.208549 4.23256 0.256567 5.45349C0.384474 5.77907 0.582148 6.11628 0.837962 6.4186L3.77982 9.88372C3.84959 9.95349 3.91936 10 4.02401 10C4.12866 10 4.19843 9.95349 4.2682 9.88372L7.22168 6.4186C7.4775 6.11628 7.6868 5.7907 7.80308 5.45349C8.2682 4.23256 8.09378 2.83721 7.33796 1.74419ZM4.03564 5.86047C3.03564 5.86047 2.21006 5.03488 2.21006 4.03488C2.21006 3.03488 3.03564 2.2093 4.03564 2.2093C5.03564 2.2093 5.86122 3.03488 5.86122 4.03488C5.86122 5.03488 5.04727 5.86047 4.03564 5.86047Z" fill="#8291A3" />
                             </svg>
 
                             Объявления на карте</li>
-                        <li>Контакты</li>
+                        <li>
+                            <Link href='/contacts'>
+                                Контакты
+                            </Link>
+                        </li>
                     </ul>
                     <ul className={styles.HeaderNavigationList2}>
-                        <li>
+                        <li>                        <Link href='/'>
+
                             <span>Закладки</span>
                             <button>
                                 <Image src={heart} alt="SDAEM.BY" />
                             </button>
+                        </Link>
                         </li>
-                       
-                        <li>Вход и регистрация</li>
+
+                        <li>                        <Link href='/auth?task=auth'>
+                            Вход и регистрация</Link>
+                        </li>
                     </ul>
                 </ul>
             </nav>
@@ -84,9 +104,9 @@ const Header = () => {
                     <li>Авто на прокат</li>
                     <li><button>+ Разместить объявление</button></li>
                 </ul>
-                
+
             </div>
-        </header>
+        </header >
     )
 }
 

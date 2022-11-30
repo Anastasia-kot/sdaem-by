@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import { Card } from '../../components/Card/Card.tsx'
 import styles from './404.module.scss'
 
 export const Page404 = () => {

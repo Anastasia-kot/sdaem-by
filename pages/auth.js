@@ -2,12 +2,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-import { Main } from '../src/screens/Main/Main.jsx'
+import { Auth } from '../src/screens/Auth/Auth.tsx'
  
-
-
-export default function Home() {
+export default function Home({ withLayout=false }) {
   return (
-    <Main />
+    <Auth />
   )
 }

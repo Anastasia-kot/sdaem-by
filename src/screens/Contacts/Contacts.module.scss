@@ -108,6 +108,9 @@
         
              }
     }
+    .ContactsModalWrapperHidden {
+        display: none;
+    }
 
           
     .InfoBlock {
@@ -272,14 +275,7 @@
         border-radius: 10px;
 
         label {
-            position: relative;
-
-            svg {
-                position: absolute;
-                top: 49px;
-                left: 20px;
-            }
-
+ 
             &:first-of-type,
             &:nth-of-type(2),
             &:nth-of-type(3) {
@@ -301,9 +297,6 @@
 
                 color: #686868;
 
-
-
-
             }
 
             &:first-of-type {
@@ -314,56 +307,13 @@
                 grid-column: 1/3;
             }
 
-            input,
-            textarea {
-                box-sizing: border-box;
-                padding: 15px 20px;
-                border-radius: 30px;
-
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 17px;
+            
+          
 
 
-                background: #F8F8F8;
-                font-family: 'Inter';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 14px;
-                    line-height: 17px;
-                    color: #686868;
-                    border: none;
-
-            }
-
-
-
-            input {
-                padding-left: 50px;
-
-                width: 260px;
-                height: 50px;
-            }
-
-            textarea {
-                height: 200px;
-                width: 548px;
-
-            }
  
-            input:focus,
-            input:hover, 
-            input:active, 
-
-            textarea:focus,    
-            textarea:hover,   
-            textarea:active {
-                background: #FFFFFF;
-                border: 2px solid rgba(102, 78, 249, 0.8);
-                color: #1E2123;
-            }
+        
+      
 
         }
 

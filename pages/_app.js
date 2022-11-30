@@ -7,7 +7,7 @@ import {Layout} from '../src/layout/Layout';
 
 const MyApp = ({ Component }) => {
   return (<Layout>
-      <Component/> 
+            <Component/> 
           </Layout>
   )
 }
