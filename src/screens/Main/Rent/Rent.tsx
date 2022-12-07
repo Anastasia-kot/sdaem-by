@@ -222,7 +222,8 @@ export const Rent = () => {
                         <h3>КВАРТИРЫ НА СУТКИ</h3>
                         <h2>Аренда квартир в Минске</h2>
                     </div>
-                    
+                            {/* // form validation */}
+
                     <form             
                         onSubmit={handleSubmit(onSubmit)}>
 

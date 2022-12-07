@@ -117,6 +117,8 @@ export const Filters = () => {
             </div>
 
             <div className={styles.FiltersCategoriesBlock}>
+                        {/* // form validation */}
+
                 <form onSubmit={handleSubmit(onSubmit)}> 
                     {isMoreOptions && <MoreOptionsModal register={register}/> }
 

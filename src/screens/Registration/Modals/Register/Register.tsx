@@ -38,6 +38,8 @@ export const RegisterModal = (
             <h2>
                 Регистрация
             </h2>
+            {/* // form validation */}
+
             <form className={styles.AuthForm} onSubmit={handleSubmit(onSubmit)}>
 
        

@@ -35,6 +35,7 @@ export const AuthForm = () => {
 
 
     return (
+        // form validation
         <form 
             className={styles.Auth}
             onSubmit={handleSubmit(onSubmit)}>

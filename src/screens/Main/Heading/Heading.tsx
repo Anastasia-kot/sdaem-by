@@ -51,6 +51,7 @@ export const Heading = () => {
                 </h1>
 
 
+        {/* // form validation */}
 
                 <form
                     className={styles.MainForm} 

@@ -26,8 +26,11 @@ export const News = () => {
             <Breadcrumbs breadcrumbs={[{ name: '', value: 'Новости' }]} />
             <div className={styles.TitleBlock}>
                 <h1 className={styles.Title}>Новости</h1>
+                {/* // form validation */}
 
-                <form className={styles.SearchWrapper}>
+                <form 
+                    onSubmit={handleSubmit(onSubmit)}
+                    className={styles.SearchWrapper}>
                     <InputBlock
                         type={'text'}
                         labelRus={null}

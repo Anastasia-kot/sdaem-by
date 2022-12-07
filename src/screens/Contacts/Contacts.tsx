@@ -117,6 +117,8 @@ export const Contacts = () => {
                     <p>Администрация сайта не владеет информацией о наличии свободных квартир</p>
                 </div>
             </address>
+                    {/* // form validation */}
+
             <form 
                 className={styles.Form} 
                 onSubmit={handleSubmit(onSubmit)}>
