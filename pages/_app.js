@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import { Layout } from '../src/layout/Layout';
+// import { Layout } from '../src/layout/Layout';
 import { Provider } from 'react-redux'
 import { store } from '../src/store/store'
 
@@ -9,9 +9,9 @@ import { store } from '../src/store/store'
 const MyApp = ({ Component }) => {
   return (
     <Provider store={store}>
-      <Layout>
+      {/* <Layout> */}
         <Component />
-      </Layout>
+      {/* </Layout> */}
     </Provider>
   )
 }

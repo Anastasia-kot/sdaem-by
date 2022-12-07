@@ -70,283 +70,202 @@
 
 
     .FiltersCategoriesBlock {
-        height: 82px;
-        padding-left: 80px;
-        padding-right: 63px;
+
+
         box-sizing: border-box;
         box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.08);
         z-index: 1;
         position: relative;
 
         form {
-            height: 100%;
-            display: flex;
-
-            .MoreOptionsModal {
-                    width: 100%;
-                    background-color: white;
-                    position: absolute;
-                    top:80px;
-                    display: grid;
-                    grid-template-rows: 65px 1fr;
-                    height: 368px;
-                    label {
-                        grid-row: 1/2;
-                    }
-
-                    ul{
-                        display: flex;
-                        flex-direction: column;
-                        flex-wrap: wrap;
-                        height: 170px;
-                    }
-
-                }
+            // height: 82px;
+            min-height: 82px;
+            height: min-content;
+            width: 100%;
 
 
-            .RoomsBlockLabel,
-            .PriceBlockLabel {
-                height: 100%;
-                border-right: 1px solid rgb(102, 78, 249, 0.1);
-                padding-right: 24px;
-                margin-left: 20px;
-
-                span {
-                    margin-top: 19px;
-                    margin-right: 20px;
-                    font-weight: 500;
-                    font-size: 14px;
-                    line-height: 17px;
-
-                    color: #664EF9;
-                }
-
-                select {
-                    margin-top: 22px;
-                    height: 37px;
-                    width: 150px;
-                    padding: 0 12px;
-                    border-radius: 20px;
-                    background: #F8F8F8;
-                    border: none;
-
-
-
-                    font-weight: 500;
-                    font-size: 14px;
-                    line-height: 17px;
-                    /* identical to box height */
-
-
-                    /* Style */
-
-                    color: #1E2123;
-                }
-            }
-
-            .RoomsBlockLabel {
-
-                .RoomsSelect {
-                    // ARROW 
-
-
-                    /* Remove default arrow */
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-                    /* Add custom arrow */
-                    // background-image: url(...);
-
-                    &::-ms-expand {
-                        display: none;
-                        /* Hide the default arrow in Internet Explorer 10 and Internet Explorer 11 */
-                    }
-
-
-                    /* Target Internet Explorer 9 to undo the custom arrow */
-                    @media screen and (min-width:0\0) {
-                        background: none\9;
-                        padding: 5px\9;
-
-                    }
-
-
-
--webkit-appearance: button;
--moz-appearance: button;
--webkit-user-select: none; 
--moz-user-select: none;
--webkit-padding-end: 20px;
--moz-padding-end: 20px;
--webkit-padding-start: 2px;
--moz-padding-start: 2px;
-background-color: #FFFFFF;
-/* Fallback color if gradients are not supported */
-background-image: 
-// url(../images/select-arrow.png),
--webkit-linear-gradient(top, #E5E5E5, #F4F4F4);
-/* For Chrome and Safari */
-background-image: 
-// url(../images/select-arrow.png),
--moz-linear-gradient(top, #E5E5E5, #F4F4F4);
-/* For old Firefox (3.6 to 15) */
-background-image: 
-// url(../images/select-arrow.png),
--ms-linear-gradient(top, #E5E5E5, #F4F4F4);
-/* For pre-releases of Internet Explorer  10*/
-background-image: 
-// url(../images/select-arrow.png),
--o-linear-gradient(top, #E5E5E5, #F4F4F4);
-/* For old Opera (11.1 to 12.0) */
-background-image: 
-// url(../images/select-arrow.png),
-linear-gradient(to bottom, #E5E5E5, #F4F4F4);
-/* Standard syntax; must be last */
-background-position: center right;
-background-repeat: no-repeat;
-
-
-border: 1px solid #AAA;
-border: none;
-border-radius: 20px;
-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-overflow: hidden;
-// padding-top: 2px;
-// padding-bottom: 2px;
-text-overflow: ellipsis;
-white-space: nowrap;
-
-
-
-                }
-
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-            .PriceBlockLabel {
+         
+            .MainFiltersBlock {
+                min-height: 82px;
+                height: min-content;
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 63px;
                 display: flex;
+                flex-wrap: wrap;
+                align-items: center;
 
-                span {
-                    margin-top: 32px;
-                    margin-left: 5px;
+                .RoomsBlockLabel,
+                .PriceBlockLabel,
+                .MoreOptionsBlock {
+                    height: 82px;
+                    margin-left: 20px;
+                    position: relative;
 
-                }
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        height: 82px;
+                        width: 1px;
+                        top: 0;
+                        right: 0;
+                        background-color: rgb(102, 78, 249, 0.1);
 
-                .InputsBlock {
-                    margin: 0;
-                    margin-top: 22px;
-                    display: flex;
-                    justify-content: space-between;
-                    width: 220px;
-
-
-                    input {
-                        width: 100px;
-                        height: 37px;
-                        padding: 0 15px;
-                        border: none;
-
-
-                        background: #F8F8F8;
-                        border-radius: 20px;
                     }
+
+
+
                 }
-            }
 
-            .MoreOptionsBlock {
-                align-self: center;
-                padding-left: 19px;
-                border-right: 1px solid rgb(102, 78, 249, 0.1);
-                height: 100%;
-                width: 178px;
-
-                button {
-                    margin-top: 33px;
-
-                    background: none;
+                .RoomsBlockLabel {
+                    box-sizing: border-box;
+                    width: 257px;
+                    border-right: 1px solid rgb(102, 78, 249, 0.1);
+                    margin-left: 20px;
+                    padding-right: 24px;
                     display: flex;
-                    gap: 5px;
+                    align-items: center;
+
+                
+
+                }
 
 
-                    font-weight: 500;
-                    font-size: 14px;
-                    line-height: 17px;
+
+                .PriceBlockLabel {
+                    display: flex;
+                    align-items: center;
+                    min-width: 381px;
+                    width: 413px;
+                    padding-right: 0px;
+                    height: 82px;
+
+
+               
+                     
 
                     span {
-                        width: 100px;
-                        margin-right: 5px;
+                        margin-left: 5px;
+
+
+                        margin-right: 20px;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 17px;
+
+                        color: #664EF9;
+                    }
+
+                            .InputsBlock {
+                                 display: flex;
+                                 justify-content: space-between;
+                                 width: 220px;
+                    
+                    
+                             }
+
+                }
+
+       
+
+
+                .MoreOptionsBlock { 
+                    height: 82px;
+                    width: 178px;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    // justify-content: space-between;
+
+                    &.Active {
+                        border-bottom: 3px solid #4E64F9;
+                    }
+
+                    button {
+                        margin: 0 auto;
+                        background: none;
+                        display: flex;
+                        gap: 5px;
+
+
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 17px;
+
+                        span {
+                            width: 100px;
+                            margin-right: 5px;
+                        }
+
+
+
+
+
                     }
 
 
-
-
-
                 }
 
-             
-            }
-
-            .ToClear {
-                align-self: center;
-                margin-left: 50px;
-                margin-right: 32px;
-
-                button {
-                    background: #F8F8F8;
-                    border-radius: 22px;
-                    padding: 10px 16px;
-                    gap: 10px;
-
-
-                    font-weight: 600;
-                    font-size: 14px;
-                    line-height: 17px;
-                }
-            }
-
-
-            .ToShow {
-
-                align-self: center;
-
-                button {
-
-                    width: 192px;
+                .ToClear {
+                    align-self: center;
+                    margin-left: 50px;
+                    margin-right: 32px;
+                    height: 82px;
                     display: flex;
-                    flex-direction: row;
                     align-items: center;
-                    flex-wrap: nowrap;
-                    padding: 9px 16px;
-                    gap: 17px;
+
+                    button {
+                        background: #F8F8F8;
+                        border-radius: 22px;
+                        padding: 10px 16px;
+                        gap: 10px;
+
+
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 17px;
+                    }
+                }
+
+
+                .ToShow {
+
+                     height: 82px;
+                     display: flex;
+                     align-items: center;
+
+                    button {
+
+                        width: 192px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        flex-wrap: nowrap;
+                        padding: 9px 16px;
+                        gap: 17px;
 
 
 
 
-                    /* #FFD54F */
+                        /* #FFD54F */
 
-                    background: #664EF9;
-                    border-radius: 22px;
+                        background: #664EF9;
+                        border-radius: 22px;
 
-                    font-weight: 700;
-                    font-size: 14px;
-                    line-height: 17px;
-
-
-                    color: #FFFFFF;
+                        font-weight: 700;
+                        font-size: 14px;
+                        line-height: 17px;
 
 
+                        color: #FFFFFF;
+
+
+                    }
                 }
             }
+
+
 
 
 
@@ -354,5 +273,4 @@ white-space: nowrap;
 
 
     }
-
 }

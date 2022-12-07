@@ -2,9 +2,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Contacts } from '../src/screens/Contacts/Contacts'
- 
-export default function Home() {
+import { Layout } from '../src/layout/Layout';
+
+
+
+export default function Home({ Component }) {
   return (
-    <Contacts />
+    <Layout>
+      <Contacts />
+    </Layout>
+
   )
 }

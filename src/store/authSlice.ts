@@ -8,17 +8,13 @@ export interface AuthState {
 }
 export interface UserDataInterface { 
         email: string | null,
-        id: number | null,
         login: string | null,
-        avatar: string | null,
 }
 
 const initialState: AuthState = {
     data: {
         email: null,
-        id: null,
         login: null,
-        avatar: null,
     },
     isAuth: false,
     initialized: false,

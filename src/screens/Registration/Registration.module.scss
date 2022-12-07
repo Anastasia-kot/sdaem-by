@@ -1,0 +1,27 @@
+.Auth {
+    width: 100%;
+    height: 900px;
+    background-image: url(../../assets/images/404/city-map.png), url(../../assets/images/404/background.png);
+    background-size: cover;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -4px;
+    padding-left: 17px;
+
+
+    .ModalWrapper { 
+        margin: 0 auto; 
+        border-radius: 10px;
+        width: min-content;
+        height: min-content;
+
+
+        background: #FFFEFE;
+        box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.2);
+    }
+}

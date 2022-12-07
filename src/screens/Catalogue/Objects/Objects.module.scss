@@ -17,6 +17,8 @@
         height: 80px;
         margin-bottom: 61px;
         display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
         justify-content: space-between;
         align-items: center;
         margin-left: 20px;
@@ -51,8 +53,11 @@
 
         li:last-child.SettingsItem {
             display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             width: 480px;
             justify-content: space-between;
+
 
             .RadioBlock {
                 display: flex;
@@ -119,6 +124,13 @@
     }
 
     .ResultBlock {
+
+        @media (max-width: 864px) {
+
+
+        }
+
+        
         h2 {
             margin-bottom: 39px;
 
@@ -127,24 +139,39 @@
             line-height: 100%;
         }
 
+        .ResultListListView,
+        .ResultListTileView {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+
+
+
+
+        }
+
         .ResultListListView {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
+             flex-wrap: wrap;
             margin-bottom: 81px;
             flex-direction: column;
+            align-items: center;
+
+           
         }
 
         .ResultListTileView {
-            display: flex;
-            gap: 30px;
+      
             flex-direction: row;
+            justify-content: center;
         }
 
         .ResultBlockFooter {
             margin-bottom: 0px;
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+                margin-bottom: 20px;
 
         }
 

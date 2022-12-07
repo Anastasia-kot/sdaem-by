@@ -12,7 +12,6 @@
 
         .HeaderNavigationList {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             padding: 0;
@@ -27,6 +26,10 @@
             font-size: 14px;
             line-height: 17px;
             color: #8291A3;
+
+            @media (max-width: 520px) {
+                padding: 0 20px;
+            }
 
             .HeaderBurger {
 
@@ -98,7 +101,6 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-                flex-wrap: wrap;
                 align-items: center;
                 padding: 0px;
                 height: 100%;
@@ -191,31 +193,148 @@
             }
 
             .HeaderNavigationList2 {
+
+                @media (max-width: 520px) {
+                    justify-content: end;
+                    width: min-content;
+                    flex-wrap: nowrap;
+
+                    li:first-child {
+                        width: min-content;
+                        margin: 0;
+
+                        a {
+                            width: min-content;
+                            margin: 0;
+                        }
+
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+
                 li {
                     &:first-child {
                         height: 100%;
                         margin-right: 40px;
-                            width: 105px;
+                        width: 105px;
 
-                        a{
-                        height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
+                        a {
+                            height: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            flex-wrap: nowrap;
 
-    span {
-        margin-right: 6px;
-    }
+                            span {
+                                margin-right: 6px;
+                            }
 
-    button {
-        background: none;
-    }
+                            button {
+                                background: none;
+                            }
                         }
-                      
+
 
                     }
 
+                    &:last-child {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 10px;
+                        color: #664EF9;
+
+.UnloginMenuList {
+        display: none;
+    }
+
+    &.active {
+        position: relative;
+
+        .UnloginMenuList {
+            position: absolute;
+            top: 45px;
+            box-sizing: border-box;
+            background: #FFFFFF;
+            box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
+            border-radius: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+
+            .UnloginMenuListItem {
+                box-sizing: border-box;
+                width: 100%;
+                padding: 10px 15px;
+                padding-right: 0;
+                height: 37px;
+                display: flex;
+                align-items: center;
+
+
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 17px;
+                /* identical to box height */
+
+
+                /* Style */
+
+                color: #1E2123;
+
+                &:hover {
+                    background: #F8F8F8;
+                }
+            }
+        }
+    }
+
+
+
+
+                        .Avatar {
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            background: #C4C4C4;
+                            margin: 5px;
+                        }
+
+                        .UserName {
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+
+
+                            color: #1E2123;
+                        }
+
+                        .UnloginButton{
+                            border: none;
+                            background: none;
+                            margin: 0;
+                            padding: 5px;
+ 
+                         
+
+
+
+
+
+
+
+
+                        }
+
+                    }
 
 
                 }
@@ -260,9 +379,17 @@
             color: #1E2123;
 
 
+            @media (max-width: 520px) {
+                li:first-child {
+                    display: none;
+                }
+            }
+
             li {
                 &:first-child {
                     margin-top: 1px;
+
+
                 }
 
                 &:nth-child(2) {
@@ -270,6 +397,59 @@
                     justify-content: space-between;
                     width: 161px;
                     margin-top: -1px;
+
+
+
+                    .RoomsList {
+                        display: none;
+
+                    }
+
+                    &.active {
+                        position: relative;
+
+                        .RoomsList {
+                            position: absolute;
+                            top: 70px;
+                            box-sizing: border-box;
+                            background: #FFFFFF;
+                            box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
+                            border-radius: 10px;
+                            width: 242px;
+                            height: 222px;
+                            display: flex;
+                            flex-direction: column;
+                            overflow: hidden;
+
+
+                            .RoomsListItem {
+                                box-sizing: border-box;
+                                width: 100%;
+                                padding: 10px 15px;
+                                padding-right: 0;
+                                height: 37px;
+                                display: flex;
+                                align-items: center;
+
+
+                                font-family: 'Inter';
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 14px;
+                                line-height: 17px;
+                                /* identical to box height */
+
+
+                                /* Style */
+
+                                color: #1E2123;
+
+                                &:hover {
+                                    background: #F8F8F8;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 &:nth-child(3) {

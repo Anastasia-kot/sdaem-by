@@ -2,6 +2,12 @@
 import styles from './Categories.module.scss'
 import React from 'react'
 import { CategoryCard } from '../../../entities/CategoryCard/CategoryCard.tsx'
+const room = require('../../../assets/images/main/room.png');
+const car = require('../../../assets/images/main/car.png');
+const cottage = require('../../../assets/images/main/cottage.png');
+const sauna = require('../../../assets/images/main/sauna.png');
+
+
 
 
 export const Categories = () => {
@@ -64,41 +70,41 @@ export const Categories = () => {
     return (
         <div className={styles.Categories}>
             <ul className={styles.CategoriesCardsList}>
-                <li>
+                <li className={styles.CategoriesCardsItem}>
                     <CategoryCard
                         header='Квартиры на сутки'
                         additional_header='СНЯТЬ КВАРТИРУ'
                         hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест', 'Могилев']}
-                        background=''
+                        background={room}
                         arrow_button={false}
                        
                     />
                 </li>
-                <li>
+                <li className={styles.CategoriesCardsItem}>
                     <CategoryCard
                         header='Коттеджи и усадьбы'
                         additional_header='СНЯТЬ коттедж НА ПРАЗДНИК'
                         // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
-                        background=''
+                        background={cottage}
                         arrow_button={true}
  
                     />
                 </li>
-                <li>
+                <li className={styles.CategoriesCardsItem}>
                     <CategoryCard
                         header='Бани и сауны'
                         additional_header='ПОПАРИТЬСЯ В БанЕ С ДРУЗЬЯМИ'
                         // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
-                        background=''
+                        background={sauna}
                         arrow_button={true}
                      />
                 </li>
-                <li>
+                <li className={styles.CategoriesCardsItem}>
                     <CategoryCard
                         header='Авто на прокат'
                         additional_header='еСЛИ СРОЧНО НУЖНА МАШИНА'
                         // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
-                        background=''
+                        background={car}
                         arrow_button={true}
  
                     />

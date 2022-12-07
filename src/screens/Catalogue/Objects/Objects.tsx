@@ -4,11 +4,17 @@ import React, { useState } from 'react'
 import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { Pagination } from '../../../shared/Pagination/Pagination'
 import { Socials_sharing } from '../../../shared/Socials_sharing/Socials_sharing'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
 
 
 export const Objects = () => {
 
     const [isListCatalogue, setIsListCatalogue] = useState(false as boolean);
+     
+    const data = useSelector((state: RootState) => state.catalogue.data)
+    const totalCount = useSelector((state: RootState) => state.catalogue.totalCount)
+
 
     return (
 
@@ -97,103 +103,25 @@ export const Objects = () => {
 
 
             <div className={styles.ResultBlock}>
-                <h2>Найдено 234 результата</h2>
+                <h2>Найдено {totalCount} результатов</h2>
                 <div className={isListCatalogue ? styles.ResultListListView : styles.ResultListTileView}>
 
-
-                    <CatalogueCard
+                    {data.map(d => {
+                        if (d.id < 3) {
+                            return <CatalogueCard
+                        key={d.id}
                         isListView={isListCatalogue}
                         isWithLikeButton={true}
-                        title='4-комн. апартаменты на Грушевке'
-                        price={65}
-                        address='Минск, б-р Мулявина, д. 10'
-                        addressFeatures={[
-                            {
-                                name: 'metro',
-                                value: 'Грушевка'
-                            },
-                            {
-                                name: 'district',
-                                value: 'Шабаны'
-                            },
-                        ]}
-                        roomFeatures={[
-                            {
-                                name: 'size as people',
-                                value: '4 (2+2)'
-                            },
-                            {
-                                name: 'roomCount',
-                                value: '4 комн.'
-                            },
-                        ]}
-                        description='Большая четырехкомнатная студия! Большая джкакузи на двоих, на теливизоре есть приложение Megogo, YouTube, Smart TV, сможете выбрать фильм по вкусу!) Цена зависит от количества проживающих, уточняйте, пожалуйста, по телефону! В пяти минутах ходьбы Минск-Арена,  ...'
-                        image=''
-                    />
+                        title={d.title}
+                        price={d.price}
+                        address={d.address}
+                        addressFeatures={d.addressFeatures}
+                        roomFeatures={d.roomFeatures}
+                        description={d.description}
+                        image={d.image}
+                    />}})}
 
-                    <CatalogueCard
-                        isListView={isListCatalogue}
-                        isWithLikeButton={true}
-
-                        title='4-комн. апартаменты на Грушевке'
-                        price={65}
-                        address='Минск, б-р Мулявина, д. 10'
-                        addressFeatures={[
-                            {
-                                name: 'metro',
-                                value: 'Грушевка'
-                            },
-                            {
-                                name: 'district',
-                                value: 'Шабаны'
-                            },
-                        ]}
-                        roomFeatures={[
-                            {
-                                name: 'size as people',
-                                value: '4 (2+2)'
-                            },
-                            {
-                                name: 'roomCount',
-                                value: '4 комн.'
-                            },
-                        ]}
-                        description='Какое-то описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание ...'
-                        image=''
-                    />
-
-                    <CatalogueCard
-                        isListView={isListCatalogue}
-                        isWithLikeButton={true}
-                        title='4-комн. апартаменты на Грушевке'
-                        price={65}
-                        address='Минск, б-р Мулявина, д. 10'
-                        addressFeatures={[
-                            {
-                                name: 'metro',
-                                value: 'Грушевка'
-                            },
-                            {
-                                name: 'district',
-                                value: 'Шабаны'
-                            },
-                        ]}
-                        roomFeatures={[
-                            {
-                                name: 'size as people',
-                                value: '4 (2+2)'
-                            },
-                            {
-                                name: 'roomCount',
-                                value: '4 комн.'
-                            },
-                        ]}
-                        description='Какое-то описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание квартиры, описание ...'
-                        image=''
-                    />
-
-
-
+                 
                 </div>
 
                 <div className={styles.ResultBlockFooter}>

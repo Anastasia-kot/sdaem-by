@@ -1,11 +1,19 @@
 // import Image from 'next/image'
 import styles from './Rent.module.scss'
 import React from 'react'
-import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard.tsx'
+import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { Catalogue } from '../../Catalogue/Catalogue'
+import { SelectBlock } from '../../../shared/Select/Select'
+import { useForm } from 'react-hook-form'
+import { DistrictMetroType } from '../../../../types/formTypes'
 
 
 export const Rent = () => {
+    
+    const { handleSubmit, register, formState: { errors } } = useForm<DistrictMetroType>();
+    const onSubmit = values => {
+        console.log(values);
+    }
 
     return (
 
@@ -215,17 +223,42 @@ export const Rent = () => {
                         <h2>Аренда квартир в Минске</h2>
                     </div>
                     
-                    <form>
+                    <form             
+                        onSubmit={handleSubmit(onSubmit)}>
+
                         <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.6401 11.4773H18.3812L14.4755 0.509766L9.99979 7.19943L5.21594 0.589264L1.61882 11.4773H0.359905L0 12.9373H4.77911L6.65514 7.59981L10.0565 12.2942L10.0769 12.3238L10.0978 12.2942L13.3449 7.59981L15.2209 12.9373H20L19.6401 11.4773Z" fill="#BDBDBD" />
                         </svg>
 
-                        <select placeholder='Метро'>
+                        <SelectBlock
+                            labelRus={null}  
+                            flexDirection={null} 
+                            options={['Метро']} 
+                            width={185} 
+                            height={40}
+                            
+                            label={'metro'}
+                            register={register}
+                            required={false}/> 
+
+                        <SelectBlock
+                            labelRus={null}  
+                            flexDirection={null} 
+                            options={['Район']} 
+                            width={185} 
+                            height={40}
+                            
+                            label={'district'}
+                            register={register}
+                            required={false}
+                            /> 
+
+                        {/* <select placeholder='Метро'>
                             <option value="">Метро</option>
-                        </select>
-                        <select placeholder='Район'>
+                        </select> */}
+                        {/* <select placeholder='Район'>
                             <option value="">Район</option>
-                        </select>
+                        </select> */}
 
 
                     </form>
@@ -340,6 +373,7 @@ export const Rent = () => {
              
                 </div>
 
+                <div className={styles.ItemCardBlockWrapper}>
                 <div className={styles.ItemCardBlockMore}>
                     <div>
                         <p className={styles.TotalCount}>341<span> +</span></p>
@@ -357,6 +391,7 @@ export const Rent = () => {
 
                     </button>
 
+                </div>
                 </div>
 
 

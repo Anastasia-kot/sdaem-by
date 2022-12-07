@@ -1,10 +1,10 @@
 import Image from 'next/image'
 import { About } from './About/About'
 import { Categories } from './Categories/Categories'
-import { Heading } from './Heading/Heading'
+import { Heading } from './Heading/Heading.tsx'
 import styles from './Main.module.scss'
 import { Mapsearch } from './Mapsearch/Mapsearch'
-import { Rent } from './Rent/Rent'
+import { Rent } from './Rent/Rent.tsx'
 
 
 export const Main = () => {

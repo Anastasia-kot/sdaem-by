@@ -1,4 +1,4 @@
-import Image from 'next/image'
+ import Image from 'next/image'
 import styles from './CategoryCard.module.scss'
 const room = require('../../assets/images/room.png');
 
@@ -12,12 +12,12 @@ type Props = {
 export const CategoryCard = ({ header, additional_header, hashtags, background, arrow_button }: Props) => {
     return (
         <div className={styles.Card}>
-            <Image src={background} alt="background" />
+            <Image src={background} alt="background" className={styles.Image}/>
             <div className={styles.CardContent}>
                 <h2> {additional_header}</h2>
                 <h1> {header}</h1>
-                <ul>
-                    {hashtags && hashtags.length > 0 && hashtags.map(h => <li key={hashtags.indexOf(h)}>{h}</li>)}
+                <ul className={styles.HashtagList}>
+                    {hashtags && hashtags.length > 0 && hashtags.map(h => <li key={hashtags.indexOf(h)} className={styles.HashtagItem}>{h}</li>)}
                 </ul>
                 {arrow_button &&
                     <button>

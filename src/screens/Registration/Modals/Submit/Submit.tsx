@@ -4,7 +4,7 @@ import { useState } from 'react'
 // import { Card } from '../../components/Card/Card.tsx'
 import styles from './Submit.module.scss'
 
-export const SubmitModal = ({ onSubmit }: { onSubmit : ()=>void}) => {
+export const SubmitModal = ({ onSubmitFunction }: { onSubmitFunction : ()=>void}) => {
 
     return (
 
@@ -16,7 +16,7 @@ export const SubmitModal = ({ onSubmit }: { onSubmit : ()=>void}) => {
                 Письмо для подтверждения аккаунта отправлено почту. Перейдите по ссылке, указанной в письме. Если письма нет, то проверьте спам.
             </p>
             <Link href='/'>
-                <button onClick={() => onSubmit()}>
+                <button onClick={() => onSubmitFunction()}>
                     Понятно
                 </button>
             </Link>

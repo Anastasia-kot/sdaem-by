@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Page404 } from '../src/screens/404/404';
 import styles from '../styles/Home.module.css'
+import { Layout } from '../src/layout/Layout';
 
-export default function Home() {
+export default function Home({ Component }) {
 
   const router = useRouter();
 // хук useEffect
@@ -33,6 +34,11 @@ export default function Home() {
       }
       useRedirest()
   return (
-    <Page404/>
-  )
+    <Layout>
+      <Page404 />
+    </Layout>  )
 }
+ 
+
+
+ 

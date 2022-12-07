@@ -1,67 +1,163 @@
 // import Image from 'next/image'
 import styles from './Heading.module.scss'
-import React from 'react'
+import React, { useState } from 'react'
+import { InputBlock } from '../../../shared/Input/Input'
+import { useForm } from 'react-hook-form'
+import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
+import { MainFiltersFormType } from '../../../../types/formTypes'
+import classNames from 'classnames'
 
 export const Heading = () => {
 
+    const categories = [
+        {
+            name:   'room',
+            value: 'Квартиры на сутки'
+        },
+        {
+            name:   'cottage',
+            value: 'Коттеджи и усадьбы'
+        },
+        {
+            name:   'sauna',
+            value: 'Бани и сауны'
+        },
+        {
+            name:   'car',
+            value: 'Авто напрокат'
+        },
+    ]
+    const [currentCategory, setCurrentCategory] = useState('room');
+    
+    const [isMoreOptions, setIsMoreOptions] = useState(false)
+
+
+
+    //for form
+    const { handleSubmit, register, formState: { errors } } = useForm<MainFiltersFormType>();
+    const onSubmit = values => {
+        console.log(values);
+       
+    }
     return (
+
+
+        
 
         <div className={styles.MainHeaderBlock}>
             <div className={styles.MainHeader}>
                 <h1 className={styles.MainHeaderText}>
                     Sdaem.by - у нас живут <span className={styles.yellow}>ваши объявления</span>
                 </h1>
-                <form className={styles.MainForm}>
-                    <ul>
-                        <li className={styles.active}>Квартиры на сутки</li>
-                        <li>Коттеджи и усадьбы</li>
-                        <li>Бани и сауны</li>
-                        <li>Авто напрокат</li>
+
+
+
+                <form
+                    className={styles.MainForm} 
+                    onSubmit={handleSubmit(onSubmit)} >
+
+                    {isMoreOptions && <MoreOptionsModal register={register}/>}
+
+                     <ul className={styles.MainFormCategories}>
+                        {categories.map(k =>
+                            <li
+                                className={(currentCategory==k.name) ? styles.active : '' } 
+                                key={categories.indexOf(k)}
+                                onClick={() => setCurrentCategory(k.name)} 
+                                id={k.name}>
+                                    <label htmlFor={`categories${categories.indexOf(k)}`}>{k.value}</label>
+                                    <input {...register("category")} type="radio" id={`categories${categories.indexOf(k)}`} name="category" value={k.name}/>
+                            </li>)}
                     </ul>
-                    <div className={styles.MainFormSettings}>
+
+                    <div 
+                        className={classNames(
+                            styles.MainFormSettings,
+                            { [styles.Active]: isMoreOptions },
+                        )}
+                    >
                         <div className={styles.CityBlock}>
                             <label className={styles.CityBlockLabel}>
                                 <span className={styles.CityBlockLabelSpan}>
                                     Город
                                 </span>
-                                <select className={styles.CityBlockLabelSelect}>
-                                    <option>Минск</option>
-                                    <option>Город 2</option>
-                                    <option>Город 3</option>
-                                    <option>Город 4</option>
-                                    <option>Город 5</option>
+                                <select
+                                    {...register("city")} 
+                                    className={styles.CityBlockLabelSelect}>
+                                    <option value={'Minsk'}>Минск</option>
+                                    <option value={'city1'}>Город 2</option>
+                                    <option value={'city2'}>Город 3</option>
+                                    <option value={'city3'}>Город 4</option>
+                                    <option value={'city4'}>Город 5</option>
                                 </select>
                             </label>
                         </div>
+
 
                         <div className={styles.RoomsBlock}>
-
                             <label className={styles.RoomsBlockLabel}>
                                 <span>Комнаты</span>
-                                <select>
-                                    <option>1</option>
-                                    <option> 2</option>
-                                    <option> 3</option>
-                                    <option> 4</option>
-                                    <option> 5</option>
+
+                                <select {...register("rooms")}>
+                                    <option value={1}> 1</option>
+                                    <option value={2}> 2</option>
+                                    <option value={3}> 3</option>
+                                    <option value={4}> 4</option>
+                                    <option value={5}> 5</option>
                                 </select>
                             </label>
                         </div>
-                        <div className={styles.PriceBlock}>
 
-                            <label className={styles.PriceBlockLabel}>
+
+                        <div className={styles.PriceBlock}>
+                            <legend className={styles.PriceBlockLabel}>
                                 <span>
                                     Цена за сутки (BYN)
                                 </span>
                                 <div className={styles.InputsBlock}>
-                                    <input placeholder='От'></input>
-                                    <input placeholder='До'></input>
-                                </div>
-                            </label>
-                        </div>
-                        <div className={styles.MoreOptionsBlock}>
 
-                            <button>
+                                    <InputBlock
+                                        type={'number'}
+                                        labelRus={null}
+                                        placeholder={'От'}
+                                        flexDirection={null}
+                                        width={80}
+                                        height={37}
+                                        imageSrc={null}
+
+                                        label={'priceMin'}
+                                        register={register}
+                                        pattern={/^[0-9]{1,20}$/i}
+                                        required={false}
+                                    />
+                                    <InputBlock
+                                        type={'number'}
+                                        labelRus={null}
+                                        placeholder={'До'}
+                                        flexDirection={null}
+                                        width={80}
+                                        height={37}
+                                        imageSrc={null}
+
+                                        label={'priceMax'}
+                                        register={register}
+                                        pattern={/^[0-9]{1,20}$/i}
+                                        required={false}
+
+                                    />
+
+ 
+                                   
+                                </div>
+                            </legend>
+                        </div>
+                        <div 
+                            className={classNames(
+                                styles.MoreOptionsBlock,
+                                { [styles.Active]: isMoreOptions },
+                            )} >
+
+                            <button type="button" onClick={() => setIsMoreOptions(actual => { return (!actual) })}>
                                 <span>
                                     Больше опций
                                 </span>
@@ -77,7 +173,7 @@ export const Heading = () => {
 
                         <div className={styles.ToMapBlock}>
 
-                            <button>
+                            <button type="submit">
                                 <span>
                                     На карте
                                 </span>
@@ -90,7 +186,7 @@ export const Heading = () => {
                             </button>
                         </div>
                         <div className={styles.ToShowBlock}>
-                            <button>
+                            <button type="submit">
                                 <span>
                                     Показать
 

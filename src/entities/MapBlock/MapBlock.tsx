@@ -1,36 +1,33 @@
-import Image from 'next/image'
-import { Socials_sharing } from '../../shared/Socials_sharing/Socials_sharing'
-import { Breadcrumbs } from '../../entities/Breadcrumbs/Breadcrumbs'
-import { NewsCard } from '../../entities/NewsCard/NewsCard.tsx'
-import styles from './New.module.scss'
-const room = require('../../assets/images/room_big_quality.png');
+import { FC } from 'react';
+import styles from './MapBlock.module.scss'
+ 
+type Props = {
+    title: string
+    description: string
+    dotes: boolean
+    buttonText: string
+    children: any  // svg in button
+    minHeight: number
 
+}
 
-export const New = () => {
+export const MapBlock: FC<Props> = ({ 
+    title,
+    description,
+    dotes,
+    buttonText,
+    children,
+    minHeight
+ }) => {
     return (
-        <main className={styles.New}>
-            <div className={styles.TitleBlockContainer}>
-                <div className={styles.TitleBlock}>
-                    <Breadcrumbs breadcrumbs={['Новости ', 'Линия Сталина: суровый отдых в усадьбах на сутки ']} />
-
-                    <h1 className={styles.Title}>Линия Сталина: суровый отдых в усадьбах на сутки</h1>
-                    <div className={styles.TitleButtonsBlock}>
-                        <span className={styles.TitleDateSpan}>
-                            14 Января 2008
-                        </span>
-                             <Socials_sharing className={styles.TitleShareBlock} /> 
-                     </div>
-
-
-                </div>
-</div>
-           
-
-            <div className={styles.ContentBlock}>
-
-                <Image src={room} alt="" className={styles.Image}/>
-
-                <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.Dotes}>
+        <div 
+        className={styles.Map}
+        style={{
+            minHeight: minHeight,
+            height: minHeight
+        }}>
+            <div className={styles.DotesBefore}>
+                <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_d_2831_1177)">
                         <circle cx="6.5" cy="2.5" r="2.5" fill="#FFD54F" />
                     </g>
@@ -227,40 +224,25 @@ export const New = () => {
                     </defs>
                 </svg>
 
-                <div className={styles.ContentTextBlock}>
-                    <p> 
-                        Итак, утром вы выезжаете в путь по Молодеченской трассе. Если автомобиля у вас нет - садитесь на маршрутку в сторону Молодечно от железнодорожного вокзала. Остановка называется «Линия Сталина» - да-да, именно здесь вы и проведёте ближайшие несколько часов, а вероятнее всего – останетесь до самого вечера.
-                    </p>
-                    <p>
-                        «Линия Сталина» - это уникальный музейный комплекс, располагающийся под открытым небом. Поэтому желательно приезжать сюда в хорошую погоду. Его территория поистине огромна: целых 26 га. Такое название дано музею неспроста: «Линией Сталина» в 20е-30е гг. XX века именовали цепь укреплений, созданную для защиты государственной границы СССР. Комплекс же построен лишь в 2005 году – к шестидесятой годовщине Победы в Великой Отечественной войне.
-                    </p>
-                    <p>
-                        Если вы заранее позаботились о том, чтобы снять усадьбу на сутки в направлении Молодечно, то можете провести в музейном комплексе хоть целый день. Здесь действительно есть на что посмотреть: ДОТы, испещрённые следами немецких снарядов, окопы, противотанковые заграждения, зенитные пушки, бронетехника… Вы встретите даже элементы ракетных войск – и всё это не муляжи, а настоящие боевые орудия! За отдельную плату вам предложат пострелять из винтовки и пулемёта, а также прокатиться на танке. Проголодались? Загляните в кафе и насладитесь сытным домашним обедом.
-                    </p>
-                    <p>
-                        Посетить «Линию Сталина» будет интересно как взрослым, так и детям. Особенно мальчишкам! Уставшие от впечатлений, они будут рады вместо долгой дороги домой остановиться на ночь в уютном современном коттедже. На сайте можно выбрать и снять посуточно наиболее удобный для вас вариант. Проведите незабываемые выходные за городом – приезжайте в «Линию Сталина»!
-                    </p>
-                    <p>
-                        Отличная усадьба в 10 км от "Линии Сталина".
-                    </p>
-                </div>
-           
             </div>
 
-            <div className={styles.AlsoReadBlockContainer}>
-            <div className={styles.AlsoReadBlock}>
-                <h2 className={styles.AlsoReadTitle}>
-                    Читайте также
-                </h2>
-                <div className={styles.CardsBlock}>
-                        <NewsCard/> 
-                        <NewsCard/> 
-                        <NewsCard/> 
-                </div>
-                
-            </div>
-            </div>
+            <h2 className={styles.MapTitle}>{title}</h2>
+            <p className={styles.MapDescription}>{description}</p>
+            <button className={styles.MapButton}>
+                <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.462 2.71394C10.3632 1.03952 8.54923 0.0976563 6.50853 0.0976562C4.48528 0.0976562 2.67132 1.03952 1.5376 2.71394C0.403882 4.35347 0.142254 6.44649 0.839929 8.27789C1.03179 8.76626 1.3283 9.27207 1.71202 9.72556L6.12481 14.9232C6.22946 15.0279 6.33412 15.0977 6.49109 15.0977C6.64807 15.0977 6.75272 15.0279 6.85737 14.9232L11.2876 9.72556C11.6713 9.27207 11.9853 8.7837 12.1597 8.27789C12.8574 6.44649 12.5957 4.35347 11.462 2.71394ZM6.50853 8.88835C5.00853 8.88835 3.77016 7.64998 3.77016 6.14998C3.77016 4.64998 5.00853 3.41161 6.50853 3.41161C8.00853 3.41161 9.24691 4.64998 9.24691 6.14998C9.24691 7.64998 8.02598 8.88835 6.50853 8.88835Z" fill="url(#paint0_linear_2831_1716)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_2831_1716" x1="0.455078" y1="0.847657" x2="14.7623" y2="4.16693" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFD54F" />
+                            <stop offset="1" stop-color="#FEC100" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span className={styles.MapSpan}>
+                    {buttonText}
+                </span>
+            </button>
 
-        </main>
+        </div>
     )
 }

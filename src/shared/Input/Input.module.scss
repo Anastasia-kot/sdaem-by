@@ -1,56 +1,91 @@
-label {
-
-    span {}
-
-    .InputWrapper {
-        position: relative;
-
-        .SvgImage {
-            position: absolute;
-            top: 15px;
-            left: 15px;
+ .Label {
+     margin: 0;
+     padding: 0;
 
 
+     span {}
 
-        }
-
-        input,
-        textarea {
-            box-sizing: border-box;
-            padding: 15px 20px;
-            border-radius: 30px;
-
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 17px;
+     .InputWrapper {
+         position: relative;
+         margin: 0;
+         padding: 0;
 
 
-            background: #F8F8F8;
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 17px;
-            color: #686868;
-            border: 2px solid rgb(0, 255, 255, 0);
-            outline: none;
+         .SvgImage {
+             position: absolute;
+             top: 15px;
+             left: 15px;
 
 
-        }
+
+         }
+
+         .Input,
+         .Textarea {
 
 
-        input:focus,
-        input:hover,
-        input:active,
+             box-sizing: border-box;
+             margin: 0;
+             padding: 15px 20px;
+             border-radius: 30px;
 
-        textarea:focus,
-        textarea:hover,
-        textarea:active {
-            background: #FFFFFF;
-            border: 2px solid rgba(102, 78, 249, 0.8);
-            color: #1E2123;
-        }
-    }
-}
+             font-family: 'Inter';
+             font-style: normal;
+             font-weight: 500;
+             font-size: 14px;
+             line-height: 17px;
+
+
+             background: #F8F8F8;
+             font-family: 'Inter';
+             font-style: normal;
+             font-weight: 500;
+             font-size: 14px;
+             line-height: 17px;
+             color: #686868;
+             border: 2px solid rgb(0, 255, 255, 0);
+             outline: none;
+
+
+         }
+
+
+         .Input:focus,
+         .Input:hover,
+         .Input:active,
+
+         .Textarea:focus,
+         .Textarea:hover,
+         .Textarea:active {
+             background: #FFFFFF;
+             border: 2px solid rgba(102, 78, 249, 0.8);
+             color: #1E2123;
+         }
+
+
+         //убрать стрелочки  input[type="number"]
+         
+         // Chrome
+         input[type="number"]::-webkit-outer-spin-button,
+         input[type="number"]::-webkit-inner-spin-button {
+             -webkit-appearance: none;
+             margin: 0;
+         }
+
+         //Firefox
+         input[type="number"] {
+             -moz-appearance: textfield;
+         }
+         input[type="number"]:hover,
+         input[type="number"]:focus {
+             -moz-appearance: number-input;
+         }
+
+         //Для других
+         input[type=number]::-webkit-inner-spin-button,
+         input[type=number]::-webkit-outer-spin-button {
+             -webkit-appearance: none;
+             margin: 0;
+         }
+     }
+ }

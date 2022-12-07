@@ -3,12 +3,18 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import styles from '../styles/Home.module.css'
-import { New } from '../src/screens/News/News.jsx'
+import { New } from '../src/screens/New/New.tsx';
+import { Layout } from '../src/layout/Layout';
 
 
-export default function Home() {
+ 
 
+
+export default function Home({ Component }) {
   return (
-    <New/>
+    <Layout>
+      <New id={0}/>
+    </Layout>
+
   )
 }

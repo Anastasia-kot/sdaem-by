@@ -1,95 +1,42 @@
 .MapSearchBlock {
-    background:
-                url(../../../assets/images/404/city-map.png),
-                url(../../../assets/images/404/background.png),
-                linear-gradient(90deg, #94AFFF 0%, #4E64F9 94.5%);
-                background-repeat: no-repeat;
+    // background:
+    //             url(../../../assets/images/404/city-map.png),
+    //             url(../../../assets/images/404/background.png),
+    //             linear-gradient(90deg, #94AFFF 0%, #4E64F9 94.5%);
+    //  background-size: 100% 100%;
+    //  background-repeat: no-repeat;
     width: 100%;
-    height: 440px;
-    padding: 0; 
-    margin-bottom: 359px; 
+    // min-height: 440px;
+    padding: 0;
+    margin-bottom: 59px;
     position: relative;
-.DotesBefore{
-    position: absolute;
-    top:47px;
-    right: 115px;
-}
 
-h2{
-    padding-top: 77px;
-    padding-left: 17px;
-    margin-bottom: 20px;
-    
-    text-align: center;
+    @media (max-width: 1050px) {
+        margin-bottom: 40px;
+    }
 
-    font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 25px;
-        line-height: 30px;
-        text-align: center;
-    
-        color: #FFFFFF;
-}
-p{
-        text-align: center;
-        width:390px ;
+
+
+    .PreferenceCardList {
+        position: relative;
+        top: -100px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        // width: 1287px;
         margin: 0 auto;
-        margin-bottom: 20px;
-            padding-left: 17px;
+        padding-left: 13px;
+    }
 
+    .DotesAfter {
+        position: absolute;
+        bottom: -40px;
+        right: 145px;
 
+        @media (max-width: 1050px) {
+            display: none;
+        }
+    }
 
-    font-family: 'Inter';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19px;
-        text-align: center;
-    
-        color: #FFFFFF;
-}
-button{
-            margin: 0 auto;
-            margin-bottom: 95px;
-display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px 18px;
-    gap: 10px;
-
-  
-
-    background: #FFFFFF;
-    border-radius: 19px;
-
-
-    font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 17px;
-        /* identical to box height */
-    
-    
-        /* Style */
-    
-        color: #1E2123;
-
-}
-
-.PreferenceCardList{
-    display: flex;
-    justify-content: space-between;
-    width: 1287px;
-    margin: 0 auto;
-    padding-left: 13px;
-}
-
-.DotesAfter{
-    position: absolute;
-    bottom: -340px;
-    right: 145px;
-}
-    
 }

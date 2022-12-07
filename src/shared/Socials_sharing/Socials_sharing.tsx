@@ -1,14 +1,19 @@
+import classNames from 'classnames'
 import Image from 'next/image'
 import styles from './Socials_sharing.module.scss'
  
 type Props = {
-    color?: string
+    color?: 'gray' | 'violet'
 }
-export const Socials_sharing = ({ color }) => {
+export const Socials_sharing = ({ color = 'gray' }) => {
 
      return (
-        <div className={styles.Socials_sharing}>
-             <span className={styles.TitleShareSpan}>Поделиться</span>
+        <div 
+             className={classNames(
+                 styles.Socials_sharing,
+                 { [styles.Violet]: color === 'violet' },
+             )}>
+            <span className={styles.TitleShareSpan}>Поделиться</span>
             <ul className={styles.ShareList}>
                 <li className={styles.ShareItem}>
                     <svg width="18" height="11" viewBox="0 0 18 11" fill="#664EF9" xmlns="http://www.w3.org/2000/svg">

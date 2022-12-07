@@ -1,40 +1,40 @@
 import Image from 'next/image'
-import { useState } from 'react'
-import { InputBlock } from '../../shared/Input/Input'
 import styles from './Contacts.module.scss'
+import { useState } from 'react'
+import { useForm } from "react-hook-form";
+import { ContactFormType } from '../../../types/formTypes';
+
 import avatar from '../../assets/images/svg/avatar.svg'
 import postal_envelope from '../../assets/images/svg/postal_envelope.svg'
+
+import { SimpleButton } from '../../shared/buttons/Simple/Simple';
+import { InputBlock } from '../../shared/Input/Input'
+
 
 
 export const Contacts = () => {
 
+   
+    
+    //for form
+    const { handleSubmit, register, formState: { errors } } = useForm<ContactFormType>();
+    const onSubmit = values => {
+        console.log(values);
+        setIsModal(true)
+            //     e.preventDefault();
+            //     setIsModal(true)
+    }
+
 
     const [isModal, setIsModal] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setIsModal(true)
-    }
+ 
 
 
     return (
         <main className={styles.Contacts}>
 
-              <div className={isModal ? styles.ContactsModalWrapper : styles.ContactsModalWrapperHidden}>
-                <div className={styles.ContactsModal}>
-                    <h2>
-                        Ваше письмо
-                        отправлено!
-                    </h2>
-                    <p>
-                        Какое-то сообщение о том, что письмо отправлено, какое-то сообщение, что письмо отправлено.
-                    </p>
-                    <button onClick={()=>setIsModal(false)}>
-                        Закрыть окно
-                    </button>
-
-                </div>
-            </div>
+    
 
 
             <address className={styles.InfoBlock}>
@@ -117,35 +117,91 @@ export const Contacts = () => {
                     <p>Администрация сайта не владеет информацией о наличии свободных квартир</p>
                 </div>
             </address>
-            <form className={styles.Form} onSubmit={e => handleSubmit(e)}>
+            <form 
+                className={styles.Form} 
+                onSubmit={handleSubmit(onSubmit)}>
+
+
                 <InputBlock
                     type={'text'}
-                    label={'Ваше имя'}
+                    labelRus={'Ваше имя'}
                     placeholder={'Алексей'}
                     flexDirection={'column'}
                     width={260}
                     height={50}
-                    imageSrc={avatar} 
+                    imageSrc={avatar}
+
+                    label={'Name'}
+                    register={register}
+                    pattern={/^[а-яА-ЯёЁa-zA-Z]+$/i} 
+                    required
                 />
+
+      
                 <InputBlock
                     type={'email'}
-                    label={'Ваша электронная почта'}
+                    labelRus={'Ваша электронная почта'}
                     placeholder={'Введите'}
                     flexDirection={'column'}
                     width={260}
                     height={50}
                     imageSrc={postal_envelope} 
+
+                    label={'Email'}
+                    register={register}
+                    required
                 />
+
+
+                
                 <InputBlock
                     type={'textarea'}
-                    label={'Ваше сообщение'}
+                    labelRus={'Ваше сообщение'}
                     placeholder={'Сообщение'}
                     flexDirection={'column'}
                     width={548}
                     height={200}
-                />
+                    imageSrc={null} 
 
-                <button type='submit' onClick={() => setIsModal(true)}>Отправить</button>
+
+                    label={'Message'}
+                    register={register}
+                    required
+                />
+                <div className={styles.SubmitButtonWrapper}>
+                    <SimpleButton
+                        text={'Отправить'}
+                        width={200}
+                        colorScheme={'violet'}
+                        onClick={null}
+                        type='submit'
+                    />
+                </div>
+                 
+ 
+
+                <div className={isModal ? styles.ContactsModalWrapper : styles.ContactsModalWrapperHidden}>
+                    <div className={styles.ContactsModal}>
+                        <h2>
+                            Ваше письмо
+                            отправлено!
+                        </h2>
+                        <p>
+                            Какое-то сообщение о том, что письмо отправлено, какое-то сообщение, что письмо отправлено.
+                        </p>
+
+
+                        <SimpleButton
+                            text={' Закрыть окно'}
+                            width={161}
+                            colorScheme={'yellow'}
+                            onClick={() => setIsModal(false)} 
+                            type='reset'
+                            />
+                     
+
+                    </div>
+                </div>
             </form>
 
 
