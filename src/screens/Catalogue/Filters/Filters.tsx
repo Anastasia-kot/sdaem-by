@@ -8,86 +8,140 @@ import { InputBlock } from '../../../shared/Input/Input'
 import { useForm } from 'react-hook-form'
 import { CatalogueFiltersFormType } from '../../../../types/formTypes'
 import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
+import { useDispatch, useSelector } from 'react-redux'
+import { resetFilters, setFilters } from '../../../store/filtersSlice'
+import { RootState } from '../../../store/store'
 
-export const Filters = () => {
+export const Filters = React.memo(() => {
 
+    const dispatch = useDispatch();
+    const filters = useSelector((state: RootState) => state.filter)
+    console.log('filters', filters)
 
     const FiltersRecommendationsList = [
         {
             name: 'cheap',
-            value: 'Недорогие'
+            value: 'Недорогие',
+            filter: {
+                priceMax: 100,
+            }
         },
         {
             name: '1room',
-            value: '1-комнатные'
+            value: '1-комнатные',
+            filter: {
+                rooms: 1,
+            }
+
         },
  
         {
             name: '2room',
-            value: '2-комнатные'
+            value: '2-комнатные',
+            filter: {
+                rooms: 2,
+            }
         },
  
         {
             name: '3room',
-            value: '3-комнатные'
+            value: '3-комнатные',
+            filter: {
+                rooms: 3,
+            }
         },
  
         {
             name: '4room',
-            value: '4-комнатные'
+            value: '4-комнатные',
+            filter: {
+                rooms: 4,
+            }
         },
  
         {
             name: '5room',
-            value: '5-комнатные'
+            value: '5-комнатные',
+            filter: {
+                rooms: 5,
+            }
         },
  
         {
             name: 'factory_district',
-            value: 'Заводской р.'
+            value: 'Заводской р.',
+            filter: {
+                district: 'factory',
+            }
         },
  
  
         {
             name: 'lenin_district',
-            value: 'Ленинский р.'
+            value: 'Ленинский р.',
+            filter: {
+                district: 'lenin',
+            }
         },
  
  
         {
             name: 'moscow_district',
-            value: 'Московский р.'
+            value: 'Московский р.',
+            filter: {
+                district: 'moscow',
+            }
         },
  
  
         {
             name: 'october_district',
-            value: 'Октябрьский р.'
+            value: 'Октябрьский р.',
+            filter: {
+                district: 'october',
+            }
         },
         {
             name: 'partizan_district',
-            value: 'Партизанский р.'
+            value: 'Партизанский р.',
+            filter: {
+                district: 'partizan',
+            }
         },
         {
             name: '1may_district',
-            value: 'Первомайский р.'
+            value: 'Первомайский р.',
+            filter: {
+                district: '1may',
+            }
         },
   
         {
             name: 'soviet_district',
-            value: 'Советский р.'
+            value: 'Советский р.',
+            filter: {
+                district: 'soviet',
+            }
         },
   
         {
             name: 'frunze_district',
-            value: 'Фрунзенский р.'
+            value: 'Фрунзенский р.',
+            filter: {
+                district: 'frunze',
+            }
         },
   
         {
             name: 'center_district',
-            value: 'Центральный р.'
+            value: 'Центральный р.',
+            filter: {
+                district: 'center',
+            }
         },        
-    ] 
+    ]
+    const [isFiltersRecommendations, setIsFiltersRecommendations] = useState<null | string>(null)
+ 
 
     const [isMoreOptions, setIsMoreOptions] = useState(false)
 
@@ -97,8 +151,18 @@ export const Filters = () => {
     //for form
     const { handleSubmit, register, formState: { errors } } = useForm<CatalogueFiltersFormType>();
     const onSubmit = values => {
-        console.log(values);
-        // dispatch(set Filters({ ...values })) 
+        let formatValues = values;
+        console.log('values', values)
+        for (let key in formatValues) {
+            
+
+            if (!Number.isNaN(+formatValues[key])  &&
+                typeof formatValues[key] !== 'boolean') {
+                formatValues[key] = +formatValues[key]
+            }
+        } 
+        console.log('formatValues', formatValues);
+        dispatch(setFilters(formatValues)) 
     }
 
     return (
@@ -109,8 +173,39 @@ export const Filters = () => {
                 <div className={styles.FiltersRecommendations}>
                     <h2 className={styles.FiltersRecommendationsTitle}>Рекомендуем посмотреть</h2>
                     <ul className={styles.FiltersRecommendationsList}>
-                        {FiltersRecommendationsList.map(i => 
-                            <li key={FiltersRecommendationsList.indexOf(i)} id={i.name}>{i.value}</li>)} 
+                        {FiltersRecommendationsList.map(i => isFiltersRecommendations 
+                            ? <> {isFiltersRecommendations===i.name && 
+
+                                <li
+                                    key={FiltersRecommendationsList.indexOf(i)+10}
+                                    id={i.name}
+                                    >
+                                    {i.value}
+                                    <svg 
+                                        onClick={() => {
+                                            dispatch(resetFilters())
+                                            setIsFiltersRecommendations(null)
+                                        }}
+                                        className={styles.CursorPointer}
+                                        width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.91628 5.00007L9.81017 1.10608C10.0636 0.852787 10.0636 0.443255 9.81017 0.189966C9.55688 -0.0633221 9.14735 -0.0633221 8.89406 0.189966L5.00005 4.08396L1.10617 0.189966C0.852759 -0.0633221 0.443344 -0.0633221 0.190056 0.189966C-0.0633519 0.443255 -0.0633519 0.852787 0.190056 1.10608L4.08394 5.00007L0.190056 8.89407C-0.0633519 9.14736 -0.0633519 9.55689 0.190056 9.81018C0.316285 9.93653 0.482257 10 0.648111 10C0.813965 10 0.979819 9.93653 1.10617 9.81018L5.00005 5.91618L8.89406 9.81018C9.0204 9.93653 9.18626 10 9.35211 10C9.51797 10 9.68382 9.93653 9.81017 9.81018C10.0636 9.55689 10.0636 9.14736 9.81017 8.89407L5.91628 5.00007Z" fill="#664EF9" />
+                                    </svg>
+
+                                </li>}
+                        </> 
+                            : <li
+                                key={FiltersRecommendationsList.indexOf(i)}
+                                id={i.name}
+                                onClick={() => {
+                                    setIsFiltersRecommendations(i.name)
+                                    dispatch(resetFilters());
+                                    dispatch(setFilters(i.filter))
+
+                                }}>
+                                <span className={styles.CursorPointer}> {i.value}</span>
+                               
+                            </li>
+                           )} 
                     </ul>
 
                 </div>
@@ -120,7 +215,10 @@ export const Filters = () => {
                         {/* // form validation */}
 
                 <form onSubmit={handleSubmit(onSubmit)}> 
-                    {isMoreOptions && <MoreOptionsModal register={register}/> }
+                    {isMoreOptions && 
+                    <div className={styles.MoreOptionsModalWrapper}> 
+                        <MoreOptionsModal register={register} /> 
+                    </div>}
 
                         <div className={styles.MainFiltersBlock}>
                         <div className={styles.RoomsBlockLabel}>
@@ -225,7 +323,7 @@ export const Filters = () => {
                                     Показать объекты
                                 </span>
                                 <svg width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1.125 11.25L5.875 6.5L1.125 1.75" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M1.125 11.25L5.875 6.5L1.125 1.75" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
 
 
@@ -243,4 +341,7 @@ export const Filters = () => {
 
 
     )
-}
+})
+
+
+Filters.displayName = 'Filters';

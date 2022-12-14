@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './authSlice'
 import catalogueReducer from './catalogueSlice'
 import newsReducer from './newsSlice'
+import filterReducer from './filtersSlice';
+
  
 
 
@@ -10,6 +12,7 @@ export const store = configureStore({
         auth: authReducer,
         news: newsReducer, 
         catalogue: catalogueReducer,
+        filter: filterReducer,
     },
 })
 

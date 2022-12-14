@@ -22,7 +22,7 @@ export const NewsCard = ({
 }) => {
     return (
         <div className={styles.Card}>
-            <Image src={image ? image : room} alt="" />
+            <Image src={image ? image : room} alt="" width={406} height={227} />
              <div className={styles.CardContent}>
                 <h3>{title}</h3>
                 <p>{shortDescription}</p>

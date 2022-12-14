@@ -4,6 +4,7 @@ import { RegisterModal } from './Modals/Register/Register'
 import { SubmitModal } from './Modals/Submit/Submit'
 import {  useDispatch } from 'react-redux'
 import {  setToggleLogIn } from '../../store/authSlice'
+import { RegisterModalFormik } from './Modals/Register/Form/RegisterFormik'
 
 
 

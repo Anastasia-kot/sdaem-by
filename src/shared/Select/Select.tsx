@@ -1,12 +1,17 @@
+import classNames from 'classnames'
 import Image from 'next/image'
 import styles from './Select.module.scss'
 
 type Props = {
     labelRus: string | null
-    flexDirection: 'row' | 'column' | null
     options: Array<string>
+
+
+    flexDirection: 'row' | 'column' | null
     width: number
     height?: number
+    backgroundColor: string
+    boxShadow: string
 
 
     label: any   // label: Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
@@ -20,6 +25,9 @@ export const SelectBlock = ({
     options, 
     width, 
     height,
+
+    backgroundColor = '#F8F8F8',
+    boxShadow = 'none',
     
     label,
     register,
@@ -31,21 +39,21 @@ export const SelectBlock = ({
     return (
         <div
             className={styles.SelectBlock}
-            style={{
+             style={{
                 gridTemplateColumns: (flexDirection == 'row') ? '1fr qfr' : '1fr',
                 gridTemplateRows: (flexDirection == 'column') ? '1fr qfr' : '1fr',
-                height: height
             }} 
         >
-
-                <span 
-                    className={styles.LabelSelect}
+            {!!labelRus && 
+                <span
+                className={styles.LabelSelect}
                 style={{
                     gridColumn: (flexDirection == 'row') ? '1/2' : 'auto',
                     gridRow: (flexDirection == 'column') ? '1/2' : 'auto',
-                    
+
                 }}
-                > {!!labelRus && labelRus}</span>
+            > {labelRus}</span>}
+          
                 
                 
                 <select
@@ -56,7 +64,8 @@ export const SelectBlock = ({
                     style={{
                         gridColumn: (flexDirection == 'row') ? '2/3' : 'auto',
                         gridRow: (flexDirection == 'column') ? '2/3' : 'auto',
-                        width: width
+                        width: width,
+                        height: height,
                     }}>
                         {options.map(o =>
                             <option
@@ -66,66 +75,8 @@ export const SelectBlock = ({
                                 {o}
                         </option>)}
                 </select>
-       
+   
 
         </div>
-
-
-
-
-        // <label
-        //     className={styles.Label}
-        //     style={
-        //         label
-        //             ?
-        //             {
-        //                 display: 'flex',
-        //                 flexDirection: flexDirection
-        //             }
-        //             : {
-        //                 display: 'block',
-        //                 height: 'min-content',
-        //                 width: width
-
-
-        //             }
-
-        //     }>
-
-        //     {label && <span>{label}</span>}
-
-        //     <div className={styles.InputWrapper}>
-
-        //         {imageSrc && <Image src={imageSrc} alt='icon' className={styles.SvgImage} />}
-        //         {type === 'textarea'
-        //             ? <textarea
-        //                 className={styles.Textarea}
-        //                 placeholder={placeholder}
-        //                 style={{
-        //                     width: width,
-        //                     height: height,
-        //                     color: nonActivePlaceholderColor
-
-        //                 }}
-        //             ></textarea>
-        //             : <input
-        //                 className={styles.Input}
-        //                 placeholder={placeholder}
-        //                 type={type}
-        //                 style={{
-        //                     width: width,
-        //                     height: height,
-        //                     color: nonActivePlaceholderColor,
-        //                     paddingLeft: imageSrc ? '40px' : 'auto'
-
-        //                 }} />
-        //         }
-        //     </div>
-
-        // </label>
-
-
-
-
     )
 }

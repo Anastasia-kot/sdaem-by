@@ -111,14 +111,26 @@
 
                 &:first-child {
                     background: #7B519D;
+
+                    &:hover {
+                        background: #75469B;
+                    }
                 }
 
                 &:nth-child(2) {
                     background: #0DBB41;
+
+                    &:hover {
+                        background: #0BA73A;
+                    }
                 }
 
                 &:nth-child(3) {
                     background: #664EF9;
+
+                    &:hover {
+                        background: #5C35F9;
+                    }
                 }
 
             }
@@ -180,7 +192,6 @@
         display: grid;
 
 
-        grid-template-rows: 66px 30px 41px 85px 1fr;
 
 
 
@@ -199,7 +210,6 @@
             order: 1;
             display: flex;
             flex-direction: column;
-            margin-top: 8px;
             gap: 3px;
 
             span {
@@ -311,7 +321,6 @@
 
 
             font-weight: 400;
-            line-height: 150%;
 
         }
 

@@ -10,7 +10,7 @@
          margin: 0;
          padding: 0;
 
-
+ 
          .SvgImage {
              position: absolute;
              top: 15px;
@@ -87,5 +87,50 @@
              -webkit-appearance: none;
              margin: 0;
          }
+
+
+         .ErrorSvg{
+
+                position: absolute;
+                right: 15px;
+                top: 13px;
+              
+         }
+         .ErrorMessage{
+            display: none;
+         }
+                 .ErrorSvg:hover+.ErrorMessage{
+                    display: block;
+                    position: absolute;
+                    z-index: 1;
+                    top:5px;
+                    right: -160px;
+                    min-width: 150px;
+                    width: min-content;
+                    height: auto;
+
+
+                        box-sizing: border-box;
+                            margin: 0;
+                            padding: 15px 20px;
+                            border-radius: 15px;
+                        
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                        
+                        
+                            background: #F8F8F8;
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: #686868;
+                            border: 2px solid rgb(0, 255, 255, 0);
+                            outline: none;
+                 }
      }
  }

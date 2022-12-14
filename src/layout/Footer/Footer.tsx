@@ -1,5 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { cityNameConverters } from "../../../helpers/cityNameConverters";
+import { CategoryType } from "../../../types/formTypes";
+import { citiesList,  setFilters } from "../../store/filtersSlice";
 import styles from './Footer.module.scss';
 const logo = require('../../assets/images/logo.png');
 const belkart = require('../../assets/images/payment/belkart.png');
@@ -11,16 +17,34 @@ const webpay = require('../../assets/images/payment/webpay.png');
 
 
 const Footer = () => {
+    
+    
+    const router = useRouter();
+    const dispatch = useDispatch();
+
+   
+    const onClick = (props: { category?: string, city?: string}) => {
+        dispatch(setFilters(props))
+        setTimeout(() => {
+          router.push('/catalogue')
+        },
+          3000
+        )
+    }
+
     return (
         <footer className={styles.Footer}>
             <div className={styles.CompanyInfo}>
-                <Image src={logo} alt="SDAEM.BY" />
-                <h3>СДАЁМ БАЙ</h3>
+                <Link href='/'>
+                    <Image src={logo} alt="SDAEM.BY" />
+                    <h3>СДАЁМ БАЙ</h3>
+                </Link>
+               
                 <div>
                     <p>ИП Шушкевич Андрей Викторович</p>
                     <p>УНП 192602485 Минским горисполкомом 10.02.2016</p>
                     <p>220068, РБ, г. Минск, ул. Осипенко, 21, кв.23</p>
-                    <p>+375 29 621 48 33, sdaem@sdaem.by</p>
+                    <p><a href="tel:+375296214833">+375 29 621 48 33</a>, <a href="mailto:sdaem@sdaem.by">sdaem@sdaem.by</a></p>
                     <p>Режим работы: 08:00-22:00</p>
                 </div>
             </div>
@@ -28,29 +52,30 @@ const Footer = () => {
 
             <div className={styles.Navigation}>
                 <ul className={styles.NavigationCatrgoriesList}>
-                    <li>Коттеджи и усадьбы</li>
-                    <li>Бани и сауны</li>
-                    <li>Авто на прокат</li>
+                    <li onClick={()=>onClick({ category: 'cottage' })}>Коттеджи и усадьбы</li>
+                    <li onClick={() => onClick({ category: 'sauna' })}>Бани и сауны</li>
+                    <li onClick={() => onClick({ category: 'auto' })}>Авто на прокат</li>
                 </ul>
 
 
                 <div className={styles.NavigationLocations}>
-                    <h3>Квартиры</h3>
+                    <h3 onClick={() => onClick({ category: 'room' })}>Квартиры</h3>
                     <ul className={styles.NavigationLocationsList}>
-                        <li>Квартиры в Минске</li>
-                        <li>Квартиры в Гомеле</li>
-                        <li>Квартиры в Бресте</li>
-                        <li>Квартиры в Витебске</li>
-                        <li>Квартиры в Гродно</li>
-                        <li>Квартиры в Могилеве</li>
+                        {citiesList.map(c =>
+                            <li
+                                key={citiesList.indexOf(c)}
+                                onClick={() => onClick({ category: 'room', city: c })}
+                            >
+                                Квартиры в {cityNameConverters(c)}
+                            </li>)}
                     </ul>
                 </div>
 
                 <ul className={styles.NavigationLinksList}>
-                    <li>Новости</li>
-                    <li>Размещение и тарифы </li>
-                    <li>Объявления на карте</li>
-                    <li>Контакты</li>
+                    <li><Link href='/news'>Новости</Link></li>
+                    <li><Link href='/catalogue'>Размещение и тарифы </Link></li>
+                    <li><Link href='/map'>Объявления на карте</Link></li>
+                    <li><Link href='/contacts'>Контакты</Link></li>
                 </ul>
             </div>
 

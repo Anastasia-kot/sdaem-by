@@ -22,7 +22,7 @@ export const AuthForm = () => {
     //for form
     const { handleSubmit, register, formState: { errors } } = useForm<AuthFormType>();
     const onSubmit = values => {
-        console.log(values);
+        // console.log(values);
         // проверка логина и пароля на сервере
         dispatch(setToggleLogIn(true))
         dispatch(setAuthUserData({ ...values } ))

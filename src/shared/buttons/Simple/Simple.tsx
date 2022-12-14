@@ -2,14 +2,16 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import styles from './Simple.module.scss'
 
+type ButtonType = 'button' | 'reset' | 'submit'
+
 type Props = {
     text: string
     width: number
     colorScheme: 'yellow' | 'violet' | 'yellowBlack'
-    type?: 'button' | 'reset' | 'submit'
+    type?: ButtonType
     onClick: () => void  | null
 }
-export const SimpleButton = ({ text, width, colorScheme, type, onClick }) => {
+export const SimpleButton = ({ text, width, colorScheme, type = 'button' as ButtonType, onClick }) => {
 
     return (
         <button

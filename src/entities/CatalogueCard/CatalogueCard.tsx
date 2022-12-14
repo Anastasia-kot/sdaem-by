@@ -10,8 +10,8 @@ const avatar = require('../../assets/images/avatar.png');
 
 
 type Props = {
-    isListView: boolean
-    isWithLikeButton: boolean
+    style: 'mainPage' | 'catalogueList' | 'catalogueTile'
+    image: string | string[]
     title: string
     price: number
     address: string
@@ -36,19 +36,20 @@ type Props = {
         },
     ]
     description: string
-    image: string
-
 }
 
 export const CatalogueCard = (
-    { isListView,
-        isWithLikeButton,
+    {   
+        style,
+        
         title,
         price,
         address,
         addressFeatures,
         roomFeatures,
-        description, image }: Props) => {
+        description, 
+        image 
+    }: Props) => {
 
     const [isShownContact, setIsShownContact ] = useState(false);
     // () => setIsMoreOptions(actual => { return (!actual) }) 
@@ -57,21 +58,24 @@ export const CatalogueCard = (
 
         <div className={styles.Card}
             style={{
-                width: isListView ? '1280px' : '406px',
-                height: isListView ? '300px' : '535px',
-                flexDirection: isListView ? 'row' : 'column',
+                width: style==='catalogueList' ? '1280px' : '406px',
+                height: 
+                    style === 'catalogueList' ? '300px' : 
+                    style === 'catalogueTile' ? '535px' 
+                                              : '522px' ,
+                flexDirection: style === 'catalogueList' ? 'row' : 'column',
             }}>
 
             {isShownContact && <div className={styles.Modal}
                 style={{
-                    top: isListView ? ' -70px' : '150px',
-                    right: isListView ? ' 600px' : '-51px',
+                    top: style==='catalogueList' ? ' -70px' : '150px',
+                    right: style==='catalogueList' ? ' 600px' : '-51px',
                     }}>
                 <Image src={avatar} alt="" />
                 <p className={styles.ModalOwnerStatus}>Владелец</p>
                 <p className={styles.ModalName}>Dmitriy</p>
-                <p className={styles.ModalPhone}> +375 (29) 291-14-44</p>
-                <p className={styles.ModalEmail}>vladimir6234@tut.by</p>
+                <p className={styles.ModalPhone}><a href="tel:+375292911444"> +375 (29) 291-14-44 </a></p>
+                <p className={styles.ModalEmail}><a href="mailto:vladimir6234@tut.by">vladimir6234@tut.by</a></p>
                 <ul className={styles.ModalContacts}>
                     <li>
                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,33 +107,46 @@ export const CatalogueCard = (
 
             <div className={styles.CardImageWrapper}
                 style={{
-                    width: isListView ? '537.84px' : '406px',
-                    height: isListView ? '300px' : '227px',
+                    width: style==='catalogueList' ? '537.84px' : '406px',
+                    height: style==='catalogueList' ? '300px' : '227px',
                 }}>
-                <Image src={room} alt="" className={styles.CardImage} />
+                {typeof image === 'string' 
+                    ? <Image src={room} alt="" className={styles.CardImage} />
+                    : <>Слайдер</>}
+                
             </div>
 
             <div className={styles.CardContent}
                 style={{
-                    margin: isListView ? '0 15px' : '0 20px',
-                    height: isListView ? '100%' : '245px',
-                    width: isListView ? '690px' : '366px',
-                    gridTemplateRows: isListView ? '51px 34px 55px 73px 1fr' : '66px 30px 41px 85px 1fr',
-                    gridTemplateColumns: isListView ? '1fr 150px' : '150px 1fr',
+                    margin: style==='catalogueList' ? '0 15px' : '0 20px',
+                    height: 
+                        style === 'catalogueList' ? '100%' : 
+                        style === 'catalogueTile' ? '245px'
+                                                  : '240px',
+                    width: style==='catalogueList' ? '690px' : '366px',
+                    gridTemplateRows: 
+                        style === 'catalogueList' ? '51px 34px 55px 73px 1fr': 
+                        style === 'catalogueTile' ? '66px 30px 41px 85px 1fr':
+                                                    '66px 30px 41px 73px 1fr',
+                    gridTemplateColumns: style==='catalogueList' ? '1fr 150px' : '150px 1fr',
 
                 }}>
 
-                {isListView && <h1 className={styles.CardTitle}>{title}</h1>}
+                {style==='catalogueList' && <h1 className={styles.CardTitle}>{title}</h1>}
+
                 <div className={styles.PriceBlock}
                     style={{
-                        alignItems: isListView ? 'flex-end' : 'flex-start',
-                    }}>
+                        alignItems: style==='catalogueList' ? 'flex-end' : 'flex-start',
+                        marginTop: style === 'mainPage' ? '0px' : '8px',
+                }}>
+                    
                     <span style={{
-                        fontSize: isListView ? '25px' : '20px',
-                        lineHeight: isListView ? '30px' : '24px'
+                        fontSize: style==='catalogueList' ? '25px' : '20px',
+                        lineHeight: style==='catalogueList' ? '30px' : '24px'
                     }}>
                         {price}.00 BYN
                     </span>
+
                     <span>
                         за сутки
                     </span>
@@ -137,16 +154,16 @@ export const CatalogueCard = (
 
                 <ul className={styles.FeatureBlock}
                     style={{
-                        order: isListView ? '4' : '3',
-                        marginTop: isListView ? '5px' : '0',
-                        justifyContent: isListView ? 'flex-start' : 'flex-end',
+                        order: style==='catalogueList' ? '4' : '3',
+                        marginTop: style==='catalogueList' ? '5px' : '0',
+                        justifyContent: style==='catalogueList' ? 'flex-start' : 'flex-end',
                     }}
 
                 >
                     <li key={0}>
                         <button>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_2831_1903)">
+                                <g clipPath="url(#clip0_2831_1903)">
                                     <path d="M8.001 0.794922C5.85814 0.794922 4.10645 2.54661 4.10645 4.68949C4.10645 6.83236 5.85814 8.58405 8.001 8.58405C10.1439 8.58405 11.8956 6.83236 11.8956 4.68949C11.8956 2.54661 10.1439 0.794922 8.001 0.794922Z" fill="#686868" />
                                     <path d="M14.6852 11.6969C14.5832 11.4418 14.4471 11.2037 14.2941 10.9826C13.5118 9.82616 12.3043 9.06086 10.9438 8.87378C10.7737 8.85679 10.5866 8.89077 10.4506 8.99282C9.73627 9.52004 8.88595 9.79214 8.00157 9.79214C7.1172 9.79214 6.26687 9.52004 5.55258 8.99282C5.41651 8.89077 5.22944 8.83976 5.05938 8.87378C3.69884 9.06086 2.47436 9.82616 1.70906 10.9826C1.556 11.2037 1.41993 11.4588 1.31791 11.6969C1.2669 11.799 1.2839 11.918 1.3349 12.0201C1.47097 12.2582 1.64102 12.4963 1.79408 12.7003C2.03217 13.0235 2.28728 13.3126 2.57641 13.5847C2.81449 13.8228 3.0866 14.0439 3.35873 14.265C4.70225 15.2684 6.31791 15.7956 7.98458 15.7956C9.65125 15.7956 11.2669 15.2684 12.6104 14.265C12.8825 14.0609 13.1546 13.8228 13.3927 13.5847C13.6649 13.3126 13.937 13.0235 14.1751 12.7003C14.3451 12.4793 14.4982 12.2582 14.6343 12.0201C14.7192 11.918 14.7362 11.7989 14.6852 11.6969Z" fill="#686868" />
                                 </g>
@@ -169,7 +186,7 @@ export const CatalogueCard = (
                         </button>
                     </li>
 
-                    {isListView
+                    {style==='catalogueList'
                         && addressFeatures.map(a => <li key={addressFeatures.indexOf(a) + 2}><button>
 
                             {a.name === 'district' && <span> район: </span>}
@@ -186,7 +203,7 @@ export const CatalogueCard = (
 
 
                 <div className={styles.CardAddressFull}>
-                    {isListView
+                    {style==='catalogueList'
                         ? <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.6164 3.48837C14.1512 1.25581 11.7326 0 9.0117 0C6.31403 0 3.89542 1.25581 2.3838 3.48837C0.872169 5.67442 0.523331 8.46512 1.45356 10.907C1.70938 11.5581 2.10473 12.2326 2.61635 12.8372L8.50008 19.7674C8.63961 19.907 8.77915 20 8.98845 20C9.19775 20 9.33729 19.907 9.47682 19.7674L15.3838 12.8372C15.8954 12.2326 16.314 11.5814 16.5466 10.907C17.4768 8.46512 17.128 5.67442 15.6164 3.48837ZM9.0117 11.7209C7.0117 11.7209 5.36054 10.0698 5.36054 8.06977C5.36054 6.06977 7.0117 4.4186 9.0117 4.4186C11.0117 4.4186 12.6629 6.06977 12.6629 8.06977C12.6629 10.0698 11.035 11.7209 9.0117 11.7209Z" fill="#664EF9" />
                         </svg>
@@ -198,7 +215,7 @@ export const CatalogueCard = (
                     <span>  {address} </span>
                 </div>
 
-                {!isListView &&
+                {style!=='catalogueList' &&
                     <div className={styles.CardAddressTags}>
                         <div className={styles.CardAddressMetro}>
                             <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -215,9 +232,12 @@ export const CatalogueCard = (
 
                 <p className={styles.CardDescription}
                     style={{
-                        color: isListView ? '#686868' : '#8291A3',
-                        fontSize: isListView ? '14px' : '12px',
-                        justifyContent: isListView ? 'flex-start' : 'flex-end',
+                        color: style==='catalogueList' ? '#686868' : '#8291A3',
+                        fontSize: style==='catalogueList' ? '14px' : '12px',
+                        justifyContent: style==='catalogueList' ? 'flex-start' : 'flex-end',
+                        lineHeight: style === 'mainPage' ? '15px': '150%',
+                        maxHeight: style==='catalogueTile'? '72px': '63px',
+                        overflow: 'hidden',  
                     }}
 
                 > {description}
@@ -231,7 +251,8 @@ export const CatalogueCard = (
 
                         <ContactsButton 
                             style={{
-                                order: isListView ? '0' : '1',
+                                order: style==='catalogueList' ? '0' : '1',
+                                margin: 0,
                             }} 
                             onClick={() => setIsShownContact(actual => { return (!actual) })}
                         />
@@ -240,32 +261,18 @@ export const CatalogueCard = (
                             text={'Подробнее'}
                             width={110}
                             colorScheme={'yellow'}
-                        
+                            onClick={null}
                         />
 
  
-                        {isWithLikeButton &&
+                        {style !== 'mainPage' &&
 
                             <LikeButton  style={{
-                                    order: isListView ? '1' : '0',
-                                    marginRight: isListView ? '310px' : '0',
+                                    order: style==='catalogueList' ? '1' : '0',
+                                    marginRight: style==='catalogueList' ? '310px' : '0',
                                 }} 
-                            isListView={isListView}
+                            isListView={style === 'catalogueList'}
                                 />
-
-                            // <button className={styles.LikeButton}
-                            //     style={{
-                            //         order: isListView ? '1' : '0',
-                            //         marginRight: isListView ? '310px' : '0',
-                            //     }}>
-                            //     {isListView && <span>В закладки</span>}
-                            //     <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#EB5757">
-                            //         <path d="m10 15.875-.458-.417q-2.021-1.833-3.334-3.104-1.312-1.271-2.062-2.219-.75-.947-1.031-1.708-.282-.76-.282-1.531 0-1.479 1.042-2.521 1.042-1.042 2.521-1.042 1.042 0 1.979.542T10 5.458q.688-1.041 1.625-1.583t1.979-.542q1.479 0 2.521 1.042 1.042 1.042 1.042 2.521 0 .771-.271 1.51-.271.74-1.021 1.677-.75.938-2.063 2.229-1.312 1.292-3.395 3.188Zm0-.896q1.938-1.75 3.188-2.979 1.25-1.229 1.989-2.135.74-.907 1.031-1.605.292-.698.292-1.364 0-1.229-.833-2.063Q14.833 4 13.604 4q-.75 0-1.396.323-.646.323-1.437 1.135l-.729.854h-.084l-.729-.854q-.812-.833-1.469-1.146Q7.104 4 6.396 4q-1.208 0-2.052.833-.844.834-.844 2.063 0 .666.271 1.333.271.667.989 1.563.719.896 1.98 2.125Q8 13.146 10 14.979Zm0-5.5Z" />
-                            //     </svg>
-
-
-
-                            // </button>
                             }
                     </div>
                 </div>

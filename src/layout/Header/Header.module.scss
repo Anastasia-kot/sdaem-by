@@ -11,16 +11,26 @@
 
 
         .HeaderNavigationList {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: min-content min-content min-content min-content min-content 1fr min-content;
+            gap: 39px;
+            width: 100%;
+
+
+            @media (max-width: 1200px) {
+                gap:10px;
+                grid-template-columns: min-content  1fr min-content;
+            }
+
             padding: 0;
             padding-left: 80px;
             padding-right: 63px;
             height: 100%;
+            box-sizing: border-box;
 
             background: #F8F8F8;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter',
+            sans-serif;
             font-style: normal;
             font-weight: 400;
             font-size: 14px;
@@ -35,21 +45,23 @@
 
                 width: 30px;
                 height: 30px;
+                margin: 5px 0;
                 box-sizing: border-box;
                 border: 1px solid #8291A3;
                 border-radius: 50%;
                 position: relative;
                 overflow: hidden;
+                flex-shrink: 1;
 
 
 
 
-                @media (max-width: 1439px) {
+                @media (max-width: 1200px) {
                     //for 1440-
                     display: block;
                 }
 
-                @media (min-width: 1439px) {
+                @media (min-width: 1200px) {
                     //for 1440+
                     display: none;
                 }
@@ -96,333 +108,112 @@
 
             }
 
-            .HeaderNavigationList1,
-            .HeaderNavigationList2 {
+
+
+
+
+            li {
+                height: 40px;
                 display: flex;
-                flex-direction: row;
-                justify-content: space-between;
+                box-sizing: border-box;
                 align-items: center;
-                padding: 0px;
-                height: 100%;
-            }
+                border-top: 3px solid transparent;
+                border-bottom: 3px solid transparent;
 
-            .HeaderNavigationList1 {
+                white-space: nowrap;
+                    width: min-content;
 
-                // gap: 61px;
-                @media (max-width: 1439px) {
-                    //for 1440
-                    display: none;
+                a {
+                    display: flex;
+                    align-items: center;
                 }
 
+                &:hover {
+                    border-bottom: 3px solid #FFD54F;
 
-                li {
-                    &:nth-child(1) {
-                        margin-right: 56px;
-
-
-                    }
-
-                    &:nth-child(2),
-                    &:nth-child(3) {
-                        margin-right: 58px;
-
-
-                    }
-
-
-                    &:nth-child(4) {
-                        margin-right: 58px;
-                        margin-top: -1px;
-
-                        svg {
-                            margin-right: 4px;
-                        }
-                    }
-
-                    &:nth-child(5) {}
-
-                }
-
-                .NavigationItemActive {
                     font-family: 'Inter';
                     font-style: normal;
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 17px;
                     color: #1E2123;
-                    position: relative;
 
-
-                    &::after {
-                        content: ' ';
-                        width: 160px;
-                        height: 3px;
-
-
-                        background: #FFD54F;
-                        position: absolute;
-                        left: 0;
-                        top: 26px;
-
-
-                    }
-
-                }
-
-                @media (max-width: 1439px) {
-
-                    //for 1440-
-                    &.active {
-                        display: block;
-                        position: absolute;
-                        top: 40px;
-                        background-color: white;
-                        height: min-content;
-                        z-index: 1;
-
-                        li {
-                            margin: 20px 10px;
-
-                            &::after {
-                                display: none;
-                            }
-                        }
+                    svg {
+                        fill: #1E2123
                     }
                 }
 
-            }
+                &:nth-child(1) {
+                    grid-column: 1/2;
+                }
 
-            .HeaderNavigationList2 {
+                &:nth-child(2),
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5),
+                &:nth-child(6) {
+                    justify-self: start;
+                    margin-right: 18px;
 
-                @media (max-width: 520px) {
-                    justify-content: end;
-                    width: min-content;
-                    flex-wrap: nowrap;
+                            @media (max-width: 1200px) {
+                                    //for 1440+
+                                    display: none;
+                                }
+                }
 
-                    li:first-child {
-                        width: min-content;
-                        margin: 0;
-
-                        a {
-                            width: min-content;
-                            margin: 0;
-                        }
-
-                        span {
-                            display: none;
-                        }
+                &:nth-child(5) {
+                    a {
+                        gap: 4px; //map
                     }
                 }
 
-                li {
-                    &:first-child {
-                        height: 100%;
-                        margin-right: 40px;
-                        width: 105px;
+                &:nth-child(7),
+                &:nth-child(8) {
+                    justify-self: end;
+                }
 
-                        a {
-                            height: 100%;
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            flex-wrap: nowrap;
-
-                            span {
-                                margin-right: 6px;
-                            }
-
-                            button {
-                                background: none;
-                            }
-                        }
-
-
+                &:nth-child(7) {
+                                        grid-column: -2/-3;
+                    a {
+                        gap: 11px;
                     }
-
-                    &:last-child {
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        gap: 10px;
-                        color: #664EF9;
-
-.UnloginMenuList {
-        display: none;
-    }
-
-    &.active {
-        position: relative;
-
-        .UnloginMenuList {
-            position: absolute;
-            top: 45px;
-            box-sizing: border-box;
-            background: #FFFFFF;
-            box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
-            border-radius: 10px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-
-
-            .UnloginMenuListItem {
-                box-sizing: border-box;
-                width: 100%;
-                padding: 10px 15px;
-                padding-right: 0;
-                height: 37px;
-                display: flex;
-                align-items: center;
-
-
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 17px;
-                /* identical to box height */
-
-
-                /* Style */
-
-                color: #1E2123;
-
-                &:hover {
-                    background: #F8F8F8;
                 }
-            }
-        }
-    }
+                &:nth-child(8) {
+                    justify-self: end;
+                    grid-column: -1/-2; 
 
-
-
-
-                        .Avatar {
-                            width: 30px;
-                            height: 30px;
-                            border-radius: 50%;
-                            background: #C4C4C4;
-                            margin: 5px;
-                        }
-
-                        .UserName {
-                            font-family: 'Inter';
-                            font-style: normal;
-                            font-weight: 500;
-                            font-size: 14px;
-                            line-height: 17px;
-
-
-                            color: #1E2123;
-                        }
-
-                        .UnloginButton{
-                            border: none;
-                            background: none;
-                            margin: 0;
-                            padding: 5px;
- 
-                         
-
-
-
-
-
-
-
-
-                        }
-
-                    }
-
-
-                }
-
-
-
-
-            }
-
-        }
-    }
-
-
-
-    .HeaderCategories {
-        width: 100%;
-        background: #FFFFFF;
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
-        height: 60px;
-
-        .HeaderCategoriesList {
-            display: flex;
-            justify-content: space-between;
-            padding: 0;
-            padding-left: 80px;
-            padding-right: 63px;
-            height: 100%;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 17px;
-            /* identical to box height */
-
-
-            /* Style */
-
-            color: #1E2123;
-
-
-            @media (max-width: 520px) {
-                li:first-child {
-                    display: none;
-                }
-            }
-
-            li {
-                &:first-child {
-                    margin-top: 1px;
-
-
-                }
-
-                &:nth-child(2) {
                     display: flex;
-                    justify-content: space-between;
-                    width: 161px;
-                    margin-top: -1px;
+                    flex-direction: row; 
+                    align-items: center;
+                    gap: 10px;
+                    color: #664EF9;
+                    white-space: nowrap;
 
+                    &:hover {
+                        border-bottom: 3px solid #664EF9;
+                    }
 
-
-                    .RoomsList {
+                    .UnloginMenuList {
                         display: none;
-
                     }
 
                     &.active {
                         position: relative;
 
-                        .RoomsList {
+                        .UnloginMenuList {
                             position: absolute;
-                            top: 70px;
+                            top: 45px;
                             box-sizing: border-box;
                             background: #FFFFFF;
                             box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
                             border-radius: 10px;
-                            width: 242px;
-                            height: 222px;
+                            width: 100%;
                             display: flex;
                             flex-direction: column;
                             overflow: hidden;
 
 
-                            .RoomsListItem {
+                            .UnloginMenuListItem {
                                 box-sizing: border-box;
                                 width: 100%;
                                 padding: 10px 15px;
@@ -450,18 +241,209 @@
                             }
                         }
                     }
+
+                    &:hover {
+                        button {
+                            cursor: pointer;
+
+                            svg {
+                                fill: none;
+
+                                path {
+                                    stroke: #664EF9
+                                }
+                            }
+                        }
+
+
+
+                    }
+
+
+                    .Avatar {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        background: #C4C4C4;
+                        margin: 5px;
+                    }
+
+                    .UserName {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 17px;
+
+
+                        color: #1E2123;
+                    }
+
+                    .UnloginButton {
+                        border: none;
+                        background: none;
+                        margin: 0;
+                        padding: 5px;
+
+
+                    }
+
                 }
 
-                &:nth-child(3) {
-                    width: 147px;
+
+
+            }
+
+
+
+            @media (max-width: 1439px) {
+
+                //for 1440-
+                &.active {
+                    display: block;
+                    position: absolute;
+                    top: 40px;
+                    background-color: white;
+                    height: min-content;
+                    z-index: 1;
+
+                    li {
+                        margin: 20px 10px;
+
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+
+ 
+
+        }
+    }
+
+
+
+    .HeaderCategories {
+        width: 100%;
+        background: #FFFFFF;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+        height: 60px;
+
+        .HeaderCategoriesList {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+            padding: 0;
+            padding-left: 80px;
+            padding-left: 79px;
+            padding-right: 63px;
+            height: 100%;
+          
+
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 17px;
+            /* identical to box height */
+
+
+            /* Style */
+
+            color: #1E2123;
+
+
+            @media (max-width: 520px) {
+                li:first-child {
+                    display: none;
+                }
+            }
+
+            li {
+                cursor: pointer;
+                    white-space: nowrap;
+                        width: min-content;
+
+                &:active,
+                &:focus,
+                &:hover {
+                    color: #FEC100;
                 }
 
-                &:nth-child(4) {
-                    width: 96px;
+                &:first-child {
+                    margin-top: 1px;
                 }
 
-                &:nth-child(5) {
-                    width: 112px;
+                &:nth-child(2) {
+                    height: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: -1px;
+                    gap: 15px;
+                    
+
+
+
+                    .RoomsList {
+                        display: none;
+
+                    }
+
+                    &.active {
+                            position: relative; 
+                            z-index: 10;
+
+                        .RoomsList {
+                            position: absolute;
+                            top: 84px;
+                            box-sizing: border-box;
+                            background: #FFFFFF;
+                            box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
+                            border-radius: 10px;
+                            width: 242px;
+                            height: 222px;
+                            display: flex;
+                            flex-direction: column;
+                            overflow: hidden;
+                            // z-index: 10;
+
+
+                            .RoomsListItem {
+                                display: flex;
+                                align-items: center;
+
+                                width: 100%;
+                                padding: 10px 15px;
+                                padding-right: 0;
+                                height: 37px;
+             
+
+                                box-sizing: border-box;
+ 
+
+                                font-family: 'Inter';
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 14px;
+                                line-height: 17px;
+                                /* identical to box height */
+
+
+                                /* Style */
+
+                                color: #1E2123;
+
+                                &:hover {
+                                    background: #F8F8F8;
+                                 }
+                            }
+                        }
+                    }
                 }
 
                 &:nth-child(2),
@@ -478,6 +460,7 @@
                 width: 224px;
                 height: 37px;
                 padding: 10px 18px;
+                text-align: center;
                 margin-top: -1px;
                 background: linear-gradient(90deg, #9D94FF 0%, #6B50E9 94.5%);
                 border-radius: 19px;
@@ -494,6 +477,8 @@
                 color: #FFFFFF;
 
                 text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+
+                cursor: pointer;
             }
 
         }

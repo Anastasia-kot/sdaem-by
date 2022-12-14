@@ -1,72 +1,4 @@
-// import Image from 'next/image'
-import styles from './Mapsearch.module.scss'
-import React from 'react'
-import { PreferenceCard } from '../../../entities/PreferenceCard/PreferenceCard.tsx'
-import { MapBlock } from '../../../entities/MapBlock/MapBlock.tsx'
-
-
-export const Mapsearch = () => {
-
-    const pref_cards = [
-        {
-            logo: 'string',
-            header: 'Начните привлекать клиентов бесплатно!',
-            description: ['Пройдя простую регистрацию на сайте у Вас появится личный кабинет, в котором возможно бесплатно создавать и публиковать объявления на сайте. '],
-            button: '+  Разместить объявление',
-            isGold: false,
-            goldBackground: 'string'
-        },
-        {
-            logo: 'string',
-            header: 'Поднимайте объявления',
-            description: ['Вы в любое время можете поднимать объявления вверх первой страницы каталога, они разместятся сразу после платных объявлений до тех пор, пока другой пользователь не повторит процедуру. '],
-            button: 'Узнать стоимость услуги   ❯',
-            isGold: false,
-            goldBackground: 'string'
-        },
-        {
-            logo: '',
-            header: 'Приоритет Gold ',
-            description: [
-                'Приоритетное размещение Gold позволяет закрепить ваше объявление в верхней части каталога!',
-                'Gold объявления перемещаются каждые 5 мин на 1 позицию, что делает размещение одинаковым для всех.'
-            ],
-            button: 'Еще о тарифе Gold   ❯',
-            isGold: true,
-            goldBackground: 'string'
-        },
-
-    ]
-
-    return (
-
-        <div className={styles.MapSearchBlock}>
-            <MapBlock
-                title={'Поиск квартир на карте'}
-                description={'Ищите квартиры на сутки в центре города, возле парка или в живописном районе'}
-                dotes={true}
-                buttonText={'Открыть карту'}
-                minHeight={440}
-            >
-             </ MapBlock>
-
-      
-
-            <div className={styles.PreferenceCardList}>
-                {pref_cards.map(pc => <PreferenceCard
-                    key={pref_cards.indexOf(pc)}
-                    logo={pc.logo}
-                    header={pc.header}
-                    description={pc.description}
-                    button={pc.button}
-                    isGold={pc.isGold}
-                    goldBackground={pc.goldBackground}
-
-                />)}
-
-            </div>
-            <div className={styles.DotesAfter}>
-                <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_d_2831_1177)">
                         <circle cx="6.5" cy="2.5" r="2.5" fill="#FFD54F" />
                     </g>
@@ -262,10 +194,3 @@ export const Mapsearch = () => {
                         </filter>
                     </defs>
                 </svg>
-
-            </div>
-
-        </div>
-    )
-}
-  

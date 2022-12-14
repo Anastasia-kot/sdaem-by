@@ -1,39 +1,21 @@
 import React, { useEffect, FC } from 'react';
 import { New } from '../../src/screens/New/New';
 import { Layout } from '../../src/layout/Layout';
-
- 
-
- 
-export const getServerSideProps =  (context: { params: { id: number; }; }) => {
-    const { id } = context.params;
-    console.log(id)
-
-
-    if (!id) {
-        return { notFound: true }
-    }
-
-    return {
-        props: { id: id }
-    }
-  
-   
-}
-
-type Props = {
-    id: string
-}
+import { useRouter } from 'next/router';
 
 
 
-const ListCard: FC<Props> = ({ id }) => {
 
+
+const NewCard: FC = () => {
+
+    const router = useRouter();
+    const id = router.query.id;
 
     return (
         <Layout>
-<New id={id} />
-</Layout>)
+            <New id={id} />
+        </Layout>)
 }
 
-export default ListCard;
+export default NewCard;

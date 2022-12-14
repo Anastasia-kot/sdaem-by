@@ -48,6 +48,8 @@
 
             text-transform: uppercase;
 
+            cursor: pointer;
+
             /* Linear */
 
             background: linear-gradient(90deg, #9D94FF 0%, #6B50E9 94.5%);
@@ -59,7 +61,7 @@
 
         h1 {
             margin-bottom: 27px;
-
+            cursor: pointer;
 
             font-family: 'Inter';
             font-style: normal;
@@ -85,7 +87,7 @@
                 // align-items: center;
                 padding: 8px 14px;
                 // gap: 6px;
-
+            cursor: pointer;
 
                 // width: 73px;
                 height: 33px;

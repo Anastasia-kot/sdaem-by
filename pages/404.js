@@ -8,31 +8,31 @@ import { Layout } from '../src/layout/Layout';
 
 export default function Home({ Component }) {
 
-  const router = useRouter();
-// хук useEffect
-      useEffect(() => {
-        setTimeout(() => {
-          router.push('/')
-        },
-          3000
-        )
-      }, [router])
+//   const router = useRouter();
+// // хук useEffect
+//       useEffect(() => {
+//         setTimeout(() => {
+//           router.push('/')
+//         },
+//           3000
+//         )
+//       }, [router])
 
-  // кастомный хук "useRedirest"
+//   // кастомный хук "useRedirest"
 
 
-      const useRedirest = () => {
-        const router = useRouter();
+//       const useRedirest = () => {
+//         const router = useRouter();
 
-        useEffect(() => {
-          setTimeout(() => {
-            router.push('/')
-          },
-            3000
-          )
-        }, [router])
-      }
-      useRedirest()
+//         useEffect(() => {
+//           setTimeout(() => {
+//             router.push('/')
+//           },
+//             3000
+//           )
+//         }, [router])
+//       }
+//       useRedirest()
   return (
     <Layout>
       <Page404 />
