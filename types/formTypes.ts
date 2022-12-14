@@ -48,18 +48,18 @@ export interface CheckboxType {
     dishwasher: boolean
 
 
-    gas1: boolean | null,
-    oven1: boolean | null,
-    coffee_machine1: boolean | null,
-    microwave1: boolean | null,
-    dishes1: boolean | null,
-    dishwasher1: boolean | null,
-    gas2: boolean | null,
-    oven2: boolean | null,
-    coffee_machine2: boolean | null,
-    microwave2: boolean | null,
-    dishes2: boolean | null,
-    dishwasher2: boolean | null,
+    gas1?: boolean | null,
+    oven1?: boolean | null,
+    coffee_machine1?: boolean | null,
+    microwave1?: boolean | null,
+    dishes1?: boolean | null,
+    dishwasher1?: boolean | null,
+    gas2?: boolean | null,
+    oven2?: boolean | null,
+    coffee_machine2?: boolean | null,
+    microwave2?: boolean | null,
+    dishes2?: boolean | null,
+    dishwasher2?: boolean | null,
 
 }
 

@@ -11,7 +11,7 @@ export const citiesList = [
     'Могилев'
 ]
 
-export interface FiltersPayloadType  {
+export interface FiltersPayloadType {
     category?: CategoryType | null,
     city?: string | null,
     district?: string | null,
@@ -76,21 +76,7 @@ const initialState: FilterState = {
     dishwasher: null,
 
 
-
-
-    gas1: null,
-    oven1: null,
-    coffee_machine1: null,
-    microwave1: null,
-    dishes1: null,
-    dishwasher1: null,
-    gas2: null,
-    oven2: null,
-    coffee_machine2: null,
-    microwave2: null,
-    dishes2: null,
-    dishwasher2: null,
-
+ 
 
 }
 
@@ -100,20 +86,41 @@ export const filterSlice = createSlice({
     initialState,
     reducers: {
         resetFilters: (state) => {
-            state = { ...initialState }
+            state.category = null;
+
+            state.city = null;
+            state.district = null;
+            state.metro = null;
+
+            state.rooms = null;
+            state.priceMin = null;
+            state.priceMax = null;
+
+            state.sleepPlaces = null;
+
+            state.gas = null;
+            state.oven = null;
+            state.coffeeMachine = null;
+            state.microwave = null;
+            state.dishes = null;
+            state.dishwasher = null;
+
+            // state = { ...initialState }
+
+
         },
- 
+
         setFilters: (state, action: PayloadAction<FiltersPayloadType>) => {
 
             state.category = action.payload.category;
 
             state.city = action.payload.city;
-            state.district =  action.payload.district;
-            state.metro =  action.payload.metro;
+            state.district = action.payload.district;
+            state.metro = action.payload.metro;
 
-            state.rooms =  action.payload.rooms;
-            state.priceMin =  action.payload.priceMin;
-            state.priceMax =  action.payload.priceMax;
+            state.rooms = action.payload.rooms;
+            state.priceMin = action.payload.priceMin;
+            state.priceMax = action.payload.priceMax;
 
             state.sleepPlaces = action.payload.sleepPlaces;
 
@@ -128,8 +135,8 @@ export const filterSlice = createSlice({
             // for (let key in action.payload) {
             //     state[key] = action.payload[key]
             // }
-            
-            
+
+
             // state = { ...state, ...action.payload}
             // state = {...action.payload}
             // state =  action.payload
@@ -140,6 +147,6 @@ export const filterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { resetFilters,  setFilters } = filterSlice.actions
+export const { resetFilters, setFilters } = filterSlice.actions
 
 export default filterSlice.reducer

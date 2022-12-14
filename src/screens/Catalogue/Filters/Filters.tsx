@@ -9,137 +9,144 @@ import { useForm } from 'react-hook-form'
 import { CatalogueFiltersFormType } from '../../../../types/formTypes'
 import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetFilters, setFilters } from '../../../store/filtersSlice'
+import { FiltersPayloadType, resetFilters, setFilters } from '../../../store/filtersSlice'
 import { RootState } from '../../../store/store'
 
 export const Filters = React.memo(() => {
 
     const dispatch = useDispatch();
     const filters = useSelector((state: RootState) => state.filter)
-    console.log('filters', filters)
 
-    const FiltersRecommendationsList = [
-        {
-            name: 'cheap',
-            value: 'Недорогие',
-            filter: {
-                priceMax: 100,
-            }
-        },
-        {
-            name: '1room',
-            value: '1-комнатные',
-            filter: {
-                rooms: 1,
-            }
+    const FiltersRecommendationsList: 
+        Array<{
+            name: string
+            value: string
+            filter: FiltersPayloadType
+        }> = [
+            
+            {
+                name: 'cheap',
+                value: 'Недорогие',
+                filter: {
+                    priceMax: 100,
+                }
+            },
+            {
+                name: '1room',
+                value: '1-комнатные',
+                filter: {
+                    rooms: 1,
+                }
 
-        },
- 
-        {
-            name: '2room',
-            value: '2-комнатные',
-            filter: {
-                rooms: 2,
-            }
-        },
- 
-        {
-            name: '3room',
-            value: '3-комнатные',
-            filter: {
-                rooms: 3,
-            }
-        },
- 
-        {
-            name: '4room',
-            value: '4-комнатные',
-            filter: {
-                rooms: 4,
-            }
-        },
- 
-        {
-            name: '5room',
-            value: '5-комнатные',
-            filter: {
-                rooms: 5,
-            }
-        },
- 
-        {
-            name: 'factory_district',
-            value: 'Заводской р.',
-            filter: {
-                district: 'factory',
-            }
-        },
- 
- 
-        {
-            name: 'lenin_district',
-            value: 'Ленинский р.',
-            filter: {
-                district: 'lenin',
-            }
-        },
- 
- 
-        {
-            name: 'moscow_district',
-            value: 'Московский р.',
-            filter: {
-                district: 'moscow',
-            }
-        },
- 
- 
-        {
-            name: 'october_district',
-            value: 'Октябрьский р.',
-            filter: {
-                district: 'october',
-            }
-        },
-        {
-            name: 'partizan_district',
-            value: 'Партизанский р.',
-            filter: {
-                district: 'partizan',
-            }
-        },
-        {
-            name: '1may_district',
-            value: 'Первомайский р.',
-            filter: {
-                district: '1may',
-            }
-        },
-  
-        {
-            name: 'soviet_district',
-            value: 'Советский р.',
-            filter: {
-                district: 'soviet',
-            }
-        },
-  
-        {
-            name: 'frunze_district',
-            value: 'Фрунзенский р.',
-            filter: {
-                district: 'frunze',
-            }
-        },
-  
-        {
-            name: 'center_district',
-            value: 'Центральный р.',
-            filter: {
-                district: 'center',
-            }
-        },        
+            },
+    
+            {
+                name: '2room',
+                value: '2-комнатные',
+                filter: {
+                    rooms: 2,
+                }
+            },
+    
+            {
+                name: '3room',
+                value: '3-комнатные',
+                filter: {
+                    rooms: 3,
+                }
+            },
+    
+            {
+                name: '4room',
+                value: '4-комнатные',
+                filter: {
+                    rooms: 4,
+                }
+            },
+    
+            {
+                name: '5room',
+                value: '5-комнатные',
+                filter: {
+                    rooms: 5,
+                }
+            },
+    
+            {
+                name: 'factory_district',
+                value: 'Заводской р.',
+                filter: {
+                    district: 'factory',
+                }
+            },
+    
+    
+            {
+                name: 'lenin_district',
+                value: 'Ленинский р.',
+                filter: {
+                    district: 'lenin',
+                }
+            },
+    
+    
+            {
+                name: 'moscow_district',
+                value: 'Московский р.',
+                filter: {
+                    district: 'moscow',
+                }
+            },
+    
+    
+            {
+                name: 'october_district',
+                value: 'Октябрьский р.',
+                filter: {
+                    district: 'october',
+                }
+            },
+            {
+                name: 'partizan_district',
+                value: 'Партизанский р.',
+                filter: {
+                    district: 'partizan',
+                }
+            },
+            {
+                name: '1may_district',
+                value: 'Первомайский р.',
+                filter: {
+                    district: '1may',
+                }
+            },
+    
+            {
+                name: 'soviet_district',
+                value: 'Советский р.',
+                filter: {
+                    district: 'soviet',
+                }
+            },
+    
+            {
+                name: 'frunze_district',
+                value: 'Фрунзенский р.',
+                filter: {
+                    district: 'frunze',
+                }
+            },
+    
+            {
+                name: 'center_district',
+                value: 'Центральный р.',
+                filter: {
+                    district: 'center',
+                }
+            },        
     ]
+
+
     const [isFiltersRecommendations, setIsFiltersRecommendations] = useState<null | string>(null)
  
 
@@ -151,19 +158,25 @@ export const Filters = React.memo(() => {
     //for form
     const { handleSubmit, register, formState: { errors } } = useForm<CatalogueFiltersFormType>();
     const onSubmit = values => {
-        let formatValues = values;
+        let formatValues: FiltersPayloadType = {};
         console.log('values', values)
-        for (let key in formatValues) {
-            
-
-            if (!Number.isNaN(+formatValues[key])  &&
-                typeof formatValues[key] !== 'boolean') {
-                formatValues[key] = +formatValues[key]
+        for (let key in values) {
+            if (typeof values[key] === 'boolean' ) {
+                    //только булевы параметры (т.е.  чекбоксы из модалки)
+                if ((String(key).substr(-1)) !== '2' && (String(key).substr(-1)) !== '1') {
+                    //последний символ ключа не число (то есть не дублирующие gas1, microwave2 ...)
+                    formatValues[key] = values[key]
+                }
+            } else if (!Number.isNaN(+values[key])) {
+                    // значение параметра - число 
+                formatValues[key] = +values[key]
             }
-        } 
-        console.log('formatValues', formatValues);
-        dispatch(setFilters(formatValues)) 
+
+            console.log('formatValues', formatValues);
+            dispatch(setFilters(formatValues)) 
+        }
     }
+    
 
     return (
         <div className={styles.FiltersBlock}>
