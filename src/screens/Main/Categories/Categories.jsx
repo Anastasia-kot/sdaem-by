@@ -4,10 +4,10 @@ import React from 'react'
 import { CategoryCard } from '../../../entities/CategoryCard/CategoryCard.tsx'
 import { CitiesEnum } from "../../../../types/formTypes.ts"
 import { citiesList } from "../../../store/filtersSlice"
-const room = require('../../../assets/images/main/room.png');
-const car = require('../../../assets/images/main/car.png');
-const cottage = require('../../../assets/images/main/cottage.png');
-const sauna = require('../../../assets/images/main/sauna.png');
+const room = require('../../../../public/images/main/room.png');
+const car = require('../../../../public/images/main/car.png');
+const cottage = require('../../../../public/images/main/cottage.png');
+const sauna = require('../../../../public/images/main/sauna.png');
 
  
 export const Categories = () => {

@@ -9,19 +9,19 @@
     position: relative;
 
     .Background {
-            position: absolute;
-            right: 0;
-            top:72px;
+        position: absolute;
+        right: 0;
+        top: 72px;
 
-            width: 55.5%;
-            height: 110%;
+        width: 55.5%;
+        height: 110%;
 
-            border-radius: 40px 0px 0px 0px;
-             background: linear-gradient(90deg, rgb(148, 175, 255, 0.1) 0%, rgb(78, 100, 249, 0.1) 94.5%);
-            
-            background-repeat: no-repeat;
- 
-        }
+        border-radius: 40px 0px 0px 0px;
+        background: linear-gradient(90deg, rgb(148, 175, 255, 0.1) 0%, rgb(78, 100, 249, 0.1) 94.5%);
+
+        background-repeat: no-repeat;
+
+    }
 
     .Dotes {
         position: relative;
@@ -31,7 +31,7 @@
 
 
 
-    .Heading {
+    .heading {
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
@@ -41,10 +41,7 @@
         margin-bottom: 55px;
         min-height: 67px;
 
-         // width: 100%;
-        // width: auto;
- 
-        // height: min-content;
+    
 
         @media (max-width: 1439px) {
             width: 850px;
@@ -54,7 +51,7 @@
             width: 400px;
         }
 
-        h3 {
+        .heading__subtitle {
             margin-bottom: 15px;
 
             font-family: 'Inter';
@@ -90,7 +87,7 @@
             justify-content: space-between;
             align-items: flex-end;
             position: relative;
-            
+
 
             svg {
                 position: absolute;
@@ -99,75 +96,85 @@
                 z-index: 2;
 
             }
+
             select {
                 background-color: #FFFFFF;
             }
+
             div:nth-of-type(1) {
-                select{
+                select {
                     padding: 0px 38px;
                 }
             }
-                         
+
 
 
         }
     }
 
 
-    .ItemCardBlock {
+    .cards {
         margin-bottom: 33px;
-
-        .ItemCardList {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .ItemCardButtons {
-            height: 39.42857360839844px;
-            width: 92px;
-            display: flex;
-            justify-content: space-between;
-            margin: 0 auto;
-            margin-top: 38px;
+        margin: 0 auto;
+        max-width: 1278px;
+        width: min-content;
+        padding-bottom: 110px;
 
 
-            button {
-                height: 39.42856979370132px;
-                width: 39.42856979370132px;
-                border: 1px solid #664EF9;
-                border-radius: 50%;
-                background: none;
+        .slider__button {
+            position: absolute;
+            bottom: -77px;
+            height: 39.5px;
+            width: 39.5px;
+            border: 1px solid #664EF9;
+            border-radius: 50%;
 
+            background: none;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            &:hover {
+                background-color: rgba(102, 78, 249, 0.1);
             }
 
+            &:first-of-type {
+                right: 50%;
+                margin-right: 6px;
 
+                background-image: url("data:image/svg+xml, %3Csvg width='9' height='16' viewBox='0 0 9 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 1.12305L1.42857 7.69448L8 14.2659' stroke='%23664EF9' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' /%3E%3C/svg%3E");
+            }
+
+            &:last-of-type {
+                left: 50%;
+                margin-left: 6px;
+                background-image: url("data:image/svg+xml,%3Csvg width='9' height='16' viewBox='0 0 9 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 14.2656L7.57143 7.6942L0.999999 1.12277' stroke='%23664EF9' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' /%3E%3C/svg%3E");
+            }
         }
     }
 
-    .ItemCardBlockWrapper {
-        margin: 0 auto;
-        width: 1250px;
-        margin-bottom: 91px;
+    // .ItemCardBlockWrapper {
+        // margin: 0 auto;
+        // width: 1250px;
 
-        @media (max-width: 1439px) {
-            width: 850px;
-        }
+        // @media (max-width: 1439px) {
+        //     width: 850px;
+        // }
 
-        @media (max-width: 1001px) {
-            width: 400px;
-        }
+        // @media (max-width: 1001px) {
+        //     width: 400px;
+        // }
 
 
         .ItemCardBlockMore {
 
-            width: 404.97px;
+            max-width: 404.97px;
+            margin-bottom: 91px;
+
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            gap:40px;
 
 
 
@@ -260,4 +267,4 @@
             }
         }
     }
-}
+// }

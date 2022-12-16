@@ -13,11 +13,11 @@ import { CitiesEnum } from "../../../types/formTypes";
 import { cityNameConverters } from "../../../helpers/cityNameConverters";
 import { categoriesItems, navItems } from "../../store/mainSlice";
 
-const logo = require('../../assets/images/logo.png');
-const avatar = require('../../assets/images/avatar.png');
-const navIconSmall = require('../../assets/images/svg/navigation_icon_small.svg');
-const navIcon = require('../../assets/images/svg/navigation_icon.svg');
-const arrowDown = require('../../assets/images/svg/arrow_down.svg');
+const logo = require('../../../public/images/logo.png');
+const avatar = require('../../../public/images/avatar.png');
+const navIconSmall = require('../../../public/images/svg/navigation_icon_small.svg');
+const navIcon = require('../../../public/images/svg/navigation_icon.svg');
+const arrowDown = require('../../../public/images/svg/arrow_down.svg');
 
 
 

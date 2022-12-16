@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Image from 'next/image'
+import { useRef } from 'react'
 import styles from './Select.module.scss'
 
 type Props = {
@@ -17,7 +18,8 @@ type Props = {
     label: any   // label: Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
     register: any   // register: UseFormRegister<ContactFormType> | UseFormRegister<AuthFormType> | UseFormRegister<RegisterFormType>
     required: boolean
-
+    // onChange: ()=>void
+ 
 }
 export const SelectBlock = ({ 
     labelRus, 
@@ -31,10 +33,14 @@ export const SelectBlock = ({
     
     label,
     register,
-    required
+    required,
+    // onChange,
+     
 
 }) => {
 
+
+   
 
     return (
         <div
@@ -66,7 +72,9 @@ export const SelectBlock = ({
                         gridRow: (flexDirection == 'column') ? '2/3' : 'auto',
                         width: width,
                         height: height,
-                    }}>
+                    }}
+                    // onChange={onChange}
+                    >
                         {options.map(o =>
                             <option
                                 value={options.indexOf(o)}

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './About.module.scss'
 import React from 'react'
-const logo = require('../../../assets/images/logo.png');
+const logo = require('../../../../public/images/logo.png');
 
  
 

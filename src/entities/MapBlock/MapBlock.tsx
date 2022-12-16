@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { FC } from 'react';
 import styles from './MapBlock.module.scss'
-const navIcon = require('../../assets/images/svg/navigation_icon.svg')
+const navIcon = require('../../../public/images/svg/navigation_icon.svg')
 
 
  

@@ -5,9 +5,34 @@ import { ContactsButton } from '../../shared/buttons/Contacts/Contacts';
 import { LikeButton } from '../../shared/buttons/Like/Like';
 import { SimpleButton } from '../../shared/buttons/Simple/Simple';
 import styles from './CatalogueCard.module.scss'
-const room = require('../../assets/images/room.png');
-const avatar = require('../../assets/images/avatar.png');
+const room = require('../../../public/images/room.png');
+const avatar = require('../../../public/images/avatar.png');
 
+
+
+export type AddressFeaturesType =   [
+        {   name: 'metro'
+            value: string
+        },
+        {   name: 'district'
+            value: string
+        },
+    ]
+
+export type RoomFeaturesType =   [
+    {
+        name: 'size as people'
+        value: string
+    },
+    {
+        name: 'roomCount'
+        value: number
+    },
+    {
+        name: 'size as meters'
+        value: number
+    },
+    ]
 
 type Props = {
     style: 'mainPage' | 'catalogueList' | 'catalogueTile'
@@ -15,26 +40,8 @@ type Props = {
     title: string
     price: number
     address: string
-    addressFeatures: [
-        {
-            name: 'metro'
-            value: string
-        },
-        {
-            name: 'district'
-            value: string
-        },
-    ]
-    roomFeatures: [
-        {
-            name: 'size as people'
-            value: string
-        },
-        {
-            name: 'roomCount'
-            value: string
-        },
-    ]
+    addressFeatures: AddressFeaturesType
+    roomFeatures: RoomFeaturesType
     description: string
 }
 
@@ -116,7 +123,7 @@ export const CatalogueCard = (
                 
             </div>
 
-            <div className={styles.CardContent}
+            <div className={styles.content}
                 style={{
                     margin: style==='catalogueList' ? '0 15px' : '0 20px',
                     height: 
@@ -128,13 +135,13 @@ export const CatalogueCard = (
                         style === 'catalogueList' ? '51px 34px 55px 73px 1fr': 
                         style === 'catalogueTile' ? '66px 30px 41px 85px 1fr':
                                                     '66px 30px 41px 73px 1fr',
-                    gridTemplateColumns: style==='catalogueList' ? '1fr 150px' : '150px 1fr',
+                    gridTemplateColumns: style==='catalogueList' ? '1fr 150px' : 'min-content 1fr',
 
                 }}>
 
                 {style==='catalogueList' && <h1 className={styles.CardTitle}>{title}</h1>}
 
-                <div className={styles.PriceBlock}
+                <div className={styles.content__price}
                     style={{
                         alignItems: style==='catalogueList' ? 'flex-end' : 'flex-start',
                         marginTop: style === 'mainPage' ? '0px' : '8px',
@@ -152,7 +159,7 @@ export const CatalogueCard = (
                     </span>
                 </div>
 
-                <ul className={styles.FeatureBlock}
+                <ul className={styles.features}
                     style={{
                         order: style==='catalogueList' ? '4' : '3',
                         marginTop: style==='catalogueList' ? '5px' : '0',
@@ -160,7 +167,7 @@ export const CatalogueCard = (
                     }}
 
                 >
-                    <li key={0}>
+                    <li key={0} className={styles.features__item}>
                         <button>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_2831_1903)">
@@ -180,9 +187,14 @@ export const CatalogueCard = (
                         </button>
                     </li>
 
-                    <li key={1}>
+                    <li key={1} className={styles.features__item}>
                         <button>
-                            {roomFeatures[1].value}
+                            {roomFeatures[1].value}  комн.
+                        </button>
+                    </li>
+                    <li key={2} className={styles.features__item}>
+                        <button>
+                            {roomFeatures[2].value} м<sup>2</sup>
                         </button>
                     </li>
 
@@ -238,9 +250,9 @@ export const CatalogueCard = (
                         lineHeight: style === 'mainPage' ? '15px': '150%',
                         maxHeight: style==='catalogueTile'? '72px': '63px',
                         overflow: 'hidden',  
-                    }}
-
-                > {description}
+                    }}> 
+                    
+                    {description}
                 </p>
 
 

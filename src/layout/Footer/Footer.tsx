@@ -7,13 +7,13 @@ import { cityNameConverters } from "../../../helpers/cityNameConverters";
 import { CategoryType } from "../../../types/formTypes";
 import { citiesList,  setFilters } from "../../store/filtersSlice";
 import styles from './Footer.module.scss';
-const logo = require('../../assets/images/logo.png');
-const belkart = require('../../assets/images/payment/belkart.png');
-const mastercard = require('../../assets/images/payment/mastercard.png');
-const securecode = require('../../assets/images/payment/securecode.png');
-const verified = require('../../assets/images/payment/verified-by-visa.png');
-const visa = require('../../assets/images/payment/visa.png');
-const webpay = require('../../assets/images/payment/webpay.png');
+const logo = require('../../../public/images/logo.png');
+const belkart = require('../../../public/images/payment/belkart.png');
+const mastercard = require('../../../public/images/payment/mastercard.png');
+const securecode = require('../../../public/images/payment/securecode.png');
+const verified = require('../../../public/images/payment/verified-by-visa.png');
+const visa = require('../../../public/images/payment/visa.png');
+const webpay = require('../../../public/images/payment/webpay.png');
 
 
 const Footer = () => {

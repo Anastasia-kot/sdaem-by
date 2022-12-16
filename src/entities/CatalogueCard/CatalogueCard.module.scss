@@ -185,7 +185,7 @@
     }
 
 
-    .CardContent {
+    .content {
         margin: 0 20px;
         padding-top: 11px;
         height: 245px;
@@ -206,11 +206,13 @@
             color: #1E2123;
         }
 
-        .PriceBlock {
+        .content__price {
             order: 1;
             display: flex;
             flex-direction: column;
             gap: 3px;
+            white-space: nowrap;
+            width: min-content;
 
             span {
                 &:first-of-type {
@@ -237,31 +239,45 @@
             }
         }
 
-        .FeatureBlock {
+        .features {
             order: 2;
-
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            justify-content: end;
+            gap: 7px;
+            .features__item {
+                white-space: nowrap;
+                width: min-content;
+                button {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding: 8px;
+                        gap: 6px;         
+                        
+                        box-sizing: border-box;
+                        
+                
+                        background: #F8F8F8;
+                        border-radius: 18px;
+                
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 17px;
 
-            button {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 8px;
-                gap: 6px;
-                min-width: 80px;
-
-
-                background: #F8F8F8;
-                border-radius: 18px;
-
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 17px;
-
-
+                        sup{
+                            position: relative;
+                            bottom: 3px;
+                            right: 3px;   
+                            // font-size: smaller;
+                            font-size: 10px;
+                                                    line-height: 10px;
+                        }
+                
+                
+                    }
             }
+           
         }
 
 
