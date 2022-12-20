@@ -1,6 +1,6 @@
 import { UseFormRegister } from 'react-hook-form'
 import { MoreOptionsModalFormType } from '../../../types/formTypes'
-import { SelectBlock } from '../../shared/Select/Select'
+import { SelectBlock } from '../../shared/Select_block/Select_block'
 import styles from './MoreOptionsModal.module.scss'
  
 type Props = {
@@ -39,8 +39,6 @@ export const MoreOptionsModal = ({register }) => {
         <div className={styles.MoreOptionsModal}>
             <div className={styles.SelectorsList}>
                 <SelectBlock
-                    labelRus={'Спальные места'}
-                    flexDirection={'column'}
                     options={[
                         'Выберите',
                         '1 комн.',
@@ -50,37 +48,42 @@ export const MoreOptionsModal = ({register }) => {
                         '5 комн.',
 
                     ]}
-                    width={200}
-                    height={37}
-
                     label={'sleepPlaces'}
                     register={register}
                     required={false}
+
+
+                    style={{
+                        width: '200px',
+                        height: '37px',
+                    }}
+           
+                    labelRus={{ label: 'Спальные места', flexDirection: 'column' }}
+
+                    
                 />
                 <SelectBlock
-                    labelRus={'Район'}
-                    flexDirection={'column'}
                     options={[
                         'Выберите',
-                        '1 комн.',
-                        '2 комн.',
-                        '3 комн.',
-                        '4 комн.',
-                        '5 комн.',
-
+                        '1 мая',
+                        'Фрунзе',
+                        'Комсомольский',
                     ]}
-                    width={200}
-                    height={37}
-
                     label={'district'}
                     register={register}
                     required={false}
+
+
+                    style={{
+                        width: '200px',
+                        height: '37px',
+                    }}
+                    labelRus={{ label: 'Район', flexDirection: 'column' }}
+
                 />
 
                 <SelectBlock
-                    labelRus={'Метро'}
-                    flexDirection={'column'}
-                    options={[
+                     options={[
                         'Выберите',
                         '1 комн.',
                         '2 комн.',
@@ -89,12 +92,18 @@ export const MoreOptionsModal = ({register }) => {
                         '5 комн.',
 
                     ]}
-                    width={200}
-                    height={37}
-
                     label={'metro'}
                     register={register}
                     required={false}
+
+
+                   
+                    style={{
+                        width: '200px',
+                        height: '37px',
+                    }}
+                    labelRus={{ label: 'Метро', flexDirection: 'column' }}
+
 
                 />
 

@@ -1,4 +1,4 @@
-.MainHeaderBlock {
+.headingWrapper {
     width: 100%;
     min-height: 430px;
     box-sizing: border-box;
@@ -9,7 +9,7 @@
     font-family: 'Inter';
     font-style: normal;
 
-    .MainHeader {
+    .heading {
         width: 100%;
         max-width: 1283px;
         
@@ -19,17 +19,27 @@
         
         padding-left: 80px;
         padding-right: 63px;
+
+            margin: 0 auto;
+                border-radius: 0px 0px 40px 40px;
+
+        @media (max-width: 1200px) {
+  
+            }
+        
+            @media (max-width: 520px) {
+                padding: 0 20px;
+            }
    
 
         background:
             url(../../../../public/images/404/city-map.png),
             url(../../../../public/images/404/background.png);
-        // background-size: auto,  cover;
- 
-        margin: 0 auto;
-        border-radius: 0px 0px 40px 40px;
+        background-size: auto,  cover, no-repeat;
 
-        .MainHeaderText {
+ 
+  
+        .heading__title {
             padding: 0;
             padding-top: 83px;
             margin: 0;
@@ -52,10 +62,12 @@
 
         }
 
-        .MainForm {
-            width: 1062px;
+        .heading__form {
+            max-width: 1062px;
             min-height: (54px + 100px);
             display: block;
+            padding-bottom: 118px;
+        
             margin: 0 auto;
             position: relative;
 
@@ -160,18 +172,18 @@
                 justify-content: start; 
  
 
-                width: auto;
+                // width: auto;
 
                 &.Active{
                     border-radius: 0 10px 0  0;
                 }
                 
                     @media (max-width: 1065px) {
-                        width: 750px;
+                        // width: 750px;
                     }
                 
                     @media (max-width: 650px) {
-                        width: 400px;
+                        // width: 400px;
                     }
  
 
@@ -204,7 +216,7 @@
 
                     }
 
-                    &.CityBlock,  &.RoomsBlock,&.PriceBlock {
+                    &.CityBlock,  &.RoomsBlock, &.PriceBlock {
                         width: 190px;
                         border-right: 1px solid rgb(102, 78, 249, 0.1);
                     }

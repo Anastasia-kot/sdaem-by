@@ -1,13 +1,13 @@
 // import Image from 'next/image'
 import styles from './Objects.module.scss'
 import React, { useState } from 'react'
-import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { Pagination } from '../../../shared/Pagination/Pagination'
 import { Socials_sharing } from '../../../shared/Socials_sharing/Socials_sharing'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
-import { SelectBlock } from '../../../shared/Select/Select'
+import { SelectBlock } from '../../../shared/Select_block/Select_block'
 import { useForm } from 'react-hook-form'
+import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 
 
 export const Objects = () => {
@@ -41,17 +41,16 @@ export const Objects = () => {
                             <path d="M6.08742 10.6908H4.84283V0.81072C4.84283 0.639047 4.70363 0.5 4.53211 0.5H2.02615C1.85464 0.5 1.71543 0.639047 1.71543 0.81072V10.6908H0.471C0.351218 10.6908 0.24231 10.7597 0.190731 10.8676C0.138996 10.9755 0.153755 11.1033 0.228639 11.1965L3.03692 15.3841C3.09596 15.4577 3.18498 15.5 3.27913 15.5C3.37328 15.5 3.46215 15.4577 3.52118 15.3841L6.32947 11.1965C6.40435 11.1032 6.41927 10.9755 6.36753 10.8676C6.31595 10.7598 6.2072 10.6908 6.08742 10.6908Z" />
                         </svg>
                         <SelectBlock
-                            labelRus={null}
-                            flexDirection={null}
-                            options={[
-                                'По умолчанию',
-                            ]}
-                            width={232}
-                            height={37}
-
+                            options={['По умолчанию']} 
                             label={'sorting_order'}
                             register={register}
                             required={false}
+
+                            labelRus={null}
+                            style={{
+                                width: '232px',
+                                height: '37px',
+                            }}
                         /> 
                     </form>
                     
@@ -132,20 +131,12 @@ export const Objects = () => {
                 <div className={isListCatalogue ? styles.ResultListListView : styles.ResultListTileView}>
 
                     {data.map(d => {
-                        if (d.id < 3) {
-                            return <CatalogueCard
-                        key={d.id}
-                        style={isListCatalogue ? 'catalogueList' : 'catalogueTile'}
-                        title={d.title}
-                        price={d.price}
-                        address={d.address}
-                        addressFeatures={d.addressFeatures}
-                        roomFeatures={d.roomFeatures}
-                        description={d.description}
-                        image={d.image}
-                    />}})}
+                        if (d.id < 6) {
+                            return   isListCatalogue 
+                                ?       <CatalogueCard key={d.id} data={d} style={'list'}/>
+                                :       <CatalogueCard key={d.id} data={d} style={'tile'} />
+                      }})}
 
-                 
                 </div>
 
                 <div className={styles.ResultBlockFooter}>

@@ -3,7 +3,7 @@ import styles from './Filters.module.scss'
 import React, { useState } from 'react'
 import { Breadcrumbs } from '../../../entities/Breadcrumbs/Breadcrumbs'
 import classNames from 'classnames'
-import { SelectBlock } from '../../../shared/Select/Select'
+import { SelectBlock } from '../../../shared/Select_block/Select_block'
 import { InputBlock } from '../../../shared/Input/Input'
 import { useForm } from 'react-hook-form'
 import { CatalogueFiltersFormType } from '../../../../types/formTypes'
@@ -236,8 +236,6 @@ export const Filters = React.memo(() => {
                         <div className={styles.MainFiltersBlock}>
                         <div className={styles.RoomsBlockLabel}>
                             <SelectBlock
-                                labelRus={'Комнаты'}
-                                flexDirection={'row'}
                                 options={[
                                     'Выберите',
                                     '1 комн.',
@@ -247,12 +245,19 @@ export const Filters = React.memo(() => {
                                     '5 комн.',
 
                                 ]}
-                                width={150}
-                                height={37}
-
                                 label={'rooms'}
                                 register={register}
                                 required={false}
+
+
+
+                                style={{
+                                    width: '150px',
+                                    height: '37px',
+                                }}
+                                labelRus={{ label: 'Комнаты', flexDirection: 'row' }}
+
+
                             />
                         </div>
 

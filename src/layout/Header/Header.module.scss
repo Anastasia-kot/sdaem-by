@@ -17,10 +17,6 @@
             width: 100%;
 
 
-            @media (max-width: 1200px) {
-                gap:10px;
-                grid-template-columns: min-content  1fr min-content;
-            }
 
             padding: 0;
             padding-left: 80px;
@@ -29,13 +25,17 @@
             box-sizing: border-box;
 
             background: #F8F8F8;
-            font-family: 'Inter',
-            sans-serif;
+            font-family: 'Inter', sans-serif;
             font-style: normal;
             font-weight: 400;
             font-size: 14px;
             line-height: 17px;
             color: #8291A3;
+
+            @media (max-width: 1200px) {
+                    gap: 10px;
+                    grid-template-columns: min-content 1fr min-content;
+                }
 
             @media (max-width: 520px) {
                 padding: 0 20px;

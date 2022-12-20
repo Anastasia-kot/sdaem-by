@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
 import { MainFiltersFormType } from '../../../../types/formTypes'
 import classNames from 'classnames'
-import { SelectBlock } from '../../../shared/Select/Select'
+import { SelectBlock } from '../../../shared/Select_block/Select_block'
 
 export const Heading = () => {
 
@@ -42,12 +42,9 @@ export const Heading = () => {
     }
     return (
 
-
-
-
-        <div className={styles.MainHeaderBlock}>
-            <div className={styles.MainHeader}>
-                <h1 className={styles.MainHeaderText}>
+        <div className={styles.headingWrapper}>
+            <div className={styles.heading}>
+                <h1 className={styles.heading__title}>
                     Sdaem.by - у нас живут <span className={styles.yellow}>ваши объявления</span>
                 </h1>
 
@@ -55,7 +52,7 @@ export const Heading = () => {
                 {/* // form validation */}
 
                 <form
-                    className={styles.MainForm}
+                    className={styles.heading__form}
                     onSubmit={handleSubmit(onSubmit)} >
 
                     {isMoreOptions && <MoreOptionsModal register={register} />}
@@ -81,8 +78,6 @@ export const Heading = () => {
                         <div className={styles.CityBlock}>
 
                             <SelectBlock
-                                labelRus={'Город'}
-                                flexDirection={'column'}
                                 options={[
                                     'Минск',
                                     'Город 2',
@@ -90,14 +85,21 @@ export const Heading = () => {
                                     'Город 4',
                                     'Город 5',
                                 ]}
-                                width={150}
-                                height={37}
-                                // backgroundColor={'#F8F8F8'}
-                                // boxShadow={''}
-
                                 label={'city'}
                                 register={register}
                                 required={false}
+
+
+                             
+                                style={{
+                                    width: '150px',
+                                    height: '37px',
+                                }}
+                                labelRus={{ label: 'Город', flexDirection: 'column' }}
+                                // backgroundColor={'#F8F8F8'}
+                                // boxShadow={''}
+
+                         
                             />
 
 
@@ -109,8 +111,6 @@ export const Heading = () => {
 
                     <div className={styles.RoomsBlock}>
                         <SelectBlock
-                            labelRus={'Комнаты'}
-                            flexDirection={'column'}
                             options={[
                                 'Выберите',
                                 '1 комн.',
@@ -120,12 +120,17 @@ export const Heading = () => {
                                 '5 комн.',
 
                             ]}
-                            width={150}
-                            height={37}
+                                label={'rooms'}
+                                register={register}
+                                required={false}
 
-                            label={'rooms'}
-                            register={register}
-                            required={false}
+                            style={{
+                                    width: '150px',
+                                    height: '37px',
+                             }}
+                            labelRus={{ label: 'Комнаты', flexDirection: 'column' }}
+
+
                         />
 
 

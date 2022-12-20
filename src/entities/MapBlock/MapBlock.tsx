@@ -8,16 +8,19 @@ const navIcon = require('../../../public/images/svg/navigation_icon.svg')
 type Props = {
     title: string
     description: string
+    descriptionWidth: number
     dotes: boolean
     buttonText: string
     children: any  // svg in button
     minHeight: number
+
 
 }
 
 export const MapBlock: FC<Props> = ({ 
     title,
     description,
+    descriptionWidth,
     dotes,
     buttonText,
     children,
@@ -230,7 +233,7 @@ export const MapBlock: FC<Props> = ({
             </div>
 
             <h2 className={styles.MapTitle}>{title}</h2>
-            <p className={styles.MapDescription}>{description}</p>
+            <p className={styles.MapDescription} style={{ maxWidth: `${descriptionWidth}px` }}>{description}</p>
             <button className={styles.MapButton}>
                 <Image src={navIcon} alt='navIcon' /> 
                 {buttonText}

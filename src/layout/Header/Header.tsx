@@ -9,7 +9,6 @@ import classNames from "classnames";
 import { setAuthUserData, setToggleLogIn } from "../../store/authSlice";
 import { citiesList, setFilters } from "../../store/filtersSlice";
 import { useRouter } from "next/router";
-import { CitiesEnum } from "../../../types/formTypes";
 import { cityNameConverters } from "../../../helpers/cityNameConverters";
 import { categoriesItems, navItems } from "../../store/mainSlice";
 

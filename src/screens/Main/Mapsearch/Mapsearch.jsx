@@ -3,35 +3,60 @@ import styles from './Mapsearch.module.scss'
 import React from 'react'
 import { PreferenceCard } from '../../../entities/PreferenceCard/PreferenceCard.tsx'
 import { MapBlock } from '../../../entities/MapBlock/MapBlock.tsx'
+const clients = require('../../../../public/images/main/clients.svg');
+const move = require('../../../../public/images/main/move.svg');
+
 
 
 export const Mapsearch = () => {
 
     const pref_cards = [
         {
-            logo: 'string',
+            logo: clients,
             header: 'Начните привлекать клиентов бесплатно!',
-            description: ['Пройдя простую регистрацию на сайте у Вас появится личный кабинет, в котором возможно бесплатно создавать и публиковать объявления на сайте. '],
-            button: '+  Разместить объявление',
+            description: {
+                text: ['Пройдя простую регистрацию на сайте у Вас появится личный кабинет, в котором возможно бесплатно создавать и публиковать объявления на сайте. '],
+                bold: ['бесплатно создавать и публиковать']
+            },
+            button: {
+             
+                   text: '+ Разместить объявление',
+                image: false
+            },
             isGold: false,
             goldBackground: 'string'
         },
         {
-            logo: 'string',
+            logo: move,
             header: 'Поднимайте объявления',
-            description: ['Вы в любое время можете поднимать объявления вверх первой страницы каталога, они разместятся сразу после платных объявлений до тех пор, пока другой пользователь не повторит процедуру. '],
-            button: 'Узнать стоимость услуги   ❯',
+            description: {
+                text: ['Вы в любое время можете поднимать объявления вверх первой страницы каталога, они разместятся сразу после платных объявлений до тех пор, пока другой пользователь не повторит процедуру. '],
+                bold: ['поднимать', 'вверх первой страницы' ]
+            },
+            button:    {
+              
+                       text: 'Узнать стоимость услуги ',
+                image: true
+            },
+            
             isGold: false,
             goldBackground: 'string'
         },
         {
             logo: '',
             header: 'Приоритет Gold ',
-            description: [
-                'Приоритетное размещение Gold позволяет закрепить ваше объявление в верхней части каталога!',
-                'Gold объявления перемещаются каждые 5 мин на 1 позицию, что делает размещение одинаковым для всех.'
-            ],
-            button: 'Еще о тарифе Gold   ❯',
+            description: {
+                text: [
+                    'Приоритетное размещение Gold позволяет закрепить ваше объявление в верхней части каталога!',
+                    'Gold объявления перемещаются каждые 5 мин на 1 позицию, что делает размещение одинаковым для всех.'
+                ], 
+                bold: ['Gold', 'закрепить ваше объявление', 'перемещаются каждые 5 мин']
+            },
+            button: {
+               text : 'Еще о тарифе Gold  ' ,
+                image: true
+            },
+            
             isGold: true,
             goldBackground: 'string'
         },
@@ -44,6 +69,7 @@ export const Mapsearch = () => {
             <MapBlock
                 title={'Поиск квартир на карте'}
                 description={'Ищите квартиры на сутки в центре города, возле парка или в живописном районе'}
+                descriptionWidth={390}
                 dotes={true}
                 buttonText={'Открыть карту'}
                 minHeight={440}
@@ -55,12 +81,7 @@ export const Mapsearch = () => {
             <div className={styles.PreferenceCardList}>
                 {pref_cards.map(pc => <PreferenceCard
                     key={pref_cards.indexOf(pc)}
-                    logo={pc.logo}
-                    header={pc.header}
-                    description={pc.description}
-                    button={pc.button}
-                    isGold={pc.isGold}
-                    goldBackground={pc.goldBackground}
+                    data={pc} 
 
                 />)}
 

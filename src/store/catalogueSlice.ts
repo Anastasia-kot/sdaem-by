@@ -1,5 +1,3 @@
-// added slice
-
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
@@ -11,39 +9,62 @@ export interface CatalogueState {
 
 export interface CatalogueType {
     id: number
-    image: string | null
+    image: string | string[] | null
+    gold: boolean
     title: string
     description: string
     price: number
     address: string
-    addressFeatures: [
-        {
-            name: 'metro',
-            value: string
-        },
-        {
-            name: 'district',
-            value: string
-        }
-    ]
-    roomFeatures: [
-        {
-            name: 'size as people',
-            value: string
-        },
-        {
-            name: 'roomCount',
-            value: string
-        },
-    ]
+    addressFeatures: AddressFeaturesType
+    roomFeatures: RoomFeaturesType
+    roomOwner: RoomOwnerType
 }
+export type AddressFeaturesType = [
+    {
+        name: 'metro'
+        value: string
+    },
+    {
+        name: 'district'
+        value: string
+    },
+]
 
+export type RoomFeaturesType = [
+    {
+        name: 'size as people'
+        value: string
+    },
+    {
+        name: 'roomCount'
+        value: number
+    },
+    {
+        name: 'size as meters'
+        value: number
+    },
+]
+
+export type RoomOwnerType = {
+    ownerStatus: string
+    name: string
+    phone: string
+    email: string
+
+}
 
 const initialState: CatalogueState = {
     data: [
         {
             id: 0,
-            image: null,
+            image: [
+                'https://s0.rbk.ru/v6_top_pics/media/img/5/60/756281458904605.jpg',
+                'https://www.pufikhomes.com/wp-content/uploads/2019/06/sovremennaya-belaya-kvartira-dlya-devushki-v-starom-dome-moskvy-pufikhomes-1.jpg',
+                'https://www.fontanka.ru/longreads/69055537/2020/images/tild3236-3039-4438-b935-366561386233__48.jpg',
+                'https://novostroyki.shop/wp-content/uploads/2021/01/2250619.jpg',
+                'https://n1s2.hsmedia.ru/58/65/e0/5865e06b01fea60c2ba969163769bee4/727x485_1_48b32eb3020992efb0ebe073e4f5aa3d@5000x3334_0xac120003_69286231626783910.jpg',
+
+            ],
             title: '4-комн. апартаменты на Грушевке',
             description: 'Большая четырехкомнатная студия! Большая джкакузи на двоих, на теливизоре есть приложение Megogo, YouTube, Smart TV, сможете выбрать фильм по вкусу!) Цена зависит от количества проживающих, уточняйте, пожалуйста, по телефону! В пяти минутах ходьбы Минск-Арена,  ...',
             price: 65,
@@ -67,14 +88,35 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
                     },
-                ]
+                    {
+                        name: 'size as meters',
+                        value: 179
+                    },
+                ],
+            gold: false,
+            roomOwner: {
+                ownerStatus: 'Владелец',
+                name: 'Dmitriy',
+                phone: '+375(29) 291 - 14 - 44',
+                email: 'vladimir6234@tut.by'
+            }
+
+
 
         },
         {
             id: 1,
-            image: null,
+            image: [
+                'https://s0.rbk.ru/v6_top_pics/media/img/5/60/756281458904605.jpg',
+                'https://www.pufikhomes.com/wp-content/uploads/2019/06/sovremennaya-belaya-kvartira-dlya-devushki-v-starom-dome-moskvy-pufikhomes-1.jpg',
+                'https://www.fontanka.ru/longreads/69055537/2020/images/tild3236-3039-4438-b935-366561386233__48.jpg',
+                'https://novostroyki.shop/wp-content/uploads/2021/01/2250619.jpg',
+                'https://n1s2.hsmedia.ru/58/65/e0/5865e06b01fea60c2ba969163769bee4/727x485_1_48b32eb3020992efb0ebe073e4f5aa3d@5000x3334_0xac120003_69286231626783910.jpg',
+
+
+            ],
             title: '4-комн. апартаменты на Грушевке',
             description: 'Большая четырехкомнатная студия! Большая джкакузи на двоих, на теливизоре есть приложение Megogo, YouTube, Smart TV, сможете выбрать фильм по вкусу!) Цена зависит от количества проживающих, уточняйте, пожалуйста, по телефону! В пяти минутах ходьбы Минск-Арена,  ...',
             price: 65,
@@ -98,13 +140,24 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], 
+                gold: true, 
+                roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
         },
+
         {
             id: 2,
-            image: null,
+            image: 'https://novostroyki.shop/wp-content/uploads/2021/01/2250619.jpg',
             title: '4-комн. апартаменты на Грушевке',
             description: 'Большая четырехкомнатная студия! Большая джкакузи на двоих, на теливизоре есть приложение Megogo, YouTube, Smart TV, сможете выбрать фильм по вкусу!) Цена зависит от количества проживающих, уточняйте, пожалуйста, по телефону! В пяти минутах ходьбы Минск-Арена,  ...',
             price: 65,
@@ -128,9 +181,19 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], 
+            gold: false,
+            roomOwner: {
+                ownerStatus: 'Владелец',
+                name: 'Dmitriy',
+                phone: '+375(29) 291 - 14 - 44',
+                email: 'vladimir6234@tut.by'
+            }
         },
         {
             id: 3,
@@ -158,9 +221,20 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ],
+                 gold: true,
+            roomOwner: {
+                ownerStatus: 'Владелец',
+                name: 'Dmitriy',
+                phone: '+375(29) 291 - 14 - 44',
+                email: 'vladimir6234@tut.by'
+            }
+
         },
         {
             id: 4,
@@ -188,9 +262,19 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
                     },
-                ]
+                    {
+                        name: 'size as meters',
+                        value: 179
+                    },
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
+
         },
         {
             id: 5,
@@ -218,9 +302,18 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
+
         },
         {
             id: 6,
@@ -248,9 +341,17 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
         },
         {
             id: 7,
@@ -278,9 +379,17 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
         },
         {
             id: 8,
@@ -308,9 +417,18 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
+
         },
         {
             id: 9,
@@ -338,9 +456,18 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
+
         },
         {
             id: 10,
@@ -368,9 +495,18 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
+
         },
         {
             id: 11,
@@ -398,9 +534,18 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
+
         },
         {
             id: 12,
@@ -428,9 +573,18 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
+
         },
         {
             id: 13,
@@ -458,9 +612,18 @@ const initialState: CatalogueState = {
                     },
                     {
                         name: 'roomCount',
-                        value: '4 комн.'
+                        value: 4
+                    }, {
+                        name: 'size as meters',
+                        value: 179
                     },
-                ]
+                ], gold: true, roomOwner: {
+                    ownerStatus: 'Владелец',
+                    name: 'Dmitriy',
+                    phone: '+375(29) 291 - 14 - 44',
+                    email: 'vladimir6234@tut.by'
+                }
+
         },
     ],
     totalCount: 13,
