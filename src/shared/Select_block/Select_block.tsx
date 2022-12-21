@@ -1,5 +1,8 @@
 import { Select } from './Select/Select'
 import styles from './Select_block.module.scss'
+import PropTypes from 'prop-types';
+import { FC } from 'react';
+
 
 type Props = {
     options: Array<string>
@@ -17,15 +20,18 @@ type Props = {
     }  
 }
 
-export const SelectBlock = ({ 
-    options,
-    label,
-    register,
-    required, 
+export const SelectBlock: FC<Props> = (props: Props) => {
+    const {
+        options,
+        label,
+        register,
+        required,
 
-    style,
-    labelRus,
-}: Props) => <div
+        style,
+        labelRus,
+    } = props;
+
+    return (<div
             className={styles.SelectBlock}
             style={{
                  gridTemplateColumns: (labelRus && labelRus.flexDirection == 'row') ? '1fr qfr' : '1fr',
@@ -55,5 +61,5 @@ export const SelectBlock = ({
                     gridRow: (labelRus && labelRus.flexDirection == 'column') ? '2/3' : 'auto',
                     }}
             /> 
-</div>
- 
+</div>)
+}
