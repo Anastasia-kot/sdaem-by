@@ -1,13 +1,17 @@
 import classNames from 'classnames'
 import { useState } from 'react'
 import styles from './Like.module.scss'
+import PropTypes from 'prop-types';
  
 type Props = {
     isListView: boolean
     style: any
 }
-export const LikeButton = ({ isListView, style }: Props) => {
+export const LikeButton = (props
+    // { isListView, style }: Props
+    ) => {
     
+    const { isListView, style } = props
 
 
 const [liked, setLiked] = useState(false);
@@ -38,3 +42,17 @@ const [liked, setLiked] = useState(false);
         </button>
     )
 }
+
+LikeButton.propsType={
+    isListView: PropTypes.bool.isRequired,
+    style: PropTypes.shape({
+        order: PropTypes.string ,
+        marginRight: PropTypes.string,
+        display: PropTypes.oneOf([ 'none',   'block',  'flex' ])
+    }).isRequired
+}
+
+LikeButton.defaultProp = {
+    isListView: false,
+    style: PropTypes.object
+} 

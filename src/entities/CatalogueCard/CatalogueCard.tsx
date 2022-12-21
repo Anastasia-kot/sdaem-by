@@ -10,13 +10,15 @@ import { CatalogueType } from '../../store/catalogueSlice';
 import classNames from 'classnames';
 const room = require('../../../public/images/room.png');
 const avatar = require('../../../public/images/avatar.png');
+import PropTypes from 'prop-types';
 
 
  
-export const CatalogueCard = (
-    { data, style }: { data: CatalogueType, style: 'main' | 'list' | 'tile' }
+export const CatalogueCard = (props
+    // { data, style }: { data: CatalogueType, style: 'main' | 'list' | 'tile' }
 ) => {
 
+    const { data, style } = props;
 
     //image + image slider
     const defImg = 'https://thumbs.dreamstime.com/b/%D1%80%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA-%D0%BB%D0%B8%D0%BD%D0%B8%D0%B8-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%8C%D0%B5%D1%80%D0%B0-%D0%B3%D0%BE%D1%81%D1%82%D0%B8%D0%BD%D0%BE%D0%B9-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%B4%D0%BE%D0%BC%D0%B0-%D0%B8%D0%BB%D0%B8-%D1%81-%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%BC-%D0%B8-227710999.jpg'
@@ -202,7 +204,7 @@ export const CatalogueCard = (
                             order: style === 'list' ? '0' : '1',
                             margin: 0,
                         }}
-                        onClick={() => setIsShownContact(actual => { return (!actual) })}
+                        onClick={() => setIsShownModal(actual => { return (!actual) })}
                     />
 
                     <SimpleButton
@@ -230,3 +232,72 @@ export const CatalogueCard = (
         </div>
     )
 }
+
+CatalogueCard.propTypes = {
+    data: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        image: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.oneOf([null])]).isRequired ,
+        gold: PropTypes.bool.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        address: PropTypes.string,
+        addressFeatures: 
+            PropTypes.arrayOf(
+                PropTypes.shape({
+                    name: PropTypes.oneOf(['metro', 'district']),
+                    value: PropTypes.string
+                })
+            ),
+        roomFeatures: 
+            PropTypes.arrayOf(
+                PropTypes.oneOfType([
+                    PropTypes.shape({
+                        name: PropTypes.oneOf(['size as people']),
+                        value: PropTypes.string
+                    }),
+                    PropTypes.shape({
+                        name: PropTypes.oneOf([ 'roomCount', 'size as meters']),
+                        value: PropTypes.number
+                    })
+                ])  
+            ),
+        roomOwner:  PropTypes.shape({
+            ownerStatus: PropTypes.string,
+            name: PropTypes.string,
+            phone: PropTypes.string,
+            email: PropTypes.string,
+        }),
+    }).isRequired, 
+    style: PropTypes.oneOf(['main', 'list', 'tile']).isRequired,
+}
+
+ 
+CatalogueCard.defaultProp = {
+    data: {
+        image: null,
+        gold: false,
+        title: '',
+        description: '',
+        price: PropTypes.number,
+        address: '',
+        addressFeatures: [
+            { name: 'metro', value: ''},
+            { name: 'district', value: '' } 
+        ],
+        roomFeatures: [
+            { name: 'size as people', value: '' },
+            { name: 'roomCount', value: 0 },
+            { name: 'size as meters', value: 0 },
+        ],
+        roomOwner:  {
+            ownerStatus: '',
+            name: '',
+            phone: '',
+            email: '',
+        },
+    },
+    style: 'main'
+};
+
+ 
