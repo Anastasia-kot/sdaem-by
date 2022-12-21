@@ -1,4 +1,4 @@
-.Footer {
+.footer {
     width: 100%;
     min-width: 393px;
     background-color: white;
@@ -15,24 +15,34 @@
         "c n "
         "c sp ";
 
+    grid-template-columns: 327px 1fr;
+    grid-template-rows: 144px 1fr;
+
+    @media (max-width: 1339px) {
+        // grid-template-rows: min-content  min-content;
+    }
+
+    @media (max-width: 1200px) {
+        // grid-template-rows: min-content  min-content;
+        grid-template-areas:
+                "c n "
+                "sp sp";
+    }
 
     @media (max-width: 854px) {
         grid-template-areas:
             "c "
             "n "
             "sp";
-    }
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content min-content min-content;
 
-    grid-template-columns: 327px 1fr;
-    grid-template-rows: 144px 1fr;
-
-    @media (max-width: 1400px) {
-        grid-template-rows: 1fr 1fr;
     }
 
 
 
-    .CompanyInfo {
+
+    .footer__info {
         grid-area: c;
         width: 297px;
         padding-top: 3px;
@@ -54,7 +64,7 @@
 
         color: #8291A3;
 
-        h3 {
+        .info__title {
             margin-top: 7px;
             margin-bottom: 37px;
 
@@ -71,7 +81,7 @@
             color: #8291A3;
         }
 
-        div {
+        .info__contacts {
             font-family: 'Inter',
                 sans-serif;
             font-style: normal;
@@ -83,13 +93,13 @@
 
             color: #8291A3;
 
-            p {
+            .contacts__contact {
                 width: 270px;
             }
         }
     }
 
-    .Navigation {
+    .footer__navigation {
         grid-area: n;
         display: flex;
         flex-wrap: wrap;
@@ -102,7 +112,7 @@
         .NavigationLocationsList,
         .NavigationLinksList {
 
-            height: 92px;
+            max-height: 92px;
             min-width: 156px;
 
             font-family: 'Inter';
@@ -237,7 +247,7 @@
     }
 
 
-    .SocialsAndPayment {
+    .footer__socialsAndPayment {
         grid-area: sp;
         display: flex;
         justify-content: space-between;
@@ -276,8 +286,8 @@
                 justify-content: space-between;
 
                 @media (max-width: 400px) {
-                        flex-wrap: wrap;
-                    }
+                    flex-wrap: wrap;
+                }
 
                 li {
                     &:nth-child(2) {
@@ -296,7 +306,7 @@
         .Payment {
             display: flex;
             justify-content: space-between;
-                            flex-wrap: nowrap;
+            flex-wrap: nowrap;
             width: 339px;
 
             @media (max-width: 800px) {

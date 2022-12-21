@@ -5,9 +5,10 @@ import styles from './MoreOptionsModal.module.scss'
  
 type Props = {
     register: UseFormRegister<MoreOptionsModalFormType> 
+    style: CSSStyleDeclaration
 }
 
-export const MoreOptionsModal = ({register }) => {
+export const MoreOptionsModal = ({register, style}) => {
     const checkboxData = [
         {
             name: 'gas',
@@ -36,7 +37,7 @@ export const MoreOptionsModal = ({register }) => {
     ]
 
     return (
-        <div className={styles.MoreOptionsModal}>
+        <div className={styles.modal} style={style}>
             <div className={styles.SelectorsList}>
                 <SelectBlock
                     options={[

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { dateConverter } from '../../../helpers/dateConverters';
 import styles from './NewsCard.module.scss'
-const room = require('../../assets/images/room.png');
+const room = require('../../../public/images/room.png');
 
 type Props = {
     id: number

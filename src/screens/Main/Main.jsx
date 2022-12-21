@@ -1,5 +1,5 @@
 import styles from './Main.module.scss'
-import { About } from './About/About'
+import { About } from './About/About.tsx'
 import { Categories } from './Categories/Categories'
 import { Heading } from './Heading/Heading.tsx'
 import { Mapsearch } from './Mapsearch/Mapsearch'

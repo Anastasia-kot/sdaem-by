@@ -48,14 +48,12 @@ export const Heading = () => {
                     Sdaem.by - у нас живут <span className={styles.yellow}>ваши объявления</span>
                 </h1>
 
-
-                {/* // form validation */}
+ 
 
                 <form
                     className={styles.heading__form}
                     onSubmit={handleSubmit(onSubmit)} >
 
-                    {isMoreOptions && <MoreOptionsModal register={register} />}
 
                     <ul className={styles.MainFormCategories}>
                         {categories.map(k =>
@@ -226,6 +224,12 @@ export const Heading = () => {
                         </button>
                     </div>
             </div>
+                    <MoreOptionsModal 
+                        register={register} 
+                        style={{ 
+                            display: isMoreOptions ? 'block': 'none',
+                            borderRadius: ' 0 0 10px 10px'}}/>
+
         </form>
             </div >
         </div >

@@ -7,6 +7,7 @@ import { cityNameConverters } from "../../../helpers/cityNameConverters";
 import { CategoryType } from "../../../types/formTypes";
 import { citiesList,  setFilters } from "../../store/filtersSlice";
 import styles from './Footer.module.scss';
+
 const logo = require('../../../public/images/logo.png');
 const belkart = require('../../../public/images/payment/belkart.png');
 const mastercard = require('../../../public/images/payment/mastercard.png');
@@ -33,24 +34,24 @@ const Footer = () => {
     }
 
     return (
-        <footer className={styles.Footer}>
-            <div className={styles.CompanyInfo}>
+        <footer className={styles.footer}>
+            <div className={styles.footer__info}>
                 <Link href='/'>
                     <Image src={logo} alt="SDAEM.BY" />
-                    <h3>СДАЁМ БАЙ</h3>
+                    <h3 className={styles.info__title}>СДАЁМ БАЙ</h3>
                 </Link>
                
-                <div>
-                    <p>ИП Шушкевич Андрей Викторович</p>
-                    <p>УНП 192602485 Минским горисполкомом 10.02.2016</p>
-                    <p>220068, РБ, г. Минск, ул. Осипенко, 21, кв.23</p>
-                    <p><a href="tel:+375296214833">+375 29 621 48 33</a>, <a href="mailto:sdaem@sdaem.by">sdaem@sdaem.by</a></p>
-                    <p>Режим работы: 08:00-22:00</p>
+                <div className={styles.info__contacts}>
+                    <p className={styles.contacts__contact}>ИП Шушкевич Андрей Викторович</p>
+                    <p className={styles.contacts__contact}>УНП 192602485 Минским горисполкомом 10.02.2016</p>
+                    <p className={styles.contacts__contact}>220068, РБ, г. Минск, ул. Осипенко, 21, кв.23</p>
+                    <p className={styles.contacts__contact}><a href="tel:+375296214833">+375 29 621 48 33</a>, <a href="mailto:sdaem@sdaem.by">sdaem@sdaem.by</a></p>
+                    <p className={styles.contacts__contact}>Режим работы: 08:00-22:00</p>
                 </div>
             </div>
 
 
-            <div className={styles.Navigation}>
+            <div className={styles.footer__navigation}>
                 <ul className={styles.NavigationCatrgoriesList}>
                     <li onClick={()=>onClick({ category: 'cottage' })}>Коттеджи и усадьбы</li>
                     <li onClick={() => onClick({ category: 'sauna' })}>Бани и сауны</li>
@@ -81,7 +82,7 @@ const Footer = () => {
 
 
 
-            <div className={styles.SocialsAndPayment}>
+            <div className={styles.footer__socialsAndPayment}>
                 <div className={styles.Socials}>
                     <span className={styles.SocialsHeader}>Мы в соцсетях</span>
                     <ul className={styles.SocialsList}>

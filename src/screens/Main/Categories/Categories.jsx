@@ -12,7 +12,64 @@ const sauna = require('../../../../public/images/main/sauna.png');
  
 export const Categories = () => {
  
- 
+    const objects = [
+        {
+            name: 'Квартиры',
+            data: [
+                {
+                    name: 'Квартиры в Минске',
+                    value: 3567
+                },
+                {
+                    name: 'Квартиры в Гомеле',
+                    value: 2032
+                },
+                {
+                    name: 'Квартиры в Гродно',
+                    value: 2302
+                },
+                {
+                    name: 'Квартиры в Могилеве',
+                    value: 110
+                },
+                {
+                    name: 'Квартиры в Бресте',
+                    value: 110
+                },
+                {
+                    name: 'Квартиры в Витебск',
+                    value: 110
+                },
+
+            ]
+        },
+       {
+            name: 'Квартиры',
+            data: [
+            {
+                name: 'Агроусадьбы',
+                value: 110
+            },
+
+            {
+                name: 'Коттеджи',
+                value: 110
+            },
+
+            {
+                name: 'Загородный комплекс',
+                value: 110
+            },
+
+            {
+                name: 'Базы отдыха',
+                value: 110
+            },
+
+
+        ]}
+
+    ] 
     const kvartiri = [
         {
             name: 'Квартиры в Минске',
@@ -70,9 +127,9 @@ export const Categories = () => {
     ]
 
     return (
-        <div className={styles.Categories}>
-            <ul className={styles.CategoriesCardsList}>
-                <li className={styles.CategoriesCardsItem} key={0}>
+        <div className={styles.categories}>
+            <ul className={styles.categories__cards}>
+                <li className={styles.cards__item} key={0}>
                     <CategoryCard
                         filter={{ category: 'room' }}
                         header='Квартиры на сутки'
@@ -83,7 +140,7 @@ export const Categories = () => {
                        
                     />
                 </li>
-                <li className={styles.CategoriesCardsItem} key={1}>
+                <li className={styles.cards__item} key={1}>
                     <CategoryCard
                         filter={{ category: 'cottage' }}
                         header='Коттеджи и усадьбы'
@@ -94,7 +151,7 @@ export const Categories = () => {
  
                     />
                 </li>
-                <li className={styles.CategoriesCardsItem} key={2}>
+                <li className={styles.cards__item} key={2}>
                     <CategoryCard
                         filter={{ category: 'sauna' }}
                         header='Бани и сауны'
@@ -104,7 +161,7 @@ export const Categories = () => {
                         arrow_button={true}
                      />
                 </li>
-                <li className={styles.CategoriesCardsItem} key={3}>
+                <li className={styles.cards__item} key={3}>
                     <CategoryCard
                         filter={{ category: 'auto' }}
                         header='Авто на прокат'
@@ -117,17 +174,16 @@ export const Categories = () => {
                 </li>
             </ul>
 
-            <aside className={styles.CategoriesBlock}>
-                <ul className={styles.CategoriesList}>
-                    <li key={4}>
-                        <h3>Квартиры</h3>
-                        <ul>
+            <aside className={styles.categories__menu}>
+                <div className={styles.menu__list}>
+                    <h3 className={styles.list__title}>Квартиры</h3>
+                        <ul className={styles.list__list}>
                             {kvartiri.map(k => <li key={kvartiri.indexOf(k)+7}> <span>{k.name}</span><span>{k.value}</span></li>)}
                         </ul>
-                    </li>
-                    <li key={5}>
-                        <h3>Коттеджи и усадьбы</h3>
-                        <ul>
+                    </div>
+                <div className={styles.menu__list}>
+                    <h3 className={styles.list__title}>Коттеджи и усадьбы</h3>
+                    <ul className={styles.list__list}>
                             {kotteges.map(k => <li key={kotteges.indexOf(k) + 13}> <span>{k.name}</span><span>{k.value}</span></li>)}
                             <li key={17}>
                                 Еще
@@ -137,15 +193,14 @@ export const Categories = () => {
 
                             </li>
                         </ul>
-                    </li>
-                    <li key={6}>
-                        <h3>Популярные направления</h3>
-                        <ul>
+                    </div>
+                <div className={styles.menu__list}>
+                    <h3 className={styles.list__title}>Популярные направления</h3>
+                    <ul className={styles.list__list}>
                             {popular.map(k => <li key={kvartiri.indexOf(k) + 18} > <span>{k}</span></li>)}
                         </ul>
-                    </li>
-                </ul>
-            </aside>
+                    </div>
+             </aside>
         </div>
 
     )

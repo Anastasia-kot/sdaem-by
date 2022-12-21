@@ -72,18 +72,18 @@ const Header = () => {
 
 
     return (
-        <header className={styles.Header}>
+        <header className={styles.header}>
 
-            <nav className={styles.HeaderNavigation}>
+            <nav className={styles.header__navigation}>
                 <ul
                     className={classNames(
-                        styles.HeaderNavigationList,
+                        styles.navigation__list,
                         { [styles.active]: isBurgerActive },
                     )}
                 >
                     <li
                         className={classNames(
-                            styles.HeaderBurger,
+                            styles.list__burger,
                             { [styles.active]: isBurgerActive },
                         )}
 
@@ -110,7 +110,6 @@ const Header = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#8291A3">
                                 <path d="m10 17.75-1.375-1.271Q6.354 14.417 4.927 13 3.5 11.583 2.698 10.521q-.802-1.063-1.083-1.948-.282-.885-.282-1.844 0-2.083 1.459-3.531Q4.25 1.75 6.354 1.75q.938 0 1.917.385.979.386 1.729 1.073.75-.687 1.729-1.073.979-.385 1.917-.385 2.104 0 3.562 1.448 1.459 1.448 1.459 3.531 0 .959-.271 1.823-.271.865-1.073 1.917-.802 1.052-2.24 2.489-1.437 1.438-3.75 3.563Zm0-2.771q1.979-1.791 3.25-3.031 1.271-1.24 2.031-2.167.761-.927 1.052-1.635.292-.708.292-1.417 0-1.25-.844-2.094-.843-.843-2.135-.843-.688 0-1.344.312-.656.313-.906.667l-.729.854H9.333l-.729-.854q-.25-.354-.927-.667Q7 3.792 6.354 3.792q-1.292 0-2.135.843-.844.844-.844 2.094 0 .709.271 1.386.271.677 1.01 1.593.74.917 2.021 2.167 1.281 1.25 3.323 3.104Zm0-5.604Z" />
                             </svg>
-
                         </Link>
                     </li>
 
@@ -171,8 +170,8 @@ const Header = () => {
 
 
 
-            <div className={styles.HeaderCategories}>
-                <ul className={styles.HeaderCategoriesList}>
+            <div className={styles.header__categories}>
+                <ul className={styles.categories__list}>
                     <li>
                         <Link href='/'>
                             <Image src={logo} alt="SDAEM.BY" />
