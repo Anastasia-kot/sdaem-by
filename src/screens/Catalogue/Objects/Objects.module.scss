@@ -1,4 +1,4 @@
-.Objects {
+.objects {
     background-color: rgb(255, 255, 255);
     width: 100%;
     padding: 0;
@@ -13,7 +13,7 @@
     color: #1E2123;
 
 
-    .SettingsList {
+    .objects__settings {
         height: 80px;
         margin-bottom: 61px;
         display: flex;
@@ -23,7 +23,7 @@
         align-items: center;
         margin-left: 20px;
 
-        li:first-child.SettingsItem {
+        li:first-child.settings__item {
             
             form {
                 position: relative;
@@ -60,7 +60,7 @@
 
         }
 
-        li:last-child.SettingsItem {
+        li:last-child.settings__item {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
@@ -68,14 +68,14 @@
             justify-content: space-between;
 
 
-            .RadioBlock {
+            .item__viewMode {
                 display: flex;
                 justify-content: space-between;
                 width: 235px;
             }
 
-            .RadioGroup,
-            button {
+            .viewMode__radio,
+            .item__button {
                 display: flex;
                 position: relative;
 
@@ -96,7 +96,7 @@
                 }
             }
 
-            .RadioGroup {
+            .viewMode__radio {
                 width: 106px;
                 margin-right: 20px;
 
@@ -118,7 +118,7 @@
 
             }
 
-            button {
+            .item__button {
 
                 width: 180px;
                 padding: 0px;
@@ -140,12 +140,33 @@
         }
     }
 
-    .ResultBlock {
-
-        @media (max-width: 864px) {}
 
 
-        h2 {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .objects__items {
+        position: relative;
+        max-width: 1440px;
+        margin: 0 auto;
+        // padding-bottom: 170px;           
+        margin-bottom: 168px;           
+         @media (max-width: 864px) {}
+
+
+        .items__title {
             margin-bottom: 39px;
 
             font-weight: 700;
@@ -157,10 +178,12 @@
         .ResultListTileView {
             display: flex;
             gap: 30px;
-            margin-bottom: 20px;
             flex-wrap: wrap;
+            // margin-bottom: 170px;           
 
+            position: relative;
 
+           
 
 
         }
@@ -178,16 +201,18 @@
 
             flex-direction: row;
             justify-content: center;
-        }
 
-        .ResultBlockFooter {
-            margin-bottom: 0px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-
+            
         }
+        .items__socials {
+            position: absolute;
+            right: 0;
+            bottom: -117px;
+            
+            display: block;
+            width: min-content;
+        }
+     
 
     }
 }

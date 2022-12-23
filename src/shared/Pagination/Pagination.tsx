@@ -1,164 +1,76 @@
-import Image from 'next/image'
 import styles from './Pagination.module.scss'
-import React, { Component, useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+ 
 import ReactPaginate from 'react-paginate';
  
-type Props = {
-    totalCount: number
-    currentPage: number
-}
-export const Pagination = ({ totalCount, currentPage }) => {
-    let arr: Array<number> = [];
-    for (let i = 1; i <= totalCount; i++) {
-        arr.push(i) 
-    }
+// const Items = ({ currentItems }) => <> {currentItems && currentItems.map((n) => <NewsCard key={n.id} data={n} />)} </>
+const Items = ({ currentItems, Component, style }) => <> {currentItems && currentItems.map((n) => <Component key={n.id} data={n} style={style}/>)} </>
 
-    return (
-        <nav>
-            <ol className={styles.Pagination}>
+export function PaginatedItems({ itemsPerPage, items, Component, style }) {
+    // Here we use item offsets; we could also use page offsets
+    // following the API or data you're working with.
+    const [itemOffset, setItemOffset] = useState(0);
 
-                {arr.map(a => <li key={arr.indexOf(a)} className={a === currentPage ?styles.active: ''}>{a}</li>)}
-           
-            </ol>
-        </nav>
-    )
-}
+    // Simulate fetching items from another resources.
+    // (This could be items from props; or items loaded in a local state
+    // from an API endpoint with useEffect and useState)
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    const currentItems = items.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(items.length / itemsPerPage);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const CommentList = (props) => { 
-        let commentNodes =  props.data.map(function (comment, index) {
-            return (
-                <li key={index} className="list-group-item">
-                    <div className="d-flex w-100 justify-content-between">
-                        <h5 className="mb-1">{comment.comment}</h5>
-                    </div>
-                    <small>From {comment.username}.</small>
-                </li>
-            );
-        });
-
-        return (
-            <div id="project-comments" className="commentList">
-                <ul className="list-group">{commentNodes}</ul>
-            </div>
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % items.length;
+        console.log(
+            `User requested page number ${event.selected}, which is offset ${newOffset}`
         );
-}
-
-
-export const Pagination2 = (props) => {
-    // static propTypes = {
-    //     url: PropTypes.string.isRequired,
-    //     author: PropTypes.string.isRequired,
-    //     perPage: PropTypes.number.isRequired,
-    // };
-
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-            // data: [],
-            // offset: 0,
-    //     };
-    // }
-
-    const [state, setState] = useState({
-        data: [],
-        offset: 0,
-    })
-
-   let loadCommentsFromServer= ()=> {}
-    loadCommentsFromServer();
- 
-
-    let handlePageClick = (data) => {
-        console.log('onPageChange', data);
-        let selected = data.selected;
-        let offset = Math.ceil(selected * props.perPage);
-
-        // setState({ offset: offset }, () => {
-        //     loadCommentsFromServer();
-        // });
+        setItemOffset(newOffset);
     };
 
-    
-        const currentPage = Math.round(state.offset / props.perPage);
-        return (
-            <div className="commentBox">
-                {/* <MyPaginate
-                    pageCount={20}
-                    onPageChange={this.handlePageClick}
-                    forcePage={currentPage}
-                /> */}
-                <CommentList data={state.data} />
-                {/* Here the pagination component is styled thanks to Bootstrap
-        classes. See https://getbootstrap.com/docs/5.1/components/pagination */}
-                <nav aria-label="Page navigation comments" className="mt-4">
-                    <ReactPaginate
-                        previousLabel="previous"
-                        nextLabel="next"
-                        breakLabel="..."
-                        breakClassName="page-item"
-                        breakLinkClassName="page-link"
-                        pageCount={20}
-                        pageRangeDisplayed={4}
-                        marginPagesDisplayed={2}
-                        onPageChange={handlePageClick}
-                        containerClassName="pagination justify-content-center"
-                        pageClassName="page-item"
-                        pageLinkClassName="page-link"
-                        previousClassName="page-item"
-                        previousLinkClassName="page-link"
-                        nextClassName="page-item"
-                        nextLinkClassName="page-link"
-                        activeClassName="active"
-                        // eslint-disable-next-line no-unused-vars
-                        hrefBuilder={(page, pageCount, selected) =>
-                            page >= 1 && page <= pageCount ? `/page/${page}` : '#'
-                        }
-                        hrefAllControls
-                        forcePage={currentPage}
-                        onClick={(clickEvent) => {
-                            console.log('onClick', clickEvent);
-                            // Return false to prevent standard page change,
-                            // return false; // --> Will do nothing.
-                            // return a number to choose the next page,
-                            // return 4; --> Will go to page 5 (index 4)
-                            // return nothing (undefined) to let standard behavior take place.
-                        }}
-                    />
-                </nav>
-            </div>
-        );
+    return (
+        <>
+            <Items currentItems={currentItems} Component={Component} style={style}/>
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel={'null'}
+                previousLabel={'null'}
+
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={9}
+                pageCount={pageCount}
+                renderOnZeroPageCount={null}
+
+                className={'containerClassName'}
+                containerClassName={'containerClassName'}
+
+                breakClassName={'breakClassName'}
+                breakLinkClassName={'breakLinkClassName'}
+
+                previousClassName={'previousClassName'}	
+                nextClassName={'nextClassName'}
+                
+                pageClassName={'pageClassName'}  
+                pageLinkClassName={'pageLinkClassName'}
+
+                activeClassName={'activeClassName'}
+                activeLinkClassName={'activeLinkClassName'}
+              
+            />
+        </>
+    );
 }
 
 
 
 
-// const container = document.getElementById('react-paginate');
-// const root = createRoot(container);
-// root.render(
-//     <App url={'http://localhost:3000/comments'} author={'adele'} perPage={6} />
-// );
+
+
+
+
+
+
+ 
 
 
 
@@ -168,3 +80,14 @@ export const Pagination2 = (props) => {
 
 
 
+
+
+
+
+
+
+
+ 
+
+
+ 

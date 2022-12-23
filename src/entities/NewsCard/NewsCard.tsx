@@ -5,24 +5,26 @@ import styles from './NewsCard.module.scss'
 const room = require('../../../public/images/room.png');
 
 type Props = {
-    id: number
-    image: string | null
-    title: string
-    shortDescription: string
-    description: Array<string>
-    date: Date | string // string as ISO Date
+    data: {
+        id: number
+        image: string | null
+        title: string
+        shortDescription: string
+        description: Array<string>
+        date:  string // string as ISO Date
+    }
 }
-export const NewsCard = ({
-    id,
-    image,
-    title,
-    shortDescription,
-    description,  
-    date,
-}) => {
+
+export const NewsCard = (props: Props) => {
+
+   const { id,  image, title, shortDescription, description,  date, } = props.data;
+
     return (
-        <div className={styles.Card}>
-            <Image src={image ? image : room} alt="" width={406} height={227} />
+        <div className={styles.card}>
+            {image
+                ? <img src={image } alt="article image" className={styles.card__image} />
+                : <Image src={room} alt="article image" className={styles.card__image} />
+            }
              <div className={styles.CardContent}>
                 <h3>{title}</h3>
                 <p>{shortDescription}</p>

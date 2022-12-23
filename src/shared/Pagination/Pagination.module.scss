@@ -1,50 +1,40 @@
-   .Pagination {
-       margin-bottom: 63px;
-       margin-left: 6px;
-       display: flex;
+  // .containerClassName {
+  //   display: flex;
+  //   justify-content: start;
+  //   gap: 14px;
+  // }
+
+  // .containerClassName {
+  //   display: flex;
+  //   justify-content: start;
+  //   gap: 14px;
+  // }
+
+  // .breakClassName {}
+
+  // .breakLinkClassName {}
+
+  // .pageClassName {
+  //   //li
+  //   cursor: pointer;
+
+  //   font-family: 'Inter';
+  //   font-style: normal;
+  //   font-weight: 400;
+  //   font-size: 18px;
+  //   line-height: 22px;
+  //   /* identical to box height */
 
 
-       font-family: 'Inter';
-       font-style: normal;
-       font-weight: 400;
-       font-size: 18px;
-       line-height: 22px;
-       /* identical to box height */
+  //   /* Style */
 
+  //   color: #686868;
+  // }
 
-       /* Style */
+  // .pageLinkClassName {
+  //   //a
+  // }
 
-       color: #686868;
+  // .activeClassName {}
 
-       li {
-           margin-right: 15px;
-       }
-
-
-
-       .active {
-           font-family: 'Inter';
-           font-style: normal;
-           font-weight: 700;
-           font-size: 18px;
-           line-height: 22px;
-           /* identical to box height */
-
-
-           color: #000000;
-
-           position: relative;
-
-           &::after {
-               position: absolute;
-               bottom: -1px;
-               left: -5px;
-               content: ' ';
-               height: 2px;
-               width: 22px;
-               background: #FFD54F;
-
-
-           }
-       }
-   }
+  // .activeLinkClassName {}

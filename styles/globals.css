@@ -63,4 +63,64 @@ h1, h2, h3, h4, h5, p {
 @import url(../public/fonts/Inter/inter.css);
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
- 
+
+
+
+
+
+/* PAGINATION STYLES */
+
+        .containerClassName {
+    position: absolute;
+      bottom: -106px;
+      left: 5px;
+
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
+          /* width: 100%; */
+          gap: 14px;
+        }
+    
+    
+     .previousClassName {
+                    display: none;
+     }
+     .nextClassName {
+              display: none;
+     }
+    
+        .pageClassName {
+          /* //li */
+          cursor: pointer;
+    
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 22px;
+          /* identical to box height */
+    
+    
+          /* Style */
+    
+          color: #686868;
+        }
+             
+
+        .pageLinkClassName {
+          /* //a */
+        }
+    
+        .activeClassName {font-family: 'Inter';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 22px;
+          /* identical to box height */
+        
+        
+          color: #000000;
+        border-bottom: 2px solid #FFD54F;}
+    
+        .activeLinkClassName {}

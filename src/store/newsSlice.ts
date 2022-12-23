@@ -1,6 +1,3 @@
-// added slice
-
-
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
@@ -38,9 +35,8 @@ const initialState: NewsState = {
             date: '1995-12-17'
         },
         {
-            id: 1, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/7/76/756709214464767.jpg',
+            id: 1,  
+            image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/7/76/756709214464767.jpg',
             title: 'Спрос упал, цены выросли: как апартаменты в Москве пережили 2022 год',
             shortDescription: 'Рынок апартаментов просел сильнее, чем рынок квартир. Вместе с экспертами разбираемся, как изменились цены и спрос на первичном рынке апартаментов Москвы в 2022 году',
             description: [
@@ -55,9 +51,8 @@ const initialState: NewsState = {
             date: '2022-12-13'
         },
         {
-            id: 2, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/7/89/756705957904897.jpg',
+            id: 2, 
+            image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/7/89/756705957904897.jpg',
             title: 'За что деловой квартал Comcity назвали лучшим офисным зданием в мирe',
             shortDescription: 'Разбираемся, что помогло офисному парку на юго-западе Москвы получить международную награду International Property Awards',
             description: [
@@ -70,9 +65,8 @@ const initialState: NewsState = {
             date: '2022-12-12'
         },
         {
-            id: 3, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/5/95/756708349165955.jpg',
+            id: 3,  
+             image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/5/95/756708349165955.jpg',
             title: 'Украшаем дом к Новому году вместе с дизайнером: тренды, лайфхаки, советы',
             shortDescription: 'Вместе с дизайнерами разбираем основные принципы стильного новогоднего декора и главные ошибки при праздничном оформлении дома',
             description: [
@@ -84,9 +78,8 @@ const initialState: NewsState = {
             date: '2022-12-11'
         },
         {
-            id: 4, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/9/79/756705943957799.jpg',
+            id: 4,  
+            image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/9/79/756705943957799.jpg',
             title: 'Что такое зимний режим окон и надо ли на него переходить',
             shortDescription: 'С приходом первых холодов можно услышать, что окна следует перевести в зимний режим. Инструкции в стиле «сделай сам» обещают, что он избавит от сквозняков и в целом продлит срок службы стеклопакета',
             description: [
@@ -102,9 +95,8 @@ const initialState: NewsState = {
             date: '2022-12-10'
         },
         {
-            id: 5, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/8/13/756705818877138.jpg',
+            id: 5,
+             image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/8/13/756705818877138.jpg',
             title: 'Эксперты назвали районы ЦАО, где жилье сдается от ₽25 тыс. в месяц',
             shortDescription: 'С начала года средние ставки долгосрочного найма в Центральном АО снизились, в некоторых районах — в полтора раза и больше',
             description: [
@@ -132,9 +124,8 @@ const initialState: NewsState = {
             date: '2022-12-13'
         },
         {
-            id: 6, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/9/40/756708439743409.jpg',
+            id: 6, 
+            image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/9/40/756708439743409.jpg',
             title: 'Власти Москвы показали, как будет выглядеть станция метро «Физтех»',
             shortDescription: 'Станция должна открыться в 2023 году на Люблинско-Дмитриевской линии метро Москвы, она станет конечной. Сейчас — монолитные конструкции',
             description: [
@@ -162,9 +153,8 @@ const initialState: NewsState = {
             date: '2022-12-12'
         },
         {
-            id: 7, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/5/76/756705778903765.jpg',
+            id: 7, 
+             image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/5/76/756705778903765.jpg',
             title: 'Росреестр предложил в 2023 году изменить определение недвижимости',
             shortDescription:  'Недвижимыми предлагается считать только те объекты, которые создавались в результате строительства, рассказали в ведомстве',
             description: [
@@ -181,9 +171,8 @@ const initialState: NewsState = {
             date: '2022-12-12'
         },
         {
-            id: 8, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/7/02/756699726095027.jpg',
+            id: 8, 
+            image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/7/02/756699726095027.jpg',
             title: 'Как сэкономить при строительстве или покупке дома. 8 способов',
             shortDescription: 'Рассказываем, как с помощью различных мер поддержки снизить расходы при покупке или строительстве частного дома',
             description: [
@@ -205,9 +194,8 @@ const initialState: NewsState = {
             date: '2022-12-05'
         },
         {
-            id: 9, image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/09/756699369823093.jpg',
+            id: 9, 
+            image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/3/09/756699369823093.jpg',
             title: 'Аналитики назвали улицы Москвы с самым дорогим жильем',
             shortDescription: 'Самые дорогие элитные столичные квартиры находятся на Пречистенской набережной, а также в Ордынском тупике и Большом Толмачевском переулке',
             description: [
@@ -227,9 +215,8 @@ const initialState: NewsState = {
         },
         {
             id: 10,
-            image: null,
-
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/6/94/756697488503946.jpg',
+          
+            image: 'https://s0.rbk.ru/v6_top_pics/resized/590xH/media/img/6/94/756697488503946.jpg',
             title: 'Москва вошла в топ-3 городов, где в ноябре сильнее всего подешевело жилье',
             shortDescription: 'Российская столица заняла в этом рейтинге второе место, уступая лишь Севастополю',
             description: [
@@ -245,8 +232,8 @@ const initialState: NewsState = {
         },
         {
             id: 11, 
-            image: null,
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/4/38/756703208972384.jpg',
+            
+             image: 'https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/4/38/756703208972384.jpg',
             title: 'Врач и юрист объяснили, можно ли «Нурофен» за рулем. Главные факты',
             shortDescription: 'Когда нужно сбить температуру или унять мышечную боль, применять «Нурофен» можно, но, как и с любым другим лекарством, есть нюансы для водителей',
             description: [
@@ -266,8 +253,7 @@ const initialState: NewsState = {
         },
         {
             id: 12,
-            // image: 'https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/9/44/756688466912449.jpg',
-            image: null,
+            image: 'https://s0.rbk.ru/v6_top_pics/resized/1440xH/media/img/9/44/756688466912449.jpg',
             title: 'Когда на асфальте слишком тесно. Суперкары, которые стали внедорожниками',
             shortDescription: 'Новейшие Porsche и Lamborghini, а также несколько суперкаров прошлых лет, пригодных для очень быстрой езды по не очень хорошим покрытиям',
             description: [
