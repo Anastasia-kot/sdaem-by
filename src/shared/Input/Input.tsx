@@ -18,6 +18,7 @@ type Props = {
     label: any     // label: Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
     pattern?: ValidationRule<RegExp>
     register: any     // register: UseFormRegister<ContactFormType> | UseFormRegister<AuthFormType> | UseFormRegister<RegisterFormType>
+    defaultValue?: string
     required: boolean
     errors?: Partial<FieldErrorsImpl<RegisterFormType>>
     errorPatternMessage?: string
@@ -26,27 +27,29 @@ type Props = {
 
 
 }
-export const InputBlock: FC<Props> = ({ 
-    type, 
-    labelRus, 
-    placeholder, 
-    flexDirection, 
-    width, 
-    height, 
-    nonActivePlaceholderColor = '#686868', 
-    imageSrc,
+export const InputBlock: FC<Props> = (props: Props) => {
 
-    label,
-    register,
-    pattern, 
-    required,
-    errors,
-    errorPatternMessage,
-    onChange
- 
- }) => {
+    const {
+        type,
+        labelRus,
+        placeholder,
+        flexDirection,
+        width,
+        height,
+        nonActivePlaceholderColor = '#686868',
+        imageSrc,
 
- 
+        label,
+        register,
+        defaultValue,
+        pattern,
+        required,
+        errors,
+        errorPatternMessage,
+        onChange
+
+    } = props;
+
     return (
         <label
             className={styles.Label}
@@ -81,7 +84,8 @@ export const InputBlock: FC<Props> = ({
                         className={styles.Textarea}
                         placeholder={placeholder}
                         style={{
-                            width: width,
+                            width: "100%",
+                            maxWidth: width,
                             height: height,
                             color: nonActivePlaceholderColor
                         }}
@@ -91,7 +95,7 @@ export const InputBlock: FC<Props> = ({
                     ></textarea>
                     : <input 
                         {...register(label, { required: "Обязательное поле", pattern: pattern })}
- 
+                        defaultValue={defaultValue}
                         className={styles.Input}
                         placeholder={placeholder}
                         type={type}
@@ -100,7 +104,7 @@ export const InputBlock: FC<Props> = ({
                             height: height,
                             color: nonActivePlaceholderColor,
                             paddingLeft: imageSrc ? '40px' : 'auto',
-                            border: (errors && errors[label]) ? '1px solid #EB5757' : '1px solid transparent' 
+                            // border: (errors && errors[label]) ? '1px solid #EB5757' : '1px solid transparent' 
                         }} 
                         onChange={onChange ? (e) => onChange(e.target.value) : ()=>{}}
                         />
