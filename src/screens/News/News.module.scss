@@ -2,35 +2,48 @@
     padding: 42px;
     padding-left: 80px;
     padding-right: 63px;
+    position: relative;
 
+.news__background {
+        position: absolute;
+        right: 0;
+        top: 31px;
 
+        width: 55%;
+        height: 1000px;
+
+        border-radius: 40px 0px 0px 0px;
+        background: linear-gradient(90deg, rgb(148, 175, 255, 0.1) 0%, rgb(78, 100, 249, 0.1) 94.5%);
+
+        background-repeat: no-repeat;
+
+    }
     .news__header {
+                margin-bottom: 51px;
+                margin-top: 25px;
+
+                height: 42px;
+
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-bottom: 50px;
+        align-items: flex-start;
 
         .header__title {
+        align-self: start;
+
             font-family: 'Inter';
             font-style: normal;
             font-weight: 700;
             font-size: 30px;
             line-height: 100%;
-            /* identical to box height, or 30px */
-
-            display: flex;
-            align-items: center;
-
-            /* Style */
-
             color: #1E2123;
         }
 
         .header__form {
-
+            align-self: end;
 
             position: relative;
-            margin-top: 13px;
 
             input {
 
@@ -70,7 +83,7 @@
                 gap: 10px;
 
                 position: absolute;
-                bottom: -0px;
+                top: 0;
                 right: 0;
 
                 &:hover {

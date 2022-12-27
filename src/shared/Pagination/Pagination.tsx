@@ -1,12 +1,29 @@
 import styles from './Pagination.module.scss'
-import React, { useState } from 'react';
+import React, {  ReactComponentElement, ReactElement, useState } from 'react';
  
 import ReactPaginate from 'react-paginate';
  
-// const Items = ({ currentItems }) => <> {currentItems && currentItems.map((n) => <NewsCard key={n.id} data={n} />)} </>
-const Items = ({ currentItems, Component, style }) => <> {currentItems && currentItems.map((n) => <Component key={n.id} data={n} style={style}/>)} </>
 
-export function PaginatedItems({ itemsPerPage, items, Component, style }) {
+type ItemsProps = {
+    currentItems: Array<any>
+    Component: any 
+    style?: string
+}
+const Items = ( { currentItems, Component, style }  : ItemsProps) => <> 
+        {style
+            ?  currentItems && currentItems.map((n) => <Component key={n.id} data={n} style={style} />) 
+            : currentItems && currentItems.map((n) => <Component key={n.id} data={n}  />) 
+        }</>
+
+
+type PaginatedItemsProps = {
+    itemsPerPage:number 
+    items: Array<any> 
+    Component: any  
+    style?: string
+} 
+export function PaginatedItems( { itemsPerPage, items, Component, style }: PaginatedItemsProps) {
+
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
     const [itemOffset, setItemOffset] = useState(0);
@@ -30,7 +47,7 @@ export function PaginatedItems({ itemsPerPage, items, Component, style }) {
 
     return (
         <>
-            <Items currentItems={currentItems} Component={Component} style={style}/>
+            <Items currentItems={currentItems} Component={Component}  style={style} />
             <ReactPaginate
                 breakLabel="..."
                 nextLabel={'null'}

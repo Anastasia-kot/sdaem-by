@@ -1,6 +1,5 @@
 .footer {
     width: 100%;
-    min-width: 393px;
     background-color: white;
     color: black;
     box-sizing: border-box;
@@ -290,6 +289,7 @@
 
             @media (max-width: 800px) {
                 flex-wrap: wrap;
+                width: 100%;
             }
 
             li {
@@ -331,7 +331,7 @@
 
             .footer__navigation{
                 max-height: 100%;
-                // gap: 0px;
+                gap: 15px;
                 justify-content: space-between;
 
 
@@ -339,6 +339,7 @@
                 .NavigationCatrgoriesList,
                     .NavigationLocationsList,
                     .NavigationLinksList{max-height: auto;}
+
                 .NavigationLocations{
                     min-width: auto;
                     margin-right: 0;
@@ -356,12 +357,20 @@
                  "c "
                  "n "
                  "sp";
-             grid-template-columns: 1fr;
+             grid-template-columns: 100%;
              grid-template-rows: min-content min-content min-content;
+             max-width: 100%;
+             box-sizing: border-box;
 
                         .footer__navigation {
                             flex-wrap: wrap;
                             justify-content: space-around;
+                        }
+                        .footer__socialsAndPayment{
+                            .Payment{
+                                width: 100%;
+                                 
+                            }
                         }
     
          }

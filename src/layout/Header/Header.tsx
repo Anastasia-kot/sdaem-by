@@ -6,7 +6,7 @@ import styles from './Header.module.scss';
 import Link from "../../../node_modules/next/link";
 import Image from "next/image";
 import classNames from "classnames";
-import { setAuthUserData, setToggleLogIn } from "../../store/authSlice";
+import { setAuthUserData, setToggleLogIn, UserDataInterface } from "../../store/authSlice";
 import { citiesList, setFilters } from "../../store/filtersSlice";
 import { useRouter } from "next/router";
 import { cityNameConverters } from "../../../helpers/cityNameConverters";
@@ -22,6 +22,9 @@ const arrowDown = require('../../../public/images/svg/arrow_down.svg');
 
 
 const Header = () => {
+
+    const userData: UserDataInterface = useSelector((state: RootState) => state.auth.data)
+    const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth)
 
     const router = useRouter();
     const dispatch = useDispatch();
@@ -43,8 +46,7 @@ const Header = () => {
     const [isUnloginMenuActive, setIsUnloginMenuActive] = useState(false);
 
 
-    const userData = useSelector((state: RootState) => state.auth.data)
-    const isAuth = useSelector((state: RootState) => state.auth.isAuth)
+
 
 
 
@@ -59,11 +61,11 @@ const Header = () => {
     }
     const onUnloginButtonClick = () => {
 
-
         dispatch(setToggleLogIn(false))
         dispatch(setAuthUserData({
             email: null,
             login: null,
+            avatar: null
         }))
     }
 
@@ -116,7 +118,7 @@ const Header = () => {
                     <li className={isUnloginMenuActive ? styles.active : ''}>
                         {isAuth
                             ? <>
-                                <Image src={avatar} alt='avatar' width={30} height={30} className={styles.Avatar} />
+                                <Image src={userData?.avatar ? userData.avatar  : avatar} alt='avatar' width={30} height={30} className={styles.Avatar} />
                                 <span className={styles.UserName}> {userData.login}</span>
                                 <button
                                     type='button'

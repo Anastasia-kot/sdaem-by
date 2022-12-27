@@ -74,10 +74,6 @@ const initialState: FilterState = {
     microwave: null,
     dishes: null,
     dishwasher: null,
-
-
- 
-
 }
 
 

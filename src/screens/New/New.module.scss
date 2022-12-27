@@ -1,19 +1,20 @@
-.New {
+.new {
     width: 100%;
+    background-color: white;
 
-    .TitleBlockContainer {
+    .new__heading {
         background: linear-gradient(90deg, rgb(148, 175, 255, 0.1) 0%, rgb(78, 100, 249, 0.1) 94.5%);
         min-height: 280px;
         width: 100%;
 
-        .TitleBlock {
+        .heading {
             max-width: 860px;
             margin: 0 auto;
             padding-top: 61px;
             padding-left: 16px;
             padding-bottom: 80px;
 
-            .Title {
+            .heading__title {
                 margin-top: 24px;
                 margin-bottom: 30px;
 
@@ -33,13 +34,14 @@
                 color: #1E2123;
             }
 
-            .TitleButtonsBlock {
+            .heading__info {
                 display: flex;
                 justify-content: space-between;
                 flex-wrap: wrap;
+                gap: 20px;
                 width: 100%;
 
-                .TitleDateSpan {
+                .info__date {
                     display: flex;
                     flex-direction: row;
                     flex-wrap: nowrap;
@@ -77,42 +79,37 @@
     }
 
 
-    .ContentBlockWrapper {
-        background-color: white;
-        width: 100%;
-
-
-
-        .ContentBlock {
+    .new__content {
             position: relative;
-            top: -64px;
+            top: -45px;
             width: min-content;
             height: min-content;
             margin: 0 auto;
 
-            .Image {
+            .content__image {
                 border-radius: 10px;
                 display: block;
                 position: relative;
-                // margin: 0 auto;
             }
 
             .Dotes {
                 position: absolute;
-                left: -65px;
-                top: 100px;
+                z-index: 1;
+                left: -105px;
+                top: 80px;
             }
 
-            .ContentTextBlock {
+            .content__text {
                 position: relative;
-                top: -20px;
+                top: 42px;
                 height: min-content;
+                
 
 
 
                 max-width: 860px;
                 margin: 0 auto;
-                padding-left: 16px;
+                margin-bottom: 60px;
 
                 font-family: 'Inter';
                 font-style: normal;
@@ -129,17 +126,17 @@
                 p {
                     margin-bottom: 24px;
 
-                    &:last-child {
-                        margin-bottom: 0;
-                    }
+                    // &:last-child {
+                    //     margin-bottom: 0;
+                    // }
                 }
             }
-        }
+        
 
         @media (max-width: 900px) {
             width: auto;
-            .ContentBlock {     width: auto;}
-            .Image {
+            padding: 0 20px;
+             .content__image {
                 width: 100%;
                 height: auto;
             }
@@ -148,32 +145,29 @@
                 display: none;
             }
 
-            .ContentTextBlock {
-                width: auto;
-                                
-                p{
-                     width: 100%;} 
-            }
+          
         }
     }
 
 
 
-    .AlsoReadBlockContainer {
+    .new__alsoRead {
         background: linear-gradient(90deg, rgb(148, 175, 255, 0.1) 0%, rgb(78, 100, 249, 0.1) 94.5%);
         min-height: 737px;
         width: 100%;
 
-        .AlsoReadBlock {
-            max-width: 1300px;
+        .alsoRead__content {
+            max-width: 1317px;
 
 
             padding-top: 62px;
             padding-left: 17px;
+            padding-right: 17px;
+            padding: 62px 17px;
             margin: 0 auto;
 
 
-            .AlsoReadTitle {
+            .content__title {
                 margin-bottom: 45px;
 
                 font-family: 'Inter';
@@ -187,7 +181,7 @@
                 color: #1E2123;
             }
 
-            .CardsBlock {
+            .content__cards {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;

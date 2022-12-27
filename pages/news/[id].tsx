@@ -1,4 +1,4 @@
-import React, { useEffect, FC } from 'react';
+import React, {  FC } from 'react';
 import { New } from '../../src/screens/New/New';
 import { Layout } from '../../src/layout/Layout';
 import { useRouter } from 'next/router';

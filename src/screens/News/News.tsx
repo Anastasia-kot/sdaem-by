@@ -9,11 +9,18 @@ import { NewsType } from '../../store/newsSlice'
 import { RootState } from '../../store/store'
 import styles from './News.module.scss'
 import { PaginatedItems } from '../../shared/Pagination/Pagination'
+import { sortingNewsPerDate } from '../../../helpers/sortingFunctions'
+import { useRouter } from 'next/router'
 
 export const News = () => {
 
     const news: NewsType[] = useSelector((state: RootState) => state.news.data)
+    const searchWord = useSelector((state: RootState) => state.news.searchWord)
+    const router = useRouter();
+    console.log(router)
+
  
+    let [filteredNews, setFilteredNews] = useState<NewsType[]>(sortingNewsPerDate(news))
 
 
 
@@ -23,25 +30,32 @@ export const News = () => {
 
 
     //for form
-
-    // let [filteredNews, setFilteredNews] = useState<NewsType[]>(news)
- 
     const { handleSubmit, register, formState: { errors } } = useForm<{ searchWord: string }>();
 
     const sortingFunc = (searchWord) => {
-    //     let newNewsList: NewsType[] = []
-    //     news.forEach(function (item, index, array) {
-    //         if (item.title.includes(searchWord) || item.shortDescription.includes(searchWord) || item.description.join(';').includes(searchWord)) {
-    //             newNewsList.push(item)
-    //         }
-    //     });
-    //     setFilteredNews(newNewsList)
-    //     // console.log(searchWord)
-    //     // console.log(newNewsList)
- 
+        let newNewsList: NewsType[] = news.filter( 
+                (item: NewsType) =>  (
+                       item.title.includes(searchWord)           
+                    || item.shortDescription.includes(searchWord)
+                    || item.description.join(';').includes(searchWord) 
+                )   
+        )
+        newNewsList = sortingNewsPerDate(newNewsList)
+        setFilteredNews(newNewsList)
+
     }
+
     const onSubmit = values => {
-        // sortingFunc(values.searchWord)
+        sortingFunc(values.searchWord)
+        router.push('/news?search=' + values.searchWord)
+
+        // set in URL
+        //set in redux
+    }
+    const onBlur = values => {
+        sortingFunc(values.searchWord)
+        // set in URL
+        //set in redux
     }
 
 
@@ -61,6 +75,8 @@ export const News = () => {
 
     return (
         <main className={styles.news}>
+            <div className={styles.news__background}></div>
+
 
             <Breadcrumbs breadcrumbs={[{ name: '', value: 'Новости' }]} />
             <div className={styles.news__header}>
@@ -75,7 +91,7 @@ export const News = () => {
                         placeholder={'Поиск по статьям'}
                         flexDirection={null}
                         width={622}
-                        height={41}
+                        height={37}
                         imageSrc={null}
 
                         label={'searchWord'}
@@ -94,7 +110,7 @@ export const News = () => {
             </div>
 
             <div className={styles.news__cards}>  
-                <PaginatedItems itemsPerPage={9} items={news} Component={NewsCard}/>
+                <PaginatedItems itemsPerPage={9} items={filteredNews} Component={NewsCard}/>
             </div>
         </main>
     )

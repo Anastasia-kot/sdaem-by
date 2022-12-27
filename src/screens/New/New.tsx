@@ -8,24 +8,39 @@ import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { dateConverter } from '../../../helpers/dateConverters'
-const room = require('../../assets/images/room_big_quality.png');
+import { NewsType } from '../../store/newsSlice'
+import { sortingNewsPerDate } from '../../../helpers/sortingFunctions'
+const room = require('../../../public/images/room_big_quality.png');
 
 
 export const New = ({ id }) => {
     console.log('id:', id)
-    const news = useSelector((state: RootState) => state.news.data)
-    const totalCount = useSelector((state: RootState) => state.news.totalCount)
+    const news: NewsType[] = useSelector((state: RootState) => state.news.data)
+
+    let suggestNews: NewsType[]  = []
+    for (let i = 0; suggestNews.length < 3; i++ ) {
+        if (+id !== sortingNewsPerDate([...news])[i].id) {
+            suggestNews = [...suggestNews, sortingNewsPerDate([...news])[i]]
+        }
+    } 
+  
+
+
 
     const router = useRouter()
 
     useEffect(() => {
-        let isIdExist: boolean = false;
-        for (let i = 0; i < news.length; i++ ){
-            if (news[i].id == id) { 
-                isIdExist = true;
-                break;
+        let isIdExist: boolean = true;
+            if(id) {  // пререндеры где undef не повлияяют
+                isIdExist = false;
+                for (let i = 0; i < news.length; i++) {
+                    if (news[i].id == id) {
+                        isIdExist = true;
+                        break;
+                    }
+                }
             }
-        }
+        
 
         if ( !isIdExist ) {
             setTimeout(() => {
@@ -41,55 +56,38 @@ export const New = ({ id }) => {
 
 
 
-    // генерация случайных карточек-предложек
-
-    function getRandomInt(max) {  // не включая max
-        return Math.floor(Math.random() * max);
-    }
-    // функция-проверка что не равна текущей карточке
-    let randomIdArray: Array<number> = [];
-        randomIdArray.push(getRandomInt(totalCount))
-        randomIdArray.push(getRandomInt(totalCount))
-        randomIdArray.push(getRandomInt(totalCount))
-    
-    
-
-
 
 
 
 
     return (
-        <main className={styles.New}>
+        <main className={styles.new}>
             <>
             {news.map(n => {
                 if (n.id == +id) { return <>
-                        <div className={styles.TitleBlockContainer}>
-                            <div className={styles.TitleBlock}>
+                        <div className={styles.new__heading}>
+                            <div className={styles.heading}>
                                 
                                  <Breadcrumbs breadcrumbs={[
                                     {name: 'news', value: 'Новости '}, 
                                     {name: '',     value: `${n.title}`}]} />
 
-                                <h1 className={styles.Title}>{n.title}</h1>
-                                <div className={styles.TitleButtonsBlock}>
-                                    <span className={styles.TitleDateSpan}>
-                                    {dateConverter(n.date)}
-                                       
-                                    </span>
-                                    <Socials_sharing
-                                        color={'violet'}
-                                     />
+                                <h1 className={styles.heading__title}>{n.title}</h1>
+                                <div className={styles.heading__info}>
+                                    <span className={styles.info__date}>{dateConverter(n.date)}  </span>
+                                    <Socials_sharing color={'violet'}  />
                                 </div>
 
 
                             </div>
                         </div>
 
-                        <div className={styles.ContentBlockWrapper}>
+                        <div className={styles.new__content}>
 
-                            <div className={styles.ContentBlock}>
-                                <Image src={n.image ? n.image : room} alt="" className={styles.Image} />
+                            {n.image 
+                                ? <img src={n.image} alt="" className={styles.content__image}  />
+                                : <Image src={room} alt="" className={styles.content__image} width={845} height={563} />
+                            }
                                 <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg"
                                     className={styles.Dotes}>
                                     <g filter="url(#filter0_d_2831_1177)">
@@ -287,11 +285,10 @@ export const New = ({ id }) => {
                                         </filter>
                                     </defs>
                                 </svg>
-                                <div className={styles.ContentTextBlock}>
+                                <div className={styles.content__text}>
                                     {n.description.map(d => <p key={n.description.indexOf(d)}>{d}</p>)}
                                 </div>
                             
-                            </div>
                      
                            
                         </div>
@@ -304,29 +301,11 @@ export const New = ({ id }) => {
 
 
 
-            <div className={styles.AlsoReadBlockContainer}>
-                <div className={styles.AlsoReadBlock}>
-                    <h2 className={styles.AlsoReadTitle}>
-                        Читайте также
-                    </h2>
-                    <div className={styles.CardsBlock}>
-                        {news.map(n => {
-                            if (randomIdArray.includes(news.indexOf(n))
-                                ) {
-                                return <NewsCard
-                                    key={n.id}
-                                    id={n.id}
-                                    image={n.image}
-                                    title={n.title}
-                                    shortDescription={n.shortDescription}
-                                    description={n.description}
-                                    date={n.date}
-                                />
-                            }
-                        })}
-                        {/* <NewsCard/> 
-                        <NewsCard/> 
-                        <NewsCard/>  */}
+            <div className={styles.new__alsoRead}>
+                <div className={styles.alsoRead__content}>
+                    <h2 className={styles.content__title}> Читайте также </h2>
+                    <div className={styles.content__cards}>
+                        {suggestNews.map(n => <NewsCard key={n.id} data={n} />)}
                     </div>
 
                 </div>

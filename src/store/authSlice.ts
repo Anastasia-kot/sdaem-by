@@ -9,12 +9,14 @@ export interface AuthState {
 export interface UserDataInterface { 
         email: string | null,
         login: string | null,
+        avatar: string | null,
 }
 
 const initialState: AuthState = {
     data: {
-        email: null,
+        email: null, // получаем с бекенда
         login: null,
+        avatar: null,  // получаем с бекенда
     },
     isAuth: false,
     initialized: false,

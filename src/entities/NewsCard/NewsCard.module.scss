@@ -1,122 +1,106 @@
 .card {
-    width: 406px;
+    max-width: 406px;
     height: 500px;
     border-radius: 10px;
     background-color: white;
     filter: drop-shadow(0px 20px 40px rgba(135, 124, 202, 0.15));
 
-    position: relative;
+
+    display: grid;
+    grid-template-rows: 257px 52px 109px 1fr;
+    align-items: start;
+
+        font-family: 'Inter', 'sans-serif';
+        font-style: normal;
+        font-size: 14px;
+        line-height: 17px;
 
     .card__image {
-        width: 406px;
-        height: 227px;
+        width: 100%;
+        height: auto;
+        // width: 406px;
+        // height: 227px;
         border-radius: 10px;
-        display: block;
-
     }
 
-    .CardContent {
+
+    .card__title,
+    .card__description{
+        padding: 0 20px;
+        overflow: hidden;
+        
+
+            display: -webkit-box;  /* Включаем флексбоксы */
+            -webkit-box-orient: vertical;  /* Вертикальная ориентация */
+                -webkit-line-clamp: 2;   /* Число отображаемых строк */
+               
+    }
+
+    .card__title {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        color: #1E2123;
+ 
+
+                -webkit-line-clamp: 2; /* Число отображаемых строк */
+      }
+
+    .card__description {
+        font-weight: 400;
+        
+        color: #686868;
+
+                -webkit-line-clamp: 5; /* Число отображаемых строк */
+    }
+
+    .card__footer {
+        border-top: 2px solid #F8F8F8;
+        padding-top: 19px;
+        height: 100%; 
         margin: 0 20px;
-        margin-top: 24px;
+ 
+ 
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
 
 
-        height: 245px;
 
-        h3 {
+        .footer__date {
+            padding: 11px 8px;
+            text-align: center;
 
-            margin-bottom: 17px;
 
-            font-family: 'Inter', 'sans-serif';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 19px;
+            background: #F8F8F8;
+            border-radius: 18px;
 
-            /* Style */
-
-            color: #1E2123;
+            font-weight: 500;
+            color: #8291A3;
         }
 
-        p {
-
-            margin-bottom: 17px;
-
-            font-family: 'Inter', 'sans-serif';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 17px;
-
-            /* Style */
-
-            color: #686868;
-        }
-
-
-
-        .CardContentFooter {
-
-            position: absolute;
-            bottom: 21px;
-            width: 366px;
+        .footer__button {
+            
             display: flex;
-            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px 15px;
+ 
 
 
-            &::before{position: absolute;
-            content: '';
-            height: 2px;
-            background-color: #F8F8F8;
-            width: 367.25px;
-            top:-20px;
-        }
-            .Date {
-                // width: 125px;
-                //   height: 17px;
+            background: rgba(102, 78, 249, 0.1);
+            border-radius: 17px;
 
 
+           
+            font-weight: 700;
+            color: #664EF9;
 
-                padding: 11px 8px;
-                text-align: center;
-                background: #F8F8F8;
-                border-radius: 18px;
+            &:hover{
+                background: rgba(102, 78, 249, 0.2);
 
-                font-family: 'Inter', 'sans-serif';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 17px;
-                color: #8291A3;
             }
-
-            .ReadButton {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 10px 15px;
-                gap: 10px;
-
-
-
-                background: rgba(102, 78, 249, 0.1);
-                border-radius: 17px;
-
-
-                font-family: 'Inter', 'sans-serif';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 14px;
-                line-height: 17px;
-                /* identical to box height */
-
-
-                /* #664EF9 */
-
-                color: #664EF9;
-            }
-
         }
-
 
     }
 }
