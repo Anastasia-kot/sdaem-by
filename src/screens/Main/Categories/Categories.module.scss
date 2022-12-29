@@ -88,11 +88,11 @@
         width: 297px;
 
 
+
         display: flex;
         flex-wrap: wrap;
         flex-shrink: 1;
         gap: 30px;
-
 
 
         .menu__list {
@@ -106,12 +106,9 @@
                 font-weight: 700;
                 font-size: 18px;
                 line-height: 22px;
-                /* identical to box height */
-
-
-                /* Gray 1 */
-
                 color: #333333;
+
+                cursor: pointer;
             }
 
             .list__list {
@@ -127,10 +124,11 @@
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 17px;
-                    /* identical to box height */
-                    color: #FEB700;
+                     color: #FEB700;
+
 
                     span {
+                                            cursor: pointer;
                         &:nth-of-type(1) {
                             &:hover {
                                 transform: translate(30px, 0);

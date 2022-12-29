@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { InputBlock } from '../../../shared/Input/Input'
 import { useForm } from 'react-hook-form'
 import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
-import { MainFiltersFormType } from '../../../../types/formTypes'
+import { MainFiltersFormType } from '../../../../types/formTypesOLD'
 import classNames from 'classnames'
 import { SelectBlock } from '../../../shared/Select_block/Select_block'
 

@@ -1,5 +1,5 @@
 import { UseFormRegister } from 'react-hook-form'
-import { MoreOptionsModalFormType } from '../../../types/formTypes'
+import { MoreOptionsModalFormType } from '../../../types/formTypesOLD'
 import { SelectBlock } from '../../shared/Select_block/Select_block'
 import styles from './MoreOptionsModal.module.scss'
  

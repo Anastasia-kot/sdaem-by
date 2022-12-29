@@ -386,6 +386,12 @@
 
             overflow: hidden;
             font-weight: 400;
+                display: -webkit-box;
+                    /* Включаем флексбоксы */
+                    -webkit-box-orient: vertical;
+                    /* Вертикальная ориентация */
+                    -webkit-line-clamp: 4;
+                    /* Число отображаемых строк */
 
         }
 
@@ -569,7 +575,8 @@
                 justify-Content: flex-start;
                 line-Height: 150%;
                 max-Height: 63px;
-
+    -webkit-line-clamp: 3;
+        /* Число отображаемых строк */
             }
             .content__footer {}
 

@@ -3,7 +3,7 @@ import styles from './Rent.module.scss'
 import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { SelectBlock } from '../../../shared/Select_block/Select_block'
 import { useForm } from 'react-hook-form'
-import { DistrictMetroType } from '../../../../types/formTypes'
+import { DistrictMetroType } from '../../../../types/formTypesOLD'
 import { useDispatch, useSelector } from "react-redux";
 import { setFilters } from "../../../store/filtersSlice";
 import { SimpleSlider } from "./Slider";

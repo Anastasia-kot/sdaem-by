@@ -3,6 +3,7 @@
     padding-left: 80px;
     padding-right: 63px;
     position: relative;
+    overflow: hidden;
 
 .news__background {
         position: absolute;
@@ -11,7 +12,7 @@
 
         width: 55%;
         height: 1000px;
-
+ 
         border-radius: 40px 0px 0px 0px;
         background: linear-gradient(90deg, rgb(148, 175, 255, 0.1) 0%, rgb(78, 100, 249, 0.1) 94.5%);
 

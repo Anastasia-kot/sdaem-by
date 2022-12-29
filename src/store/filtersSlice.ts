@@ -1,48 +1,149 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { CategoryType, MainFiltersFormType, MainFiltersKeysType } from '../../types/formTypes'
+import { CategoryType, MainFiltersFormType, MainFiltersKeysType } from '../../types/formTypesOLD'
 
-export const citiesList = [
-    'Минск',
-    'Гомель',
-    'Брест',
-    'Витебск',
-    'Гродно',
-    'Могилев'
-]
 
-export interface FiltersPayloadType {
-    category?: CategoryType | null,
-    city?: string | null,
-    district?: string | null,
-    metro?: string | null,
+export const FiltersRecommendationsList:
+    Array<{
+        name: string
+        value: string
+        filter: FiltersPayloadType
+    }> = [
 
-    rooms?: number | null,
-    priceMin?: number | null,
-    priceMax?: number | null,
+        {
+            name: 'cheap',
+            value: 'Недорогие',
+            filter: {
+                priceMax: 100,
+            }
+        },
+        {
+            name: '1room',
+            value: '1-комнатные',
+            filter: {
+                rooms: 1,
+            }
 
-    sleepPlaces?: number | null,
+        },
 
-    gas?: boolean | null,
-    oven?: boolean | null,
-    coffeeMachine?: boolean | null,
-    microwave?: boolean | null,
-    dishes?: boolean | null,
-    dishwasher?: boolean | null,
+        {
+            name: '2room',
+            value: '2-комнатные',
+            filter: {
+                rooms: 2,
+            }
+        },
 
-}
+        {
+            name: '3room',
+            value: '3-комнатные',
+            filter: {
+                rooms: 3,
+            }
+        },
+
+        {
+            name: '4room',
+            value: '4-комнатные',
+            filter: {
+                rooms: 4,
+            }
+        },
+
+        {
+            name: '5room',
+            value: '5-комнатные',
+            filter: {
+                rooms: 5,
+            }
+        },
+
+        {
+            name: 'factory_district',
+            value: 'Заводской р.',
+            filter: {
+                district: 'factory',
+            }
+        },
+
+
+        {
+            name: 'lenin_district',
+            value: 'Ленинский р.',
+            filter: {
+                district: 'lenin',
+            }
+        },
+
+
+        {
+            name: 'moscow_district',
+            value: 'Московский р.',
+            filter: {
+                district: 'moscow',
+            }
+        },
+
+
+        {
+            name: 'october_district',
+            value: 'Октябрьский р.',
+            filter: {
+                district: 'october',
+            }
+        },
+        {
+            name: 'partizan_district',
+            value: 'Партизанский р.',
+            filter: {
+                district: 'partizan',
+            }
+        },
+        {
+            name: '1may_district',
+            value: 'Первомайский р.',
+            filter: {
+                district: '1may',
+            }
+        },
+
+        {
+            name: 'soviet_district',
+            value: 'Советский р.',
+            filter: {
+                district: 'soviet',
+            }
+        },
+
+        {
+            name: 'frunze_district',
+            value: 'Фрунзенский р.',
+            filter: {
+                district: 'frunze',
+            }
+        },
+
+        {
+            name: 'center_district',
+            value: 'Центральный р.',
+            filter: {
+                district: 'center',
+            }
+        },
+    ]
+
 
 
 export interface FilterState extends MainFiltersFormType {
     category: CategoryType | null,
+    priceMin: number | null,
+    priceMax: number | null,
+
     city: string | null,
     district: string | null,
     metro: string | null,
 
     rooms: number | null,
-    priceMin: number | null,
-    priceMax: number | null,
-
     sleepPlaces: number | null,
 
     gas: boolean | null,
@@ -51,7 +152,6 @@ export interface FilterState extends MainFiltersFormType {
     microwave: boolean | null,
     dishes: boolean | null,
     dishwasher: boolean | null,
-
 }
 
 
@@ -106,7 +206,8 @@ export const filterSlice = createSlice({
 
         },
 
-        setFilters: (state, action: PayloadAction<FiltersPayloadType>) => {
+        setFilters: (state, action: PayloadAction<any>) => {              // FiltersPayloadType
+
 
             state.category = action.payload.category;
 
@@ -146,3 +247,44 @@ export const filterSlice = createSlice({
 export const { resetFilters, setFilters } = filterSlice.actions
 
 export default filterSlice.reducer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export interface FiltersPayloadType {
+    category?: CategoryType | null,
+    
+    city?: string | null,
+    district?: string | null,
+    metro?: string | null,
+
+    rooms?: number | null,
+    priceMin?: number | null,
+    priceMax?: number | null,
+
+    sleepPlaces?: number | null,
+
+    gas?: boolean | null,
+    oven?: boolean | null,
+    coffeeMachine?: boolean | null,
+    microwave?: boolean | null,
+    dishes?: boolean | null,
+    dishwasher?: boolean | null,
+
+}

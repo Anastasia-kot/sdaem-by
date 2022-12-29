@@ -7,14 +7,16 @@ import Link from "../../../node_modules/next/link";
 import Image from "next/image";
 import classNames from "classnames";
 import { setAuthUserData, setToggleLogIn, UserDataInterface } from "../../store/authSlice";
-import { citiesList, setFilters } from "../../store/filtersSlice";
+// import { setFilters } from "../../store/filtersSlice";
 import { useRouter } from "next/router";
-import { cityNameConverters } from "../../../helpers/cityNameConverters";
+import { cityNameConverters, cityNameEngToRus } from "../../../helpers/cityNameConverters";
 import { categoriesItems, navItems } from "../../store/mainSlice";
+import { CategoryType, citiesList, CityType } from "../../../types/formTypes";
+import { filtersToUrlString } from "../../../helpers/urlHelpers";
 
 const logo = require('../../../public/images/logo.png');
 const avatar = require('../../../public/images/avatar.png');
-const navIconSmall = require('../../../public/images/svg/navigation_icon_small.svg');
+// const navIconSmall = require('../../../public/images/svg/navigation_icon_small.svg');
 const navIcon = require('../../../public/images/svg/navigation_icon.svg');
 const arrowDown = require('../../../public/images/svg/arrow_down.svg');
 
@@ -30,25 +32,28 @@ const Header = () => {
     const dispatch = useDispatch();
 
 
-    const onClick = (props: { category?: string, city?: string }) => {
-        dispatch(setFilters(props))
-        setTimeout(() => {
-            router.push('/catalogue')
-        },
-            3000
-        )
+    const onClick = (props: { category?: CategoryType, city?: CityType }) => {
+        let searchString = filtersToUrlString(props)
+        router.push(`/catalogue${searchString}`)
+        
+            // dispatch(setFilters(props))
+            // setTimeout(() => {
+            //     router.push('/catalogue')
+            // },
+            //     3000
+            // )
     }
 
 
 
+
+
+
+
+    // modals 
     const [isBurgerActive, setIsBurgerActive] = useState(false);
     const [isRoomsActive, setIsRoomsActive] = useState(false);
     const [isUnloginMenuActive, setIsUnloginMenuActive] = useState(false);
-
-
-
-
-
 
     const onBurgerClick = () => {
         setIsBurgerActive(prev => !prev);
@@ -198,7 +203,7 @@ const Header = () => {
                                                 key={citiesList.indexOf(c)}
                                                 onClick={() => onClick({category: 'room', city: c })}
                                             >
-                                                Квартиры на сутки в  {cityNameConverters(c)}
+                                                Квартиры на сутки в  {cityNameConverters(cityNameEngToRus(c))}
                                             </li>)
                                         }  
                                     </ul>

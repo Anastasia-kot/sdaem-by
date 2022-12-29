@@ -12,6 +12,22 @@
     background: rgba(235, 87, 87, 0.1);
     transform: rotate(0.25deg);
 
+    &.main{
+        display: none;
+    }
+
+    &.list{
+     margin-right:   310px;
+     display: flex;
+    order:1
+    }
+
+    &.tile{
+        margin-right:0;
+        display: block;
+        order:0
+    }
+  
 
     .button__text {
         font-weight: 600;

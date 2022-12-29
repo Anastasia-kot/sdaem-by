@@ -20,7 +20,7 @@ type Props = {
     register: any     // register: UseFormRegister<ContactFormType> | UseFormRegister<AuthFormType> | UseFormRegister<RegisterFormType>
     defaultValue?: string
     required: boolean
-    errors?: Partial<FieldErrorsImpl<RegisterFormType>>
+    errors?: any       //Partial<FieldErrorsImpl<RegisterFormType>>
     errorPatternMessage?: string
     onChange?: (arg) => void
  
@@ -80,7 +80,7 @@ export const InputBlock: FC<Props> = (props: Props) => {
                 
                 {type === 'textarea'
                     ? <textarea
-                         {...register(label, { required })}
+                         {...register(label, { required:{required} })}
                         className={styles.Textarea}
                         placeholder={placeholder}
                         style={{

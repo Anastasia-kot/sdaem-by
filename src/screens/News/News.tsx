@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Breadcrumbs } from '../../entities/Breadcrumbs/Breadcrumbs'
 import { NewsCard } from '../../entities/NewsCard/NewsCard'
 import { InputBlock } from '../../shared/Input/Input'
-import { NewsType } from '../../store/newsSlice'
+import { NewsType, setSearchWord } from '../../store/newsSlice'
 import { RootState } from '../../store/store'
 import styles from './News.module.scss'
 import { PaginatedItems } from '../../shared/Pagination/Pagination'
@@ -14,10 +14,28 @@ import { useRouter } from 'next/router'
 
 export const News = () => {
 
+    const dispatch = useDispatch();
     const news: NewsType[] = useSelector((state: RootState) => state.news.data)
     const searchWord = useSelector((state: RootState) => state.news.searchWord)
+    console.log('redux searchWord', searchWord)
+    
     const router = useRouter();
-    console.log(router)
+    const {query} = router;
+    console.log(query)
+    useEffect(() => {
+        if (query && query.search) {
+            // @ts-ignore
+            dispatch(setSearchWord(query.search))
+            setFilteredNews(sortingFunc(query.search))
+        }
+    }, [router.query.search]) 
+
+
+
+
+
+   
+     
 
  
     let [filteredNews, setFilteredNews] = useState<NewsType[]>(sortingNewsPerDate(news))
@@ -33,29 +51,26 @@ export const News = () => {
     const { handleSubmit, register, formState: { errors } } = useForm<{ searchWord: string }>();
 
     const sortingFunc = (searchWord) => {
-        let newNewsList: NewsType[] = news.filter( 
-                (item: NewsType) =>  (
-                       item.title.includes(searchWord)           
+        let newNewsList: NewsType[]
+        searchWord ===''
+            ? newNewsList = news
+            : newNewsList = news.filter(
+                (item: NewsType) => (
+                    item.title.includes(searchWord)
                     || item.shortDescription.includes(searchWord)
-                    || item.description.join(';').includes(searchWord) 
-                )   
-        )
+                    || item.description.join(';').includes(searchWord)
+                )
+              ) 
+        
         newNewsList = sortingNewsPerDate(newNewsList)
-        setFilteredNews(newNewsList)
-
+        return newNewsList
     }
 
     const onSubmit = values => {
-        sortingFunc(values.searchWord)
-        router.push('/news?search=' + values.searchWord)
-
-        // set in URL
-        //set in redux
+        router.push(`/news?search=${values.searchWord}`, undefined, { shallow: true })
     }
-    const onBlur = values => {
-        sortingFunc(values.searchWord)
-        // set in URL
-        //set in redux
+    const onChange = value => {
+        router.push(`/news?search=${value}`, undefined, { shallow: true })
     }
 
 
@@ -98,7 +113,7 @@ export const News = () => {
                         register={register}
                         pattern={/^[а-яА-ЯёЁa-zA-Z0-9]+$/i}
                         required={false}
-                        onChange={sortingFunc}
+                        onChange={onChange}
                     />
 
                     <button className={styles.form__submitButton} type="submit">

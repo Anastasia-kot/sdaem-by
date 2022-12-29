@@ -3,9 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { cityNameConverters } from "../../../helpers/cityNameConverters";
+import { cityNameConverters, cityNameEngToRus } from "../../../helpers/cityNameConverters";
+import { filtersToUrlString } from "../../../helpers/urlHelpers";
 import { CategoryType } from "../../../types/formTypes";
-import { citiesList,  setFilters } from "../../store/filtersSlice";
+import { citiesList, CityType } from "../../../types/formTypes";
+import {   setFilters } from "../../store/filtersSlice";
 import styles from './Footer.module.scss';
 
 const logo = require('../../../public/images/logo.png');
@@ -24,13 +26,16 @@ const Footer = () => {
     const dispatch = useDispatch();
 
    
-    const onClick = (props: { category?: string, city?: string}) => {
-        dispatch(setFilters(props))
-        setTimeout(() => {
-          router.push('/catalogue')
-        },
-          3000
-        )
+    const onClick = (props: { category?: CategoryType, city?: CityType }) => {
+        let searchString = filtersToUrlString(props)
+        router.push(`/catalogue${searchString}`)
+
+        // dispatch(setFilters(props))
+        // setTimeout(() => {
+        //   router.push('/catalogue')
+        // },
+        //   3000
+        // )
     }
 
     return (
@@ -67,7 +72,7 @@ const Footer = () => {
                                 key={citiesList.indexOf(c)}
                                 onClick={() => onClick({ category: 'room', city: c })}
                             >
-                                Квартиры в {cityNameConverters(c)}
+                                Квартиры в {cityNameConverters(cityNameEngToRus(c) )}
                             </li>)}
                     </ul>
                 </div>

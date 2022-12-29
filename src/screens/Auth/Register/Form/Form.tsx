@@ -8,7 +8,7 @@ import { Formik } from 'formik';
 import { SimpleButton } from '../../../../shared/buttons/Simple/Simple';
 import { setAuthUserData, setToggleLogIn } from '../../../../store/authSlice';
 import { InputFormik } from '../../../../shared/Input/InputFormik';
-import { RegisterFormType } from '../../../../../types/formTypes';
+import { RegisterFormType } from '../../../../../types/loginFormTypes';
 
 
 export const Form = (

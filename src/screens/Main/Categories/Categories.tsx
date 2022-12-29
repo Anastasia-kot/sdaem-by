@@ -1,9 +1,11 @@
 // import Image from 'next/image'
 import styles from './Categories.module.scss'
 import React from 'react'
-import { CategoryCard } from '../../../entities/CategoryCard/CategoryCard.tsx'
-import { CitiesEnum } from "../../../../types/formTypes.ts"
-import { citiesList } from "../../../store/filtersSlice"
+import { CategoryCard } from '../../../entities/CategoryCard/CategoryCard'
+import { CategoryType, citiesList, CityType } from "../../../../types/formTypes"
+import { filtersToUrlString } from '../../../../helpers/urlHelpers';
+import { useRouter } from 'next/router';
+import { cityNameConverters, cityNameEngToRus } from '../../../../helpers/cityNameConverters';
 const room = require('../../../../public/images/main/room.png');
 const car = require('../../../../public/images/main/car.png');
 const cottage = require('../../../../public/images/main/cottage.png');
@@ -70,34 +72,35 @@ export const Categories = () => {
         ]}
 
     ] 
-    const kvartiri = [
+
+    const kvartiri: {name: CityType, value: number}[] = [
         {
-            name: 'Квартиры в Минске',
+            name: 'Minsk' , 
             value: 3567
         },
         {
-            name: 'Квартиры в Гомеле',
+            name: 'Gomel',
             value: 2032
         },
         {
-            name: 'Квартиры в Гродно',
+            name: 'Grodno',
             value: 2302
         },
         {
-            name: 'Квартиры в Могилеве',
+            name: 'Mogilev',
             value: 110
         },
         {
-            name: 'Квартиры в Бресте',
+            name: 'Brest',
             value: 110
         },
         {
-            name: 'Квартиры в Витебск',
+            name: 'Vitebsk',
             value: 110
         },
 
     ]
-    const kotteges = [
+    const kotteges: { name: string, value: number }[] = [
         {
             name: 'Агроусадьбы',
             value: 110
@@ -120,11 +123,21 @@ export const Categories = () => {
 
 
     ]
-    const popular = [
+    const popular: string[] = [
         'Коттеджи и усадьбы на о. Брасласких ',
         'Коттеджи и усадьбы (жилье) на Нарочи',
         'Коттеджи и усадьбы (жилье) у воды, на берегу, на озере'
     ]
+
+
+
+    const router = useRouter();
+
+    const onClick = (props: { category?: CategoryType, city?: CityType }) => {
+        let searchString = filtersToUrlString(props)
+        router.push(`/catalogue${searchString}`)
+    }
+
 
     return (
         <div className={styles.categories}>
@@ -145,7 +158,6 @@ export const Categories = () => {
                         filter={{ category: 'cottage' }}
                         header='Коттеджи и усадьбы'
                         additional_header='СНЯТЬ коттедж НА ПРАЗДНИК'
-                        // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
                         background={cottage}
                         arrow_button={true}
  
@@ -156,7 +168,6 @@ export const Categories = () => {
                         filter={{ category: 'sauna' }}
                         header='Бани и сауны'
                         additional_header='ПОПАРИТЬСЯ В БанЕ С ДРУЗЬЯМИ'
-                        // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
                         background={sauna}
                         arrow_button={true}
                      />
@@ -166,7 +177,6 @@ export const Categories = () => {
                         filter={{ category: 'auto' }}
                         header='Авто на прокат'
                         additional_header='еСЛИ СРОЧНО НУЖНА МАШИНА'
-                        // hashtags={['Минск', 'Витебск', 'Гродно', 'Гомель', ' Брест'. 'Могилев' ]}
                         background={car}
                         arrow_button={true}
  
@@ -174,17 +184,33 @@ export const Categories = () => {
                 </li>
             </ul>
 
+
+
+
+
             <aside className={styles.categories__menu}>
+
                 <div className={styles.menu__list}>
-                    <h3 className={styles.list__title}>Квартиры</h3>
+                    <h3 className={styles.list__title} onClick={() => onClick({ category: 'room' })}>Квартиры</h3>
                         <ul className={styles.list__list}>
-                            {kvartiri.map(k => <li key={kvartiri.indexOf(k)+7}> <span>{k.name}</span><span>{k.value}</span></li>)}
+                            {kvartiri.map(k => 
+                                <li key={kvartiri.indexOf(k) + 7} onClick={() => onClick({ category: 'room', city: k.name })}> 
+                                    <span>  Квартиры  в  {cityNameConverters(cityNameEngToRus(k.name))}</span>
+                                    <span>{k.value}</span>
+                                </li>)}
                         </ul>
                     </div>
+
+
                 <div className={styles.menu__list}>
-                    <h3 className={styles.list__title}>Коттеджи и усадьбы</h3>
+                    <h3 className={styles.list__title} onClick={() => onClick({ category: 'cottage' })}>Коттеджи и усадьбы</h3>
                     <ul className={styles.list__list}>
-                            {kotteges.map(k => <li key={kotteges.indexOf(k) + 13}> <span>{k.name}</span><span>{k.value}</span></li>)}
+                            {kotteges.map(k => 
+                                <li key={kotteges.indexOf(k) + 13} onClick={() => onClick({ category: 'cottage' })}> 
+                                    <span>{k.name}</span>
+                                    <span>{k.value}</span>
+                                </li>)}
+                            
                             <li key={17}>
                                 Еще
                                 <svg width="6" height="4" viewBox="0 0 6 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -194,12 +220,14 @@ export const Categories = () => {
                             </li>
                         </ul>
                     </div>
+
+
                 <div className={styles.menu__list}>
-                    <h3 className={styles.list__title}>Популярные направления</h3>
+                    <h3 className={styles.list__title} onClick={() => onClick({ category: 'cottage' })}>Популярные направления</h3>
                     <ul className={styles.list__list}>
-                            {popular.map(k => <li key={kvartiri.indexOf(k) + 18} > <span>{k}</span></li>)}
-                        </ul>
-                    </div>
+                        {popular.map(k => <li key={popular.indexOf(k) + 18} onClick={() => onClick({ category: 'cottage' })}> <span>{k}</span></li>)}
+                    </ul>
+                </div>
              </aside>
         </div>
 

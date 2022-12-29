@@ -1,6 +1,8 @@
 // import { createSlice } from '@reduxjs/toolkit'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 
+import { CategoryType } from "../../types/formTypes"
+
 
 export const navItems = [
     {
@@ -36,25 +38,25 @@ export const navItems = [
 export const categoriesItems = [
     {
         id: 0,
-        name: 'room',
+        name: 'room' as CategoryType,
         value: 'Квартиры на сутки',
 
     },
     {
         id: 1,
-        name: 'cottage',
+        name: 'cottage' as CategoryType,
         value: 'Коттеджи и усадьбы',
 
     },
     {
         id: 2,
-        name: 'sauna',
+        name: 'sauna' as CategoryType,
         value: 'Бани и сауны',
 
     },
     {
         id: 3,
-        name: 'auto',
+        name: 'auto' as CategoryType,
         value: 'Авто на прокат',
     },
 ]

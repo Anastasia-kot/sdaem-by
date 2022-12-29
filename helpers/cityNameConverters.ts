@@ -1,5 +1,6 @@
+import { CityType, CityRusType } from '../types/formTypes';
  
-export const cityNameConverters = (city: string): string => {
+export const cityNameConverters = (city: CityRusType): string => {
     let newCity: string = city; // для дефолтного возврата если входящий формат не нужно изменять     
     const lastSymbol = newCity[newCity.length - 1];
     
@@ -15,4 +16,17 @@ export const cityNameConverters = (city: string): string => {
         }; 
     
     return newCity;
+}
+
+
+export const cityNameEngToRus = (cityEng: CityType): CityRusType => {
+    switch (cityEng) {
+        case 'Minsk': return 'Минск' ;               
+        case 'Gomel': return 'Гомель' ;               
+        case 'Brest': return 'Брест' ;              
+        case 'Vitebsk': return 'Витебск' ;               
+        case 'Grodno': return 'Гродно' ;               
+        case 'Mogilev': return 'Могилев' ;               
+        default: return cityEng; 
+    };  
 }

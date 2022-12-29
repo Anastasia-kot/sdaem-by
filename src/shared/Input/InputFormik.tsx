@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { RegisterFormType } from '../../../types/formTypes'
+import { RegisterFormType } from '../../../types/formTypesOLD'
 import styles from './Input.module.scss'
 
 type Props = {

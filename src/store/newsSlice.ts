@@ -298,11 +298,14 @@ export const NewsSlice = createSlice({
         setTotalCount: (state, action: PayloadAction<number>) => {
             state.totalCount = action.payload
         },
+        setSearchWord: (state, action: PayloadAction<string>) => {
+            state.searchWord = action.payload
+        },
 
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { setNews, setTotalCount } = NewsSlice.actions
+export const { setNews, setTotalCount, setSearchWord } = NewsSlice.actions
 
 export default NewsSlice.reducer

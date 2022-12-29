@@ -10,16 +10,14 @@ import { CatalogueType } from '../../store/catalogueSlice';
 import classNames from 'classnames';
 const room = require('../../../public/images/room.png');
 const avatar = require('../../../public/images/avatar.png');
-import PropTypes from 'prop-types';
-
+ 
 
  
-export const CatalogueCard = (props
-    // { data, style }: { data: CatalogueType, style: 'main' | 'list' | 'tile' }
+export const CatalogueCard = ( 
+    { data, style }: { data: CatalogueType, style: 'main' | 'list' | 'tile' }
 ) => {
 
-    const { data, style } = props;
-
+ 
     //image + image slider
     const defImg = 'https://thumbs.dreamstime.com/b/%D1%80%D0%B8%D1%81%D1%83%D0%BD%D0%BE%D0%BA-%D0%BB%D0%B8%D0%BD%D0%B8%D0%B8-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%8C%D0%B5%D1%80%D0%B0-%D0%B3%D0%BE%D1%81%D1%82%D0%B8%D0%BD%D0%BE%D0%B9-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%B4%D0%BE%D0%BC%D0%B0-%D0%B8%D0%BB%D0%B8-%D1%81-%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD%D0%BE%D0%BC-%D0%B8-227710999.jpg'
     const SampleArrow = (props) => <button onClick={props.onClick} className={styles.slider__button} />
@@ -70,10 +68,10 @@ export const CatalogueCard = (props
 
             {isShownModal && <div className={styles.card__modal}>
                 <Image src={avatar} alt="" />
-                <p className={styles.modal__OwnerStatus}>Владелец</p>
-                <p className={styles.modal__Name}>Dmitriy</p>
-                <p className={styles.modal__Phone}><a href="tel:+375292911444"> +375 (29) 291-14-44 </a></p>
-                <p className={styles.modal__Email}><a href="mailto:vladimir6234@tut.by">vladimir6234@tut.by</a></p>
+                <p className={styles.modal__OwnerStatus}>{data.roomOwner.ownerStatus}</p>
+                <p className={styles.modal__Name}>{data.roomOwner.name}</p>
+                <p className={styles.modal__Phone}><a href={`tel:${data.roomOwner.phone}`}> {data.roomOwner.phone} </a></p>
+                <p className={styles.modal__Email}><a href={`mailto:${data.roomOwner.email}`}>{data.roomOwner.email}</a></p>
                 <ul className={styles.modal__Contacts}>
                     <li>
                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +121,7 @@ export const CatalogueCard = (props
 
                 <div className={styles.content__price}>
                     <span>{data?.price}.00 BYN</span>
-                    <span> за сутки  </span>
+                    <span>за сутки</span>
                 </div>
 
                 <ul className={styles.features} >
@@ -142,40 +140,46 @@ export const CatalogueCard = (props
                             </svg>
 
                             <span>
-                                {data?.roomFeatures?.[0].value}
+                                {data?.roomFeatures?.sizeAsPeople}
                             </span>
                         </button>
                     </li>
 
                     <li key={1} className={styles.features__item}>
                         <button>
-                            {data?.roomFeatures?.[1].value}  комн.
+                            {data?.roomFeatures?.rooms}  комн.
                         </button>
                     </li>
                     <li key={2} className={styles.features__item}>
                         <button>
-                            {data?.roomFeatures?.[2].value} м<sup>2</sup>
+                            {data?.roomFeatures?.sizeAsMeters} м<sup>2</sup>
                         </button>
                     </li>
 
-                    {data?.addressFeatures?.map(a =>
-                        <li key={data?.addressFeatures.indexOf(a) + data?.roomFeatures?.length} className={styles.features__item}><button>
-
-                            {a.name === 'district' && <span> район: </span>}
-                            {a.name === 'metro' &&
-                                <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19.6401 11.4773H18.3812L14.4755 0.509766L9.99979 7.19943L5.21594 0.589264L1.61882 11.4773H0.359905L0 12.9373H4.77911L6.65514 7.59981L10.0565 12.2942L10.0769 12.3238L10.0978 12.2942L13.3449 7.59981L15.2209 12.9373H20L19.6401 11.4773Z" fill="#BDBDBD" />
-                                </svg>}
-
-                            <span>{a.value}</span></button>
-                        </li>)}
-
-
+                    {style==='list' && 
+                        <>
+                            <li className={styles.features__item}>
+                                <button>
+                                    <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19.6401 11.4773H18.3812L14.4755 0.509766L9.99979 7.19943L5.21594 0.589264L1.61882 11.4773H0.359905L0 12.9373H4.77911L6.65514 7.59981L10.0565 12.2942L10.0769 12.3238L10.0978 12.2942L13.3449 7.59981L15.2209 12.9373H20L19.6401 11.4773Z" fill="#BDBDBD" />
+                                    </svg>
+                                    <span>{data.addressFeatures.metro}</span>
+                                </button> 
+                            </li>
+                            <li className={styles.features__item}>
+                                <button>
+                                    <span> район: </span>
+                                    <span>{data.addressFeatures.district}</span>
+                                </button> 
+                            </li>
+                        
+                        </>  }
+                        
                 </ul>
 
 
                 <div className={styles.CardAddressFull}>
-                    <span>  {data?.address} </span>
+                    <span>  {data?.addressFeatures?.address} </span>
                 </div>
 
 
@@ -184,10 +188,10 @@ export const CatalogueCard = (props
                         <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.6401 11.4773H18.3812L14.4755 0.509766L9.99979 7.19943L5.21594 0.589264L1.61882 11.4773H0.359905L0 12.9373H4.77911L6.65514 7.59981L10.0565 12.2942L10.0769 12.3238L10.0978 12.2942L13.3449 7.59981L15.2209 12.9373H20L19.6401 11.4773Z" fill="#BDBDBD" />
                         </svg>
-                        <span>{data?.addressFeatures?.[0]?.value}</span>
+                        <span>{data?.addressFeatures?.metro}</span>
                     </div>
                     <div className={styles.CardAddressDistrict}>
-                        {data?.addressFeatures?.[1]?.value}
+                        {data?.addressFeatures?.district}
                     </div>
                 </div>
 
@@ -214,18 +218,7 @@ export const CatalogueCard = (props
                         onClick={null}
                     />
 
-                    <LikeButton style={{
-                        order: style === 'list' ? '1' : '0',
-                        marginRight: style === 'list' ? '310px' : '0',
-                        display: 
-                            style === 'main' 
-                                ? 'none' 
-                                : style === 'tile' 
-                                    ? 'block' 
-                                    : 'flex'
-                    }}
-                        isListView={style === 'list'}
-                    />
+                    <LikeButton style={style} />
                 </div>
 
             </div>
@@ -233,71 +226,71 @@ export const CatalogueCard = (props
     )
 }
 
-CatalogueCard.propTypes = {
-    data: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        image: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.oneOf([null])]).isRequired ,
-        gold: PropTypes.bool.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        address: PropTypes.string,
-        addressFeatures: 
-            PropTypes.arrayOf(
-                PropTypes.shape({
-                    name: PropTypes.oneOf(['metro', 'district']),
-                    value: PropTypes.string
-                })
-            ),
-        roomFeatures: 
-            PropTypes.arrayOf(
-                PropTypes.oneOfType([
-                    PropTypes.shape({
-                        name: PropTypes.oneOf(['size as people']),
-                        value: PropTypes.string
-                    }),
-                    PropTypes.shape({
-                        name: PropTypes.oneOf([ 'roomCount', 'size as meters']),
-                        value: PropTypes.number
-                    })
-                ])  
-            ),
-        roomOwner:  PropTypes.shape({
-            ownerStatus: PropTypes.string,
-            name: PropTypes.string,
-            phone: PropTypes.string,
-            email: PropTypes.string,
-        }),
-    }).isRequired, 
-    style: PropTypes.oneOf(['main', 'list', 'tile']).isRequired,
-}
+// CatalogueCard.propTypes = {
+//     data: PropTypes.shape({
+//         id: PropTypes.number.isRequired,
+//         image: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.oneOf([null])]).isRequired ,
+//         gold: PropTypes.bool.isRequired,
+//         title: PropTypes.string.isRequired,
+//         description: PropTypes.string.isRequired,
+//         price: PropTypes.number.isRequired,
+//         address: PropTypes.string,
+//         addressFeatures: 
+//             PropTypes.arrayOf(
+//                 PropTypes.shape({
+//                     name: PropTypes.oneOf(['metro', 'district']),
+//                     value: PropTypes.string
+//                 })
+//             ),
+//         roomFeatures: 
+//             PropTypes.arrayOf(
+//                 PropTypes.oneOfType([
+//                     PropTypes.shape({
+//                         name: PropTypes.oneOf(['size as people']),
+//                         value: PropTypes.string
+//                     }),
+//                     PropTypes.shape({
+//                         name: PropTypes.oneOf([ 'roomCount', 'size as meters']),
+//                         value: PropTypes.number
+//                     })
+//                 ])  
+//             ),
+//         roomOwner:  PropTypes.shape({
+//             ownerStatus: PropTypes.string,
+//             name: PropTypes.string,
+//             phone: PropTypes.string,
+//             email: PropTypes.string,
+//         }),
+//     }).isRequired, 
+//     style: PropTypes.oneOf(['main', 'list', 'tile']).isRequired,
+// }
 
  
-CatalogueCard.defaultProp = {
-    data: {
-        image: null,
-        gold: false,
-        title: '',
-        description: '',
-        price: PropTypes.number,
-        address: '',
-        addressFeatures: [
-            { name: 'metro', value: ''},
-            { name: 'district', value: '' } 
-        ],
-        roomFeatures: [
-            { name: 'size as people', value: '' },
-            { name: 'roomCount', value: 0 },
-            { name: 'size as meters', value: 0 },
-        ],
-        roomOwner:  {
-            ownerStatus: '',
-            name: '',
-            phone: '',
-            email: '',
-        },
-    },
-    style: 'main'
-};
+// CatalogueCard.defaultProp = {
+//     data: {
+//         image: null,
+//         gold: false,
+//         title: '',
+//         description: '',
+//         price: PropTypes.number,
+//         address: '',
+//         addressFeatures: [
+//             { name: 'metro', value: ''},
+//             { name: 'district', value: '' } 
+//         ],
+//         roomFeatures: [
+//             { name: 'size as people', value: '' },
+//             { name: 'roomCount', value: 0 },
+//             { name: 'size as meters', value: 0 },
+//         ],
+//         roomOwner:  {
+//             ownerStatus: '',
+//             name: '',
+//             phone: '',
+//             email: '',
+//         },
+//     },
+//     style: 'main'
+// };
 
  

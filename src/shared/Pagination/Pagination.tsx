@@ -12,7 +12,7 @@ type ItemsProps = {
 const Items = ( { currentItems, Component, style }  : ItemsProps) => <> 
         {style
             ?  currentItems && currentItems.map((n) => <Component key={n.id} data={n} style={style} />) 
-            : currentItems && currentItems.map((n) => <Component key={n.id} data={n}  />) 
+            :  currentItems && currentItems.map((n) => <Component key={n.id} data={n}  />) 
         }</>
 
 
