@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styles from './Contacts.module.scss'
 import { useState } from 'react'
 import { useForm } from "react-hook-form";
-import { ContactFormType } from '../../../types/formTypesOLD';
+import { ContactFormType } from '../../../types/loginFormTypes';
 
 import avatar from '../../../public/images/svg/avatar.svg'
 import postal_envelope from '../../../public/images/svg/postal_envelope.svg'

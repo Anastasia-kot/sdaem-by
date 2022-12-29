@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-import { cityNameEngToRus } from '../../../helpers/cityNameConverters';
+import { cityNameEngToRus } from '../../../helpers/nameConverters';
 import { filtersToUrlString } from '../../../helpers/urlHelpers';
 import { CategoryType } from '../../../types/formTypes';
 import { CityType } from '../../../types/formTypes';

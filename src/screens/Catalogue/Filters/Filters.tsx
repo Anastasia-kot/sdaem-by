@@ -15,7 +15,7 @@ import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptions
 import { RootState } from '../../../store/store'
 import { CatalogueFiltersFormType } from '../../../../types/formTypes'
 import { FiltersPayloadType, FiltersRecommendationsList, resetFilters, setFilters } from '../../../store/filtersSlice'
-import { filtersToUrlString } from '../../../../helpers/urlHelpers'
+import { filtersToUrlString, formValuesToUrlConverter } from '../../../../helpers/urlHelpers'
 
 export const Filters = React.memo(() => {
 
@@ -26,7 +26,7 @@ export const Filters = React.memo(() => {
     // use router
     const router = useRouter();
     const { query } = router;
-    console.log('query', query)
+    // console.log('query', query)
     useEffect(() => {
         if (Object.keys(query).length > 0) {
             dispatch(setFilters(query))
@@ -47,7 +47,7 @@ export const Filters = React.memo(() => {
 
 
     // recommendations__list
-    const [isFiltersRecommendations, setIsFiltersRecommendations] = useState<null | string>(null)
+    const [isFiltersRecommendations, setIsFiltersRecommendations] = useState<null | number>(null)
 
     const onClick = (i) => {
         setUrlFilters(i.filter);
@@ -71,30 +71,11 @@ export const Filters = React.memo(() => {
 
     const { handleSubmit, register, formState: { errors } } = useForm<CatalogueFiltersFormType>();
 
-    const formatingValuesForUrl = (values) => {
-        let formatValues: FiltersPayloadType = {};
-        // console.log('values', values)
-        for (let key in values) {
-            if (+values[key]) {
-                // только заполненные (чекнутые)
-                if ((typeof values[key] === 'boolean')) {
-                    //только булевы параметры (т.е.  чекбоксы из модалки)
-                    if ((String(key).substr(-1)) !== '2' && (String(key).substr(-1)) !== '1') {
-                        //последний символ ключа не число (то есть не дублирующие gas1, microwave2 ...)
-                        formatValues[key] = values[key]
-                    }
-                } else if (!Number.isNaN(+values[key])) {
-                    // значение параметра - число 
-                    formatValues[key] = +values[key]
-                }
-            }
-        }
-        // console.log('formatValues', formatValues)
-        return formatValues
-    }
+    
 
     const onSubmit = values => {
-        setUrlFilters(formatingValuesForUrl(values))
+        console.log('values', values)
+        setUrlFilters(formValuesToUrlConverter(values))
     }
 
 
@@ -110,18 +91,18 @@ export const Filters = React.memo(() => {
                     <h2 className={styles.recommendations__title}>Рекомендуем посмотреть</h2>
                     <ul className={styles.recommendations__list}>
                         {FiltersRecommendationsList.map(i => isFiltersRecommendations
-                            ? isFiltersRecommendations === i.name &&
+                            ? isFiltersRecommendations === FiltersRecommendationsList.indexOf(i) &&
                             <FilterItem
                                 key={FiltersRecommendationsList.indexOf(i)}
                                 value={i.value}
-                                isFiltersRecommendations={isFiltersRecommendations === i.name}
+                                isFiltersRecommendations={isFiltersRecommendations === FiltersRecommendationsList.indexOf(i)}
                                 onClick={() => { onClick(i) }}
                                 onReset={() => { onReset() }}
                             />
                             : <FilterItem
                                 key={FiltersRecommendationsList.indexOf(i)}
                                 value={i.value}
-                                isFiltersRecommendations={isFiltersRecommendations === i.name}
+                                isFiltersRecommendations={isFiltersRecommendations === FiltersRecommendationsList.indexOf(i)}
                                 onClick={() => { onClick(i) }}
                                 onReset={() => { onReset() }}
                             />
@@ -140,13 +121,8 @@ export const Filters = React.memo(() => {
                     <div className={styles.RoomsBlockLabel}>
                         <SelectBlock
                             options={[
-                                'Выберите',
-                                '1 комн.',
-                                '2 комн.',
-                                '3 комн.',
-                                '4 комн.',
-                                '5 комн.',
-
+                                { text: 'Выберите', value: -1 },
+                                ...[1, 2, 3, 4, 5].map(i => ({ text: i + ' комн.', value: i }))
                             ]}
                             label={'rooms'}
                             register={register}

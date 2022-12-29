@@ -1,5 +1,6 @@
 import { UseFormRegister } from 'react-hook-form'
-import { MoreOptionsModalFormType } from '../../../types/formTypesOLD'
+import { districtNameEngToRus, metroNameEngToRus } from '../../../helpers/nameConverters'
+import { districtsList, districtsListRus, MetroList, MetroListRus, MoreOptionsModalFormType } from '../../../types/formTypes'
 import { SelectBlock } from '../../shared/Select_block/Select_block'
 import styles from './MoreOptionsModal.module.scss'
  
@@ -41,13 +42,8 @@ export const MoreOptionsModal = ({register, style}) => {
             <div className={styles.SelectorsList}>
                 <SelectBlock
                     options={[
-                        'Выберите',
-                        '1 комн.',
-                        '2 комн.',
-                        '3 комн.',
-                        '4 комн.',
-                        '5 комн.',
-
+                        { text: 'Выберите', value: -1 },
+                        ...[1, 2, 3, 4, 5].map(i => ({ text: i + ' м.', value: i }))
                     ]}
                     label={'sleepPlaces'}
                     register={register}
@@ -58,47 +54,33 @@ export const MoreOptionsModal = ({register, style}) => {
                         width: '200px',
                         height: '37px',
                     }}
-           
                     labelRus={{ label: 'Спальные места', flexDirection: 'column' }}
-
-                    
                 />
                 <SelectBlock
                     options={[
-                        'Выберите',
-                        '1 мая',
-                        'Фрунзе',
-                        'Комсомольский',
+                        { text: 'Выберите', value: -1 },
+                        ...districtsList.map(d => ({ text: districtNameEngToRus(d), value: d }))
                     ]}
                     label={'district'}
                     register={register}
                     required={false}
-
 
                     style={{
                         width: '200px',
                         height: '37px',
                     }}
                     labelRus={{ label: 'Район', flexDirection: 'column' }}
-
                 />
 
                 <SelectBlock
-                     options={[
-                        'Выберите',
-                        '1 комн.',
-                        '2 комн.',
-                        '3 комн.',
-                        '4 комн.',
-                        '5 комн.',
-
+                    options={[
+                        { text: 'Выберите', value: -1 },
+                        ...MetroList.map(m => ({ text: metroNameEngToRus(m), value: m }))
                     ]}
-                    label={'metro'}
+                     label={'metro'}
                     register={register}
                     required={false}
 
-
-                   
                     style={{
                         width: '200px',
                         height: '37px',

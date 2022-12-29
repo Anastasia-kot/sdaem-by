@@ -9,7 +9,7 @@ import classNames from "classnames";
 import { setAuthUserData, setToggleLogIn, UserDataInterface } from "../../store/authSlice";
 // import { setFilters } from "../../store/filtersSlice";
 import { useRouter } from "next/router";
-import { cityNameConverters, cityNameEngToRus } from "../../../helpers/cityNameConverters";
+import { cityNameConverters, cityNameEngToRus } from "../../../helpers/nameConverters";
 import { categoriesItems, navItems } from "../../store/mainSlice";
 import { CategoryType, citiesList, CityType } from "../../../types/formTypes";
 import { filtersToUrlString } from "../../../helpers/urlHelpers";

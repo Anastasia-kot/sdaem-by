@@ -72,7 +72,7 @@
  
             border-radius: 0px 0px 40px 40px;
 
-            .MainFormCategories {
+            .form__сategories {
                 display: flex;
                 height: 54px;
                 border-radius: 10px 10px 0px 0px;
@@ -137,7 +137,7 @@
                     }
 
                     &:nth-child(4) {
-                        width: (143px);
+                        width: (148px);
                         border-radius: 0px 10px 0px 0px;
                     }
 
@@ -160,7 +160,7 @@
                 }
             }
 
-            .MainFormSettings {
+            .form__filters {
                 background-color: white;
                 min-height: 68px;
                 height: auto;
@@ -188,12 +188,12 @@
                 }
 
 
-                .CityBlock,
-                .RoomsBlock,
-                .PriceBlock,
-                .MoreOptionsBlock,
-                .ToMapBlock,
-                .ToShowBlock {
+                .filters__city,
+                .filters__rooms,
+                .filters__price,
+                .filters__moreOptions,
+                .filters__toMap,
+                .filters__submit {
                     height: 68px;
                     margin: 16px 0;
                     padding-right: 16px;
@@ -218,25 +218,25 @@
 
                     }
 
-                    &.CityBlock,
-                    &.RoomsBlock,
-                    &.PriceBlock {
+                    &.filters__city,
+                    &.filters__rooms,
+                    &.filters__price {
                         width: 190px;
                         border-right: 1px solid rgb(102, 78, 249, 0.1);
                     }
 
 
-                    &.PriceBlock {
+                    &.filters__price {
                         width: 215px;
 
-                        .PriceBlockLabel {
+                        .price__legend {
 
                             flex-direction: column;
                             min-width: 150px;
 
                             span {}
 
-                            .InputsBlock {
+                            .legend__inputs {
                                 margin: 0;
                                 padding: 0;
                                 height: 38px;
@@ -253,8 +253,8 @@
                     }
 
 
-                    &.MoreOptionsBlock,
-                    &.ToMapBlock {
+                    &.filters__moreOptions,
+                    &.filters__toMap {
                         padding: 0;
 
                         display: flex;
@@ -290,26 +290,34 @@
                         }
                     }
 
-                    &.MoreOptionsBlock {
+                    &.filters__moreOptions {
                         width: 160px;
                         border-right: 1px solid rgb(102, 78, 249, 0.1);
-
-
+ 
                         box-sizing: border-box;
+                        position: relative;
                         height: 68px;
 
                         &.Active {
-                            border-bottom: 3px solid #4E64F9;
+                            &::after{
+                                width: 100%;
+                                height: 3px;
+                                background-color: #4E64F9;
+                                content: '';
+                                bottom: -16px;
+                                position: absolute;
+                            }
+ 
                         }
 
 
                     }
 
-                    &.ToMapBlock {
+                    &.filters__toMap {
                         width: 150px;
                     }
 
-                    &.ToShowBlock {
+                    &.filters__submit {
                         padding: 0;
                         display: flex;
                         flex-direction: column;

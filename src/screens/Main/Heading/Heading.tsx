@@ -1,45 +1,44 @@
-// import Image from 'next/image'
-import styles from './Heading.module.scss'
 import React, { useState } from 'react'
-import { InputBlock } from '../../../shared/Input/Input'
 import { useForm } from 'react-hook-form'
-import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
-import { MainFiltersFormType } from '../../../../types/formTypesOLD'
 import classNames from 'classnames'
+import styles from './Heading.module.scss'
+
+import { InputBlock } from '../../../shared/Input/Input'
 import { SelectBlock } from '../../../shared/Select_block/Select_block'
+import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
+import { citiesList, MainFiltersFormType } from '../../../../types/formTypes'
+import { useRouter } from 'next/router'
+import { FiltersPayloadType } from '../../../store/filtersSlice'
+import { filtersToUrlString, formValuesToUrlConverter } from '../../../../helpers/urlHelpers'
+import { categoriesItems } from '../../../store/mainSlice'
+import { cityNameEngToRus } from '../../../../helpers/nameConverters'
 
 export const Heading = () => {
 
-    const categories = [
-        {
-            name: 'room',
-            value: 'Квартиры на сутки'
-        },
-        {
-            name: 'cottage',
-            value: 'Коттеджи и усадьбы'
-        },
-        {
-            name: 'sauna',
-            value: 'Бани и сауны'
-        },
-        {
-            name: 'car',
-            value: 'Авто напрокат'
-        },
-    ]
+    // визуальные эффекты
     const [currentCategory, setCurrentCategory] = useState('room');
-
     const [isMoreOptions, setIsMoreOptions] = useState(false)
 
 
-
     //for form
+    const router = useRouter();
     const { handleSubmit, register, formState: { errors } } = useForm<MainFiltersFormType>();
+    
+    const setUrlFilters = (filter: FiltersPayloadType) => {
+        let searchString = filtersToUrlString(filter)
+        router.push(`/catalogue${searchString}`)
+    }
+
     const onSubmit = values => {
-        console.log(values);
+         setUrlFilters(  //  router.push
+             formValuesToUrlConverter(values)) // преобразуем form-values в адекватный FiltersPayloadType
 
     }
+
+
+
+ 
+
     return (
 
         <div className={styles.headingWrapper}>
@@ -55,131 +54,108 @@ export const Heading = () => {
                     onSubmit={handleSubmit(onSubmit)} >
 
 
-                    <ul className={styles.MainFormCategories}>
-                        {categories.map(k =>
+                    <ul className={styles.form__сategories}>
+                        {categoriesItems.map(k =>
                             <li
                                 className={(currentCategory == k.name) ? styles.active : ''}
-                                key={categories.indexOf(k)}
+                                key={categoriesItems.indexOf(k)}
                                 onClick={() => setCurrentCategory(k.name)}
                                 id={k.name}>
-                                <label htmlFor={`categories${categories.indexOf(k)}`}>{k.value}</label>
-                                <input {...register("category")} type="radio" id={`categories${categories.indexOf(k)}`} name="category" value={k.name} />
+                                <label htmlFor={`categories${categoriesItems.indexOf(k)}`}>{k.value}</label>
+                                <input {...register("category")} type="radio" id={`categories${categoriesItems.indexOf(k)}`} name="category" value={k.name} />
                             </li>)}
                     </ul>
 
                     <div
                         className={classNames(
-                            styles.MainFormSettings,
+                            styles.form__filters,
                             { [styles.Active]: isMoreOptions },
-                        )}
-                    >
-                        <div className={styles.CityBlock}>
-
+                    )}>
+                        <div className={styles.filters__city}>
                             <SelectBlock
-                                options={[
-                                    'Минск',
-                                    'Город 2',
-                                    'Город 3',
-                                    'Город 4',
-                                    'Город 5',
-                                ]}
+                                options={[ 
+                                    { text: 'Выберите', value: -1 },
+                                    ...citiesList.map(с => ({ text: cityNameEngToRus(с), value: с }))                                    
+                                    ]}
+
                                 label={'city'}
                                 register={register}
                                 required={false}
 
-
-                             
                                 style={{
                                     width: '150px',
                                     height: '37px',
                                 }}
                                 labelRus={{ label: 'Город', flexDirection: 'column' }}
-                                // backgroundColor={'#F8F8F8'}
-                                // boxShadow={''}
-
-                         
                             />
+                        </div>
 
 
-
-                          
-                        
-                    </div>
-
-
-                    <div className={styles.RoomsBlock}>
-                        <SelectBlock
-                            options={[
-                                'Выберите',
-                                '1 комн.',
-                                '2 комн.',
-                                '3 комн.',
-                                '4 комн.',
-                                '5 комн.',
-
-                            ]}
+                        <div className={styles.filters__rooms}>
+                            <SelectBlock
+                                options={[
+                                    { text: 'Выберите', value: -1 },
+                                    ...[1, 2, 3, 4, 5].map(i => ({ text: i + ' комн.', value: i }))
+                                ]}
                                 label={'rooms'}
                                 register={register}
                                 required={false}
 
-                            style={{
+                                style={{
                                     width: '150px',
                                     height: '37px',
-                             }}
-                            labelRus={{ label: 'Комнаты', flexDirection: 'column' }}
+                                }}
+                                labelRus={{ label: 'Комнаты', flexDirection: 'column' }}
+                            />
+                        </div>
 
 
-                        />
+                        <div className={styles.filters__price}>
+                            <legend className={styles.price__legend}>
+                                <span>
+                                    Цена за сутки (BYN)
+                                </span>
+                                <div className={styles.legend__inputs}>
 
+                                    <InputBlock
+                                        type={'number'}
+                                        labelRus={null}
+                                        placeholder={'От'}
+                                        flexDirection={null}
+                                        width={80}
+                                        height={37}
+                                        imageSrc={null}
 
-                    </div>
+                                        label={'priceMin'}
+                                        register={register}
+                                        pattern={/^[0-9]{1,20}$/i}
+                                        required={false}
+                                    />
+                                    <InputBlock
+                                        type={'number'}
+                                        labelRus={null}
+                                        placeholder={'До'}
+                                        flexDirection={null}
+                                        width={80}
+                                        height={37}
+                                        imageSrc={null}
 
+                                        label={'priceMax'}
+                                        register={register}
+                                        pattern={/^[0-9]{1,20}$/i}
+                                        required={false}
 
-                    <div className={styles.PriceBlock}>
-                        <legend className={styles.PriceBlockLabel}>
-                            <span>
-                                Цена за сутки (BYN)
-                            </span>
-                            <div className={styles.InputsBlock}>
-
-                                <InputBlock
-                                    type={'number'}
-                                    labelRus={null}
-                                    placeholder={'От'}
-                                    flexDirection={null}
-                                    width={80}
-                                    height={37}
-                                    imageSrc={null}
-
-                                    label={'priceMin'}
-                                    register={register}
-                                    pattern={/^[0-9]{1,20}$/i}
-                                    required={false}
-                                />
-                                <InputBlock
-                                    type={'number'}
-                                    labelRus={null}
-                                    placeholder={'До'}
-                                    flexDirection={null}
-                                    width={80}
-                                    height={37}
-                                    imageSrc={null}
-
-                                    label={'priceMax'}
-                                    register={register}
-                                    pattern={/^[0-9]{1,20}$/i}
-                                    required={false}
-
-                                />
+                                    />
 
 
 
-                            </div>
-                        </legend>
-                    </div>
+                                </div>
+                            </legend>
+                        </div>
+
                     <div
                         className={classNames(
-                            styles.MoreOptionsBlock,
+                            styles.filters__moreOptions,
                             { [styles.Active]: isMoreOptions },
                         )} >
 
@@ -197,7 +173,7 @@ export const Heading = () => {
                         </button>
                     </div>
 
-                    <div className={styles.ToMapBlock}>
+                    <div className={styles.filters__toMap}>
 
                         <button type="submit">
                             <span>
@@ -211,7 +187,7 @@ export const Heading = () => {
 
                         </button>
                     </div>
-                    <div className={styles.ToShowBlock}>
+                    <div className={styles.filters__submit}>
                         <button type="submit">
                             <span>
                                 Показать

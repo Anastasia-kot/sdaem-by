@@ -1,15 +1,16 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from './Rent.module.scss'
 import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { SelectBlock } from '../../../shared/Select_block/Select_block'
 import { useForm } from 'react-hook-form'
-import { DistrictMetroType } from '../../../../types/formTypesOLD'
+import { CityType, DistrictMetroType, districtsList, DistrictType, MetroList, MetroType } from '../../../../types/formTypes'
 import { useDispatch, useSelector } from "react-redux";
-import { setFilters } from "../../../store/filtersSlice";
+import { FiltersPayloadType } from "../../../store/filtersSlice";
 import { SimpleSlider } from "./Slider";
 import { useWindowDimensions } from '../../../../helpers/useWindowDimensions'
 import { RootState } from "../../../store/store";
 import { CatalogueType } from "../../../store/catalogueSlice";
+import { districtNameEngToRus, metroNameEngToRus } from "../../../../helpers/nameConverters";
  
 
 
@@ -17,18 +18,63 @@ export const Rent = React.memo(() => {
     //определяем ширину для пропров слайдера
     const { width } = useWindowDimensions();
 
+
+
     // данные для отрисовки
-    const data: CatalogueType[] = useSelector((state: RootState) => state.catalogue.data) // нужно отфильтровать только Минск
-    const totalCount = useSelector((state: RootState) => state.catalogue.totalCount)
+    const data: CatalogueType[] = useSelector((state: RootState) => state.catalogue.data)
+    const [filteredData, setFilteredData] = useState<CatalogueType[]>(data)
+
+    const [filters, setFilters] = useState<{ metro: null | MetroType, district: null | DistrictType, city: 'Minsk' }>
+        ({ metro: null, district: null, city: 'Minsk' })
+
+    useEffect(() => {
+        let newData = data.filter(
+            (element, index, array) => {
+                let result = true // по дефолту все элементы проходят фильтрацию
+
+                if (filters.district && filters.district != element.addressFeatures.district) {
+                    result = false
+                } else if (filters.metro && filters.metro != element.addressFeatures.metro) {
+                    result = false
+                } else if (filters.city && filters.city != element.addressFeatures.city) {
+                    result = false
+                }
+                return result
+            }
+
+        )
+        setFilteredData(newData)
+
+    }, [data, filters])
 
 
-    const dispatch = useDispatch()
-    const { handleSubmit, register, formState: { errors } } = useForm<DistrictMetroType>();
 
-    const onSubmit = values => {
-        console.log(values);
-        dispatch(setFilters(values))
-    }
+    // for form
+    const {  register, formState: { errors } } = useForm<DistrictMetroType>();
+
+        const onChange = 
+            (formData: { filter: 'metro', value: MetroType | -1 } | { filter: 'district', value: DistrictType | -1 }) => {
+        
+                if (formData.filter === 'metro') {
+                    setFilters(prev => { 
+                        return (
+                        (formData.value === -1) 
+                            ? { ...prev, metro: null }  // если из селекта пришло -1, то сбрасываем значение
+                            : { ...prev, metro: formData.value }
+                        )
+                    })
+                }
+
+                if (formData.filter === 'district') {
+                    setFilters(prev => {
+                        return (
+                            (formData.value === -1)
+                                ? { ...prev, district: null }  // если из селекта пришло -1, то сбрасываем значение
+                                : { ...prev, district: formData.value }
+                        )
+                    })
+                }
+        }
 
 
     return (
@@ -240,14 +286,17 @@ export const Rent = React.memo(() => {
                     <p className={styles.heading__subtitle}>КВАРТИРЫ НА СУТКИ</p>
                 </div>
 
-                <form className={styles.rent__form}
-                    onSubmit={handleSubmit(onSubmit)}>
+                <form className={styles.rent__form}>
                     <div className={styles.form__container} >
                         <SelectBlock
-                            options={['Метро']}
+                            options={[
+                                { text: 'Выберите', value: -1 },
+                                ...MetroList.map(m => ({ text: metroNameEngToRus(m), value: m }))
+                            ]}
                             label={'metro'}
                             register={register}
                             required={false}
+                            onChange={onChange}
 
                             labelRus={null}
                             style={{
@@ -267,10 +316,15 @@ export const Rent = React.memo(() => {
 
 
                     <SelectBlock
-                        options={['Район', '1 мая']}
+                        options={[
+                            { text: 'Выберите', value: -1 },
+                            ...districtsList.map(m => ({ text: districtNameEngToRus(m), value: m }))
+                        ]}
                         label={'district'}
                         register={register}
                         required={false}
+                        onChange={onChange}
+
 
                         labelRus={null}
                         style={{
@@ -286,11 +340,11 @@ export const Rent = React.memo(() => {
 
             <SimpleSlider 
                 slidesToShow={width && width >= 1440 ? 3 : width && width >= 930 ? 2 : 1} 
-                data={data}/>
+                data={filteredData}/>
 
             <div className={styles.rent__more}>
                 <div>
-                    <p className={styles.TotalCount}>{totalCount}<span> +</span></p>
+                    <p className={styles.TotalCount}>{filteredData.length}<span> +</span></p>
                     <p className={styles.TotalCountDescription}>Предложений по Минску</p>
                 </div>
                 <button className={styles.ShowMoreButton}>

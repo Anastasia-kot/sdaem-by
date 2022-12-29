@@ -5,11 +5,14 @@ import { FC } from 'react';
 
 
 type Props = {
-    options: Array<string>
+    options: {
+        text: string
+        value: string | number | null
+    }[]
     label: any   // label: Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
     register: any   // register: UseFormRegister<ContactFormType> | UseFormRegister<AuthFormType> | UseFormRegister<RegisterFormType>
     required: boolean
-    // onChange: () => void
+    onChange?: (any) => void
 
     labelRus: {label: string, flexDirection: 'row' | 'column'} | null
     style: {
@@ -26,6 +29,7 @@ export const SelectBlock: FC<Props> = (props: Props) => {
         label,
         register,
         required,
+        onChange,
 
         style,
         labelRus,
@@ -55,6 +59,7 @@ export const SelectBlock: FC<Props> = (props: Props) => {
                 label={label}
                 register={register}
                 required={required}
+                onChange={onChange ? onChange : (e)=>{}}
 
                 style={{...style,
                     gridColumn: (labelRus && labelRus.flexDirection == 'row') ? '2/3' : 'auto',

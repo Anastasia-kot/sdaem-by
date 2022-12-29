@@ -5,7 +5,7 @@ import { CategoryCard } from '../../../entities/CategoryCard/CategoryCard'
 import { CategoryType, citiesList, CityType } from "../../../../types/formTypes"
 import { filtersToUrlString } from '../../../../helpers/urlHelpers';
 import { useRouter } from 'next/router';
-import { cityNameConverters, cityNameEngToRus } from '../../../../helpers/cityNameConverters';
+import { cityNameConverters, cityNameEngToRus } from '../../../../helpers/nameConverters';
 const room = require('../../../../public/images/main/room.png');
 const car = require('../../../../public/images/main/car.png');
 const cottage = require('../../../../public/images/main/cottage.png');

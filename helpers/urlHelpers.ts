@@ -1,8 +1,47 @@
+import { Obj } from "reselect/es/types";
 import { FiltersPayloadType } from "../src/store/filtersSlice";
 
+
+
+// очищает от незаполненных полей формы, проводит конвертацию значений из '1' -> 1
+export const formValuesToUrlConverter = (values): FiltersPayloadType => {  
+    console.log('values', values)
+ 
+    let formatValues: FiltersPayloadType = {};
+
+    for (let key in values) {
+        if (values[key]) {
+            // только заполненные (чекнутые)
+
+
+            if ((typeof values[key] === 'boolean')) {
+                //только булевы параметры (т.е.  чекбоксы из модалки)
+
+
+                if ((String(key).substr(-1)) !== '2' && (String(key).substr(-1)) !== '1') {
+                    //последний символ ключа не число (то есть не дублирующие gas1, microwave2 ...)
+                    formatValues[key] = values[key]
+                }
+            } else if (!Number.isNaN(+values[key])) {
+                // значение параметра - число
+                 if (+values[key]>=0){
+                    formatValues[key] = +values[key]
+                }
+                
+                
+            } else {
+                formatValues[key] = values[key]
+            }
+        }
+    }
+    console.log('formatValues', formatValues)
+    return formatValues
+}
+
+
+// переводит данные из прошлой функции в URL строку
 export const filtersToUrlString = (filters: FiltersPayloadType): string => {
      
-    
     let searchString = '' // дефолтное на случай пустого filters
 
     if (Object.keys(filters).length > 0) {
@@ -17,3 +56,5 @@ export const filtersToUrlString = (filters: FiltersPayloadType): string => {
 
     return searchString
 }
+
+

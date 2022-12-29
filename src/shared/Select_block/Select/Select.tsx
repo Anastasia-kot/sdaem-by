@@ -3,14 +3,17 @@ import Image from 'next/image'
 import styles from './Select.module.scss'
 
 type Props = {
-    options: Array<string>
+    options:   {
+        text:string
+        value: string | number | null
+    }[]
     label: any   // label: Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
     register: any   // register: UseFormRegister<ContactFormType> | UseFormRegister<AuthFormType> | UseFormRegister<RegisterFormType>
     required: boolean
-    // onChange: () => void
+    onChange: (any) => void
 
     style: CSSStyleDeclaration 
-
+ 
 
 
 }
@@ -19,10 +22,16 @@ export const Select = ({
     label,
     register,
     required,
+    onChange,
  
     style,
-}) => <select
-        {...register(label, required={required})}
+}: Props) => {
+     
+    return <select
+        {...register(label, required=required)}
+        onChange={(e) => onChange({
+            filter: label,       
+            value: e.target.value     })}
         name={label}
         id={label}
         className={styles.select}
@@ -33,12 +42,13 @@ export const Select = ({
     >
             {options.map(o =>
                 <option
-                    value={options.indexOf(o)}
+                    value={o.value}
                     key={options.indexOf(o)}
                 >
-                    {o}
+                    {o.text}
                 </option>)}
     </select>
 
 
 
+            }

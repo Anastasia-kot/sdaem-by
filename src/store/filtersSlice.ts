@@ -1,135 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { CategoryType, MainFiltersFormType, MainFiltersKeysType } from '../../types/formTypesOLD'
-
+import { CategoryType, districtsList, DistrictType, MainFiltersFormType, MainFiltersKeysType } from '../../types/formTypes'
+import { districtNameEngToRus } from '../../helpers/nameConverters';
 
 export const FiltersRecommendationsList:
     Array<{
-        name: string
         value: string
         filter: FiltersPayloadType
     }> = [
 
-        {
-            name: 'cheap',
-            value: 'Недорогие',
+        {   value: 'Недорогие',
             filter: {
                 priceMax: 100,
             }
         },
-        {
-            name: '1room',
-            value: '1-комнатные',
+        ...[1,2,3,4,5].map(n => ({
+            value: n + '-комнатные',
             filter: {
-                rooms: 1,
+                rooms: n,
             }
-
-        },
-
-        {
-            name: '2room',
-            value: '2-комнатные',
+        })),
+        ...districtsList.map(d => ({
+            value: districtNameEngToRus(d),
             filter: {
-                rooms: 2,
+                district: d,
             }
-        },
-
-        {
-            name: '3room',
-            value: '3-комнатные',
-            filter: {
-                rooms: 3,
-            }
-        },
-
-        {
-            name: '4room',
-            value: '4-комнатные',
-            filter: {
-                rooms: 4,
-            }
-        },
-
-        {
-            name: '5room',
-            value: '5-комнатные',
-            filter: {
-                rooms: 5,
-            }
-        },
-
-        {
-            name: 'factory_district',
-            value: 'Заводской р.',
-            filter: {
-                district: 'factory',
-            }
-        },
-
-
-        {
-            name: 'lenin_district',
-            value: 'Ленинский р.',
-            filter: {
-                district: 'lenin',
-            }
-        },
-
-
-        {
-            name: 'moscow_district',
-            value: 'Московский р.',
-            filter: {
-                district: 'moscow',
-            }
-        },
-
-
-        {
-            name: 'october_district',
-            value: 'Октябрьский р.',
-            filter: {
-                district: 'october',
-            }
-        },
-        {
-            name: 'partizan_district',
-            value: 'Партизанский р.',
-            filter: {
-                district: 'partizan',
-            }
-        },
-        {
-            name: '1may_district',
-            value: 'Первомайский р.',
-            filter: {
-                district: '1may',
-            }
-        },
-
-        {
-            name: 'soviet_district',
-            value: 'Советский р.',
-            filter: {
-                district: 'soviet',
-            }
-        },
-
-        {
-            name: 'frunze_district',
-            value: 'Фрунзенский р.',
-            filter: {
-                district: 'frunze',
-            }
-        },
-
-        {
-            name: 'center_district',
-            value: 'Центральный р.',
-            filter: {
-                district: 'center',
-            }
-        },
+        }))
     ]
 
 
@@ -140,7 +36,7 @@ export interface FilterState extends MainFiltersFormType {
     priceMax: number | null,
 
     city: string | null,
-    district: string | null,
+    district: DistrictType | null,
     metro: string | null,
 
     rooms: number | null,

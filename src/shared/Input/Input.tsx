@@ -94,7 +94,7 @@ export const InputBlock: FC<Props> = (props: Props) => {
                          
                     ></textarea>
                     : <input 
-                        {...register(label, { required: "Обязательное поле", pattern: pattern })}
+                        {...register(label, { required: {required}, pattern: pattern })}
                         defaultValue={defaultValue}
                         className={styles.Input}
                         placeholder={placeholder}
@@ -120,8 +120,7 @@ export const InputBlock: FC<Props> = (props: Props) => {
                     </div> 
                 </>}
             </div>
-            {/* {errors && errors[label] && errors[label].pattern && <p role="alert">{label} </p>} */}
-
+ 
         </label>
 
       

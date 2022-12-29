@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { cityNameConverters, cityNameEngToRus } from "../../../helpers/cityNameConverters";
+import { cityNameConverters, cityNameEngToRus } from "../../../helpers/nameConverters";
 import { filtersToUrlString } from "../../../helpers/urlHelpers";
 import { CategoryType } from "../../../types/formTypes";
 import { citiesList, CityType } from "../../../types/formTypes";
