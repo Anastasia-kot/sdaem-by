@@ -1,21 +1,27 @@
 # Список домашних заданий
 
++ ДЗ занятие 1 ("JS. ES6+") 
+    + + 1.1) pug, scss https://github.com/Anastasia-kot/chimney-web-app,
+    + + 1.2) JS https://github.com/Anastasia-kot/hawking-bros-homework
++ ДЗ занятие 4 ("JS. Асинхронность. Обработка ошибок") 
+    + +  4.1) ajax https://github.com/Anastasia-kot/hawking-bros-homework/tree/Homework-2-(ajax)
+    + +  4.2) try-catch, async-await https://github.com/Anastasia-kot/hawking-bros-homework/tree/Homework-2-(try-catch%2C-async-await)
 
-ДЗ занятие 1 ("JS. ES6+") 
-    1.1) pug, scss https://github.com/Anastasia-kot/chimney-web-app,
-    1.2) JS https://github.com/Anastasia-kot/hawking-bros-homework
-ДЗ занятие 4 ("JS. Асинхронность. Обработка ошибок") 
-    4.1) ajax https://github.com/Anastasia-kot/hawking-bros-homework/tree/Homework-2-(ajax)
-    4.2) try-catch, async-await https://github.com/Anastasia-kot/hawking-bros-homework/tree/Homework-2-(try-catch%2C-async-await)
-ДЗ занятие 6 ("React. Основы") - https://github.com/Anastasia-kot/sdaem-by/commit/ac465bb26dbb9c53dc8636f6140d26f24cef36f7 
-ДЗ занятие 8 ("React. Hooks. Часть 2") - https://github.com/Anastasia-kot/sdaem-by/commit/baf9cbb642389465c9964c2a45b0ab44c1340c99
-ДЗ занятие 10 ("React. Routing") - https://github.com/Anastasia-kot/sdaem-by/commit/2368b82e07821b6c0cdeaf412dfd527b90ae318a
-ДЗ занятие 12 ("React. Стейт-менеджеры. Обзор") - 
++ ДЗ занятие 6 ("React. Основы") - https://github.com/Anastasia-kot/sdaem-by/commit/ac465bb26dbb9c53dc8636f6140d26f24cef36f7 
+
++ ДЗ занятие 8 ("React. Hooks. Часть 2") - https://github.com/Anastasia-kot/sdaem-by/commit/baf9cbb642389465c9964c2a45b0ab44c1340c99
+
++ ДЗ занятие 10 ("React. Routing") - https://github.com/Anastasia-kot/sdaem-by/commit/2368b82e07821b6c0cdeaf412dfd527b90ae318a
+
++ ДЗ занятие 12 ("React. Стейт-менеджеры. Обзор") - 
     12.1) пропсы https://github.com/Anastasia-kot/sdaem-by/tree/homework-lection-12.1-props, 
     12.2) RTK https://github.com/Anastasia-kot/sdaem-by/commit/12fe6e45bed340e8d4516cf98d6dcc47ac49bcea
-ДЗ занятие 14 ("React. Формы") - https://github.com/Anastasia-kot/sdaem-by/commit/7ddb49b08e66ae2a21ded6a1111f0935aab51c25
-ДЗ занятие 16 ("Next.js. Основы") - https://github.com/Anastasia-kot/sdaem-by (проект разрабатывался на Next.js в основной ветке)
-ДЗ занятие 18 ("React. Статическая типизация. PropTypes") - https://github.com/Anastasia-kot/sdaem-by/commit/14da11f2690999b2e491dd9afc884e2809207bcb
+
++ ДЗ занятие 14 ("React. Формы") - https://github.com/Anastasia-kot/sdaem-by/commit/7ddb49b08e66ae2a21ded6a1111f0935aab51c25
+
++ ДЗ занятие 16 ("Next.js. Основы") - https://github.com/Anastasia-kot/sdaem-by (проект разрабатывался на Next.js в основной ветке)
+
++ ДЗ занятие 18 ("React. Статическая типизация. PropTypes") - https://github.com/Anastasia-kot/sdaem-by/commit/14da11f2690999b2e491dd9afc884e2809207bcb
 
 # Веб-сайт риелторской компании  
 ### [ссылка на деплой](# "ссылка")
