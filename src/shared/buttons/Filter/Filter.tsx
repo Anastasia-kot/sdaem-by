@@ -1,10 +1,5 @@
-import classNames from 'classnames'
-import Image from 'next/image'
 import styles from './Filter.module.scss'
  
-
-type ButtonType = 'button' | 'reset' | 'submit'
-
 type Props = {
     key: number
     value: string

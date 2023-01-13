@@ -126,7 +126,7 @@ export const CatalogueCard = (
 
                 <ul className={styles.features} >
                     <li key={0} className={styles.features__item}>
-                        <button>
+                        <button className={styles.features__button}>
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_2831_1903)">
                                     <path d="M8.001 0.794922C5.85814 0.794922 4.10645 2.54661 4.10645 4.68949C4.10645 6.83236 5.85814 8.58405 8.001 8.58405C10.1439 8.58405 11.8956 6.83236 11.8956 4.68949C11.8956 2.54661 10.1439 0.794922 8.001 0.794922Z" fill="#686868" />
@@ -146,20 +146,21 @@ export const CatalogueCard = (
                     </li>
 
                     <li key={1} className={styles.features__item}>
-                        <button>
+                        <button className={styles.features__button}>
                             {data?.roomFeatures?.rooms}  комн.
                         </button>
                     </li>
-                    <li key={2} className={styles.features__item}>
-                        <button>
-                            {data?.roomFeatures?.sizeAsMeters} м<sup>2</sup>
-                        </button>
-                    </li>
+                    {style === 'main' && 
+                        <li key={2} className={styles.features__item}>
+                            <button className={styles.features__button}>
+                                {data?.roomFeatures?.sizeAsMeters} м<sup>2</sup>
+                            </button>
+                        </li>}
 
                     {style==='list' && 
                         <>
                             <li className={styles.features__item}>
-                                <button>
+                                <button className={styles.features__button}>
                                     <svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M19.6401 11.4773H18.3812L14.4755 0.509766L9.99979 7.19943L5.21594 0.589264L1.61882 11.4773H0.359905L0 12.9373H4.77911L6.65514 7.59981L10.0565 12.2942L10.0769 12.3238L10.0978 12.2942L13.3449 7.59981L15.2209 12.9373H20L19.6401 11.4773Z" fill="#BDBDBD" />
                                     </svg>
@@ -167,7 +168,7 @@ export const CatalogueCard = (
                                 </button> 
                             </li>
                             <li className={styles.features__item}>
-                                <button>
+                                <button className={styles.features__button}>
                                     <span> район: </span>
                                     <span>{data.addressFeatures.district}</span>
                                 </button> 

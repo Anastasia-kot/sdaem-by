@@ -47,16 +47,17 @@ export const Filters = React.memo(() => {
 
 
     // recommendations__list
-    const [isFiltersRecommendations, setIsFiltersRecommendations] = useState<null | number>(null)
+    const [isFiltersRecommendations, setIsFiltersRecommendations] = useState <null | number>(null)
 
-    const onClick = (i) => {
-        setUrlFilters(i.filter);
-        setIsFiltersRecommendations(i.name);
+    const onClick = (element, index) => {
+        setUrlFilters(element.filter);
+        setIsFiltersRecommendations(index);
     }
 
     const onReset = () => {
-        setIsFiltersRecommendations(null);
         setUrlFilters({})
+        setIsFiltersRecommendations(null);
+
     }
 
 
@@ -88,22 +89,22 @@ export const Filters = React.memo(() => {
                 <Breadcrumbs breadcrumbs={[{ name: '', value: 'Квартиры в Минске' }]} />
                 <h1 className={styles.heading__title}>Аренда квартир на сутки в Минске</h1>
                 <div className={styles.heading__recommendations}>
-                    <h2 className={styles.recommendations__title}>Рекомендуем посмотреть</h2>
+                    {isFiltersRecommendations === null &&<h2 className={styles.recommendations__title}>Рекомендуем посмотреть</h2>}
                     <ul className={styles.recommendations__list}>
-                        {FiltersRecommendationsList.map(i => isFiltersRecommendations
+                        {FiltersRecommendationsList.map(i => isFiltersRecommendations !== null
                             ? isFiltersRecommendations === FiltersRecommendationsList.indexOf(i) &&
                             <FilterItem
                                 key={FiltersRecommendationsList.indexOf(i)}
                                 value={i.value}
                                 isFiltersRecommendations={isFiltersRecommendations === FiltersRecommendationsList.indexOf(i)}
-                                onClick={() => { onClick(i) }}
+                                onClick={() => { onClick(i, FiltersRecommendationsList.indexOf(i) ) }}
                                 onReset={() => { onReset() }}
                             />
                             : <FilterItem
                                 key={FiltersRecommendationsList.indexOf(i)}
                                 value={i.value}
                                 isFiltersRecommendations={isFiltersRecommendations === FiltersRecommendationsList.indexOf(i)}
-                                onClick={() => { onClick(i) }}
+                                onClick={() => { onClick(i, FiltersRecommendationsList.indexOf(i)) }}
                                 onReset={() => { onReset() }}
                             />
 
