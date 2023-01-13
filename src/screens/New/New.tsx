@@ -3,13 +3,9 @@ import { Socials_sharing } from '../../shared/Socials_sharing/Socials_sharing'
 import { Breadcrumbs } from '../../entities/Breadcrumbs/Breadcrumbs'
 import { NewsCard } from '../../entities/NewsCard/NewsCard'
 import styles from './New.module.scss'
-import { RootState } from '../../store/store'
-import { useSelector } from 'react-redux'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+
 import { dateConverter } from '../../../helpers/dateConverters'
-import { NewsType } from '../../store/newsSlice'
-import { sortingNewsPerDate } from '../../../helpers/sortingFunctions'
+
 import { Page404 } from '../404/404'
 const room = require('../../../public/images/room_big_quality.png');
 
@@ -25,9 +21,11 @@ export const New = ({ data }) => {
     return (
         <main className={styles.new}>
 
+
+
+
             <div className={styles.new__heading}>
                 <div className={styles.heading}>
-
                     <Breadcrumbs breadcrumbs={[
                         { name: 'news', value: 'Новости ' },
                         { name: '', value: `${post.title}` }]} />
@@ -37,13 +35,15 @@ export const New = ({ data }) => {
                         <span className={styles.info__date}>{dateConverter(post.date)}  </span>
                         <Socials_sharing color={'violet'} />
                     </div>
-
-
                 </div>
             </div>
 
-            <div className={styles.new__content}>
 
+
+
+
+
+            <div className={styles.new__content}>
                 {post.image
                     ? <img src={post.image} alt="" className={styles.content__image} />
                     : <Image src={room} alt="" className={styles.content__image} width={845} height={563} />
@@ -248,10 +248,11 @@ export const New = ({ data }) => {
                 <div className={styles.content__text}>
                     {post.description.map(d => <p key={post.description.indexOf(d)}>{d}</p>)}
                 </div>
-
-
-
             </div>
+
+
+
+
 
 
             <div className={styles.new__alsoRead}>
@@ -263,6 +264,9 @@ export const New = ({ data }) => {
 
                 </div>
             </div>
+
+
+
 
         </main>
     )

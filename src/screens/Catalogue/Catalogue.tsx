@@ -7,7 +7,7 @@ import { MapBlock } from '../../entities/MapBlock/MapBlock'
 
 
 
-export const Catalogue = () => {
+export const Catalogue = ({data}) => {
 
 
     return (
@@ -15,7 +15,7 @@ export const Catalogue = () => {
 
             <Filters />
 
-            <Objects />
+            <Objects data={data}/>
 
             <MapBlock
                 title={'Показать найденные квартиры на карте'}

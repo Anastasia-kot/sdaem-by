@@ -6,40 +6,35 @@ import { NewsType } from '../../src/store/newsSlice';
 import { sortingNewsPerDate } from '../../helpers/sortingFunctions';
 
 
-export async function getServerSideProps(context: { params: { id: number; }; }) {
+export async function getServerSideProps(context: { params: { id: number } }) {
     
     const { id } = context.params;
 
         const res1 = await fetch(`http://localhost:3000/api/news/${id}`)
 
-        console.log(res1.status)
-        if (res1.status === 404) { 
-            // return { notFound: true }
+        if (res1.status === 404) {
+
             return { props: { data: null }}
+
         } else {
 
-            const post = await res1.json()
+                const post = await res1.json()
 
-            const res2 = await fetch(`http://localhost:3000/api/news`)
-            const data = await res2.json()
-            const { news } = data
-            let posts: NewsType[] = []
+                const res2 = await fetch(`http://localhost:3000/api/news`)
+                const data = await res2.json()
+                let posts: NewsType[] = []
 
-            for (let i = 0; posts.length < 3; i++) {
-                if (+id !== sortingNewsPerDate([...news])[i].id) {
-                    posts = [...posts, sortingNewsPerDate([...news])[i]]
+                // выбираем 3 новости, у которых id не совпадает с URL ID
+                for (let i = 0; posts.length < 3; i++) {
+                    if (+id !== sortingNewsPerDate([...data.news])[i].id) {
+                        posts = [...posts, sortingNewsPerDate([...data.news])[i]]
+                    }
                 }
-            }
 
             return { props: { data: { post, posts } } }
-
         }
 
-   
 
-     
- 
-    
 }
 
 

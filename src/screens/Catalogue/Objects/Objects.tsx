@@ -11,70 +11,73 @@ import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { CatalogueType } from '../../../store/catalogueSlice'
 
 
-export const Objects = () => {
+export const Objects = ({data}) => {
 
 
-    const data: CatalogueType[] = useSelector((state: RootState) => state.catalogue.data)
+    const {items, totalCount} = data
+    
+    // const items: CatalogueType[] = useSelector((state: RootState) => state.catalogue.data)
+    // const totalCount = useSelector((state: RootState) => state.catalogue.totalCount)
+
     const filters = useSelector((state: RootState) => state.filter)
-    console.log('filters', filters)
-    let [filteredData, setFilteredData] = useState<CatalogueType[]>(data)
+    let [filteredData, setFilteredData] = useState<CatalogueType[]>(() => { return items ? items : []  })
 
-    useEffect(
-        () => {
-            let newFilteredData = data.filter(
-                (element, index, array) => {
-                    let result = true // по дефолту все элементы проходят фильтрацию
+    useEffect(() => {
+            let newFilteredData: CatalogueType[] = []
+            if (items) {
+                newFilteredData = items.filter(
+                    (element, index, array) => {
+                        let result = true // по дефолту все элементы проходят фильтрацию
 
-                    if (filters.category && filters.category != element.category) {
-                        result = false
-                    } else if (filters.city && filters.city != element.addressFeatures.city) {
-                        result = false
-                    } else if (filters.district && filters.district != element.addressFeatures.district) {
-                        result = false
-                    } else if (filters.metro && filters.metro != element.addressFeatures.metro) {
-                        result = false
-                    } else if (filters.rooms && filters.rooms != element.roomFeatures.rooms) {
-                        result = false
-                    } else if (filters.priceMin && filters.priceMin > element.price) {
-                        result = false
-                    } else if (filters.priceMax && filters.priceMax < element.price) {
-                        result = false
-                    } else if (filters.sleepPlaces && filters.sleepPlaces != +element.roomFeatures.sizeAsPeople[0]) {
-                        result = false
+                        if (filters.category && filters.category != element.category) {
+                            result = false
+                        } else if (filters.city && filters.city != element.addressFeatures.city) {
+                            result = false
+                        } else if (filters.district && filters.district != element.addressFeatures.district) {
+                            result = false
+                        } else if (filters.metro && filters.metro != element.addressFeatures.metro) {
+                            result = false
+                        } else if (filters.rooms && filters.rooms != element.roomFeatures.rooms) {
+                            result = false
+                        } else if (filters.priceMin && filters.priceMin > element.price) {
+                            result = false
+                        } else if (filters.priceMax && filters.priceMax < element.price) {
+                            result = false
+                        } else if (filters.sleepPlaces && filters.sleepPlaces != +element.roomFeatures.sizeAsPeople[0]) {
+                            result = false
 
-                    } else if (filters.gas && !element.comfortFeatures.gas) {
-                        result = false
-                    } else if (filters.oven && !element.comfortFeatures.oven) {
-                        result = false
-                    } else if (filters.coffeeMachine && !element.comfortFeatures.coffeeMachine) {
-                        result = false
-                    } else if (filters.microwave && !element.comfortFeatures.microwave) {
-                        result = false
-                    } else if (filters.dishes && !element.comfortFeatures.dishes) {
-                        result = false
-                    } else if (filters.dishwasher && !element.comfortFeatures.dishwasher) {
-                    result = false
+                        } else if (filters.gas && !element.comfortFeatures.gas) {
+                            result = false
+                        } else if (filters.oven && !element.comfortFeatures.oven) {
+                            result = false
+                        } else if (filters.coffeeMachine && !element.comfortFeatures.coffeeMachine) {
+                            result = false
+                        } else if (filters.microwave && !element.comfortFeatures.microwave) {
+                            result = false
+                        } else if (filters.dishes && !element.comfortFeatures.dishes) {
+                            result = false
+                        } else if (filters.dishwasher && !element.comfortFeatures.dishwasher) {
+                            result = false
+                        }
+
+                        return result
                     }
-                   
-                    return result
-        }
-    ); 
-            console.log(newFilteredData)
+                ); 
+            }
             setFilteredData(newFilteredData)
-},
-        [data, filters])
+    }, [items, filters])
 
-const totalCount = useSelector((state: RootState) => state.catalogue.totalCount)
 
+
+// visual style
 const [isListCatalogue, setIsListCatalogue] = useState(false as boolean);
 
 
 
-
+// form
 const { handleSubmit, register, formState: { errors } } = useForm<{ sorting_order: number }>();
 const onSubmit = values => {
     console.log(values);
-
 }
 
 return (
@@ -180,18 +183,17 @@ return (
 
 
 
-
         <div className={styles.objects__items}>
             <h2 className={styles.items__title}>Найдено {filteredData.length} результатов</h2>
-            <div className={isListCatalogue ? styles.ResultListListView : styles.ResultListTileView}>
+            {data && <div className={isListCatalogue ? styles.ResultListListView : styles.ResultListTileView}>
 
 
-                {isListCatalogue
-                    ? <PaginatedItems itemsPerPage={3} items={filteredData} style={'list'} Component={CatalogueCard} />
-                    : <PaginatedItems itemsPerPage={6} items={filteredData} style={'tile'} Component={CatalogueCard} />
-                }
+                    {isListCatalogue
+                        ? <PaginatedItems itemsPerPage={3} items={filteredData} style={'list'} Component={CatalogueCard} />
+                        : <PaginatedItems itemsPerPage={6} items={filteredData} style={'tile'} Component={CatalogueCard} />
+                    }
 
-            </div>
+            </div>}
 
             <div className={styles.items__socials}>
                 <Socials_sharing color='' />
