@@ -6,15 +6,16 @@ import { store } from '../src/store/store'
 
 
 
-const MyApp = ({ Component }) => {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       {/* <Layout> */}
-        <Component />
+      <Component {...pageProps}/>
       {/* </Layout> */}
     </Provider>
   )
 }
+
 
 
 MyApp.displayName = 'MyApp';

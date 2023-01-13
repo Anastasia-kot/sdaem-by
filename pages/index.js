@@ -7,7 +7,9 @@ import { Layout } from '../src/layout/Layout';
 
 
 
-export default function Home({Component}) {
+
+export default function Home( ) {
+ 
   return (
      <Layout> 
         <Main />

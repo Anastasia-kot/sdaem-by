@@ -4,9 +4,10 @@ import { Categories } from './Categories/Categories'
 import { Heading } from './Heading/Heading'
 import { Mapsearch } from './Mapsearch/Mapsearch'
 import { Rent } from './Rent/Rent'
+import React from 'react'
 
 
-export const Main = () => {
+export const Main = React.memo(() => {
 
 
     return (
@@ -18,5 +19,6 @@ export const Main = () => {
             <About />
         </main>
     )
-}
- 
+})
+
+Main.displayName = 'Main';

@@ -77,7 +77,7 @@
                 &:nth-child(4),
                 &:nth-child(5),
                 &:nth-child(6) {
-                    justify-self: start;
+                    justify-self: flex-start;
                     margin-right: 18px;
 
                     // @media (max-width: 1200px) {

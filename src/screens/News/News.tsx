@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { Breadcrumbs } from '../../entities/Breadcrumbs/Breadcrumbs'
@@ -12,16 +12,24 @@ import { PaginatedItems } from '../../shared/Pagination/Pagination'
 import { sortingNewsPerDate } from '../../../helpers/sortingFunctions'
 import { useRouter } from 'next/router'
 
-export const News = () => {
+
+
+
+
+
+
+
+
+export const News = ({data}) => {
+    const { news, totalCount } = data
 
     const dispatch = useDispatch();
-    const news: NewsType[] = useSelector((state: RootState) => state.news.data)
-    const searchWord = useSelector((state: RootState) => state.news.searchWord)
-    console.log('redux searchWord', searchWord)
+    const [filteredNews, setFilteredNews] = useState<NewsType[]>(sortingNewsPerDate(news))
+    // const news: NewsType[] = useSelector((state: RootState) => state.news.data)
+    // const searchWord = useSelector((state: RootState) => state.news.searchWord)
     
     const router = useRouter();
     const {query} = router;
-    console.log(query)
     useEffect(() => {
         if (query && query.search) {
             // @ts-ignore
@@ -38,7 +46,6 @@ export const News = () => {
      
 
  
-    let [filteredNews, setFilteredNews] = useState<NewsType[]>(sortingNewsPerDate(news))
 
 
 
@@ -66,12 +73,16 @@ export const News = () => {
         return newNewsList
     }
 
-    const onSubmit = values => {
-        router.push(`/news?search=${values.searchWord}`, undefined, { shallow: true })
+    const routingFunc = (string: string) => {
+        if (string.length > 0) {
+            router.push(`/news?search=${string}`, undefined, { shallow: true })
+        } else {
+            router.push(`/news`, undefined, { shallow: true })
+        }
     }
-    const onChange = value => {
-        router.push(`/news?search=${value}`, undefined, { shallow: true })
-    }
+
+    const onSubmit = values => routingFunc(values) 
+    const onChange = value => routingFunc(value)  
 
 
 
@@ -130,3 +141,4 @@ export const News = () => {
         </main>
     )
 }
+ 

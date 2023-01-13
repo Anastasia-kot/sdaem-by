@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, p {
 
           display: flex;
           flex-direction: row;
-          justify-content: start;
+          justify-content: flex-start;
           /* width: 100%; */
           gap: 14px;
         }

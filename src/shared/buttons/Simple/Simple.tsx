@@ -12,11 +12,11 @@ type Props = {
     type?: ButtonType
     onClick: () => void  | null
 }
-export const SimpleButton = (props
-    // { text, width, colorScheme, type = 'button' as ButtonType, onClick }
+export const SimpleButton = (
+    { text, width, colorScheme, type = 'button' as ButtonType, onClick }: Props
     ) => {
 
-    const { text, width, colorScheme, type = 'button' as ButtonType, onClick } = props
+    // const { text, width, colorScheme, type = 'button' as ButtonType, onClick } = props
 
     return (
         <button
@@ -38,18 +38,18 @@ export const SimpleButton = (props
     )
 }
 
-SimpleButton.propTypes = {
-    text: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    colorScheme: PropTypes.oneOf(['yellow', 'violet', 'yellowBlack']).isRequired,
-    type: PropTypes.oneOf(['button' , 'reset' , 'submit']),
-    onClick: PropTypes.func.isRequired,
-}
+// SimpleButton.propTypes = {
+//     text: PropTypes.string.isRequired,
+//     width: PropTypes.number.isRequired,
+//     colorScheme: PropTypes.oneOf(['yellow', 'violet', 'yellowBlack']).isRequired,
+//     type: PropTypes.oneOf(['button' , 'reset' , 'submit']),
+//     onClick: PropTypes.func.isRequired,
+// }
 
-SimpleButton.defaultProp = {
-    text: '',
-    width: 100,
-    colorScheme: 'yellow',
-    type:  'button',
-    onClick: {},
-}
+// SimpleButton.defaultProp = {
+//     text: '',
+//     width: 100,
+//     colorScheme: 'yellow',
+//     type:  'button',
+//     onClick: {},
+// }
