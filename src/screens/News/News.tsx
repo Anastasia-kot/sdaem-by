@@ -34,9 +34,11 @@ export const News = ({data}) => {
         if (query && query.search) {
             // @ts-ignore
             dispatch(setSearchWord(query.search))
-            setFilteredNews(sortingFunc(query.search))
+            if ( typeof(query.search) === 'string') {
+                setFilteredNews(sortingFunc(query.search))
+            }
         }
-    }, [router.query.search]) 
+    }, [query, query.search]) 
 
 
 
@@ -57,7 +59,7 @@ export const News = ({data}) => {
     //for form
     const { handleSubmit, register, formState: { errors } } = useForm<{ searchWord: string }>();
 
-    const sortingFunc = (searchWord) => {
+    const sortingFunc = (searchWord: string): NewsType[] => {
         let newNewsList: NewsType[]
         searchWord ===''
             ? newNewsList = news
@@ -73,7 +75,7 @@ export const News = ({data}) => {
         return newNewsList
     }
 
-    const routingFunc = (string: string) => {
+    const routingFunc = (string: string): void => {
         if (string.length > 0) {
             router.push(`/news?search=${string}`, undefined, { shallow: true })
         } else {
@@ -81,8 +83,8 @@ export const News = ({data}) => {
         }
     }
 
-    const onSubmit = values => routingFunc(values) 
-    const onChange = value => routingFunc(value)  
+    const onSubmit = (values) => routingFunc(values) 
+    const onChange = (string: string) => routingFunc(string)  
 
 
 

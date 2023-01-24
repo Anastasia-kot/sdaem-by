@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import styles from './Rent.module.scss'
 import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { SelectBlock } from '../../../shared/Select_block/Select_block'
@@ -14,7 +14,7 @@ import { districtNameEngToRus, metroNameEngToRus } from "../../../../helpers/nam
  
 
 
-export const Rent = React.memo(() => {
+export const Rent: FC = React.memo(() => {
     //определяем ширину для пропров слайдера
     const { width } = useWindowDimensions();
 

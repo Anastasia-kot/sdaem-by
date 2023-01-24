@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from './About.module.scss'
-import React from 'react'
+import React, { FC } from 'react'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import { NewsType } from '../../../store/newsSlice';
@@ -11,10 +11,10 @@ const room = require('../../../../public/images/room-about.png');
 
  
 
-export const About = () => {
+export const About: FC = React.memo(() => {
 
     //надо отсортировать и найти 4 более новые (или взять последние 4 из массива)
-    const news: NewsType[] = sortingNewsPerDate(useSelector((state: RootState) => state.news.data))
+    const news: NewsType[] = sortingNewsPerDate(useSelector((state: RootState) => state.news.data)).slice(0, 4)
   
 
     return (
@@ -253,13 +253,12 @@ export const About = () => {
                 </h3>
                 <ul className={styles.news__list}>
                     {news.map(n => {
-                        if (news.indexOf(n)<4) { return <li key={news.indexOf(n)}>
+                        <li key={news.indexOf(n)}>
                             <Link href={`/new/${n.id}`} >
                             <span>{n.title}</span>
                             <span>{dateConverter(n.date)}</span>
                             </Link>
-                        </li>}
-                    })}
+                        </li>})}
                     <li key={news.length} >
                         <Link href='/news'>
                         <span>
@@ -279,6 +278,9 @@ export const About = () => {
 
 
     )
-}
+})
+
+About.displayName = 'About';
+
 
           

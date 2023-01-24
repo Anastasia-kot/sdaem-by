@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import classNames from 'classnames'
 import styles from './Heading.module.scss'
@@ -13,7 +13,7 @@ import { filtersToUrlString, formValuesFormatter } from '../../../../helpers/url
 import { categoriesItems } from '../../../store/mainSlice'
 import { cityNameEngToRus } from '../../../../helpers/nameConverters'
 
-export const Heading = () => {
+export const Heading: FC = React.memo(() => {
 
     // визуальные эффекты
     const [currentCategory, setCurrentCategory] = useState('room');
@@ -24,15 +24,14 @@ export const Heading = () => {
     const router = useRouter();
     const { handleSubmit, register, formState: { errors } } = useForm<MainFiltersFormType>();
     
-    const setUrlFilters = (filter: FiltersPayloadType) => {
+    const setUrlFilters = (filter: FiltersPayloadType): void => {
         let searchString = filtersToUrlString(filter)
         router.push(`/catalogue${searchString}`)
     }
 
-    const onSubmit = values => {
-         setUrlFilters(  //  router.push
-             formValuesFormatter(values)) // преобразуем form-values в адекватный FiltersPayloadType
-
+    const onSubmit = (values): void => {
+        setUrlFilters(  //  router.push
+        formValuesFormatter(values)) // преобразуем form-values в адекватный FiltersPayloadType
     }
 
 
@@ -40,7 +39,6 @@ export const Heading = () => {
  
 
     return (
-
         <div className={styles.headingWrapper}>
             <div className={styles.heading}>
                 <h1 className={styles.heading__title}>
@@ -212,4 +210,5 @@ export const Heading = () => {
 
 
     )
-}
+})
+Heading.displayName = 'Heading';

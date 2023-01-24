@@ -1,14 +1,14 @@
 // import Image from 'next/image'
 import styles from './Mapsearch.module.scss'
-import React from 'react'
-import { PreferenceCard } from '../../../entities/PreferenceCard/PreferenceCard.tsx'
-import { MapBlock } from '../../../entities/MapBlock/MapBlock.tsx'
+import React, { FC } from 'react'
+import { PreferenceCard } from '../../../entities/PreferenceCard/PreferenceCard'
+import { MapBlock } from '../../../entities/MapBlock/MapBlock'
 const clients = require('../../../../public/images/main/clients.svg');
 const move = require('../../../../public/images/main/move.svg');
 
 
 
-export const Mapsearch = () => {
+export const Mapsearch: FC = React.memo(() => {
 
     const pref_cards = [
         {
@@ -289,4 +289,7 @@ export const Mapsearch = () => {
         </div>
     )
 }
-  
+)
+
+Mapsearch.displayName = 'Mapsearch';
+

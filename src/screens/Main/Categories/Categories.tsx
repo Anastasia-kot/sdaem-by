@@ -1,6 +1,6 @@
 // import Image from 'next/image'
 import styles from './Categories.module.scss'
-import React from 'react'
+import React, { FC } from 'react'
 import { CategoryCard } from '../../../entities/CategoryCard/CategoryCard'
 import { CategoryType, citiesList, CityType } from "../../../../types/formTypes"
 import { filtersToUrlString } from '../../../../helpers/urlHelpers';
@@ -12,7 +12,7 @@ const cottage = require('../../../../public/images/main/cottage.png');
 const sauna = require('../../../../public/images/main/sauna.png');
 
  
-export const Categories = () => {
+export const Categories: FC = React.memo(() => {
  
     const objects = [
         {
@@ -232,5 +232,9 @@ export const Categories = () => {
         </div>
 
     )
-}
+})
+
+
+Categories.displayName = 'Categories';
+
   

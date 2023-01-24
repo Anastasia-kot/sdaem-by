@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from './Contacts.module.scss'
-import { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { ContactFormType } from '../../../types/loginFormTypes';
 
@@ -15,7 +15,7 @@ import { UserDataInterface } from '../../store/authSlice';
 
 
 
-export const Contacts = () => {
+export const Contacts: FC = React.memo(() => {
 
     // автозаполнение формы
     const userData: UserDataInterface = useSelector((state: RootState) => state.auth.data)
@@ -25,14 +25,12 @@ export const Contacts = () => {
     //for form
     const { handleSubmit, register, formState: { errors } } = useForm<ContactFormType>();
     const onSubmit = values => {
-        console.log(values);
         setIsModal(true)
-            //     e.preventDefault();
-            //     setIsModal(true)
+        // отправить письмо на бекенд
     }
 
     //письмо отправлено
-    const [isModal, setIsModal] = useState(false);
+    const [isModal, setIsModal] = useState<boolean>(false);
 
  
 
@@ -240,4 +238,7 @@ export const Contacts = () => {
 
         </main>
     )
-}
+})
+
+Contacts.displayName = 'Contacts';
+

@@ -8,8 +8,6 @@ import React from 'react'
 
 
 export const Main = React.memo(() => {
-
-
     return (
         <main className={styles.Main}>
             <Heading />
