@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { cityNameEngToRus } from '../../../helpers/nameConverters';
 import { filtersToUrlString } from '../../../helpers/urlHelpers';
@@ -17,19 +18,13 @@ type Props = {
     background: string
     arrow_button: boolean
 }
-export const CategoryCard = ({ filter, header, additional_header, hashtags, background, arrow_button }: Props) => {
+export const CategoryCard: FC<Props> = React.memo( ({ filter, header, additional_header, hashtags, background, arrow_button }) => {
     // const dispatch = useDispatch();
     const router = useRouter();
  
     const onClick = (props: { category: CategoryType, city?: CityType }) => {
         let searchString = filtersToUrlString(props)
         router.push(`/catalogue${searchString}`)
-        // dispatch(setFilters(props))
-        // setTimeout(() => {
-        //     router.push('/catalogue')
-        // },
-        //     3000
-        // )
     }
 
     return (
@@ -55,3 +50,6 @@ export const CategoryCard = ({ filter, header, additional_header, hashtags, back
         </div>
     )
 }
+)
+CategoryCard.displayName = 'CategoryCard';
+

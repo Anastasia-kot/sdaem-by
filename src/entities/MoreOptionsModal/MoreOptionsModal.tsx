@@ -1,3 +1,4 @@
+import React, { FC } from 'react'
 import { UseFormRegister } from 'react-hook-form'
 import { districtNameEngToRus, metroNameEngToRus } from '../../../helpers/nameConverters'
 import { districtsList, districtsListRus, MetroList, MetroListRus, MoreOptionsModalFormType } from '../../../types/formTypes'
@@ -5,11 +6,11 @@ import { SelectBlock } from '../../shared/Select_block/Select_block'
 import styles from './MoreOptionsModal.module.scss'
  
 type Props = {
-    register: UseFormRegister<MoreOptionsModalFormType> 
-    style: CSSStyleDeclaration
+    register: any //UseFormRegister<MoreOptionsModalFormType> 
+    style: Object //CSSStyleDeclaration
 }
 
-export const MoreOptionsModal = ({register, style}) => {
+export const MoreOptionsModal:  FC<Props> = React.memo( ({register, style}) => {
     const checkboxData = [
         {
             name: 'gas',
@@ -163,3 +164,6 @@ export const MoreOptionsModal = ({register, style}) => {
         </div>
     )
 }
+)
+
+MoreOptionsModal.displayName = 'MoreOptionsModal';

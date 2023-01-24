@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FC } from 'react'
+import React,{ FC } from 'react'
 import styles from './AuthModal.module.scss'
 
 type Props = {
@@ -9,8 +9,8 @@ type Props = {
     onClick?: () => void
 }
 
-export const AuthModal:FC<Props> = 
-    (
+export const AuthModal: FC<Props> = 
+    React.memo((
         {   title, 
             description = 'Письмо для подтверждения аккаунта отправлено почту. Перейдите по ссылке, указанной в письме. Если письма нет, то проверьте спам.', 
             buttonText ='Понятно', 
@@ -22,5 +22,7 @@ export const AuthModal:FC<Props> =
                 <button type='button' className={styles.modal__button}> {buttonText}</button>
             </Link>
 
-        </div>
+        </div>)
+AuthModal.displayName = 'AuthModal';
+
   

@@ -133,7 +133,7 @@ export const Categories: FC = React.memo(() => {
 
     const router = useRouter();
 
-    const onClick = (props: { category?: CategoryType, city?: CityType }) => {
+    const onClick = (props: { category?: CategoryType, city?: CityType }): void => {
         let searchString = filtersToUrlString(props)
         router.push(`/catalogue${searchString}`)
     }

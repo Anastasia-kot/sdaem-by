@@ -7,14 +7,21 @@ import styles from './New.module.scss'
 import { dateConverter } from '../../../helpers/dateConverters'
 
 import { Page404 } from '../404/404'
+import React, { FC } from 'react'
+import { NewsType } from '../../store/newsSlice'
 const room = require('../../../public/images/room_big_quality.png');
 
 
-export const New = ({ data }) => {
+type Props = {
+    data: {
+        post: NewsType
+        posts: NewsType[]
+    }
+}
+
+export const New: FC<Props> = React.memo(({ data }) => {
 
     if (!data) { return  <Page404 />   }  
-
-
 
     const { post, posts } = data
 
@@ -270,4 +277,6 @@ export const New = ({ data }) => {
 
         </main>
     )
-}
+})
+New.displayName = 'New';
+

@@ -143,4 +143,4 @@ export const News = ({data}) => {
         </main>
     )
 }
- 
+News.displayName = 'News';

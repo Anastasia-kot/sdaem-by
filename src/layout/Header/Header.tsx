@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../../store/store'
 
@@ -23,7 +23,7 @@ const arrowDown = require('../../../public/images/svg/arrow_down.svg');
 
 
 
-const Header = () => {
+const Header: FC = React.memo(() => {
 
     const userData: UserDataInterface = useSelector((state: RootState) => state.auth.data)
     const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth)
@@ -33,15 +33,8 @@ const Header = () => {
 
 
     const onClick = (props: { category?: CategoryType, city?: CityType }) => {
-        let searchString = filtersToUrlString(props)
+        let searchString: string = filtersToUrlString(props)
         router.push(`/catalogue${searchString}`)
-        
-            // dispatch(setFilters(props))
-            // setTimeout(() => {
-            //     router.push('/catalogue')
-            // },
-            //     3000
-            // )
     }
 
 
@@ -51,9 +44,9 @@ const Header = () => {
 
 
     // modals 
-    const [isBurgerActive, setIsBurgerActive] = useState(false);
-    const [isRoomsActive, setIsRoomsActive] = useState(false);
-    const [isUnloginMenuActive, setIsUnloginMenuActive] = useState(false);
+    const [isBurgerActive, setIsBurgerActive] = useState<boolean>(false);
+    const [isRoomsActive, setIsRoomsActive] = useState<boolean>(false);
+    const [isUnloginMenuActive, setIsUnloginMenuActive] = useState<boolean>(false);
 
     const onBurgerClick = () => {
         setIsBurgerActive(prev => !prev);
@@ -218,6 +211,10 @@ const Header = () => {
             </div>
         </header >
     )
-}
+})
+
+Header.displayName = 'Header';
+
+
 
 export default Header;

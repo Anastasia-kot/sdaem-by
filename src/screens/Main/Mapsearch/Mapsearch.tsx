@@ -64,7 +64,6 @@ export const Mapsearch: FC = React.memo(() => {
     ]
 
     return (
-
         <div className={styles.MapSearchBlock}>
             <MapBlock
                 title={'Поиск квартир на карте'}

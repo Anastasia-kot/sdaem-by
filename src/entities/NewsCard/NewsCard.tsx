@@ -3,13 +3,16 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { dateConverter } from '../../../helpers/dateConverters';
 import { NewsType } from '../../store/newsSlice';
+import React, { FC } from 'react';
 const room = require('../../../public/images/room.png');
 
+type Props = {
+    data: NewsType
+}
 
+export const NewsCard: FC<Props> = React.memo(( { data }) => {
 
-export const NewsCard = (props: { data: NewsType }) => {
-
-   const { id,  image, title, shortDescription, description,  date, } = props.data;
+   const { id, image, title, shortDescription, date } = data;
 
     return (
         <div className={styles.card}>
@@ -27,4 +30,5 @@ export const NewsCard = (props: { data: NewsType }) => {
                
         </div>
     )
-}
+})
+NewsCard.displayName = 'NewsCard';

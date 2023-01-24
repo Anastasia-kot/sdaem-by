@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { FC } from "react";
+// import { useDispatch } from "react-redux";
 import { cityNameConverters, cityNameEngToRus } from "../../../helpers/nameConverters";
 import { filtersToUrlString } from "../../../helpers/urlHelpers";
 import { CategoryType } from "../../../types/formTypes";
 import { citiesList, CityType } from "../../../types/formTypes";
-import {   setFilters } from "../../store/filtersSlice";
+// import {   setFilters } from "../../store/filtersSlice";
 import styles from './Footer.module.scss';
 
 const logo = require('../../../public/images/logo.png');
@@ -19,15 +19,15 @@ const visa = require('../../../public/images/payment/visa.png');
 const webpay = require('../../../public/images/payment/webpay.png');
 
 
-const Footer = () => {
+const Footer: FC = React.memo(() => {
     
     
     const router = useRouter();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
    
     const onClick = (props: { category?: CategoryType, city?: CityType }) => {
-        let searchString = filtersToUrlString(props)
+        let searchString: string = filtersToUrlString(props)
         router.push(`/catalogue${searchString}`)
 
         // dispatch(setFilters(props))
@@ -132,6 +132,10 @@ const Footer = () => {
             </div>
         </footer>
     )
-}
+})
+
+Footer.displayName = 'Footer';
+
+
 
 export default Footer;

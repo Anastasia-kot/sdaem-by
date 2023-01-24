@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import styles from './MapBlock.module.scss'
 const navIcon = require('../../../public/images/svg/navigation_icon.svg')
 
@@ -17,7 +17,7 @@ type Props = {
 
 }
 
-export const MapBlock: FC<Props> = ({ 
+export const MapBlock: FC<Props> = React.memo(({ 
     title,
     description,
     descriptionWidth,
@@ -241,4 +241,7 @@ export const MapBlock: FC<Props> = ({
 
         </div>
     )
-}
+})
+
+
+MapBlock.displayName = 'MapBlock';

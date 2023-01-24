@@ -2,11 +2,12 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './Breadcrumbs.module.scss'
- 
+import React, { FC } from 'react'
+
 type Props = {
     breadcrumbs: Array<string> | Array<{name: string, value:string}>
 }
-export const Breadcrumbs = ({breadcrumbs}) => {
+export const Breadcrumbs: FC<Props> = React.memo(({breadcrumbs}) => {
 
 
     return (
@@ -51,3 +52,6 @@ export const Breadcrumbs = ({breadcrumbs}) => {
         </nav>
     )
 }
+)
+
+Breadcrumbs.displayName = 'Breadcrumbs';

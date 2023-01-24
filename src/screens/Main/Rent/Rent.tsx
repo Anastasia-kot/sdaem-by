@@ -24,19 +24,20 @@ export const Rent: FC = React.memo(() => {
     const data: CatalogueType[] = useSelector((state: RootState) => state.catalogue.data)
     const [filteredData, setFilteredData] = useState<CatalogueType[]>(data)
 
-    const [filters, setFilters] = useState<{ metro: null | MetroType, district: null | DistrictType, city: 'Minsk' }>
+    const [filters, setFilters] = 
+        useState<{ metro: null | MetroType, district: null | DistrictType, city: 'Minsk' }>
         ({ metro: null, district: null, city: 'Minsk' })
 
     useEffect(() => {
         let newData = data.filter(
-            (element, index, array) => {
+            ({ addressFeatures }) => {
                 let result = true // по дефолту все элементы проходят фильтрацию
 
-                if (filters.district && filters.district != element.addressFeatures.district) {
+                if (filters.district && filters.district != addressFeatures.district) {
                     result = false
-                } else if (filters.metro && filters.metro != element.addressFeatures.metro) {
+                } else if (filters.metro && filters.metro != addressFeatures.metro) {
                     result = false
-                } else if (filters.city && filters.city != element.addressFeatures.city) {
+                } else if (filters.city && filters.city != addressFeatures.city) {
                     result = false
                 }
                 return result

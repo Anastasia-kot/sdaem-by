@@ -2,7 +2,7 @@
 import styles from './CatalogueCard.module.scss'
 import Slider from "react-slick";
 import Image from 'next/image'
-import { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { ContactsButton } from '../../shared/buttons/Contacts/Contacts';
 import { LikeButton } from '../../shared/buttons/Like/Like';
 import { SimpleButton } from '../../shared/buttons/Simple/Simple';
@@ -11,11 +11,12 @@ import classNames from 'classnames';
 const room = require('../../../public/images/room.png');
 const avatar = require('../../../public/images/avatar.png');
  
-
+type Props = {
+ data: CatalogueType, 
+ style: 'main' | 'list' | 'tile' 
+}
  
-export const CatalogueCard = ( 
-    { data, style }: { data: CatalogueType, style: 'main' | 'list' | 'tile' }
-) => {
+export const CatalogueCard: FC<Props> = React.memo(({ data, style }) => {
 
  
     //image + image slider
@@ -54,7 +55,7 @@ export const CatalogueCard = (
     };
 
     //modal 
-    const [isShownModal, setIsShownModal] = useState(false);
+    const [isShownModal, setIsShownModal] = useState<boolean>(false);
  
     return (
 
@@ -225,7 +226,8 @@ export const CatalogueCard = (
             </div>
         </div>
     )
-}
+})
+CatalogueCard.displayName = 'CatalogueCard';
 
 // CatalogueCard.propTypes = {
 //     data: PropTypes.shape({

@@ -1,11 +1,12 @@
 import classNames from 'classnames'
 import Image from 'next/image'
-import {useWindowDimensions} from '../../../helpers/useWindowDimensions.js';
+import React, { FC } from 'react';
+import { useWindowDimensions } from '../../../helpers/useWindowDimensions.js';
 import styles from './PreferenceCard.module.scss'
-const arrow = require('../../../public/images/svg/arrow_right.svg' );
+const arrow = require('../../../public/images/svg/arrow_right.svg');
 
 
- 
+
 
 type Props = {
     data: {
@@ -19,64 +20,64 @@ type Props = {
 
             text: string
             image: boolean
- 
+
         },
         isGold: boolean,
     }
 
 }
 
-export const PreferenceCard = ({ data }: Props) => {
+export const PreferenceCard: FC<Props> = React.memo(({ data }) => {
 
 
+    //делим строки на массив подстрок, где 1, 3, 5... нежирные, а 2, 4, 6... жирные
+    // 1. найти места разреза и сепараторы
+    // 2. разрезать на массив строк  (нечетные будут жирными )
 
-// 1. найти места разреза и сепараторы
-// 2. разрезать на массив строк  (нечетные будут жирными )
+    let description = data.description;
+    let lastStr: string;
 
-let description = data.description;  // console.log(description);
-let lastStr: string;
+    let text = []
+    let descriptionStringArr: Array<string>;
 
-let text = []
-let descriptionStringArr: Array<string>;
-
-let currIndex: number;
-let newElements: Array<string>; 
+    let currIndex: number;
+    let newElements: Array<string>;
 
     for (let i = 0; i < description.text.length; i++) { // перебираем каждый абзац
-        
-
-                    lastStr  = description.text?.[i];  // инициализационное значение 
-                    descriptionStringArr = [lastStr];  // инициализационное значение 
 
 
-                    for (let i = 0; i < description.bold.length; i++) {
-                        // console.log('i', i)
-                        // debugger
-                        currIndex = lastStr.indexOf(description.bold[i])
-
-                        if (currIndex > -1) {
-
-                            newElements = [
-                                lastStr.slice(0, currIndex),
-                                lastStr.slice(currIndex, currIndex + description.bold[i].length),
-                                lastStr.slice(currIndex + description.bold[i].length),
-                            ];
-
-                            (descriptionStringArr.pop());
-                            descriptionStringArr = [...descriptionStringArr, ...newElements]
-                            lastStr = descriptionStringArr[descriptionStringArr.length - 1]
-                        }
-                        // debugger
-
-                    }
+        lastStr = description.text?.[i];  // инициализационное значение 
+        descriptionStringArr = [lastStr];  // инициализационное значение 
 
 
-                    text[i] = descriptionStringArr;
+        for (let i = 0; i < description.bold.length; i++) {
+            // console.log('i', i)
+            // debugger
+            currIndex = lastStr.indexOf(description.bold[i])
+
+            if (currIndex > -1) {
+
+                newElements = [
+                    lastStr.slice(0, currIndex),
+                    lastStr.slice(currIndex, currIndex + description.bold[i].length),
+                    lastStr.slice(currIndex + description.bold[i].length),
+                ];
+
+                (descriptionStringArr.pop());
+                descriptionStringArr = [...descriptionStringArr, ...newElements]
+                lastStr = descriptionStringArr[descriptionStringArr.length - 1]
+            }
+            // debugger
+
+        }
+
+
+        text[i] = descriptionStringArr;
     }
 
 
 
- 
+
 
 
 
@@ -100,17 +101,17 @@ let newElements: Array<string>;
             <ul className={styles.CardDescription}>
                 {text.map(d => <li key={text.indexOf(d)}>        {/*//абзац */}
                     {d.map(dd => <span  // спан
-                        key={d.indexOf(dd)} 
-                        style={{ fontWeight:  d.indexOf(dd)%2 !== 0 ? 700 : 400  }}>{dd}</span>)}
+                        key={d.indexOf(dd)}
+                        style={{ fontWeight: d.indexOf(dd) % 2 !== 0 ? 700 : 400 }}>{dd}</span>)}
                 </li>)}
             </ul>
             <button className={styles.button}>
                 {data.button.text}
-                {data.button.image && 
+                {data.button.image &&
                     <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.5 11.8027L6.5 6.80273L1.5 1.80273" stroke="#242424" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>}
-                
+
             </button>
 
 
@@ -118,3 +119,6 @@ let newElements: Array<string>;
         </div>
     )
 }
+)
+
+PreferenceCard.displayName = 'PreferenceCard';
