@@ -1,5 +1,5 @@
 import styles from './Filters.module.scss'
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import classNames from 'classnames'
@@ -15,9 +15,12 @@ import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptions
 import { RootState } from '../../../store/store'
 import { CatalogueFiltersFormType } from '../../../../types/formTypes'
 import { FiltersPayloadType, FiltersRecommendationsList, resetFilters, setFilters } from '../../../store/filtersSlice'
-import { filtersToUrlString, formValuesToUrlConverter } from '../../../../helpers/urlHelpers'
+import { filtersToUrlString, formValuesFormatter } from '../../../../helpers/urlHelpers'
 
-export const Filters = React.memo(() => {
+
+
+
+export const Filters: FC = React.memo(() => {
 
     const dispatch = useDispatch();
     const filters = useSelector((state: RootState) => state.filter)
@@ -26,16 +29,15 @@ export const Filters = React.memo(() => {
     // use router
     const router = useRouter();
     const { query } = router;
-    // console.log('query', query)
     useEffect(() => {
         if (Object.keys(query).length > 0) {
             dispatch(setFilters(query))
         } else {
             dispatch(resetFilters())
         }
-    }, [router.query])
+    }, [query])
 
-    const setUrlFilters = (filter: FiltersPayloadType) => {
+    const setUrlFilters = (filter: FiltersPayloadType): void => {
         let searchString =  filtersToUrlString(filter)
         router.push(`/catalogue${searchString}`, undefined, { shallow: true })
     }
@@ -47,7 +49,7 @@ export const Filters = React.memo(() => {
 
 
     // recommendations__list
-    const [isFiltersRecommendations, setIsFiltersRecommendations] = useState <null | number>(null)
+    const [isFiltersRecommendations, setIsFiltersRecommendations] = useState <null | number> (null)
 
     const onClick = (element, index) => {
         setUrlFilters(element.filter);
@@ -57,7 +59,6 @@ export const Filters = React.memo(() => {
     const onReset = () => {
         setUrlFilters({})
         setIsFiltersRecommendations(null);
-
     }
 
 
@@ -68,15 +69,14 @@ export const Filters = React.memo(() => {
 
 
     //for form
-    const [isMoreOptions, setIsMoreOptions] = useState(false)
+    const [isMoreOptions, setIsMoreOptions] = useState<boolean>(false)
 
     const { handleSubmit, register, formState: { errors } } = useForm<CatalogueFiltersFormType>();
 
     
 
     const onSubmit = values => {
-        console.log('values', values)
-        setUrlFilters(formValuesToUrlConverter(values))
+        setUrlFilters(formValuesFormatter(values))
     }
 
 

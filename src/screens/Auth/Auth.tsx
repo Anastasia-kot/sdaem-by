@@ -10,7 +10,7 @@ import { setAuthUserData, setToggleLogIn } from '../../store/authSlice';
 
 import avatar from '../../../public/images/svg/avatar.svg'
 import lock from '../../../public/images/svg/lock.svg'
-import { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { AuthModal } from '../../entities/AuthModal/AuthModal';
 
 
@@ -18,7 +18,7 @@ import { AuthModal } from '../../entities/AuthModal/AuthModal';
 
 
 
-export const Auth = () => {
+export const Auth: FC = React.memo(() => {
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -128,4 +128,6 @@ export const Auth = () => {
              
         </main>
     )
-}
+})
+
+Auth.displayName = 'Auth';

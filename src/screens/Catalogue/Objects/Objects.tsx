@@ -1,6 +1,6 @@
 // import Image from 'next/image'
 import styles from './Objects.module.scss'
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { PaginatedItems } from '../../../shared/Pagination/Pagination'
 import { Socials_sharing } from '../../../shared/Socials_sharing/Socials_sharing'
 import { useSelector } from 'react-redux'
@@ -11,7 +11,15 @@ import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { CatalogueType } from '../../../store/catalogueSlice'
 
 
-export const Objects = ({data}) => {
+
+type Props = {
+    data: {
+        items: CatalogueType[] | null
+        totalCount: number | null
+    }
+}
+
+export const Objects: FC<Props> = React.memo(({data}) => {
 
 
     const {items, totalCount} = data
@@ -208,5 +216,8 @@ return (
 
     </div>
 )
-}
+})
+
+Objects.displayName = 'Objects';
+
 

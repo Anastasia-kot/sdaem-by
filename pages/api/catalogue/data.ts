@@ -1,4 +1,9 @@
-export let data = { 
+import { CatalogueType } from './../../../src/store/catalogueSlice';
+  
+export let data: {
+  items: CatalogueType[], totalCount: number,
+
+} = { 
   items: [
     {
       id: 0,

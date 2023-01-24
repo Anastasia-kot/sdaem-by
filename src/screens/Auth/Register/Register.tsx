@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import styles from './Register.module.scss'
 import { Form } from './Form/Form';
+import React, { FC } from 'react';
 
+type Props = {
+    onSubmitFunction: () => void
+}
 
-export const RegisterModal = (
-    { onSubmitFunction }: { onSubmitFunction: () => void }
-    ) => {
-
-  
+export const RegisterModal: FC<Props> = React.memo(({ onSubmitFunction}) => {
     return (
         <div className={styles.register}> 
             <h2 className={styles.register__title}> Регистрация  </h2>
@@ -26,4 +26,7 @@ export const RegisterModal = (
             </div>
         </div>
     )
-}
+})
+
+RegisterModal.displayName = 'RegisterModal';
+

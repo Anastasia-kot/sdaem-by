@@ -1,11 +1,18 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import styles from '../styles/Home.module.css'
 import { Catalogue } from '../src/screens/Catalogue/Catalogue'
 import { Layout } from '../src/layout/Layout';
 import { GetServerSideProps } from 'next';
+import { CatalogueType } from '../src/store/catalogueSlice';
+
+
+
+
+
+
 
 export const getServerSideProps: GetServerSideProps = async () => {
 
@@ -23,7 +30,16 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 
-const Home = ({ data }) => {
+
+type Props = {
+  data: {
+    items: CatalogueType | null
+    totalCount: number | null,
+  }
+}
+
+
+const Home: FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Catalogue data={data}/>
@@ -32,4 +48,4 @@ const Home = ({ data }) => {
   )
 }
 
-export default  Home
+export default Home

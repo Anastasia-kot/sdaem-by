@@ -20,11 +20,12 @@ export async function getServerSideProps(context: { params: { id: number } }) {
 
                 const post = await res1.json()
 
+
+                // выбираем 3 новости, у которых id не совпадает с URL ID
                 const res2 = await fetch(`http://localhost:3000/api/news`)
                 const data = await res2.json()
                 let posts: NewsType[] = []
 
-                // выбираем 3 новости, у которых id не совпадает с URL ID
                 for (let i = 0; posts.length < 3; i++) {
                     if (+id !== sortingNewsPerDate([...data.news])[i].id) {
                         posts = [...posts, sortingNewsPerDate([...data.news])[i]]
@@ -33,13 +34,17 @@ export async function getServerSideProps(context: { params: { id: number } }) {
 
             return { props: { data: { post, posts } } }
         }
+}
 
-
+type Props = {
+    data: { 
+        post: NewsType, 
+        posts: NewsType[] 
+    }
 }
 
 
-
-const NewCard: FC<any> = ({ data }) => {
+const NewCard: FC<Props> = ({ data }) => {
 
     return (
         <Layout>

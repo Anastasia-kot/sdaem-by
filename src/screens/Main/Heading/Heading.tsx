@@ -9,7 +9,7 @@ import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptions
 import { citiesList, MainFiltersFormType } from '../../../../types/formTypes'
 import { useRouter } from 'next/router'
 import { FiltersPayloadType } from '../../../store/filtersSlice'
-import { filtersToUrlString, formValuesToUrlConverter } from '../../../../helpers/urlHelpers'
+import { filtersToUrlString, formValuesFormatter } from '../../../../helpers/urlHelpers'
 import { categoriesItems } from '../../../store/mainSlice'
 import { cityNameEngToRus } from '../../../../helpers/nameConverters'
 
@@ -31,7 +31,7 @@ export const Heading = () => {
 
     const onSubmit = values => {
          setUrlFilters(  //  router.push
-             formValuesToUrlConverter(values)) // преобразуем form-values в адекватный FiltersPayloadType
+             formValuesFormatter(values)) // преобразуем form-values в адекватный FiltersPayloadType
 
     }
 

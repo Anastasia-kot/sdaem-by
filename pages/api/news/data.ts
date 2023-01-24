@@ -1,4 +1,9 @@
-export let data = { 
+import { NewsType } from "../../../src/store/newsSlice";
+
+export let data: {
+  news: NewsType[],
+  totalCount: number,
+} = { 
   news: [
     {
       id: 0,

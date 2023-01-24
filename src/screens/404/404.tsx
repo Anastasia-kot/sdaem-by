@@ -1,7 +1,8 @@
 import Link from 'next/link'
+import React, { FC } from 'react'
 import styles from './404.module.scss'
 
-export const Page404 = () => {
+export const Page404: FC = React.memo(() => {
     return (
         <main className={styles.Page404}>
                     <div className={styles.DottesBefore}>
@@ -445,4 +446,8 @@ export const Page404 = () => {
 
         </main>
     )
-}
+})
+
+
+
+Page404.displayName = 'Page404';

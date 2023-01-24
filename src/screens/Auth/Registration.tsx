@@ -1,6 +1,5 @@
 import styles from './Auth.module.scss'
-import {  useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, {  FC, useState } from 'react'
 
 import { setToggleLogIn } from '../../store/authSlice'
 
@@ -10,10 +9,7 @@ import { AuthModal } from '../../entities/AuthModal/AuthModal'
 
 
 
-export const Registration = () => {
-
-    const dispatch = useDispatch();
-
+export const Registration: FC = React.memo(( ) => {
 
     //модалка сброса пароля
     enum AuthModalEnum {
@@ -36,4 +32,7 @@ export const Registration = () => {
                 }
         </main>
     )
-}
+})
+
+
+Registration.displayName = 'Registration';

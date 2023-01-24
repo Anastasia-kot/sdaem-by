@@ -4,8 +4,7 @@ import { FiltersPayloadType } from "../src/store/filtersSlice";
 
 
 // очищает от незаполненных полей формы, проводит конвертацию значений из '1' -> 1
-export const formValuesToUrlConverter = (values): FiltersPayloadType => {  
-    console.log('values', values)
+export const formValuesFormatter = (values: object): FiltersPayloadType => {  
  
     let formatValues: FiltersPayloadType = {};
 
@@ -34,7 +33,6 @@ export const formValuesToUrlConverter = (values): FiltersPayloadType => {
             }
         }
     }
-    console.log('formatValues', formatValues)
     return formatValues
 }
 

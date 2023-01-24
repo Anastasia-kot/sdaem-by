@@ -1,6 +1,6 @@
 
 import styles from './Form.module.scss'
-import React from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Formik } from 'formik';
@@ -10,16 +10,17 @@ import { setAuthUserData, setToggleLogIn } from '../../../../store/authSlice';
 import { InputFormik } from '../../../../shared/Input/InputFormik';
 import { RegisterFormType } from '../../../../../types/loginFormTypes';
 
+type Props = {
+    onSubmitFunction: () => void
+}
 
-export const Form = (
-    { onSubmitFunction }: { onSubmitFunction: () => void }
-) => {
+export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
 
     const dispatch = useDispatch();
     const router = useRouter();
 
 
-    const validate =  values => {
+    const validate = (values: RegisterFormType): Object => {
         const errors = {};
 
         if (!values.email) {
@@ -61,11 +62,10 @@ export const Form = (
         return errors;
     }
 
-    const onSubmit = values => {
-        console.log(values);
+    const onSubmit = (values: RegisterFormType) => {
 
         dispatch(setToggleLogIn(true))
-        dispatch(setAuthUserData({ ...values }))
+        dispatch(setAuthUserData({ ...values, avatar: null }))
         setTimeout(() => {
             router.push('/')
         },
@@ -222,4 +222,6 @@ export const Form = (
         </Formik>
 
     )
-}
+})
+
+Form.displayName = 'Form';

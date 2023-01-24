@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { arrayBuffer } from "stream/consumers";
 
 export const useRedirest = (address: string) => {
     const router = useRouter();
@@ -12,3 +13,29 @@ export const useRedirest = (address: string) => {
         )
     }, [router])
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
