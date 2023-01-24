@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import Image from 'next/image'
 import styles from './Simple.module.scss'
 import PropTypes from 'prop-types';
+import React, { FC } from 'react'
 
 type ButtonType = 'button' | 'reset' | 'submit'
 
@@ -12,12 +13,8 @@ type Props = {
     type?: ButtonType
     onClick: () => void  | null
 }
-export const SimpleButton = (
-    { text, width, colorScheme, type = 'button' as ButtonType, onClick }: Props
-    ) => {
-
-    // const { text, width, colorScheme, type = 'button' as ButtonType, onClick } = props
-
+export const SimpleButton: FC<Props> = React.memo(
+    ({ text, width, colorScheme, type = 'button' as ButtonType, onClick }) => {
     return (
         <button
             type={type}
@@ -36,7 +33,8 @@ export const SimpleButton = (
         </button>
 
     )
-}
+})
+SimpleButton.displayName = 'SimpleButton';
 
 // SimpleButton.propTypes = {
 //     text: PropTypes.string.isRequired,

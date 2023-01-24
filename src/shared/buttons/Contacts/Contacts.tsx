@@ -1,18 +1,13 @@
-import Image from 'next/image'
+import React, { FC } from 'react'
 import styles from './Contacts.module.scss'
  
 type Props = {
-    style: any
-    onClick: any
+    style: Object
+    onClick: () => void | any
 }
-export const ContactsButton = ({style, onClick }) => {
-    
 
-
-
-
+export const ContactsButton: FC<Props> = React.memo(({style, onClick }) => {
     return ( 
-
         <button
             className={styles.Button}
             style={style}
@@ -23,8 +18,7 @@ export const ContactsButton = ({style, onClick }) => {
             <span>
                 Контакты
             </span>
-
         </button>
-
     )
-}
+})
+ContactsButton.displayName = 'ContactsButton';

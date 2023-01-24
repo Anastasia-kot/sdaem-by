@@ -1,15 +1,15 @@
 import classNames from 'classnames'
 import { useState } from 'react'
 import styles from './Like.module.scss'
+import React, { FC } from 'react'
+
 // import PropTypes from 'prop-types';
  
 type Props = {
     style: 'main' | 'list' | 'tile'
 }
-export const LikeButton = (    {  style }: Props    ) => {
+export const LikeButton: FC<Props> = React.memo(    ({  style }) => {
      
-
-
 const [liked, setLiked] = useState(false);
 
     return (
@@ -39,7 +39,8 @@ const [liked, setLiked] = useState(false);
       
         </button>
     )
-}
+})
+LikeButton.displayName = 'LikeButton';
 
 // LikeButton.propsType={
 //     isListView: PropTypes.bool.isRequired,

@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import Image from 'next/image'
+import React, { FC } from 'react'
 import styles from './Select.module.scss'
 
 type Props = {
@@ -17,7 +18,7 @@ type Props = {
 
 
 }
-export const Select = ({
+export const Select: FC<Props> = React.memo(({
     options,
     label,
     register,
@@ -25,7 +26,7 @@ export const Select = ({
     onChange,
  
     style,
-}: Props) => {
+}) => {
      
     return <select
         {...register(label, required=required)}
@@ -51,4 +52,6 @@ export const Select = ({
 
 
 
-            }
+            })
+
+Select.displayName = 'Select';

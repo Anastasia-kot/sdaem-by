@@ -1,5 +1,5 @@
 import styles from './Pagination.module.scss'
-import React, {  ReactComponentElement, ReactElement, useState } from 'react';
+import React, {  FC, ReactComponentElement, ReactElement, useState } from 'react';
  
 import ReactPaginate from 'react-paginate';
  
@@ -9,11 +9,16 @@ type ItemsProps = {
     Component: any 
     style?: string
 }
-const Items = ( { currentItems, Component, style }  : ItemsProps) => <> 
+const Items: FC<ItemsProps> = React.memo(( { currentItems, Component, style } ) => <> 
         {style
             ?  currentItems && currentItems.map((n) => <Component key={n.id} data={n} style={style} />) 
             :  currentItems && currentItems.map((n) => <Component key={n.id} data={n}  />) 
-        }</>
+        }
+    </>
+)
+
+Items.displayName = 'Items';
+
 
 
 type PaginatedItemsProps = {
@@ -22,7 +27,7 @@ type PaginatedItemsProps = {
     Component: any  
     style?: string
 } 
-export function PaginatedItems( { itemsPerPage, items, Component, style }: PaginatedItemsProps) {
+export const PaginatedItems: FC<PaginatedItemsProps> = React.memo(( { itemsPerPage, items, Component, style } ) => {
 
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
@@ -76,13 +81,14 @@ export function PaginatedItems( { itemsPerPage, items, Component, style }: Pagin
             />
         </>
     );
-}
+})
 
 
 
 
 
 
+PaginatedItems.displayName = 'PaginatedItems';
 
 
 

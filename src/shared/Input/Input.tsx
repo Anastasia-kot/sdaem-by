@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { FieldErrorsImpl, Path, UseFormRegister, ValidationRule } from 'react-hook-form'
-import { RegisterFormType } from '../../../types/formTypes'
+// import { RegisterFormType } from '../../../types/formTypes'
 // import { AuthFormType, ContactFormKeysType, ContactFormType, RegisterFormType } from '../../../types/formTypes'
 import styles from './Input.module.scss'
 
@@ -24,32 +24,29 @@ type Props = {
     errorPatternMessage?: string
     onChange?: (arg) => void
  
-
-
+ 
 }
-export const InputBlock: FC<Props> = (props: Props) => {
+export const InputBlock: FC<Props> = React.memo(({ 
+    type,
+    labelRus,
+    placeholder,
+    flexDirection,
+    width,
+    height,
+    nonActivePlaceholderColor = '#686868',
+    imageSrc,
 
-    const {
-        type,
-        labelRus,
-        placeholder,
-        flexDirection,
-        width,
-        height,
-        nonActivePlaceholderColor = '#686868',
-        imageSrc,
+    label,
+    register,
+    defaultValue,
+    pattern,
+    required,
+    errors,
+    errorPatternMessage,
+    onChange
+}) => {
 
-        label,
-        register,
-        defaultValue,
-        pattern,
-        required,
-        errors,
-        errorPatternMessage,
-        onChange
-
-    } = props;
-
+ 
     return (
         <label
             className={styles.Label}
@@ -127,4 +124,5 @@ export const InputBlock: FC<Props> = (props: Props) => {
 
 
     )
-}
+})
+InputBlock.displayName = 'InputBlock';

@@ -1,8 +1,8 @@
-import { FC, ReactElement } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { RegisterFormType } from '../../../types/loginFormTypes'
 import styles from './Input.module.scss'
-
+ 
 type Props = {
     type:  'text' | 'password' | 'number'|'email'        | 'textarea' 
     value: any
@@ -26,7 +26,7 @@ type Props = {
     children?: ReactElement
 }
 
-export const InputFormik: FC<Props> = (props) => {
+export const InputFormik: FC<Props> = React.memo((props) => {
     const {
         type,
         value,
@@ -123,4 +123,5 @@ export const InputFormik: FC<Props> = (props) => {
 
         </label>
     )
-}
+})
+InputFormik.displayName = 'InputFormik';

@@ -1,12 +1,11 @@
 import classNames from 'classnames'
-import Image from 'next/image'
-import { Socials_list } from '../Socials_list/Socials_list'
+import React, { FC } from 'react'
 import styles from './Socials_sharing.module.scss'
  
 type Props = {
     color?: 'gray' | 'violet'
 }
-export const Socials_sharing = ({ color = 'gray' }) => {
+export const Socials_sharing: FC<Props> = React.memo(({ color = 'gray' }) => {
 
      return (
         <div 
@@ -51,4 +50,6 @@ export const Socials_sharing = ({ color = 'gray' }) => {
         </div>
        
     )
-}
+})
+
+Socials_sharing.displayName = 'Socials_sharing';

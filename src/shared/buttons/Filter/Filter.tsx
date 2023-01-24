@@ -1,3 +1,4 @@
+import React, { FC } from 'react'
 import styles from './Filter.module.scss'
  
 type Props = {
@@ -6,9 +7,9 @@ type Props = {
     isFiltersRecommendations: boolean
     onClick: ()=> void
     onReset: ()=> void
-
 }
-export const FilterItem = ( 
+
+export const FilterItem: FC<Props> = React.memo(( 
     { value, isFiltersRecommendations, onClick, onReset }: Props
     ) =>  <li className={isFiltersRecommendations ? styles.list__item__status_selected : styles.list__item}
         onClick={isFiltersRecommendations ? null: onClick}>
@@ -24,6 +25,8 @@ export const FilterItem = (
             </svg>}
    
 
-</li>
+    </li>)
+FilterItem.displayName = 'FilterItem';
+
 
  
