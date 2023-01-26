@@ -1,25 +1,27 @@
    .BreadCrumbsList {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        margin-bottom: 13px;
-        gap:7px;
+       display: flex;
+       flex-wrap: wrap;
+       align-items: center;
+       gap: 7px;
+       display: inline-block;
 
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 100%;
-     
-     
-        color: #686868;
+
+       margin-bottom: 13px;
+       font-family: 'Inter';
+       font-style: normal;
+       font-weight: 400;
+       font-size: 14px;
+       line-height: 100%;
+
+
+       color: #686868;
 
        .BreadCrumbsItem {
+           display: inline-block;
         }
 
-        .BreadCrumbsItem+.BreadCrumbsItem{
+       .BreadCrumbsItem+.BreadCrumbsItem {}
 
-        }
        .BreadCrumbsItem+.BreadCrumbsItem::before {
            display: inline-block;
            content: ' ';
@@ -27,18 +29,18 @@
            height: 3px;
            border-radius: 50%;
            margin: 4px;
- 
+
            background: #664EF9;
            background-repeat: no-repeat;
        }
 
-           .ActiveItem{
-                color: #664EF9;
-           }
+       .ActiveItem {
+           color: #664EF9;
+       }
 
-            .BreadCrumbsItem+.ActiveItem::before {
-                content: none;
-            }
+       .BreadCrumbsItem+.ActiveItem::before {
+           content: none; 
+       }
 
        .HomeImage {
            display: inline-block;

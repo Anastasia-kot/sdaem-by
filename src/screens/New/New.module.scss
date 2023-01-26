@@ -6,12 +6,15 @@
         background: linear-gradient(90deg, rgb(148, 175, 255, 0.1) 0%, rgb(78, 100, 249, 0.1) 94.5%);
         min-height: 280px;
         width: 100%;
+ 
+        
 
         .heading {
             max-width: 860px;
             margin: 0 auto;
             padding-top: 61px;
             padding-left: 16px;
+            padding-right: 10px;
             padding-bottom: 80px;
 
             .heading__title {
@@ -82,7 +85,8 @@
     .new__content {
             position: relative;
             top: -45px;
-            width: min-content;
+            width: auto;
+            max-width: 884px;
             height: min-content;
             margin: 0 auto;
 
@@ -90,6 +94,7 @@
                 border-radius: 10px;
                 display: block;
                 position: relative;
+                max-width: 100%;
             }
 
             .Dotes {
@@ -139,6 +144,7 @@
              .content__image {
                 width: 100%;
                 height: auto;
+                max-width: 100%;
             }
 
             .Dotes {

@@ -1,6 +1,7 @@
 .Socials_sharing {
     display: flex;
-    min-width: 344px;
+    gap: 15px;flex-wrap: wrap;
+    // min-width: 344px;
     height: 34.15px;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +27,9 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        width: 240px;
+        max-width: 250px;
+        // width: 250px;
+        min-width: 220px;
 
         .ShareItem {
             height: 34px;
@@ -76,4 +79,6 @@
             }
         }
     }
+
+                        
 }

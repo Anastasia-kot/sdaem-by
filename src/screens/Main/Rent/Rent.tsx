@@ -1,17 +1,15 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import styles from './Rent.module.scss'
-import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { SelectBlock } from '../../../shared/Select_block/Select_block'
 import { useForm } from 'react-hook-form'
 import { CityType, DistrictMetroType, districtsList, DistrictType, MetroList, MetroType } from '../../../../types/formTypes'
-import { useDispatch, useSelector } from "react-redux";
-import { FiltersPayloadType } from "../../../store/filtersSlice";
+import { useSelector } from "react-redux";
 import { SimpleSlider } from "./Slider";
 import { useWindowDimensions } from '../../../../helpers/useWindowDimensions'
 import { RootState } from "../../../store/store";
 import { CatalogueType } from "../../../store/catalogueSlice";
 import { districtNameEngToRus, metroNameEngToRus } from "../../../../helpers/nameConverters";
- 
+
 
 
 export const Rent: FC = React.memo(() => {
@@ -24,11 +22,13 @@ export const Rent: FC = React.memo(() => {
     const data: CatalogueType[] = useSelector((state: RootState) => state.catalogue.data)
     const [filteredData, setFilteredData] = useState<CatalogueType[]>(data)
 
-    const [filters, setFilters] = 
+    const [filters, setFilters] =
         useState<{ metro: null | MetroType, district: null | DistrictType, city: 'Minsk' }>
-        ({ metro: null, district: null, city: 'Minsk' })
+            ({ metro: null, district: null, city: 'Minsk' })
 
     useEffect(() => {
+
+ 
         let newData = data.filter(
             ({ addressFeatures }) => {
                 let result = true // по дефолту все элементы проходят фильтрацию
@@ -51,30 +51,30 @@ export const Rent: FC = React.memo(() => {
 
 
     // for form
-    const {  register, formState: { errors } } = useForm<DistrictMetroType>();
+    const { register, formState: { errors } } = useForm<DistrictMetroType>();
 
-        const onChange = 
-            (formData: { filter: 'metro', value: MetroType | -1 } | { filter: 'district', value: DistrictType | -1 }) => {
-        
-                if (formData.filter === 'metro') {
-                    setFilters(prev => { 
-                        return (
-                        (formData.value === -1) 
+    const onChange =
+        (formData: { filter: 'metro', value: MetroType | '-1' } | { filter: 'district', value: DistrictType | '-1' }) => {
+
+            if (formData.filter === 'metro') {
+                setFilters(prev => {
+                    return (
+                        (formData.value === '-1')
                             ? { ...prev, metro: null }  // если из селекта пришло -1, то сбрасываем значение
                             : { ...prev, metro: formData.value }
-                        )
-                    })
-                }
+                    )
+                })
+            }
 
-                if (formData.filter === 'district') {
-                    setFilters(prev => {
-                        return (
-                            (formData.value === -1)
-                                ? { ...prev, district: null }  // если из селекта пришло -1, то сбрасываем значение
-                                : { ...prev, district: formData.value }
-                        )
-                    })
-                }
+            if (formData.filter === 'district') {
+                setFilters(prev => {
+                    return (
+                        (formData.value === '-1')
+                            ? { ...prev, district: null }  // если из селекта пришло -1, то сбрасываем значение
+                            : { ...prev, district: formData.value }
+                    )
+                })
+            }
         }
 
 
@@ -338,11 +338,12 @@ export const Rent: FC = React.memo(() => {
                 </form>
             </div>
 
+            
+            <SimpleSlider
+                slidesToShow={(width && width >= 1440) ? 3 : (width && width >= 930) ? 2 : 1}
+                data={filteredData} />
 
-            <SimpleSlider 
-                slidesToShow={width && width >= 1440 ? 3 : width && width >= 930 ? 2 : 1} 
-                data={filteredData}/>
-
+      
             <div className={styles.rent__more}>
                 <div>
                     <p className={styles.TotalCount}>{filteredData.length}<span> +</span></p>

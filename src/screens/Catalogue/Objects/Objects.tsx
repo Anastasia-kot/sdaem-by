@@ -204,7 +204,7 @@ return (
             </div>}
 
             <div className={styles.items__socials}>
-                <Socials_sharing color='' />
+                <Socials_sharing color='gray' />
             </div>
 
         </div>

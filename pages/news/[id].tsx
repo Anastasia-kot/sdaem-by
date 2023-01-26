@@ -14,42 +14,47 @@ export async function getServerSideProps(context: { params: { id: number } }) {
 
         if (res1.status === 404) {
 
-            return { props: { data: null }}
+            return { props: { 
+                data: { 
+                    post: null, 
+                    posts: null 
+                } }}
 
         } else {
 
-                const post = await res1.json()
+                const data1 = await res1.json()
 
+  
 
                 // выбираем 3 новости, у которых id не совпадает с URL ID
                 const res2 = await fetch(`http://localhost:3000/api/news`)
-                const data = await res2.json()
+                const data2 = await res2.json()
                 let posts: NewsType[] = []
 
                 for (let i = 0; posts.length < 3; i++) {
-                    if (+id !== sortingNewsPerDate([...data.news])[i].id) {
-                        posts = [...posts, sortingNewsPerDate([...data.news])[i]]
+                    if (+id !== sortingNewsPerDate([...data2.news])[i].id) {
+                        posts = [...posts, sortingNewsPerDate([...data2.news])[i]]
                     }
                 }
+            // console.log('post', post)
+            // console.log('posts', posts)
 
-            return { props: { data: { post, posts } } }
+            return { props: { 
+                data: { 
+                    post: data1.post, 
+                    posts 
+                } 
+            }}
         }
 }
 
 type Props = {
     data: { 
-        post: NewsType, 
-        posts: NewsType[] 
-    }
+        post: NewsType | null
+        posts: NewsType[] | null
+    }  
 }
 
 
-const NewCard: FC<Props> = ({ data }) => {
-
-    return (
-        <Layout>
-            <New data={data}/>
-        </Layout>)
-}
-
+const NewCard: FC<Props> = ({ data }) => <Layout> <New data={data}/> </Layout>
 export default NewCard;

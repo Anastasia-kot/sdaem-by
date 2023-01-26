@@ -19,7 +19,7 @@
 
         padding-left: 80px;
         padding-right: 63px;
-                    padding-bottom: 118px;
+        padding-bottom: 118px;
         
         
 
@@ -65,10 +65,8 @@
 
         .heading__form {
             max-width: 1062px;
-            // min-height: (54px + 100px);
-            display: block;
-
             margin: 0 auto;
+            display: block;
  
             border-radius: 0px 0px 40px 40px;
 
@@ -186,6 +184,10 @@
                 @media (max-width: 650px) {
                     // width: 400px;
                 }
+                                  @media (max-width: 450px) {
+                                      flex-direction: column;
+                                      width: min-content;
+                                  }
 
 
                 .filters__city,
@@ -314,10 +316,14 @@
                     }
 
                     &.filters__toMap {
-                        width: 150px;
+                        align-items: start;
+                        width: 100px;
+                        margin-left: 30px;
                     }
 
                     &.filters__submit {
+                        width: 165px;
+ 
                         padding: 0;
                         display: flex;
                         flex-direction: column;

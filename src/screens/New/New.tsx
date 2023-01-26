@@ -1,45 +1,44 @@
+import React, { FC } from 'react'
+import styles from './New.module.scss'
 import Image from 'next/image'
+
+import { Page404 } from '../404/404'
 import { Socials_sharing } from '../../shared/Socials_sharing/Socials_sharing'
 import { Breadcrumbs } from '../../entities/Breadcrumbs/Breadcrumbs'
 import { NewsCard } from '../../entities/NewsCard/NewsCard'
-import styles from './New.module.scss'
 
 import { dateConverter } from '../../../helpers/dateConverters'
-
-import { Page404 } from '../404/404'
-import React, { FC } from 'react'
 import { NewsType } from '../../store/newsSlice'
+
 const room = require('../../../public/images/room_big_quality.png');
 
 
 type Props = {
     data: {
-        post: NewsType
-        posts: NewsType[]
+        post: NewsType | null
+        posts: NewsType[] | null
     }
 }
 
 export const New: FC<Props> = React.memo(({ data }) => {
 
-    if (!data) { return  <Page404 />   }  
 
     const { post, posts } = data
 
+    if (!data.post) { return <Page404 /> }  
+
     return (
         <main className={styles.new}>
-
-
-
 
             <div className={styles.new__heading}>
                 <div className={styles.heading}>
                     <Breadcrumbs breadcrumbs={[
                         { name: 'news', value: 'Новости ' },
-                        { name: '', value: `${post.title}` }]} />
+                        { name: '', value: `${post?.title}` }]} />
 
-                    <h1 className={styles.heading__title}>{post.title}</h1>
+                    <h1 className={styles.heading__title}>{post?.title}</h1>
                     <div className={styles.heading__info}>
-                        <span className={styles.info__date}>{dateConverter(post.date)}  </span>
+                        <span className={styles.info__date}>  { dateConverter(post?.date)}  </span>
                         <Socials_sharing color={'violet'} />
                     </div>
                 </div>
@@ -253,7 +252,7 @@ export const New: FC<Props> = React.memo(({ data }) => {
                     </defs>
                 </svg>
                 <div className={styles.content__text}>
-                    {post.description.map(d => <p key={post.description.indexOf(d)}>{d}</p>)}
+                    {post?.description?.map(d => <p key={post.description.indexOf(d)}>{d}</p>)}
                 </div>
             </div>
 
@@ -266,7 +265,7 @@ export const New: FC<Props> = React.memo(({ data }) => {
                 <div className={styles.alsoRead__content}>
                     <h2 className={styles.content__title}> Читайте также </h2>
                     <div className={styles.content__cards}>
-                        {posts.map(n => <NewsCard key={n.id} data={n} />)}
+                        {posts?.map(n => <NewsCard key={n.id} data={n} />)}
                     </div>
 
                 </div>

@@ -20,7 +20,7 @@ export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
     const router = useRouter();
 
 
-    const validate = (values: RegisterFormType): Object => {
+    const validate =  values => {
         const errors = {};
 
         if (!values.email) {
@@ -62,10 +62,11 @@ export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
         return errors;
     }
 
-    const onSubmit = (values: RegisterFormType) => {
+    const onSubmit = values => {
+        console.log(values);
 
         dispatch(setToggleLogIn(true))
-        dispatch(setAuthUserData({ ...values, avatar: null }))
+        dispatch(setAuthUserData({ ...values }))
         setTimeout(() => {
             router.push('/')
         },
@@ -223,5 +224,6 @@ export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
 
     )
 })
+
 
 Form.displayName = 'Form';

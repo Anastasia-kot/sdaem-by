@@ -27,6 +27,7 @@
 
         @media (max-width: 854px) {
             margin-bottom: 50px;
+            width: 100%;
         }
 
         font-family: 'Inter',
@@ -72,7 +73,8 @@
             color: #8291A3;
 
             .contacts__contact {
-                width: 270px;
+                max-width: 270px;
+                width: 100%;
             }
         }
     }

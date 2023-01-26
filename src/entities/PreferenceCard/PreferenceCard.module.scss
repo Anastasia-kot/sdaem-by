@@ -129,6 +129,17 @@
         }
 
     }
-
+                        @media (max-width: 406px) {
+                            max-width: 100%;
+                            height: min-content;
+.card__header{
+            flex-wrap: wrap;
+}
+                            .button{
+                                position: static;
+                                height: min-content;
+                            }
+                        }
+        
 
 }

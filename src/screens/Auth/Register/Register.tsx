@@ -23,6 +23,7 @@ export const RegisterModal: FC<Props> = React.memo(({ onSubmitFunction}) => {
                     <span> Уже есть аккаунт ? </span>
                     <Link href='/auth'>Войдите</Link>
                 </p>
+
             </div>
         </div>
     )

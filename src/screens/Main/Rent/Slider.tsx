@@ -1,11 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import Slider from "react-slick";
 import styles from './Rent.module.scss'
 import {  CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
 import { CatalogueType } from "../../../store/catalogueSlice";
 
 
-export const SimpleSlider = ({ slidesToShow, data }: { slidesToShow:number, data:CatalogueType[] }) => {
+
+type Props = {
+ slidesToShow: number, 
+ data: CatalogueType[] 
+}
+
+export const SimpleSlider: FC<Props> = React.memo(({ slidesToShow, data }) => {
 
     const SampleArrow = (props) => <button onClick={props.onClick} className={styles.slider__button} />
 
@@ -23,12 +29,14 @@ export const SimpleSlider = ({ slidesToShow, data }: { slidesToShow:number, data
 
     return (
         <div className={styles.cards}>
-            <Slider {...settings} 
-            slidesToShow={slidesToShow}
+            <Slider 
+                {...settings} 
+                slidesToShow={slidesToShow}
             >
                 {data && data.map(d => <div key={data.indexOf(d)}> <CatalogueCard data={d} style={'main'} /> </div>)}
-             </Slider>
+            </Slider>
         </div>
     );
-}
+})
 
+SimpleSlider.displayName = 'SimpleSlider';

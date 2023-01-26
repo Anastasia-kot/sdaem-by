@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 type Props = {
   data: {
-    items: CatalogueType | null
+    items: CatalogueType[] | null
     totalCount: number | null,
   }
 }

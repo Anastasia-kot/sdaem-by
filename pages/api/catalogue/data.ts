@@ -73,7 +73,7 @@ export let data: {
       addressFeatures: {
         address: 'Гродно, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: 'factory',
         city: 'Grodno'
       },
 
@@ -115,7 +115,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: 'factory',
         city: 'Minsk'
       },
 
@@ -150,7 +150,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: 'lenin',
         city: 'Minsk'
       },
 
@@ -189,7 +189,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: 'lenin',
         city: 'Minsk'
       },
 
@@ -226,7 +226,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: 'partizan',
         city: 'Minsk'
       },
 
@@ -266,7 +266,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: 'partizan',
         city: 'Minsk'
       },
 
@@ -305,7 +305,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: '1may',
         city: 'Minsk'
       },
 
@@ -342,7 +342,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: '1may',
         city: 'Minsk'
       },
 
@@ -381,7 +381,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: '1may',
         city: 'Minsk'
       },
 
@@ -421,7 +421,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: 'soviet',
         city: 'Minsk'
       },
 
@@ -461,7 +461,7 @@ export let data: {
       addressFeatures: {
         address: 'Минск, б-р Мулявина, д. 10',
         metro: 'Грушевка',
-        district: 'Шабаны',
+        district: 'soviet',
         city: 'Minsk'
       },
 

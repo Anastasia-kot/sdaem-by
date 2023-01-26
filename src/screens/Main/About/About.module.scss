@@ -54,6 +54,7 @@
 
         .content__image {
             height: auto;
+            max-width: 405px;
             width: 405px;
             margin-left: -1px;
             margin-right: 23px;
@@ -183,7 +184,8 @@
                         /* Style */
 
                         color: #1E2123;
-
+                        height: 34px;
+                        overflow: hidden;
 
                         &:hover {
                             font-family: 'Inter';
@@ -241,4 +243,22 @@
         }
 
     }
+
+
+
+                 @media (max-width: 768px) {
+                          padding-left: 10px;
+                        padding-right: 10px;
+    .about__content {width: 100%;
+                        .content__image {
+                            float: none;
+                            width: 100%;
+                            // margin: 0 auto;
+                            text-align: center;
+                        }
+                    
+                                                .content__dotes {
+                                                display: none;
+                                                }}
+                  }
 }
