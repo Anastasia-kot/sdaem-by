@@ -13,9 +13,10 @@ import { FilterItem } from '../../../shared/buttons/Filter/Filter'
 import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
 
 import { RootState } from '../../../store/store'
-import { CatalogueFiltersFormType } from '../../../../types/formTypes'
+import { CatalogueFiltersFormType, CategoriesEnum } from '../../../../types/formTypes'
 import { FiltersPayloadType, FiltersRecommendationsList, resetFilters, setFilters } from '../../../store/filtersSlice'
 import { filtersToUrlString, formValuesFormatter } from '../../../../helpers/urlHelpers'
+import { cityNameConverters, cityNameEngToRus, ucFirst } from '../../../../helpers/nameConverters'
 
 
 
@@ -29,6 +30,7 @@ export const Filters: FC = React.memo(() => {
     // use router
     const router = useRouter();
     const { query } = router;
+    console.log(query)
     useEffect(() => {
         if (Object.keys(query).length > 0) {
             dispatch(setFilters(query))
@@ -41,6 +43,39 @@ export const Filters: FC = React.memo(() => {
         let searchString =  filtersToUrlString(filter)
         router.push(`/catalogue${searchString}`, undefined, { shallow: true })
     }
+
+
+
+
+
+
+ 
+
+
+
+
+    //title from query
+
+    const [title, setTitle] = useState<string>('Аренда квартир на сутки в Минске')
+    useEffect(() => {
+        if (Object.keys(query).length > 0) {
+            let title = 'Аренда'
+            query.rooms && (title = title + ' ' + query.rooms + '-комнатных') 
+            query.category && typeof (query.category) === 'string'
+                ? title = title + ' ' + CategoriesEnum[query.category]
+                : title = title +  ' квартир'
+            title = title + ' на сутки'
+            query.city && typeof (query.city) === 'string'
+                ? (
+                    title = title + ' в ' + query.city
+                    // title = title + ' в ' + cityNameConverters(cityNameEngToRus(query.city))
+                    ) 
+                : title = title + ' в Минске'
+            setTitle(title)
+         } else {
+            setTitle('Аренда квартир на сутки')
+        }
+    }, [query])
 
 
 
@@ -86,8 +121,8 @@ export const Filters: FC = React.memo(() => {
         <div className={styles.filters}>
 
             <div className={styles.filters__heading}>
-                <Breadcrumbs breadcrumbs={[{ name: '', value: 'Квартиры в Минске' }]} />
-                <h1 className={styles.heading__title}>Аренда квартир на сутки в Минске</h1>
+                <Breadcrumbs breadcrumbs={[{ name: '', value: 'Квартиры в Минске'  }]} />
+                <h1 className={styles.heading__title}>{title}</h1>
                 <div className={styles.heading__recommendations}>
                     {isFiltersRecommendations === null &&<h2 className={styles.recommendations__title}>Рекомендуем посмотреть</h2>}
                     <ul className={styles.recommendations__list}>

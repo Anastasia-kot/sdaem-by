@@ -13,7 +13,7 @@ type Props = {
     required: boolean
     onChange: (any) => void
 
-    style: CSSStyleDeclaration 
+    style: Object 
  
 
 

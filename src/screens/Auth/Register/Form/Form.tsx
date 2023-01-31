@@ -1,9 +1,10 @@
-
 import styles from './Form.module.scss'
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Formik } from 'formik';
+import ReCAPTCHA from 'react-google-recaptcha'
+
 
 import { SimpleButton } from '../../../../shared/buttons/Simple/Simple';
 import { setAuthUserData, setToggleLogIn } from '../../../../store/authSlice';
@@ -13,6 +14,7 @@ import { RegisterFormType } from '../../../../../types/loginFormTypes';
 type Props = {
     onSubmitFunction: () => void
 }
+const YOUR_SITE_KEY = '6LcfQSwkAAAAANlE1Ola8Xh_K8BW8lkwSCugBH-l'  // for vercel.com
 
 export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
 
@@ -197,10 +199,15 @@ export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
                         </InputFormik>
 
               
-                        <label className={styles.captha}>
+                        {/* <label className={styles.captha}>
                             <input type="checkbox" />
                             Я не робот
-                        </label>
+                        </label> */}
+                    <ReCAPTCHA
+                        sitekey={YOUR_SITE_KEY} 
+                        onChange={handleChange}
+
+                    /> 
 
                     {Object.keys(errors).length > 0 && <span className={styles.Error}>
                         <span> Ошибка ввода </span>

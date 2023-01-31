@@ -1,3 +1,12 @@
+export enum CategoriesEnum {
+    room = 'квартир',
+    cottage = 'коттеджей',
+    sauna = 'сауны',
+    auto = 'автомобилей',
+}
+ 
+///////////////////////////
+
 export const citiesList: CityType[] = ['Minsk',  'Gomel', 'Brest', 'Vitebsk', 'Grodno', 'Mogilev' ]
 export type CityType = 'Minsk' | 'Gomel' |   'Brest'|   'Vitebsk'|   'Grodno'|  'Mogilev'
 
