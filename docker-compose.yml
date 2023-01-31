@@ -1,14 +1,14 @@
 
-version: '3.8'
-services:
-  web:
-    build:
-      context: ./
-      target: runner
+version: '3.8' 
+services: 
+  web: 
+    build: 
+      context: ./ 
+      target: runner 
     volumes:
-      - .:/app
-    command: npm run dev
+      - .:/app 
+    command: npm run dev 
     ports:
-      - "3000:3000"
+      - "3000:3000" 
     environment:
-      NODE_ENV: development
+      NODE_ENV: development 
