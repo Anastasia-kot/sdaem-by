@@ -7,7 +7,5 @@ import { Layout } from '../src/layout/Layout';
 import { FC } from 'react';
 
 
-const Home: FC = () => <Layout> <Main /> </Layout> 
-export default Home
-
+export const Home: FC = () => <Layout> <Main /> </Layout> 
   
