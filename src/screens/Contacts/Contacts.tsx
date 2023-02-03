@@ -167,6 +167,7 @@ export const Contacts: FC = () => {
                     register={register}
                     required
                 />
+
                 <div className={styles.SubmitButtonWrapper}>
                     <SimpleButton
                         text={'Отправить'}
@@ -178,29 +179,27 @@ export const Contacts: FC = () => {
                 </div>
 
 
+                {
+                    isModal && 
+                        <div className={styles.form__modal_background}>
+                            <div className={styles.form__modal}>
+                                <h2 className={styles.modal__title}> Ваше письмо отправлено! </h2>
+                                <p className={styles.modal__subtitle}> 
+                                    Какое-то сообщение о том, что письмо отправлено, какое-то сообщение, что письмо отправлено.
+                                </p>
 
-                <div className={isModal ? styles.ContactsModalWrapper : styles.ContactsModalWrapperHidden}>
-                    <div className={styles.ContactsModal}>
-                        <h2>
-                            Ваше письмо
-                            отправлено!
-                        </h2>
-                        <p>
-                            Какое-то сообщение о том, что письмо отправлено, какое-то сообщение, что письмо отправлено.
-                        </p>
+                                <SimpleButton
+                                    text={'Закрыть окно'}
+                                    width={161}
+                                    colorScheme={'yellow'}
+                                    onClick={() => setIsModal(false)}
+                                    type='reset'
+                                />
 
-
-                        <SimpleButton
-                            text={' Закрыть окно'}
-                            width={161}
-                            colorScheme={'yellow'}
-                            onClick={() => setIsModal(false)}
-                            type='reset'
-                        />
-
-
-                    </div>
-                </div>
+                            </div>
+                          </div>
+                }                
+                
             </form>
 
 

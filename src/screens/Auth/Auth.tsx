@@ -22,6 +22,8 @@ export const Auth: FC = React.memo(() => {
     const dispatch = useDispatch();
     const router = useRouter();
 
+        console.log(router);
+
 
     //for form
     const { handleSubmit, register, formState: { errors } } = useForm<AuthFormType>();
@@ -31,9 +33,9 @@ export const Auth: FC = React.memo(() => {
         dispatch(setToggleLogIn(true))
         dispatch(setAuthUserData({ ...values }))
         setTimeout(() => {
-            router.push('/')
-        },
-            3000
+            // router.push('/')
+            router.back()
+            }, 3000
         )
     }
 
