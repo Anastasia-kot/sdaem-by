@@ -1,4 +1,4 @@
-   .BreadCrumbsList {
+   .breadcrumbs {
        display: flex;
        flex-wrap: wrap;
        align-items: center;
@@ -16,13 +16,13 @@
 
        color: #686868;
 
-       .BreadCrumbsItem {
+       .breadcrumbs__item {
            display: inline-block;
         }
 
-       .BreadCrumbsItem+.BreadCrumbsItem {}
+       .breadcrumbs__item+.breadcrumbs__item {}
 
-       .BreadCrumbsItem+.BreadCrumbsItem::before {
+       .breadcrumbs__item+.breadcrumbs__item::before {
            display: inline-block;
            content: ' ';
            width: 3px;
@@ -34,15 +34,15 @@
            background-repeat: no-repeat;
        }
 
-       .ActiveItem {
+       .active {
            color: #664EF9;
        }
 
-       .BreadCrumbsItem+.ActiveItem::before {
-           content: none; 
+       .breadcrumbs__item+.active::before {
+            background: none; 
        }
 
-       .HomeImage {
+       .breadcrumbs__icon {
            display: inline-block;
        }
    }

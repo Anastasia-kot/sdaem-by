@@ -4,15 +4,21 @@ import { Categories } from './Categories/Categories'
 import { Heading } from './Heading/Heading'
 import { Mapsearch } from './Mapsearch/Mapsearch'
 import { Rent } from './Rent/Rent'
-import React from 'react'
+import React, { FC } from 'react'
+import { CatalogueType } from '../../store/catalogueSlice'
 
-
-export const Main = React.memo(() => {
+type Props = {
+    data: {
+        items: CatalogueType[] | null
+        totalCount: number | null,
+    }
+}
+export const Main: FC<Props> = React.memo(({data}) => {
     return (
         <main className={styles.Main}>
             <Heading />
             <Categories />
-            <Rent />
+            <Rent data={data}/>
             <Mapsearch />
             <About />
         </main>

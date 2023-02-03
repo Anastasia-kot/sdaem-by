@@ -11,25 +11,27 @@ import { CatalogueType } from "../../../store/catalogueSlice";
 import { districtNameEngToRus, metroNameEngToRus } from "../../../../helpers/nameConverters";
 
 
-
-export const Rent: FC = React.memo(() => {
+type Props = {
+    data: {
+        items: CatalogueType[] | null
+        totalCount: number | null,
+    }
+}
+export const Rent: FC<Props> = React.memo(({ data }) => {
     //определяем ширину для пропров слайдера
     const { width } = useWindowDimensions();
-
+    const { items, totalCount } = data
 
 
     // данные для отрисовки
-    const data: CatalogueType[] = useSelector((state: RootState) => state.catalogue.data)
-    const [filteredData, setFilteredData] = useState<CatalogueType[]>(data)
+    const [filteredData, setFilteredData] = useState<CatalogueType[]>(()=>{return items ?? []})
 
     const [filters, setFilters] =
         useState<{ metro: null | MetroType, district: null | DistrictType, city: 'Minsk' }>
             ({ metro: null, district: null, city: 'Minsk' })
 
     useEffect(() => {
-
- 
-        let newData = data.filter(
+        let newData = items?.filter(
             ({ addressFeatures }) => {
                 let result = true // по дефолту все элементы проходят фильтрацию
 
@@ -46,7 +48,7 @@ export const Rent: FC = React.memo(() => {
         )
         setFilteredData(newData)
 
-    }, [data, filters])
+    }, [items, filters])
 
 
 
