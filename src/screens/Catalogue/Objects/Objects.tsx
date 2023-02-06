@@ -16,7 +16,7 @@ type Props = {
     filters: FiltersPayloadType
 }
 
-export const Objects: FC<Props> = React.memo(({ data, filters }) => {
+export const Objects: FC<Props> = ({ data, filters }) => {
 
 
     const {items} = data
@@ -208,8 +208,4 @@ return (
 
     </div>
 )
-})
-
-Objects.displayName = 'Objects';
-
-
+}

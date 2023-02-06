@@ -6,20 +6,20 @@ import React, { FC, useState } from 'react';
 import { ContactsButton } from '../../shared/buttons/Contacts/Contacts';
 import { LikeButton } from '../../shared/buttons/Like/Like';
 import { SimpleButton } from '../../shared/buttons/Simple/Simple';
-import { CatalogueType } from '../../store/catalogueSlice';
 import classNames from 'classnames';
 const room = require('../../../public/images/room.png');
 const avatar = require('../../../public/images/avatar.png');
 
 import avatar16 from './../../../public/images/svg/avatar16.svg'
 import metro from './../../../public/images/svg/metro.svg'
+import { CatalogueType } from '../../../types/catalogue_data';
  
 type Props = {
  data: CatalogueType, 
  style: 'main' | 'list' | 'tile' 
 }
  
-export const CatalogueCard: FC<Props> = React.memo(({ data, style }) => {
+export const CatalogueCard: FC<Props> = ({ data, style }) => {
 
  
     //image + image slider
@@ -32,6 +32,8 @@ export const CatalogueCard: FC<Props> = React.memo(({ data, style }) => {
         accessibility: true,
         arrows: true,
         dots: true,
+        lazyLoad: true,
+
         appendDots: dots => (
             <div
                 style={{
@@ -56,6 +58,7 @@ export const CatalogueCard: FC<Props> = React.memo(({ data, style }) => {
         slidesToShow: 1,
         slidesToScroll: 1
     };
+    
     const socialsList = [
         { url: 'socials/viber.svg',
             params: {
@@ -114,7 +117,7 @@ export const CatalogueCard: FC<Props> = React.memo(({ data, style }) => {
                         : style === 'main' 
                             ? <img src={data?.image[0]} alt="" className={styles.CardImage} /> // для main страницы картинка без слайдера
                             : <Slider {...settings}>
-                                {data?.image.map(i => <div key={data?.image.indexOf(i)} > <img src={i} alt="" className={styles.CardImage} /> </div>)}
+                                {data?.image.map((item, index) => <div key={index} > <img src={item} alt="" className={styles.CardImage} /> </div>)}
                             </Slider>
                        )}
 
@@ -213,74 +216,5 @@ export const CatalogueCard: FC<Props> = React.memo(({ data, style }) => {
             </div>
         </div>
     )
-})
-CatalogueCard.displayName = 'CatalogueCard';
+}
 
-// CatalogueCard.propTypes = {
-//     data: PropTypes.shape({
-//         id: PropTypes.number.isRequired,
-//         image: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.oneOf([null])]).isRequired ,
-//         gold: PropTypes.bool.isRequired,
-//         title: PropTypes.string.isRequired,
-//         description: PropTypes.string.isRequired,
-//         price: PropTypes.number.isRequired,
-//         address: PropTypes.string,
-//         addressFeatures: 
-//             PropTypes.arrayOf(
-//                 PropTypes.shape({
-//                     name: PropTypes.oneOf(['metro', 'district']),
-//                     value: PropTypes.string
-//                 })
-//             ),
-//         roomFeatures: 
-//             PropTypes.arrayOf(
-//                 PropTypes.oneOfType([
-//                     PropTypes.shape({
-//                         name: PropTypes.oneOf(['size as people']),
-//                         value: PropTypes.string
-//                     }),
-//                     PropTypes.shape({
-//                         name: PropTypes.oneOf([ 'roomCount', 'size as meters']),
-//                         value: PropTypes.number
-//                     })
-//                 ])  
-//             ),
-//         roomOwner:  PropTypes.shape({
-//             ownerStatus: PropTypes.string,
-//             name: PropTypes.string,
-//             phone: PropTypes.string,
-//             email: PropTypes.string,
-//         }),
-//     }).isRequired, 
-//     style: PropTypes.oneOf(['main', 'list', 'tile']).isRequired,
-// }
-
- 
-// CatalogueCard.defaultProp = {
-//     data: {
-//         image: null,
-//         gold: false,
-//         title: '',
-//         description: '',
-//         price: PropTypes.number,
-//         address: '',
-//         addressFeatures: [
-//             { name: 'metro', value: ''},
-//             { name: 'district', value: '' } 
-//         ],
-//         roomFeatures: [
-//             { name: 'size as people', value: '' },
-//             { name: 'roomCount', value: 0 },
-//             { name: 'size as meters', value: 0 },
-//         ],
-//         roomOwner:  {
-//             ownerStatus: '',
-//             name: '',
-//             phone: '',
-//             email: '',
-//         },
-//     },
-//     style: 'main'
-// };
-
- 

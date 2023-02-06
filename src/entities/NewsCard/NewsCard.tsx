@@ -2,15 +2,15 @@ import styles from './NewsCard.module.scss'
 import Image from 'next/image'
 import Link from 'next/link';
 import { dateConverter } from '../../../helpers/dateConverters';
-import { NewsType } from '../../store/newsSlice';
 import React, { FC } from 'react';
+import { NewsType } from '../../../types/news_data';
 const room = require('../../../public/images/room.png');
 
 type Props = {
     data: NewsType
 }
 
-export const NewsCard: FC<Props> = React.memo(( { data }) => {
+export const NewsCard: FC<Props> =  ( { data }) => {
 
    const { id, image, title, shortDescription, date } = data;
 
@@ -30,5 +30,4 @@ export const NewsCard: FC<Props> = React.memo(( { data }) => {
                
         </div>
     )
-})
-NewsCard.displayName = 'NewsCard';
+} 

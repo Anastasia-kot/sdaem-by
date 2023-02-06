@@ -9,7 +9,7 @@ import { AuthModal } from '../../entities/AuthModal/AuthModal'
 
 
 
-export const Registration: FC = React.memo(( ) => {
+export const Registration: FC = ( ) => {
 
     //модалка сброса пароля
     enum AuthModalEnum {
@@ -32,7 +32,4 @@ export const Registration: FC = React.memo(( ) => {
                 }
         </main>
     )
-})
-
-
-Registration.displayName = 'Registration';
+}

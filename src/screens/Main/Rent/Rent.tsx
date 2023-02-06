@@ -1,9 +1,9 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect,  useState } from "react";
 import styles from './Rent.module.scss'
 import { useForm } from 'react-hook-form'
 
 import { SelectBlock } from '../../../shared/Select_block/Select_block'
-import { CityType, DistrictMetroType, districtsList, DistrictType, MetroList, MetroType } from '../../../../types/formTypes'
+import {  DistrictMetroType, districtsList, DistrictType, MetroList, MetroType } from '../../../../types/formTypes'
 import { CatalogueState, CatalogueType } from "../../../../types/catalogue_data";
 
 import { SimpleSlider } from "./Slider";
@@ -19,9 +19,8 @@ type Props = {
     data: CatalogueState
 }
 
-export const Rent: FC<Props> = React.memo(({ data }) => {
-    //определяем ширину для пропров слайдера
-    const { width } = useWindowDimensions();
+export const Rent: FC<Props> = ({ data }) => {
+
     const { items, totalCount } = data
 
 
@@ -145,9 +144,7 @@ export const Rent: FC<Props> = React.memo(({ data }) => {
             </div>
 
             
-            <SimpleSlider
-                slidesToShow={(width && width >= 1440) ? 3 : (width && width >= 930) ? 2 : 1}
-                data={filteredData} />
+            <SimpleSlider data={filteredData} />
 
       
             <div className={styles.rent__more}>
@@ -165,7 +162,4 @@ export const Rent: FC<Props> = React.memo(({ data }) => {
 
         </div>
     )
-})
-
-
-Rent.displayName = 'Rent';
+}

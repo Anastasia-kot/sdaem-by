@@ -5,7 +5,7 @@ import styles from './Socials_sharing.module.scss'
 type Props = {
     color?: 'gray' | 'violet'
 }
-export const Socials_sharing: FC<Props> = React.memo(({ color = 'gray' }) => {
+export const Socials_sharing: FC<Props> = ({ color = 'gray' }) => {
 
      return (
         <div 
@@ -50,6 +50,4 @@ export const Socials_sharing: FC<Props> = React.memo(({ color = 'gray' }) => {
         </div>
        
     )
-})
-
-Socials_sharing.displayName = 'Socials_sharing';
+}

@@ -4,15 +4,9 @@ import React, { ReactNode, FC } from 'react';
 
 type Props =  { children: ReactNode }
 
-export const Layout: FC<Props> = React.memo(({ children }) => (
-    <div>
+export const Layout: FC<Props> = ({ children }) => 
+    <>
         <Header />
             {children}
         <Footer />
-    </div>
-))
-
-Layout.displayName = 'Layout';
-
-
- 
+    </>

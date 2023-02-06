@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse } from 'next';
-import { CatalogueType } from '../../../src/store/catalogueSlice';
+import { CatalogueType } from '../../../types/catalogue_data';
 import { data } from './data'
 
 

@@ -8,7 +8,7 @@ import React, { FC } from 'react'
 type Props = {
     style: 'main' | 'list' | 'tile'
 }
-export const LikeButton: FC<Props> = React.memo(    ({  style }) => {
+export const LikeButton: FC<Props> =     ({  style }) => {
      
 const [liked, setLiked] = useState(false);
 
@@ -39,8 +39,7 @@ const [liked, setLiked] = useState(false);
       
         </button>
     )
-})
-LikeButton.displayName = 'LikeButton';
+}
 
 // LikeButton.propsType={
 //     isListView: PropTypes.bool.isRequired,

@@ -21,23 +21,15 @@ import vk from'../../../public/images/svg/socials/vk_black.svg'
 import facebook from'../../../public/images/svg/socials/facebook_black.svg'
 
 
-const Footer: FC = React.memo(() => {
+const Footer: FC =  () => {
     
     
     const router = useRouter();
-    // const dispatch = useDispatch();
 
    
     const onClick = (props: { category?: CategoryType, city?: CityType }) => {
         let searchString: string = filtersToUrlString(props)
         router.push(`/catalogue${searchString}`)
-
-        // dispatch(setFilters(props))
-        // setTimeout(() => {
-        //   router.push('/catalogue')
-        // },
-        //   3000
-        // )
     }
 
     return (
@@ -69,11 +61,8 @@ const Footer: FC = React.memo(() => {
                 <div className={styles.NavigationLocations}>
                     <h3 onClick={() => onClick({ category: 'room' })}>Квартиры</h3>
                     <ul className={styles.NavigationLocationsList}>
-                        {citiesList.map(c =>
-                            <li
-                                key={citiesList.indexOf(c)}
-                                onClick={() => onClick({ category: 'room', city: c })}
-                            >
+                        {citiesList.map((c, index) =>
+                            <li key={index} onClick={() => onClick({ category: 'room', city: c })}>
                                 Квартиры в {cityNameConverters(cityNameEngToRus(c) )}
                             </li>)}
                     </ul>
@@ -109,10 +98,6 @@ const Footer: FC = React.memo(() => {
             </div>
         </footer>
     )
-})
-
-Footer.displayName = 'Footer';
-
-
+} 
 
 export default Footer;

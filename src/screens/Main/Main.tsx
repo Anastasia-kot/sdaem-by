@@ -6,22 +6,21 @@ import { Mapsearch } from './Mapsearch/Mapsearch'
 import { Rent } from './Rent/Rent'
 import React, { FC } from 'react'
 import { CatalogueState } from '../../../types/catalogue_data'
+import { NewsState } from '../../../types/news_data'
 
 
 type Props = {
-    data: CatalogueState
+    catalogue: CatalogueState
+    news: NewsState
 }
-
-export const Main: FC<Props> = React.memo(({data}) => {
+export const Main: FC<Props> = ({ catalogue, news }) => {
     return (
         <main className={styles.Main}>
             <Heading />
             <Categories />
-            <Rent data={data}/>
+            <Rent data={catalogue}/>
             <Mapsearch />
-            <About />
+            <About data={news}/>
         </main>
     )
-})
-
-Main.displayName = 'Main';
+}

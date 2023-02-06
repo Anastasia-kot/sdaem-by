@@ -6,7 +6,7 @@ import error from './../../../public/images/svg/error.svg'
 import Image from 'next/image'
 
 type Props = {
-    type:  'text' | 'password' | 'number'|'email'        | 'textarea' 
+    type:  'text' | 'password' | 'number'|'email' | 'textarea' 
     value: any
     required: boolean
     name: string
@@ -28,7 +28,7 @@ type Props = {
     children?: ReactElement
 }
 
-export const InputFormik: FC<Props> = React.memo((props) => {
+export const InputFormik: FC<Props> = (props) => {
     const {
         type,
         value,
@@ -109,8 +109,8 @@ export const InputFormik: FC<Props> = React.memo((props) => {
                         onBlur={onBlur}
                     />
                 }
-                <div className={styles.SvgImage} >{children}</div> {/* {imageSrc && <Image src={imageSrc} alt='icon' className={styles.SvgImage} />} */}
-
+                <div className={styles.SvgImage} >{children}</div>  
+                
                 {!!errors[name] && touched[name] && <>
                     <Image src={error} alt='error' className={styles.ErrorSvg} />                     
                      <div className={styles.ErrorMessage}>
@@ -122,5 +122,4 @@ export const InputFormik: FC<Props> = React.memo((props) => {
 
         </label>
     )
-})
-InputFormik.displayName = 'InputFormik';
+}

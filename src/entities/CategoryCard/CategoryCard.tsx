@@ -18,7 +18,7 @@ type Props = {
     background: StaticImageData
     arrow_button: boolean
 }
-export const CategoryCard: FC<Props> = React.memo( ({ filter, header, additional_header, hashtags, background, arrow_button }) => {
+export const CategoryCard: FC<Props> =  ({ filter, header, additional_header, hashtags, background, arrow_button }) => {
     // const dispatch = useDispatch();
     const router = useRouter();
  
@@ -50,6 +50,4 @@ export const CategoryCard: FC<Props> = React.memo( ({ filter, header, additional
         </div>
     )
 }
-)
-CategoryCard.displayName = 'CategoryCard';
 

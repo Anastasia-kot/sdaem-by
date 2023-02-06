@@ -10,19 +10,17 @@ type Props = {
 }
 
 export const AuthModal: FC<Props> = 
-    React.memo((
+    (
         {   title, 
             description = 'Письмо для подтверждения аккаунта отправлено почту. Перейдите по ссылке, указанной в письме. Если письма нет, то проверьте спам.', 
-            buttonText ='Понятно', 
-            onClick }
+            buttonText ='Понятно',  
+        }
     ) => <div className={styles.modal}>
-        <h2 className={styles.modal__title}> {title} </h2>
-        <p className={styles.modal__description}> {description}</p>
+        
+            <h2 className={styles.modal__title}> {title} </h2>
+            <p className={styles.modal__description}> {description}</p>
             <Link href='/'>
                 <button type='button' className={styles.modal__button}> {buttonText}</button>
             </Link>
 
-        </div>)
-AuthModal.displayName = 'AuthModal';
-
-  
+         </div> 

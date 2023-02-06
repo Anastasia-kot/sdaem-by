@@ -11,14 +11,14 @@ type Props = {
     label: any   // label: Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
     register: any   // register: UseFormRegister<ContactFormType> | UseFormRegister<AuthFormType> | UseFormRegister<RegisterFormType>
     required: boolean
-    onChange: (any) => void
+    onChange: ({ filter, value }) => void
 
     style: Object 
  
 
 
 }
-export const Select: FC<Props> = React.memo(({
+export const Select: FC<Props> = ({
     options,
     label,
     register,
@@ -26,32 +26,22 @@ export const Select: FC<Props> = React.memo(({
     onChange,
  
     style,
-}) => {
-     
-    return <select
-        {...register(label, required=required)}
-        onChange={(e) => onChange({
-            filter: label,       
-            value: e.target.value     })}
-        name={label}
-        id={label}
-        className={styles.select}
-        style={{
-            ...style 
-           
-        }}
-    >
-            {options.map(o =>
-                <option
-                    value={o.value}
-                    key={options.indexOf(o)}
-                >
-                    {o.text}
+    }) =>   
+        <select
+            {...register(label, required=required)}
+            onChange={(e) => onChange({
+                filter: label,       
+                value: e.target.value })}
+            name={label}
+            id={label}
+            className={styles.select}
+            style={{
+                ...style 
+            
+            }}>
+
+            {options.map(({value, text}, index) =>
+                <option value={value} key={index}>
+                    {text}
                 </option>)}
     </select>
-
-
-
-            })
-
-Select.displayName = 'Select';

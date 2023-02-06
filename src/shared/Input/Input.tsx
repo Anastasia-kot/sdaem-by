@@ -28,7 +28,7 @@ type Props = {
  
  
 }
-export const InputBlock: FC<Props> = React.memo(({ 
+export const InputBlock: FC<Props> = ({ 
     type,
     labelRus,
     placeholder,
@@ -103,7 +103,6 @@ export const InputBlock: FC<Props> = React.memo(({
                             height: height,
                             color: nonActivePlaceholderColor,
                             paddingLeft: imageSrc ? '40px' : 'auto',
-                            // border: (errors && errors[label]) ? '1px solid #EB5757' : '1px solid transparent' 
                         }} 
                         onChange={onChange ? (e) => onChange(e.target.value) : ()=>{}}
                         />
@@ -124,5 +123,4 @@ export const InputBlock: FC<Props> = React.memo(({
 
 
     )
-})
-InputBlock.displayName = 'InputBlock';
+}

@@ -10,7 +10,7 @@ type Props = {
     style: Object //CSSStyleDeclaration
 }
 
-export const MoreOptionsModal:  FC<Props> = React.memo( ({register, style}) => {
+export const MoreOptionsModal:  FC<Props> =  ({register, style}) => {
     const checkboxData = [
         {
             name: 'gas',
@@ -164,6 +164,3 @@ export const MoreOptionsModal:  FC<Props> = React.memo( ({register, style}) => {
         </div>
     )
 }
-)
-
-MoreOptionsModal.displayName = 'MoreOptionsModal';

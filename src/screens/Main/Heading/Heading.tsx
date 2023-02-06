@@ -8,12 +8,12 @@ import { SelectBlock } from '../../../shared/Select_block/Select_block'
 import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
 import { citiesList, MainFiltersFormType } from '../../../../types/formTypes'
 import { useRouter } from 'next/router'
-import { FiltersPayloadType } from '../../../store/filtersSlice'
 import { filtersToUrlString, formValuesFormatter } from '../../../../helpers/urlHelpers'
 import { categoriesItems } from '../../../../types/main_data'
 import { cityNameEngToRus } from '../../../../helpers/nameConverters'
+import { FiltersPayloadType } from '../../../../types/filter_data'
 
-export const Heading: FC = React.memo(() => {
+export const Heading: FC = () => {
 
     // визуальные эффекты
     const [currentCategory, setCurrentCategory] = useState('room');
@@ -210,5 +210,4 @@ export const Heading: FC = React.memo(() => {
 
 
     )
-})
-Heading.displayName = 'Heading';
+}

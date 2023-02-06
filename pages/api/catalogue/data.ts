@@ -1,9 +1,7 @@
-import { CatalogueType } from './../../../src/store/catalogueSlice';
-  
-export let data: {
-  items: CatalogueType[], totalCount: number,
+import { CatalogueState } from "../../../types/catalogue_data";
 
-} = { 
+  
+export let data: CatalogueState = { 
   items: [
     {
       id: 0,

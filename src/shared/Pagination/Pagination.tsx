@@ -9,15 +9,13 @@ type ItemsProps = {
     Component: any 
     style?: string
 }
-const Items: FC<ItemsProps> = React.memo(( { currentItems, Component, style } ) => <> 
+const Items: FC<ItemsProps> =( { currentItems, Component, style } ) => <> 
         {style
             ?  currentItems && currentItems.map((n) => <Component key={n.id} data={n} style={style} />) 
             :  currentItems && currentItems.map((n) => <Component key={n.id} data={n}  />) 
         }
     </>
-)
 
-Items.displayName = 'Items';
 
 
 
@@ -27,7 +25,7 @@ type PaginatedItemsProps = {
     Component: any  
     style?: string
 } 
-export const PaginatedItems: FC<PaginatedItemsProps> = React.memo(( { itemsPerPage, items, Component, style } ) => {
+export const PaginatedItems: FC<PaginatedItemsProps> = ( { itemsPerPage, items, Component, style } ) => {
 
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
@@ -81,17 +79,7 @@ export const PaginatedItems: FC<PaginatedItemsProps> = React.memo(( { itemsPerPa
             />
         </>
     );
-})
-
-
-
-
-
-
-PaginatedItems.displayName = 'PaginatedItems';
-
-
-
+}
 
  
 

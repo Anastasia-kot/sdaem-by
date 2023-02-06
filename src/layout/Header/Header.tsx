@@ -7,7 +7,6 @@ import Link from "../../../node_modules/next/link";
 import Image from "next/image";
 import classNames from "classnames";
 import { setAuthUserData, setToggleLogIn, UserDataInterface } from "../../store/authSlice";
-// import { setFilters } from "../../store/filtersSlice";
 import { useRouter } from "next/router";
 import { cityNameConverters, cityNameEngToRus } from "../../../helpers/nameConverters";
 import { categoriesItems, navItems } from "../../../types/main_data";
@@ -16,14 +15,13 @@ import { filtersToUrlString } from "../../../helpers/urlHelpers";
 
 const logo = require('../../../public/images/logo.png');
 const avatar = require('../../../public/images/avatar.png');
-// const navIconSmall = require('../../../public/images/svg/navigation_icon_small.svg');
 const navIcon = require('../../../public/images/svg/navigation_icon.svg');
 const arrowDown = require('../../../public/images/svg/arrow_down.svg');
 
 
 
 
-const Header: FC = React.memo(() => {
+const Header: FC = () => {
 
     const userData: UserDataInterface = useSelector((state: RootState) => state.auth.data)
     const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuth)
@@ -44,9 +42,9 @@ const Header: FC = React.memo(() => {
 
 
     // modals 
-    const [isBurgerActive, setIsBurgerActive] = useState<boolean>(false);
-    const [isRoomsActive, setIsRoomsActive] = useState<boolean>(false);
-    const [isUnloginMenuActive, setIsUnloginMenuActive] = useState<boolean>(false);
+    const [isBurgerActive, setIsBurgerActive] = useState(false);
+    const [isRoomsActive, setIsRoomsActive] = useState(false);
+    const [isUnloginMenuActive, setIsUnloginMenuActive] = useState(false);
 
     const onBurgerClick = () => {
         setIsBurgerActive(prev => !prev);
@@ -75,32 +73,20 @@ const Header: FC = React.memo(() => {
         <header className={styles.header}>
 
             <nav className={styles.header__navigation}>
-                <ul
-                    className={classNames(
-                        styles.navigation__list,
-                        { [styles.active]: isBurgerActive },
-                    )}
-                >
-                    <li
-                        className={classNames(
-                            styles.list__burger,
-                            { [styles.active]: isBurgerActive },
-                        )}
-
-                        onClick={onBurgerClick}>
+                <ul className={classNames(    styles.navigation__list,  { [styles.active]: isBurgerActive }   )} >
+                    <li className={classNames(   styles.list__burger,   { [styles.active]: isBurgerActive }   )} onClick={onBurgerClick}>
                         <span></span>
                         <span></span>
                         <span></span>
                     </li>
-                    {navItems.map(i =>
-                        <li key={i.id}>
-                            <Link href={i.name === 'index' ? '/' : `/${i.name}`}>
-                                {i.name === 'map' &&
+                    {navItems.map(({ id, name, value }) =>
+                        <li key={id}>
+                            <Link href={name === 'index' ? '/' : `/${name}`}>
+                                {name === 'map' &&
                                     <svg width="9" height="10" viewBox="0 0 9 10" fill="#8291A3" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.33796 1.74419C6.6054 0.627907 5.3961 0 4.03564 0C2.6868 0 1.4775 0.627907 0.721683 1.74419C-0.0341305 2.83721 -0.208549 4.23256 0.256567 5.45349C0.384474 5.77907 0.582148 6.11628 0.837962 6.4186L3.77982 9.88372C3.84959 9.95349 3.91936 10 4.02401 10C4.12866 10 4.19843 9.95349 4.2682 9.88372L7.22168 6.4186C7.4775 6.11628 7.6868 5.7907 7.80308 5.45349C8.2682 4.23256 8.09378 2.83721 7.33796 1.74419ZM4.03564 5.86047C3.03564 5.86047 2.21006 5.03488 2.21006 4.03488C2.21006 3.03488 3.03564 2.2093 4.03564 2.2093C5.03564 2.2093 5.86122 3.03488 5.86122 4.03488C5.86122 5.03488 5.04727 5.86047 4.03564 5.86047Z" />
-                                    </svg>
-                                }
-                                {i.value}
+                                    </svg>}
+                                {value}
                             </Link>
                         </li>)}
 
@@ -177,26 +163,24 @@ const Header: FC = React.memo(() => {
                             <Image src={logo} alt="SDAEM.BY" />
                         </Link>
                     </li>
-                    {categoriesItems.map(i =>
-                        <li key={i.id}
-                            onClick={i.name === 'room' ? onRoomsClick : ()=>onClick({ category: i.name })}
+                    {categoriesItems.map(({ id, name, value }) =>
+                        <li key={id}
+                            onClick={name === 'room' ? onRoomsClick : ()=> onClick({ category: name })}
                             className={classNames(
                                 { [styles.active]: isRoomsActive },
                             )}
                         >
-                            {i.value}
+                            {value}
 
-                            {i.name === 'room' &&
+                            {name === 'room' &&
                                 <>
                                     <Image src={navIcon} alt='navIcon'/> 
                                     <ul className={styles.RoomsList}>
-                                        {citiesList.map(c =>
-                                            <li
+                                        {citiesList.map((c, index) =>
+                                            <li key={index}
                                                 className={styles.RoomsListItem}
-                                                key={citiesList.indexOf(c)}
-                                                onClick={() => onClick({category: 'room', city: c })}
-                                            >
-                                                Квартиры на сутки в  {cityNameConverters(cityNameEngToRus(c))}
+                                                onClick={() => onClick({category: 'room', city: c })}  >
+                                                    Квартиры на сутки в  {cityNameConverters(cityNameEngToRus(c))}
                                             </li>)
                                         }  
                                     </ul>
@@ -211,10 +195,6 @@ const Header: FC = React.memo(() => {
             </div>
         </header >
     )
-})
-
-Header.displayName = 'Header';
-
-
+} 
 
 export default Header;

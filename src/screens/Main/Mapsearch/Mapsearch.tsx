@@ -1,17 +1,29 @@
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import styles from './Mapsearch.module.scss'
 import React, { FC } from 'react'
 import { PreferenceCard } from '../../../entities/PreferenceCard/PreferenceCard'
 import { MapBlock } from '../../../entities/MapBlock/MapBlock'
-const clients = require('../../../../public/images/main/clients.svg');
-const move = require('../../../../public/images/main/move.svg');
+import clients from '../../../../public/images/main/clients.svg'
+import move from '../../../../public/images/main/move.svg'
 import dotes from './../../../../public/images/svg/dotes.svg'
 
 
 
 export const Mapsearch: FC = () => {
-
-    const pref_cards = [
+    type pref_cardsJ = {
+        logo: StaticImageData | null,
+        header: string,
+        description: {
+            text: Array<string>
+            bold: Array<string>
+        },
+        button: {
+            text: string
+            image: boolean
+        },
+        isGold: boolean,
+}[]
+    const pref_cards: pref_cardsJ = [
         {
             logo: clients,
             header: 'Начните привлекать клиентов бесплатно!',
@@ -21,11 +33,10 @@ export const Mapsearch: FC = () => {
             },
             button: {
              
-                   text: '+ Разместить объявление',
+                text: '+ Разместить объявление',
                 image: false
             },
             isGold: false,
-            goldBackground: 'string'
         },
         {
             logo: move,
@@ -41,10 +52,9 @@ export const Mapsearch: FC = () => {
             },
             
             isGold: false,
-            goldBackground: 'string'
         },
         {
-            logo: '',
+            logo: null,
             header: 'Приоритет Gold ',
             description: {
                 text: [
@@ -59,7 +69,6 @@ export const Mapsearch: FC = () => {
             },
             
             isGold: true,
-            goldBackground: 'string'
         },
 
     ]

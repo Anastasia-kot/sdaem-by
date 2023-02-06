@@ -8,11 +8,10 @@ import { Breadcrumbs } from '../../entities/Breadcrumbs/Breadcrumbs'
 import { NewsCard } from '../../entities/NewsCard/NewsCard'
 
 import { dateConverter } from '../../../helpers/dateConverters'
-import { NewsType } from '../../store/newsSlice'
 
-// const room = require('../../../public/images/room_big_quality.png');
 import room from '../../../public/images/room_big_quality.png';
 import dotes from './../../../public/images/svg/dotes.svg'
+import { NewsType } from '../../../types/news_data'
 
 
 type Props = {
@@ -22,7 +21,7 @@ type Props = {
     }
 }
 
-export const New: FC<Props> = React.memo(({ data }) => {
+export const New: FC<Props> = ({ data }) => {
 
 
     const { post, posts } = data
@@ -35,7 +34,7 @@ export const New: FC<Props> = React.memo(({ data }) => {
             <div className={styles.new__heading}>
                 <div className={styles.heading}>
                     <Breadcrumbs breadcrumbs={[
-                        { name: 'news', value: 'Новости ' },
+                        { name: 'news', value: 'Новости' },
                         { name: '', value: `${post?.title}` }]} />
 
                     <h1 className={styles.heading__title}>{post?.title}</h1>
@@ -72,7 +71,7 @@ export const New: FC<Props> = React.memo(({ data }) => {
                 <div className={styles.alsoRead__content}>
                     <h2 className={styles.content__title}> Читайте также </h2>
                     <div className={styles.content__cards}>
-                        {posts?.map(n => <NewsCard key={n.id} data={n} />)}
+                        {posts?.map((n) => <NewsCard key={n.id} data={n} />)}
                     </div>
 
                 </div>
@@ -83,6 +82,4 @@ export const New: FC<Props> = React.memo(({ data }) => {
 
         </main>
     )
-})
-New.displayName = 'New';
-
+}

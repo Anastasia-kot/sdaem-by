@@ -16,7 +16,7 @@ type Props = {
 }
 const YOUR_SITE_KEY = '6LcfQSwkAAAAANlE1Ola8Xh_K8BW8lkwSCugBH-l'  // for vercel.com
 
-export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
+export const Form: FC<Props> = ({onSubmitFunction}) => {
 
     const dispatch = useDispatch();
     const router = useRouter();
@@ -65,12 +65,12 @@ export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
     }
 
     const onSubmit = values => {
-        console.log(values);
-
+        onSubmitFunction()
+        
         dispatch(setToggleLogIn(true))
         dispatch(setAuthUserData({ ...values }))
         setTimeout(() => {
-            router.push('/')
+            router.back()
         },
             3000
         )
@@ -230,7 +230,4 @@ export const Form: FC<Props> = React.memo(({onSubmitFunction}) => {
         </Formik>
 
     )
-})
-
-
-Form.displayName = 'Form';
+}

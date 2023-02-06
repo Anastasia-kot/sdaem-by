@@ -3,7 +3,6 @@ import styles from './About.module.scss'
 import React, { FC } from 'react'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
-import { NewsType } from '../../../store/newsSlice';
 import { dateConverter } from '../../../../helpers/dateConverters';
 import Link from 'next/link';
 import { sortingNewsPerDate } from '../../../../helpers/sortingFunctions';
@@ -11,13 +10,18 @@ const room = require('../../../../public/images/room-about.png');
 
 import dotes from './../../../../public/images/svg/dotes.svg'
 import arrow from './../../../../public/images/svg/arrow_right_violet.svg'
+import { NewsState } from '../../../../types/news_data';
 
+type Props = {
+    data: NewsState
+}
 
-export const About: FC = React.memo(() => {
+export const About: FC<Props> = ({data}) => {
+
+    const { items } = data
 
     //надо отсортировать и найти 4 более новые (или взять последние 4 из массива)
-    const news: NewsType[] = sortingNewsPerDate(useSelector((state: RootState) => state.news.data)).slice(0, 4)
-
+    const sortedNews = sortingNewsPerDate(items).slice(0, 4)
 
     return (
 
@@ -54,7 +58,7 @@ export const About: FC = React.memo(() => {
                     Новости
                 </h3>
                 <ul className={styles.news__list}>
-                    {news.map(({ id, title, date }, index) => {
+                    {sortedNews.map(({ id, title, date }, index) => {
                         return (
                             <li key={index}>
                                 <Link href={`/new/${id}`} >
@@ -63,7 +67,7 @@ export const About: FC = React.memo(() => {
                                 </Link>
                             </li>)
                     })}
-                    <li key={news.length} >
+                    <li key={sortedNews.length} >
                         <Link href='/news'>
                             Посмотреть все
                             <Image src={arrow} alt="arrow" className={styles.a} />
@@ -78,8 +82,4 @@ export const About: FC = React.memo(() => {
 
 
     )
-})
-
-About.displayName = 'About';
-
-
+}

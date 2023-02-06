@@ -7,7 +7,7 @@ type Props = {
     onSubmitFunction: () => void
 }
 
-export const RegisterModal: FC<Props> = React.memo(({ onSubmitFunction}) => {
+export const RegisterModal: FC<Props> = ({ onSubmitFunction}) => {
     return (
         <div className={styles.register}> 
             <h2 className={styles.register__title}> Регистрация  </h2>
@@ -27,7 +27,4 @@ export const RegisterModal: FC<Props> = React.memo(({ onSubmitFunction}) => {
             </div>
         </div>
     )
-})
-
-RegisterModal.displayName = 'RegisterModal';
-
+}

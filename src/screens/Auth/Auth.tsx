@@ -18,7 +18,7 @@ import { AuthModal } from '../../entities/AuthModal/AuthModal';
 
 
 
-export const Auth: FC = React.memo(() => {
+export const Auth: FC = () => {
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -33,7 +33,6 @@ export const Auth: FC = React.memo(() => {
         dispatch(setToggleLogIn(true))
         dispatch(setAuthUserData({ ...values }))
         setTimeout(() => {
-            // router.push('/')
             router.back()
             }, 3000
         )
@@ -130,6 +129,4 @@ export const Auth: FC = React.memo(() => {
              
         </main>
     )
-})
-
-Auth.displayName = 'Auth';
+}
