@@ -10,7 +10,7 @@ import { setAuthUserData, setToggleLogIn, UserDataInterface } from "../../store/
 // import { setFilters } from "../../store/filtersSlice";
 import { useRouter } from "next/router";
 import { cityNameConverters, cityNameEngToRus } from "../../../helpers/nameConverters";
-import { categoriesItems, navItems } from "../../store/mainSlice";
+import { categoriesItems, navItems } from "../../../types/main_data";
 import { CategoryType, citiesList, CityType } from "../../../types/formTypes";
 import { filtersToUrlString } from "../../../helpers/urlHelpers";
 

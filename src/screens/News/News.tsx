@@ -1,32 +1,29 @@
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, FC } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { Breadcrumbs } from '../../entities/Breadcrumbs/Breadcrumbs'
 import { NewsCard } from '../../entities/NewsCard/NewsCard'
 import { InputBlock } from '../../shared/Input/Input'
-import { NewsType, setSearchWord } from '../../store/newsSlice'
-import { RootState } from '../../store/store'
+import { setSearchWord } from '../../store/newsSlice'
 import styles from './News.module.scss'
 import { PaginatedItems } from '../../shared/Pagination/Pagination'
 import { sortingNewsPerDate } from '../../../helpers/sortingFunctions'
 import { useRouter } from 'next/router'
+import { NewsState, NewsType } from '../../../types/news_data'
+
+
+type Props = {
+    data: NewsState
+}
 
 
 
-
-
-
-
-
-
-export const News = ({data}) => {
-    const { news, totalCount } = data
+export const News: FC<Props> = ({data}) => {
+    const { items, totalCount } = data
 
     const dispatch = useDispatch();
-    const [filteredNews, setFilteredNews] = useState<NewsType[]>(sortingNewsPerDate(news))
-    // const news: NewsType[] = useSelector((state: RootState) => state.news.data)
-    // const searchWord = useSelector((state: RootState) => state.news.searchWord)
+    const [filteredNews, setFilteredNews] = useState<NewsType[]>(sortingNewsPerDate(items))
+ 
     
     const router = useRouter();
     const {query} = router;
@@ -62,8 +59,8 @@ export const News = ({data}) => {
     const sortingFunc = (searchWord: string): NewsType[] => {
         let newNewsList: NewsType[]
         searchWord ===''
-            ? newNewsList = news
-            : newNewsList = news.filter(
+            ? newNewsList = items
+            : newNewsList = items.filter(
                 (item: NewsType) => (
                     item.title.includes(searchWord)
                     || item.shortDescription.includes(searchWord)

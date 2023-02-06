@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,7 +15,7 @@ type Props = {
     header: string,
     additional_header: string,
     hashtags?: Array<CityType>,
-    background: string
+    background: StaticImageData
     arrow_button: boolean
 }
 export const CategoryCard: FC<Props> = React.memo( ({ filter, header, additional_header, hashtags, background, arrow_button }) => {

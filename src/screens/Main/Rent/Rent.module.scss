@@ -33,7 +33,7 @@
 
 
 
-    .heading {
+    .rent__heading {
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
@@ -284,7 +284,7 @@
     @media (max-width: 1439px) {
         padding: 0 20px;
 
-        .heading,
+        .rent__heading,
         .cards,
         .rent__more {
             max-width: 850px;
@@ -293,7 +293,7 @@
 
     @media (max-width: 929px) {
 
-        .heading,
+        .rent__heading,
         .cards,
         .rent__more {
             max-width: 406px;

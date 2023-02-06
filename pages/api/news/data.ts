@@ -1,10 +1,7 @@
-import { NewsType } from "../../../src/store/newsSlice";
+import { NewsState } from "../../../types/news_data";
 
-export let data: {
-  news: NewsType[],
-  totalCount: number,
-} = { 
-  news: [
+export let data: NewsState = { 
+  items: [
     {
       id: 0,
       image: null,

@@ -10,7 +10,7 @@ import { citiesList, MainFiltersFormType } from '../../../../types/formTypes'
 import { useRouter } from 'next/router'
 import { FiltersPayloadType } from '../../../store/filtersSlice'
 import { filtersToUrlString, formValuesFormatter } from '../../../../helpers/urlHelpers'
-import { categoriesItems } from '../../../store/mainSlice'
+import { categoriesItems } from '../../../../types/main_data'
 import { cityNameEngToRus } from '../../../../helpers/nameConverters'
 
 export const Heading: FC = React.memo(() => {

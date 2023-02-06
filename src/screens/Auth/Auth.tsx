@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
-import { AuthFormType } from '../../../types/loginFormTypes';
+import { AuthFormType } from '../../../types/authTypes';
 import { InputBlock } from '../../shared/Input/Input';
 import { setAuthUserData, setToggleLogIn } from '../../store/authSlice';
 

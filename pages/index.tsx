@@ -7,6 +7,7 @@ import { Layout } from '../src/layout/Layout';
 import { FC } from 'react';
 import { GetServerSideProps } from 'next';
 import { CatalogueType } from '../src/store/catalogueSlice';
+import { CatalogueState } from '../types/catalogue_data';
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -14,8 +15,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     try {
         const res = await fetch(`http://localhost:3000/api/catalogue`)
         const data = await res.json()
-        console.log(data)
-        // Pass data to the page via props
         return { props: { data } }
 
     } catch (err) {
@@ -24,10 +23,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 type Props = {
-    data: {
-        items: CatalogueType[] | null
-        totalCount: number | null,
-    }
+    data: CatalogueState 
 }
 
 const Home: FC<Props> = ({ data }) => <Layout> <Main data={data}/> </Layout> 

@@ -5,14 +5,13 @@ import { Heading } from './Heading/Heading'
 import { Mapsearch } from './Mapsearch/Mapsearch'
 import { Rent } from './Rent/Rent'
 import React, { FC } from 'react'
-import { CatalogueType } from '../../store/catalogueSlice'
+import { CatalogueState } from '../../../types/catalogue_data'
+
 
 type Props = {
-    data: {
-        items: CatalogueType[] | null
-        totalCount: number | null,
-    }
+    data: CatalogueState
 }
+
 export const Main: FC<Props> = React.memo(({data}) => {
     return (
         <main className={styles.Main}>

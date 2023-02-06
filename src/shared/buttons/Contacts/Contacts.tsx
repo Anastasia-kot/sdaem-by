@@ -6,7 +6,7 @@ type Props = {
     onClick: () => void | any
 }
 
-export const ContactsButton: FC<Props> = React.memo(({style, onClick }) => {
+export const ContactsButton: FC<Props> = ({style, onClick }) => {
     return ( 
         <button
             className={styles.Button}
@@ -20,5 +20,4 @@ export const ContactsButton: FC<Props> = React.memo(({style, onClick }) => {
             </span>
         </button>
     )
-})
-ContactsButton.displayName = 'ContactsButton';
+}

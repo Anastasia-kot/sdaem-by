@@ -1,32 +1,10 @@
+// RTK don't use because URL Query
+
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { CategoryType, districtsList, DistrictType, MainFiltersFormType, MainFiltersKeysType } from '../../types/formTypes'
-import { districtNameEngToRus } from '../../helpers/nameConverters';
+import { CategoryType,  DistrictType, MainFiltersFormType } from '../../types/formTypes'
+import { FiltersPayloadType } from '../../types/filter_data'
 
-export const FiltersRecommendationsList:
-    Array<{
-        value: string
-        filter: FiltersPayloadType
-    }> = [
-
-        {   value: 'Недорогие',
-            filter: {
-                priceMax: 100,
-            }
-        },
-        ...[1,2,3,4,5].map(n => ({
-            value: n + '-комнатные',
-            filter: {
-                rooms: n,
-            }
-        })),
-        ...districtsList.map(d => ({
-            value: districtNameEngToRus(d),
-            filter: {
-                district: d,
-            }
-        }))
-    ]
 
 
 
@@ -96,13 +74,9 @@ export const filterSlice = createSlice({
             state.microwave = null;
             state.dishes = null;
             state.dishwasher = null;
-
-            // state = { ...initialState }
-
-
         },
 
-        setFilters: (state, action: PayloadAction<any>) => {              // FiltersPayloadType
+        setFilters: (state, action: PayloadAction<FiltersPayloadType>) => {             
 
 
             state.category = action.payload.category;
@@ -123,64 +97,10 @@ export const filterSlice = createSlice({
             state.microwave = action.payload.microwave;
             state.dishes = action.payload.dishes;
             state.dishwasher = action.payload.dishwasher;
-
-
-            // for (let key in action.payload) {
-            //     state[key] = action.payload[key]
-            // }
-
-
-            // state = { ...state, ...action.payload}
-            // state = {...action.payload}
-            // state =  action.payload
-            // state = {...state, ...action.payload}
-
         },
     },
 })
 
-// Action creators are generated for each case reducer function
 export const { resetFilters, setFilters } = filterSlice.actions
 
 export default filterSlice.reducer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export interface FiltersPayloadType {
-    category?: CategoryType | null,
-    
-    city?: string | null,
-    district?: string | null,
-    metro?: string | null,
-
-    rooms?: number | null,
-    priceMin?: number | null,
-    priceMax?: number | null,
-
-    sleepPlaces?: number | null,
-
-    gas?: boolean | null,
-    oven?: boolean | null,
-    coffeeMachine?: boolean | null,
-    microwave?: boolean | null,
-    dishes?: boolean | null,
-    dishwasher?: boolean | null,
-
-}

@@ -1,13 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse } from 'next';
-import { NewsType } from '../../../src/store/newsSlice';
+import { NewsType } from '../../../types/news_data';
 import {data} from './data'
 
 
 type ResponseData = {
-  news: NewsType[]
+  items: NewsType[]
   totalCount: number
-}
+} 
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
   res.status(200).json(data)

@@ -1,4 +1,3 @@
-// import Image from 'next/image'
 import styles from './Objects.module.scss'
 import React, { FC, useEffect, useState } from 'react'
 import { PaginatedItems } from '../../../shared/Pagination/Pagination'
@@ -8,27 +7,20 @@ import { RootState } from '../../../store/store'
 import { SelectBlock } from '../../../shared/Select_block/Select_block'
 import { useForm } from 'react-hook-form'
 import { CatalogueCard } from '../../../entities/CatalogueCard/CatalogueCard'
-import { CatalogueType } from '../../../store/catalogueSlice'
-
+import { CatalogueState, CatalogueType } from '../../../../types/catalogue_data'
+import { FiltersPayloadType } from '../../../../types/filter_data'
 
 
 type Props = {
-    data: {
-        items: CatalogueType[] | null
-        totalCount: number | null
-    }
+    data: CatalogueState
+    filters: FiltersPayloadType
 }
 
-export const Objects: FC<Props> = React.memo(({data}) => {
+export const Objects: FC<Props> = React.memo(({ data, filters }) => {
 
 
-    const {items, totalCount} = data
-    
-    // const items: CatalogueType[] = useSelector((state: RootState) => state.catalogue.data)
-    // const totalCount = useSelector((state: RootState) => state.catalogue.totalCount)
-
-    const filters = useSelector((state: RootState) => state.filter)
-    let [filteredData, setFilteredData] = useState<CatalogueType[]>(() => { return items ? items : []  })
+    const {items} = data
+    let [filteredItems, setFilteredItems] = useState<CatalogueType[]>(() => { return items ? items : []  })
 
     useEffect(() => {
             let newFilteredData: CatalogueType[] = []
@@ -72,7 +64,7 @@ export const Objects: FC<Props> = React.memo(({data}) => {
                     }
                 ); 
             }
-            setFilteredData(newFilteredData)
+            setFilteredItems(newFilteredData)
     }, [items, filters])
 
 
@@ -192,13 +184,13 @@ return (
 
 
         <div className={styles.objects__items}>
-            <h2 className={styles.items__title}>Найдено {filteredData.length} результатов</h2>
+            <h2 className={styles.items__title}>Найдено {filteredItems.length} результатов</h2>
             {data && <div className={isListCatalogue ? styles.ResultListListView : styles.ResultListTileView}>
 
 
                     {isListCatalogue
-                        ? <PaginatedItems itemsPerPage={3} items={filteredData} style={'list'} Component={CatalogueCard} />
-                        : <PaginatedItems itemsPerPage={6} items={filteredData} style={'tile'} Component={CatalogueCard} />
+                        ? <PaginatedItems itemsPerPage={3} items={filteredItems} style={'list'} Component={CatalogueCard} />
+                        : <PaginatedItems itemsPerPage={6} items={filteredItems} style={'tile'} Component={CatalogueCard} />
                     }
 
             </div>}

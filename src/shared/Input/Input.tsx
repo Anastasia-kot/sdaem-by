@@ -1,9 +1,11 @@
-import Image from 'next/image'
 import React, { FC } from 'react'
 import { FieldErrorsImpl, Path, UseFormRegister, ValidationRule } from 'react-hook-form'
 // import { RegisterFormType } from '../../../types/formTypes'
 // import { AuthFormType, ContactFormKeysType, ContactFormType, RegisterFormType } from '../../../types/formTypes'
 import styles from './Input.module.scss'
+import error from './../../../public/images/svg/error.svg'
+import Image from 'next/image'
+
 
 type Props = {
     type: string  // type of input or textarea   
@@ -109,9 +111,7 @@ export const InputBlock: FC<Props> = React.memo(({
 
                 {errors && errors[label] &&
                 <>
-                    <svg className={styles.ErrorSvg} width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.5 0C5 0 0.5 4.5 0.5 10C0.5 15.5 5 20 10.5 20C16 20 20.5 15.5 20.5 10C20.5 4.5 16 0 10.5 0ZM10.5 2C11.6 2 12.4 2.9 12.3 4L11.5 12H9.5L8.7 4C8.6 2.9 9.4 2 10.5 2ZM10.5 18C9.4 18 8.5 17.1 8.5 16C8.5 14.9 9.4 14 10.5 14C11.6 14 12.5 14.9 12.5 16C12.5 17.1 11.6 18 10.5 18Z" fill="#EB5757" />
-                    </svg>
+                    <Image src={error} alt='error' className={styles.ErrorSvg} />                     
                      <div className={styles.ErrorMessage}>
                         {errors[label]?.message}
                     </div> 

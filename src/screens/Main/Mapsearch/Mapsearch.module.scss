@@ -1,4 +1,4 @@
-.MapSearchBlock {
+.map_search {
     width: 100%;
     padding: 0;
     margin-bottom: 14px;
@@ -10,7 +10,7 @@
 
 
 
-    .PreferenceCardList {
+    .map_search__preference_list {
         position: relative;
         top: -123px;
         display: flex;
@@ -26,7 +26,7 @@
     }
     }
 
-    .DotesAfter {
+    .map_search__dotes {
         position: absolute;
         bottom: -40px;
         right: 145px;

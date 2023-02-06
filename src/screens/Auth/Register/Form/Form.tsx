@@ -9,7 +9,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { SimpleButton } from '../../../../shared/buttons/Simple/Simple';
 import { setAuthUserData, setToggleLogIn } from '../../../../store/authSlice';
 import { InputFormik } from '../../../../shared/Input/InputFormik';
-import { RegisterFormType } from '../../../../../types/loginFormTypes';
+import { RegisterFormType } from '../../../../../types/authTypes';
 
 type Props = {
     onSubmitFunction: () => void

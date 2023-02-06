@@ -3,7 +3,8 @@ import Image from 'next/image'
 import React, { FC } from 'react';
 import { useWindowDimensions } from '../../../helpers/useWindowDimensions.js';
 import styles from './PreferenceCard.module.scss'
-const arrow = require('../../../public/images/svg/arrow_right.svg');
+import arrow from'../../../public/images/svg/arrow_right.svg';
+import arrow_white from'../../../public/images/svg/arrow_right_white.svg';
 
 
 
@@ -17,17 +18,15 @@ type Props = {
             bold: Array<string>
         },
         button: {
-
             text: string
             image: boolean
-
         },
         isGold: boolean,
     }
 
 }
 
-export const PreferenceCard: FC<Props> = React.memo(({ data }) => {
+export const PreferenceCard: FC<Props> = ({ data }) => {
 
 
     //делим строки на массив подстрок, где 1, 3, 5... нежирные, а 2, 4, 6... жирные
@@ -82,43 +81,36 @@ export const PreferenceCard: FC<Props> = React.memo(({ data }) => {
 
 
     return (
-        <div className={classNames(
-            styles.card,
-            { [styles.isGold]: data.isGold },
-
-        )} >
-
-
+        <div className={classNames(     styles.card, { [styles.isGold]: data.isGold }  )} >
+            
+            
             <div className={styles.card__header}>
-                {!data.isGold && <div className={styles.header__logoWrapper}>
-                    <Image src={data.logo} alt="logo" width={64} height={64} className={styles.cardLogo} />
-                </div>}
-                <h1 className={data.isGold ? styles.CardHeaderTextGold : styles.CardHeaderText}>
-                    {data.header}
-                </h1>
+                <div className={styles.header__logoWrapper}>
+                    <Image src={data.logo} alt="logo" width={64} height={64} className={styles.header__logo} />
+                </div>
+                <h1 className={ styles.header__title }> {data.header}</h1>
             </div>
 
-            <ul className={styles.CardDescription}>
+
+            <ul className={styles.card__description}>
                 {text.map(d => <li key={text.indexOf(d)}>        {/*//абзац */}
                     {d.map(dd => <span  // спан
                         key={d.indexOf(dd)}
                         style={{ fontWeight: d.indexOf(dd) % 2 !== 0 ? 700 : 400 }}>{dd}</span>)}
                 </li>)}
             </ul>
-            <button className={styles.button}>
+
+
+            <button className={styles.card__button}>
                 {data.button.text}
-                {data.button.image &&
-                    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.5 11.8027L6.5 6.80273L1.5 1.80273" stroke="#242424" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>}
-
+                {data.button.image && 
+                    data.isGold
+                        ? <Image src={arrow_white} alt="arrow" />
+                        : <Image src={arrow} alt="arrow" />               
+                }
             </button>
-
-
 
         </div>
     )
 }
-)
 
-PreferenceCard.displayName = 'PreferenceCard';
