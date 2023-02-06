@@ -142,6 +142,20 @@ export const Filters: FC<Props> = ({setFilters}) => {
         setUrlFilters(formValuesFormatter(values))
     }
 
+    const FiltersInput = (props) => {
+
+        return <InputBlock
+            type={'number'}
+            labelRus={null}
+            flexDirection={null}
+            width={100}
+            height={37}
+            imageSrc={null}
+            register={register}
+            pattern={/^[0-9]{1,20}$/i}
+            required={false}
+            {...props} />
+    }
 
 
 
@@ -209,35 +223,14 @@ export const Filters: FC<Props> = ({setFilters}) => {
                         <div className={styles.InputsBlock}>
 
 
-                            <InputBlock
-                                type={'number'}
-                                labelRus={null}
+                            <FiltersInput
                                 placeholder={'От'}
-                                flexDirection={null}
-                                width={100}
-                                height={37}
-                                imageSrc={null}
-
-
                                 label={'priceMin'}
-                                register={register}
-                                pattern={/^[0-9]{1,20}$/i}
-                                required={false}
                             />
 
-                            <InputBlock
-                                type={'number'}
-                                labelRus={null}
+                            <FiltersInput
                                 placeholder={'До'}
-                                flexDirection={null}
-                                width={100}
-                                height={37}
-                                imageSrc={null}
-
                                 label={'priceMax'}
-                                register={register}
-                                pattern={/^[0-9]{1,20}$/i}
-                                required={false}
                             />
 
                         </div>

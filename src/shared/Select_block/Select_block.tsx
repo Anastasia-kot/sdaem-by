@@ -1,7 +1,7 @@
 import { Select } from './Select/Select'
 import styles from './Select_block.module.scss'
-import PropTypes from 'prop-types';
-import { FC } from 'react';
+import { FC } from 'react'; 
+import { CSSProperties } from "node_modules/@types/react/index.d.ts"
 
 
 type Props = {
@@ -9,31 +9,27 @@ type Props = {
         text: string
         value: string | number | null
     }[]
-    label: any   // label: Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
+
+    label: any // Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
     register: any   // register: UseFormRegister<ContactFormType> | UseFormRegister<AuthFormType> | UseFormRegister<RegisterFormType>
     required: boolean
-    onChange?: (any) => void
+    onChange?: ({ filter, value }) => void
 
     labelRus: {label: string, flexDirection: 'row' | 'column'} | null
-    style: {
-        width: string,
-        height: string,
-        backgroundColor? :string
-        boxShadow?: string
-    }  
+    style: CSSProperties 
+    
 }
 
-export const SelectBlock: FC<Props> = (props: Props) => {
-    const {
-        options,
-        label,
-        register,
-        required,
-        onChange,
+export const SelectBlock: FC<Props> = ({
+    options,
+    label,
+    register,
+    required,
+    onChange,
 
-        style,
-        labelRus,
-    } = props;
+    style,
+    labelRus,
+}) => {
 
     return (<div
             className={styles.SelectBlock}

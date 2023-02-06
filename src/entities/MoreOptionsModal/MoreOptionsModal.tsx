@@ -38,57 +38,49 @@ export const MoreOptionsModal:  FC<Props> =  ({register, style}) => {
         }
     ]
 
+
+    const MoreOptionsSelect = (props) => {
+
+        return <SelectBlock
+          
+            register={register}
+            required={false}
+            style={{
+                width: '200px',
+                height: '37px',
+            }}
+            {...props} />
+    }
+
+
     return (
         <div className={styles.modal} style={style}>
             <div className={styles.SelectorsList}>
-                <SelectBlock
+                <MoreOptionsSelect
                     options={[
                         { text: 'Выберите', value: -1 },
                         ...[1, 2, 3, 4, 5].map(i => ({ text: i + ' м.', value: i }))
                     ]}
                     label={'sleepPlaces'}
-                    register={register}
-                    required={false}
-
-
-                    style={{
-                        width: '200px',
-                        height: '37px',
-                    }}
                     labelRus={{ label: 'Спальные места', flexDirection: 'column' }}
                 />
-                <SelectBlock
+                <MoreOptionsSelect
                     options={[
                         { text: 'Выберите', value: -1 },
                         ...districtsList.map(d => ({ text: districtNameEngToRus(d), value: d }))
                     ]}
                     label={'district'}
-                    register={register}
-                    required={false}
-
-                    style={{
-                        width: '200px',
-                        height: '37px',
-                    }}
                     labelRus={{ label: 'Район', flexDirection: 'column' }}
                 />
 
-                <SelectBlock
+                <MoreOptionsSelect
                     options={[
                         { text: 'Выберите', value: -1 },
                         ...MetroList.map(m => ({ text: metroNameEngToRus(m), value: m }))
                     ]}
-                     label={'metro'}
-                    register={register}
-                    required={false}
-
-                    style={{
-                        width: '200px',
-                        height: '37px',
-                    }}
+                    label={'metro'}
+         
                     labelRus={{ label: 'Метро', flexDirection: 'column' }}
-
-
                 />
 
             </div>

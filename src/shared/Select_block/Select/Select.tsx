@@ -37,7 +37,6 @@ export const Select: FC<Props> = ({
             className={styles.select}
             style={{
                 ...style 
-            
             }}>
 
             {options.map(({value, text}, index) =>

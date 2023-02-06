@@ -47,7 +47,17 @@ export const Auth: FC = () => {
     }
     const [authModalState, setAuthModalState] = useState<AuthModalEnum>(AuthModalEnum.auth) 
     
-
+    const  AuthInput = (props) => {
+        
+        return <InputBlock 
+            labelRus={null}
+            flexDirection={null}
+            width={306}
+            height={50}
+            register={register}
+            required
+        {...props}/>
+    }
 
     
     return (
@@ -63,19 +73,12 @@ export const Auth: FC = () => {
 
 
                     <div className={styles.form__login}>
-                        <InputBlock
+                        <AuthInput
                             type={'text'}
-                            labelRus={null}
                             placeholder={'Логин'}
-                            flexDirection={null}
-                            width={306}
-                            height={50}
                             imageSrc={avatar}
-
                             label={'login'}
-                            register={register}
                             pattern={/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/i}
-                            required
                         />
                     </div>
 
@@ -83,19 +86,12 @@ export const Auth: FC = () => {
 
 
                     <div className={styles.form__password}>
-                        <InputBlock
+                        <AuthInput
                             type={'password'}
-                            labelRus={null}
                             placeholder={'Пароль'}
-                            flexDirection={null}
-                            width={306}
-                            height={50}
                             imageSrc={lock}
-
                             label={'password'}
-                            register={register}
                             pattern={/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/i}
-                            required
                         />
                     </div>
 

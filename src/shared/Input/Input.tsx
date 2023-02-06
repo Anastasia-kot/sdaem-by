@@ -1,7 +1,5 @@
 import React, { FC } from 'react'
 import { FieldErrorsImpl, Path, UseFormRegister, ValidationRule } from 'react-hook-form'
-// import { RegisterFormType } from '../../../types/formTypes'
-// import { AuthFormType, ContactFormKeysType, ContactFormType, RegisterFormType } from '../../../types/formTypes'
 import styles from './Input.module.scss'
 import error from './../../../public/images/svg/error.svg'
 import Image from 'next/image'

@@ -80,6 +80,25 @@ export const Rent: FC<Props> = ({ data }) => {
             }
         }
 
+    const RentSelect = (props) => {
+
+        return <SelectBlock
+ 
+      
+            register={register}
+            required={false}
+            onChange={onChange}
+
+            labelRus={null}
+            style={{
+                width: '185px',
+                height: '40px',
+                backgroundColor: '#FFFFFF',
+                boxShadow: '0px 10px 20px rgba(0, 96, 206, 0.1)',
+            }}
+            {...props} />
+    }
+
 
     return (
         <div className={styles.rent}>
@@ -94,26 +113,12 @@ export const Rent: FC<Props> = ({ data }) => {
 
                 <form className={styles.rent__form}>
                     <div className={styles.form__container} >
-                        <SelectBlock
+                        <RentSelect
                             options={[
                                 { text: 'Выберите', value: -1 },
                                 ...MetroList.map(m => ({ text: metroNameEngToRus(m), value: m }))
                             ]}
-                            label={'metro'}
-                            register={register}
-                            required={false}
-                            onChange={onChange}
-
-                            labelRus={null}
-                            style={{
-                                width: '185px',
-                                height: '40px',
-                                backgroundColor: '#FFFFFF',
-                                boxShadow: '0px 10px 20px rgba(0, 96, 206, 0.1)',
-                            }}
-
-
-                        />
+                            label={'metro'}/>
                         <svg width="20" height="13" viewBox="0 0 20 13" fill="#BDBDBD" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.6401 11.4773H18.3812L14.4755 0.509766L9.99979 7.19943L5.21594 0.589264L1.61882 11.4773H0.359905L0 12.9373H4.77911L6.65514 7.59981L10.0565 12.2942L10.0769 12.3238L10.0978 12.2942L13.3449 7.59981L15.2209 12.9373H20L19.6401 11.4773Z" />
                         </svg>
@@ -121,25 +126,12 @@ export const Rent: FC<Props> = ({ data }) => {
                     </div>
 
 
-                    <SelectBlock
+                    <RentSelect
                         options={[
                             { text: 'Выберите', value: -1 },
                             ...districtsList.map(m => ({ text: districtNameEngToRus(m), value: m }))
                         ]}
-                        label={'district'}
-                        register={register}
-                        required={false}
-                        onChange={onChange}
-
-
-                        labelRus={null}
-                        style={{
-                            width: '185px',
-                            height: '40px',
-                            backgroundColor: '#FFFFFF',
-                            boxShadow: '0px 10px 20px rgba(0, 96, 206, 0.1)',
-                        }}
-                    />
+                        label={'district'}/>
                 </form>
             </div>
 

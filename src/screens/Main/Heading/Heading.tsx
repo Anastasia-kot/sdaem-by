@@ -36,7 +36,38 @@ export const Heading: FC = () => {
 
 
 
- 
+
+    const HeadingInput = (props) => {
+
+        return <InputBlock
+            type={'number'}
+            labelRus={null}
+            flexDirection={null}
+            width={80}
+            height={37}
+            imageSrc={null}
+
+            register={register}
+            pattern={/^[0-9]{1,20}$/i}
+            required={false}
+            {...props} />
+    }
+
+    const HeadingSelect = (props) => {
+
+        return <SelectBlock
+
+     
+            register={register}
+            required={false}
+
+            style={{
+                width: '150px',
+                height: '37px',
+            }}
+             {...props} />
+    }
+
 
     return (
         <div className={styles.headingWrapper}>
@@ -70,39 +101,27 @@ export const Heading: FC = () => {
                             { [styles.Active]: isMoreOptions },
                     )}>
                         <div className={styles.filters__city}>
-                            <SelectBlock
+                            <HeadingSelect
                                 options={[ 
                                     { text: 'Выберите', value: -1 },
                                     ...citiesList.map(с => ({ text: cityNameEngToRus(с), value: с }))                                    
                                     ]}
 
                                 label={'city'}
-                                register={register}
-                                required={false}
-
-                                style={{
-                                    width: '150px',
-                                    height: '37px',
-                                }}
+                            
                                 labelRus={{ label: 'Город', flexDirection: 'column' }}
                             />
                         </div>
 
 
                         <div className={styles.filters__rooms}>
-                            <SelectBlock
+                            <HeadingSelect
                                 options={[
                                     { text: 'Выберите', value: -1 },
                                     ...[1, 2, 3, 4, 5].map(i => ({ text: i + ' комн.', value: i }))
                                 ]}
                                 label={'rooms'}
-                                register={register}
-                                required={false}
-
-                                style={{
-                                    width: '150px',
-                                    height: '37px',
-                                }}
+                            
                                 labelRus={{ label: 'Комнаты', flexDirection: 'column' }}
                             />
                         </div>
@@ -114,39 +133,8 @@ export const Heading: FC = () => {
                                     Цена за сутки (BYN)
                                 </span>
                                 <div className={styles.legend__inputs}>
-
-                                    <InputBlock
-                                        type={'number'}
-                                        labelRus={null}
-                                        placeholder={'От'}
-                                        flexDirection={null}
-                                        width={80}
-                                        height={37}
-                                        imageSrc={null}
-
-                                        label={'priceMin'}
-                                        register={register}
-                                        pattern={/^[0-9]{1,20}$/i}
-                                        required={false}
-                                    />
-                                    <InputBlock
-                                        type={'number'}
-                                        labelRus={null}
-                                        placeholder={'До'}
-                                        flexDirection={null}
-                                        width={80}
-                                        height={37}
-                                        imageSrc={null}
-
-                                        label={'priceMax'}
-                                        register={register}
-                                        pattern={/^[0-9]{1,20}$/i}
-                                        required={false}
-
-                                    />
-
-
-
+                                    <HeadingInput placeholder={'От'} label={'priceMin'} />
+                                    <HeadingInput placeholder={'До'} label={'priceMax'} />
                                 </div>
                             </legend>
                         </div>

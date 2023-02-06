@@ -73,6 +73,21 @@ export const Contacts: FC = () => {
         'facebook.svg'
     ]
 
+
+
+
+    const ContactsInput = (props) => {
+        return <InputBlock
+            flexDirection={'column'}
+            width={260}
+            height={50}
+
+            register={register}
+            required
+            {...props} />
+    }
+
+
     return (
         <main className={styles.contacts}>
 
@@ -120,52 +135,39 @@ export const Contacts: FC = () => {
                 onSubmit={handleSubmit(onSubmit)}>
 
 
-                <InputBlock
+                <ContactsInput
                     type={'text'}
                     labelRus={'Ваше имя'}
                     placeholder={'Алексей'}
-                    flexDirection={'column'}
-                    width={260}
-                    height={50}
                     imageSrc={avatar}
-
                     label={'Name'}
-                    register={register}
+
                     defaultValue={isAuth && userData?.login ? userData.login : null}
                     pattern={/^[а-яА-ЯёЁa-zA-Z]+$/i}
-                    required
+                    
                 />
 
 
-                <InputBlock
+                <ContactsInput
                     type={'email'}
                     labelRus={'Ваша электронная почта'}
                     placeholder={'Введите'}
-                    flexDirection={'column'}
-                    width={260}
-                    height={50}
                     imageSrc={postal_envelope}
-
                     label={'Email'}
-                    register={register}
-                    required
+                    
                 />
 
 
 
-                <InputBlock
+                <ContactsInput
                     type={'textarea'}
                     labelRus={'Ваше сообщение'}
                     placeholder={'Сообщение'}
-                    flexDirection={'column'}
                     width={548}
                     height={200}
                     imageSrc={null}
-
-
                     label={'Message'}
-                    register={register}
-                    required
+                   
                 />
 
                 <div className={styles.SubmitButtonWrapper}>
