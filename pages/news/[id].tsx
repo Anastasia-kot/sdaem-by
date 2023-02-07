@@ -1,8 +1,7 @@
 import React, {  FC, useEffect } from 'react';
-import { New } from '../../src/screens/New/New';
+import { New } from '../../src/pages/New/ui/New';
 import { Layout } from '../../src/layout/Layout';
-import { useRouter } from 'next/router';
-import { sortingNewsPerDate } from '../../helpers/sortingFunctions';
+import { sortingNewsPerDate } from '../../src/shared/helpers/sortingFunctions';
 import { NewsType } from '../../types/news_data';
 
 
@@ -32,8 +31,8 @@ export async function getServerSideProps(context: { params: { id: number } }) {
                 let posts: NewsType[] = []
 
                 for (let i = 0; posts.length < 3; i++) {
-                    if (+id !== sortingNewsPerDate([...data2.news])[i].id) {
-                        posts = [...posts, sortingNewsPerDate([...data2.news])[i]]
+                    if (+id !== sortingNewsPerDate([...data2.items])[i].id) {
+                        posts = [...posts, sortingNewsPerDate([...data2.items])[i]]
                     }
                 }
             // console.log('post', post)

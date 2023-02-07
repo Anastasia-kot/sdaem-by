@@ -8,10 +8,10 @@ import Image from "next/image";
 import classNames from "classnames";
 import { setAuthUserData, setToggleLogIn, UserDataInterface } from "../../store/authSlice";
 import { useRouter } from "next/router";
-import { cityNameConverters, cityNameEngToRus } from "../../../helpers/nameConverters";
+import { cityNameConverters, cityNameEngToRus } from "../../shared/helpers/nameConverters";
 import { categoriesItems, navItems } from "../../../types/main_data";
 import { CategoryType, citiesList, CityType } from "../../../types/formTypes";
-import { filtersToUrlString } from "../../../helpers/urlHelpers";
+import { filtersToUrlString } from "../../shared/helpers/urlHelpers";
 
 const logo = require('../../../public/images/logo.png');
 const avatar = require('../../../public/images/avatar.png');

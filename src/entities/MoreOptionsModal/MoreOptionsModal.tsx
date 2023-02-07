@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { UseFormRegister } from 'react-hook-form'
-import { districtNameEngToRus, metroNameEngToRus } from '../../../helpers/nameConverters'
+import { districtNameEngToRus, metroNameEngToRus } from '../../shared/helpers/nameConverters'
 import { districtsList, districtsListRus, MetroList, MetroListRus, MoreOptionsModalFormType } from '../../../types/formTypes'
-import { SelectBlock } from '../../shared/Select_block/Select_block'
+import { SelectBlock } from '../../shared/ui/Select_block/Select_block'
 import styles from './MoreOptionsModal.module.scss'
  
 type Props = {

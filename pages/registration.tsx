@@ -1,4 +1,4 @@
-import { Registration } from '../src/screens/Auth/Registration'
+import { Registration } from '../src/pages/Auth/Registration'
 import { FC } from 'react'
   
 const Home: FC = () => <Registration />

@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/_app.js", "src/screens/News/News.tsx", "src/shared/Input/Input.jsx", "jest.config.js"  ],
+, "pages/_app.js", "src/pages/News/ui/News.tsx", "src/shared/Input/Input.jsx", "jest.config.js"  ],
   "exclude": [
     "node_modules"
   ]

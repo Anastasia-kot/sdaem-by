@@ -3,9 +3,9 @@ import styles from './CatalogueCard.module.scss'
 import Slider from "react-slick";
 import Image from 'next/image'
 import React, { FC, useState } from 'react';
-import { ContactsButton } from '../../shared/buttons/Contacts/Contacts';
-import { LikeButton } from '../../shared/buttons/Like/Like';
-import { SimpleButton } from '../../shared/buttons/Simple/Simple';
+import { ContactsButton } from '../../shared/ui/buttons/Contacts/Contacts';
+import { LikeButton } from '../../shared/ui/buttons/Like/Like';
+import { SimpleButton } from '../../shared/ui/buttons/Simple/Simple';
 import classNames from 'classnames';
 const room = require('../../../public/images/room.png');
 const avatar = require('../../../public/images/avatar.png');
