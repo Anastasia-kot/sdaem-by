@@ -49,8 +49,9 @@
             background-repeat: no-repeat;
             background-position:cover;
             background-color: #6d7ad2;
-            background-image: url(../../../public/images/404/city-map.png),
-            url(../../../public/images/404/background.png);
+            background-image: 
+                url(../../../../public/images/404/city-map.png),
+                url(../../../../public/images/404/background.png);
 
 
 
@@ -76,6 +77,53 @@
                 }
 
             }
+        }
+    }
+
+    .categories {
+        background-color: white;
+        width: 100%;
+        padding: 0;
+        padding-left: 80px;
+        padding-right: 63px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+
+        margin-bottom: 38px;
+
+
+
+    }
+
+    @media (max-width: 1100px) {
+        .categories {
+            padding: 0 20px;
+        }
+    }
+
+    .about {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 29px;
+
+        padding: 0;
+        padding-left: 80px;
+        padding-right: 63px;
+        margin-bottom: 100px;
+
+        background-color: rgb(255, 255, 255);
+
+        font-family: 'Inter';
+        font-style: normal;
+
+        @media (max-width: 768px) {
+            padding-left: 10px;
+            padding-right: 10px;
         }
     }
 }

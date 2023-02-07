@@ -61,8 +61,6 @@ export const InputBlock: FC<Props> = ({
                         display: 'block',
                         height: 'min-content',
                         width: width
-
-
                     }
 
             }>

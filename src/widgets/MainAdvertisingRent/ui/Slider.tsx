@@ -1,16 +1,12 @@
 import React, { FC } from "react";
 import Slider from "react-slick";
-import styles from './Rent.module.scss'
-import {  CatalogueCard } from '../../../../../entities/CatalogueCard/CatalogueCard'
-import { CatalogueType } from "../../../../../../types/catalogue_data";
+import { CatalogueType } from "../../../../types/catalogue_data";
+import { CatalogueCard } from "../../../entities/CatalogueCard/CatalogueCard";
+import styles from './MainAdvertisingRent.module.scss'
 
 
 
-type Props = {
- data: CatalogueType[] 
-}
-
-export const SimpleSlider: FC<Props> = ({  data }) => {
+export const SimpleSlider: FC<{ data: CatalogueType[] }> = ({  data }) => {
 
     const SampleArrow = (props) => <button onClick={props.onClick} className={styles.slider__button} />
 

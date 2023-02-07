@@ -65,3 +65,13 @@ export const prefCards: prefCardsType = [
     },
 
 ]
+
+
+export const mapProps = {
+    title : 'Поиск квартир на карте',
+    description : 'Ищите квартиры на сутки в центре города, возле парка или в живописном районе',
+    descriptionWidth : 390,
+    isDotes : true,
+    buttonText : 'Открыть карту',
+    minHeight : 440,
+}

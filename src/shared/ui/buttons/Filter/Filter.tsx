@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styles from './Filter.module.scss'
-import cross from './../../../../public/images/svg/cross.svg'
+import cross from './../../../../../public/images/svg/cross.svg'
 import Image from 'next/image'
 
 type Props = {

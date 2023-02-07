@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import styles from './Rent.module.scss'
+import styles from './MainAdvertisingFilter.module.scss'
 import { useForm } from 'react-hook-form'
 
 import { SelectBlock } from './../../../shared/ui/Select_block/Select_block'

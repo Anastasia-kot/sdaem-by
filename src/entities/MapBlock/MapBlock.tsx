@@ -12,7 +12,7 @@ type Props = {
     descriptionWidth: number
     isDotes: boolean
     buttonText: string
-    children: any  // svg in button
+    children?: any  // svg in button
     minHeight: number
 
 

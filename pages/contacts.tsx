@@ -1,4 +1,4 @@
-import { Contacts } from '../src/pages/Contacts/Contacts'
+import { Contacts } from '../src/pages/Contacts/ui/Contacts'
 import { Layout } from '../src/layout/Layout';
 import { FC } from 'react';
 

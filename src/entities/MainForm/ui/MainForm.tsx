@@ -15,9 +15,9 @@ import { citiesList, MainFiltersFormType } from '../../../../types/formTypes'
 import { categoriesItems } from '../../../../types/main_data'
 import { cityNameEngToRus } from '../../../shared/helpers/nameConverters'
 
-import more_options from '../../../public/images/svg/more_options.svg'
-import arrow from './../../../public/images/svg/arrow_right.svg'
-import nav_icon from './../../../public/images/svg/navigation_icon_violet.svg'
+import more_options from '../../../../public/images/svg/more_options.svg'
+import arrow from './../../../../public/images/svg/arrow_right.svg'
+import nav_icon from './../../../../public/images/svg/navigation_icon_violet.svg'
 
 
 

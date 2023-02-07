@@ -5,7 +5,7 @@ import { PreferenceCard } from '../../../entities/PreferenceCard/ui/PreferenceCa
 import { MapBlock } from '../../../entities/MapBlock/MapBlock'
 
 import dotes from './../../../../public/images/svg/dotes.svg'
-import { prefCards } from '../model/store'
+import { mapProps, prefCards } from '../model/store'
 
 
 
@@ -13,25 +13,14 @@ export const MapSearch: FC = () => {
 
     return (
         <div className={styles.map_search}>
-            <MapBlock
-                title={'Поиск квартир на карте'}
-                description={'Ищите квартиры на сутки в центре города, возле парка или в живописном районе'}
-                descriptionWidth={390}
-                isDotes={true}
-                buttonText={'Открыть карту'}
-                minHeight={440}
-            >
-             </ MapBlock>
 
-      
-
+            <MapBlock {...mapProps}/>
+            
             <div className={styles.map_search__preference_list}>
                 {prefCards.map((item, index) => <PreferenceCard key={index} data={item}  />)}
             </div>
             
             <Image src={dotes} alt="dotes" className={styles.map_search__dotes} />
-
-
 
         </div>
     )

@@ -1,10 +1,10 @@
 import React, { FC, useEffect,  useState } from "react";
-import styles from './Rent.module.scss'
+import styles from './MainAdvertisingRent.module.scss'
 
 import { DistrictType, MetroType } from '../../../../types/formTypes'
 import { CatalogueState, CatalogueType } from "../../../../types/catalogue_data";
 
-import { SimpleSlider } from "../Slider";
+import { SimpleSlider } from "./Slider";
 
 import dotes from './../../../../public/images/svg/dotes.svg'
 import Image from 'next/image'
@@ -28,7 +28,6 @@ export const MainAdvertisingRent: FC<{data: CatalogueState}> = ({ data }) => {
 
 
     // for form
-
     const onChange =
         (formData: { filter: 'metro', value: MetroType | '-1' } | { filter: 'district', value: DistrictType | '-1' }) => {
 
@@ -72,7 +71,7 @@ export const MainAdvertisingRent: FC<{data: CatalogueState}> = ({ data }) => {
             </div>
 
             
-                <SimpleSlider data={filteredData} />
+            <SimpleSlider data={filteredData} />
 
       
             <div className={styles.rent__more}>

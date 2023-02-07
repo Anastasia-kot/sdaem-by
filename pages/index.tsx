@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { Main } from '../src/pages/Main/Main'
+import { Main } from '../src/pages/Main/ui/Main'
 import { Layout } from '../src/layout/Layout';
 import { FC } from 'react';
 import { GetServerSideProps } from 'next';

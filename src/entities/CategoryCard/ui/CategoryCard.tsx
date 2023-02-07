@@ -10,16 +10,16 @@ import { CityType } from '../../../../types/formTypes';
 import { onClick } from '../lib/helpers';
 
 type Props = {
-    filter: { category: CategoryType }
-    header: string,
-    additional_header: string,
-    hashtags?: Array<CityType>,
-    background: StaticImageData
-    arrow_button: boolean
+        filter: { category: CategoryType }
+        header: string,
+        additional_header: string,
+        hashtags?: Array<CityType>,
+        background: StaticImageData
+        arrow_button: boolean
 }
 
-export const CategoryCard: FC<Props> =  ({ filter, header, additional_header, hashtags, background, arrow_button }) => {
-    const router = useRouter();
+export const CategoryCard: FC<Props> = ({ filter, header, additional_header, hashtags, background, arrow_button }) => {
+     const router = useRouter();
    
     return (
         <div className={styles.card}>
