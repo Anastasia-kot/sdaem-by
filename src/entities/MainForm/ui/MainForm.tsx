@@ -17,7 +17,7 @@ import { cityNameEngToRus } from '../../../shared/helpers/nameConverters'
 
 import more_options from '../../../../public/images/svg/more_options.svg'
 import arrow from './../../../../public/images/svg/arrow_right.svg'
-import nav_icon from './../../../../public/images/svg/navigation_icon_violet.svg'
+ import SvgNavIcon from '../../../shared/ui/icons/NavigationIcon'
 
 
 
@@ -94,10 +94,7 @@ export const MainForm: FC = () => {
                     </div>
 
                     <div className={styles.filters__toMap}>
-                        <button type="button">
-                            На карте
-                            <Image src={nav_icon} alt='nav_icon' />
-                        </button>
+                        <button type="button">    На карте   <SvgNavIcon fill='violet'/>    </button>
                     </div>
 
                     <div className={styles.filters__submit}>

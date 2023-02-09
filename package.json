@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "svgr": "svgr -d src/shared/ui/icons/ public/images/svg/"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -29,6 +30,8 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
     "@jest/globals": "^29.4.1",
+    "@svgr/cli": "^6.5.1",
+    "@svgr/webpack": "^6.5.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^29.4.0",

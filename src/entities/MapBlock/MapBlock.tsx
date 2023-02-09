@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import React, { FC } from 'react';
 import styles from './MapBlock.module.scss'
-import navIcon from './../../../public/images/svg//navigation_icon.svg'
 import dotes from './../../../public/images/svg/dotes.svg'
+import SvgNavIcon from '../../shared/ui/icons/NavigationIcon';
 
 
  
@@ -42,7 +42,7 @@ export const MapBlock: FC<Props> = ({
             <h2 className={styles.map__title}>{title}</h2>
             <p className={styles.map__description} style={{ maxWidth: `${descriptionWidth}px` }}>{description}</p>
             <button className={styles.map__button}>
-                <Image src={navIcon} alt='navIcon' /> 
+                <SvgNavIcon/>
                 {buttonText}
             </button>
 

@@ -16,17 +16,18 @@ const verified = require('../../../public/images/payment/verified-by-visa.png');
 const visa = require('../../../public/images/payment/visa.png');
 const webpay = require('../../../public/images/payment/webpay.png');
 
-import inst from'../../../public/images/svg/socials/instagram_black.svg'
-import vk from'../../../public/images/svg/socials/vk_black.svg'
-import facebook from'../../../public/images/svg/socials/facebook_black.svg'
+import inst from '../../../public/images/svg/socials/instagram_black.svg'
+import vk from '../../../public/images/svg/socials/vk_black.svg'
+import facebook from '../../../public/images/svg/socials/facebook_black.svg'
+import SvgHouse from "../../shared/ui/icons/House";
 
 
-const Footer: FC =  () => {
-    
-    
+const Footer: FC = () => {
+
+
     const router = useRouter();
 
-   
+
     const onClick = (props: { category?: CategoryType, city?: CityType }) => {
         let searchString: string = filtersToUrlString(props)
         router.push(`/catalogue${searchString}`)
@@ -39,7 +40,7 @@ const Footer: FC =  () => {
                     <Image src={logo} alt="SDAEM.BY" />
                     <h3 className={styles.info__title}>СДАЁМ БАЙ</h3>
                 </Link>
-               
+
                 <div className={styles.info__contacts}>
                     <p className={styles.contacts__contact}>ИП Шушкевич Андрей Викторович</p>
                     <p className={styles.contacts__contact}>УНП 192602485 Минским горисполкомом 10.02.2016</p>
@@ -52,7 +53,7 @@ const Footer: FC =  () => {
 
             <div className={styles.footer__navigation}>
                 <ul className={styles.NavigationCatrgoriesList}>
-                    <li onClick={()=>onClick({ category: 'cottage' })}>Коттеджи и усадьбы</li>
+                    <li onClick={() => onClick({ category: 'cottage' })}>Коттеджи и усадьбы</li>
                     <li onClick={() => onClick({ category: 'sauna' })}>Бани и сауны</li>
                     <li onClick={() => onClick({ category: 'auto' })}>Авто на прокат</li>
                 </ul>
@@ -63,7 +64,7 @@ const Footer: FC =  () => {
                     <ul className={styles.NavigationLocationsList}>
                         {citiesList.map((c, index) =>
                             <li key={index} onClick={() => onClick({ category: 'room', city: c })}>
-                                Квартиры в {cityNameConverters(cityNameEngToRus(c) )}
+                                Квартиры в {cityNameConverters(cityNameEngToRus(c))}
                             </li>)}
                     </ul>
                 </div>
@@ -77,12 +78,14 @@ const Footer: FC =  () => {
             </div>
 
 
+         
+
 
             <div className={styles.footer__socialsAndPayment}>
                 <div className={styles.Socials}>
                     <span className={styles.SocialsHeader}>Мы в соцсетях</span>
                     <ul className={styles.SocialsList}>
-                        <li><Image src={inst} alt='inst'/></li>
+                        <li><Image src={inst} alt='inst' /></li>
                         <li><Image src={vk} alt='vk' /></li>
                         <li><Image src={facebook} alt='facebook' /></li>
                     </ul>
@@ -98,6 +101,9 @@ const Footer: FC =  () => {
             </div>
         </footer>
     )
-} 
+}
 
 export default Footer;
+
+
+   

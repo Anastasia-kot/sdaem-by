@@ -1,21 +1,35 @@
 import classNames from 'classnames'
+import Image from 'next/image'
 import React, { FC } from 'react'
 import styles from './Socials_sharing.module.scss'
- 
+
+
+
 type Props = {
     color?: 'gray' | 'violet'
+    socials: SocialsType[]
 }
-export const Socials_sharing: FC<Props> = ({ color = 'gray' }) => {
 
+
+
+type SocialsType = 'vk' | 'facebook' | 'viber' | 'telegram' | 'whatsapp' | 'mail' | 'instagram'
+ 
+export const Socials_sharing: FC<Props> = ({ color = 'gray', socials }) => {
+    // export const socials = [
+    //     'vk',
+    //     'facebook',
+    //     'viber',
+    //     'telegram',
+    //     'whatsapp'
+    // ]
      return (
-        <div 
-             className={classNames(
-                 styles.Socials_sharing,
-                 { [styles.Violet]: color === 'violet' },
-             )}>
+        <div className={classNames(   styles.Socials_sharing,    { [styles.Violet]: color === 'violet' }   )}>
             <span className={styles.TitleShareSpan}>Поделиться</span>
+             
+         
 
-             {/* <Socials_list socials={['vk' | 'fb' | 'viber' | 'tg' | 'wa']}/>  */}
+
+
             <ul className={styles.ShareList}>
                 <li className={styles.ShareItem}>
                     <svg width="18" height="11" viewBox="0 0 18 11" fill="#664EF9" xmlns="http://www.w3.org/2000/svg">
@@ -45,6 +59,16 @@ export const Socials_sharing: FC<Props> = ({ color = 'gray' }) => {
                     </svg>
                 </li>
 
+                 {/* {[
+                     'vk',
+                     'facebook',
+                     'viber',
+                     'telegram',
+                     'whatsapp'
+                 ].map((item, index) =>
+                     <li key={index} className={styles.ShareItem}>
+                         <Image src={`/../../images/svg/socials/${item}.svg`} alt={item} width={20} height={20} />
+                     </li>)} */}
 
             </ul>
         </div>

@@ -1,0 +1,10 @@
+export { default as Facebook } from "./Facebook";
+export { default as FacebookBlack } from "./FacebookBlack";
+export { default as Instagram } from "./Instagram";
+export { default as InstagramBlack } from "./InstagramBlack";
+export { default as Telegram } from "./Telegram";
+export { default as Viber } from "./Viber";
+export { default as Vk } from "./Vk";
+export { default as VkBlack } from "./VkBlack";
+export { default as WhatsappCopy } from "./WhatsappCopy";
+export { default as Whatsapp } from "./Whatsapp";

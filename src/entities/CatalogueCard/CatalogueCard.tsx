@@ -102,7 +102,7 @@ export const CatalogueCard: FC<Props> = ({ data, style }) => {
                 <ul className={styles.modal__contacts}>
                     {socialsList.map(({url, params}, index)=>
                         <li key={index} className={styles.contacts__item}>
-                            <Image src={`/../../images/svg/${url}`} alt={url} width={params.width} height={params.height} />
+                            {/* <Image src={`/../../images/svg/${url}`} alt={url} width={params.width} height={params.height} /> */}
                         </li>)}
                 </ul>
             </div>}

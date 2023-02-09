@@ -1,9 +1,9 @@
 import classNames from 'classnames'
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from './Breadcrumbs.module.scss'
 import React, { FC } from 'react'
-import house from './../../../public/images/svg/house_violet.svg'
+import SvgHouse from '../../shared/ui/icons/House'
+
 
 type Props = {
     breadcrumbs: Array<{name: string, value:string}>
@@ -14,8 +14,9 @@ export const Breadcrumbs: FC<Props> = ({breadcrumbs}) => {
             <ol className={styles.breadcrumbs}>
 
                 <li key={0} className={styles.breadcrumbs__item}>
+
                     <Link href={`/`} className={styles.ReadButton}>
-                        <Image src={house} alt='house' className={styles.breadcrumbs__icon} />
+                        <SvgHouse fill="#664EF9" className={styles.breadcrumbs__icon} />
                     </Link>
                 </li>
 

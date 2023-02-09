@@ -1,17 +1,11 @@
 import React, { FC } from 'react'
 import styles from './New.module.scss'
-import Image from 'next/image'
 
 import { Page404 } from '../../404/ui/404'
-import { Socials_sharing } from '../../../shared/ui/Socials_sharing/Socials_sharing'
-import { Breadcrumbs } from '../../../entities/Breadcrumbs/Breadcrumbs'
 import { NewsCard } from '../../../entities/PostCard/ui/NewsCard'
-
-import { dateConverter } from '../../../shared/helpers/dateConverters'
-
+import { Post } from '../../../entities/Post/ui/Post'
 
 import { NewsType } from '../../../../types/news_data'
-import { Post } from '../../../entities/Post/ui/Post'
 
 
 type Props = {
