@@ -1,13 +1,13 @@
-import Image, { StaticImageData } from 'next/image'
+import Image  from 'next/image'
 import styles from './MenuAside.module.scss'
 import React, { FC } from 'react'
 
 import { useRouter } from 'next/router';
 import { cityNameConverters, cityNameEngToRus } from '../../../shared/helpers/nameConverters';
 
-import arrow_down from './../../../../public/images/svg/arrow_down_yellow.svg'
 import { kotteges, kvartiri, popular } from '../model'
 import { onClick } from '../lib'
+import SvgArrowDown from '../../../shared/ui/icons/ArrowDown';
 
 
 export const MenuAside: FC = () => {
@@ -38,10 +38,7 @@ export const MenuAside: FC = () => {
                             <span> {value} </span>
                         </li>)}
 
-                    <li key={17}>
-                        Еще
-                        <Image src={arrow_down} alt="arrow_down" className={styles.a} />
-                    </li>
+                    <li key={17}>       Еще <SvgArrowDown stroke="#FEB700" />           </li>
                 </ul>
             </div>
 

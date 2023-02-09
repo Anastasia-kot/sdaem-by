@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { dateConverter } from '../../../shared/helpers/dateConverters';
 import { sortingNewsPerDate } from '../../../shared/helpers/sortingFunctions';
 import { NewsState } from '../../../../types/news_data';
+import SvgArrowRight from '../../../shared/ui/icons/ArrowRight';
 
-import arrow from './../../../../public/images/svg/arrow_right_violet.svg'
 
 
 export const NewsAsideList: FC<{ data: NewsState }> = ({data}) => {
@@ -34,8 +34,8 @@ export const NewsAsideList: FC<{ data: NewsState }> = ({data}) => {
 
                     <li key={sortedNews.length} >
                         <Link href='/news'>
-                            Посмотреть все
-                            <Image src={arrow} alt="arrow" className={styles.a} />
+                            Посмотреть все 
+                        <SvgArrowRight stroke="#664EF9"/>
                         </Link>
                     </li>
                 </ul>

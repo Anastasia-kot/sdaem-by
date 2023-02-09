@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import styles from './Input.module.scss'
 import Image from 'next/image'
 import { ValidationRule } from 'react-hook-form'
-// import error from './../../../../../public/images/svg/error.svg'
 
 
 type Props = {
@@ -13,7 +12,7 @@ type Props = {
     width: number
     height?: number
     nonActivePlaceholderColor?: string
-    imageSrc?: string | null
+    imageSrc?: string 
 
     label: any     // label: Path<ContactFormType> | Path<AuthFormType> | Path<RegisterFormType> 
     pattern?: ValidationRule<RegExp>
@@ -70,7 +69,7 @@ export const InputBlock: FC<Props> = ({
             <div className={styles.InputWrapper}>
                 
              
-
+                {/* {imageSrc && <div className={styles.SvgImage}>{imageSrc}</div>} */}
                 {imageSrc && <Image src={imageSrc} alt='icon' className={styles.SvgImage} />}
                 
                 {type === 'textarea'

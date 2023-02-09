@@ -1,6 +1,5 @@
-import avatar from '../../../public/images/svg/avatar.svg'
-import postal_envelope from '../../../public/images/svg/postal_envelope.svg'
-
+import SvgAvatar from './../../shared/ui/icons/Avatar'
+import SvgPostalEnvelop from './../../shared/ui/icons/PostalEnvelope'
 
 export const defaultInputProps = {
     flexDirection: 'column' as 'column' | 'row',
@@ -13,7 +12,7 @@ export const nameInputProps = {
     type: 'text',
     labelRus: 'Ваше имя',
     placeholder: 'Алексей',
-    imageSrc: avatar,
+    // imageSrc: ()=>{return <SvgAvatar/> },
     label: 'Name',
     pattern: /^[а-яА-ЯёЁa-zA-Z]+$/i,
 }
@@ -23,7 +22,7 @@ export const emailInputProps = {
     type: 'email',
     labelRus: 'Ваша электронная почта',
     placeholder: 'Введите',
-    imageSrc: postal_envelope,
+    // imageSrc: ()=>(<SvgPostalEnvelop/>),
     label: 'Email',
 }
 

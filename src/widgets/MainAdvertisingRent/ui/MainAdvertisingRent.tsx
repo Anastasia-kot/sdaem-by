@@ -6,11 +6,11 @@ import { CatalogueState, CatalogueType } from "../../../../types/catalogue_data"
 
 import { SimpleSlider } from "./Slider";
 
-import dotes from './../../../../public/images/svg/dotes.svg'
 import Image from 'next/image'
-import arrow  from '../../../../public/images/svg/arrow_right_white.svg';
 import { filterItems, FiltersType } from "../lib/helpers";
 import { MainAdvertisingFilter } from "../../../entities/MainAdvertisingFilter/ui/MainAdvertisingFilter";
+import SvgDotes from "../../../shared/ui/icons/Dotes";
+import SvgArrowRight from "../../../shared/ui/icons/ArrowRight";
 
 
 export const MainAdvertisingRent: FC<{data: CatalogueState}> = ({ data }) => {
@@ -57,7 +57,7 @@ export const MainAdvertisingRent: FC<{data: CatalogueState}> = ({ data }) => {
     return (
         <div className={styles.rent}>
             <div className={styles.rent__background}></div>
-            <Image src={dotes} alt="dotes" className={styles.rent__dotes} />
+            <SvgDotes className={styles.rent__dotes} />
 
             <div className={styles.rent__heading}>
                 <div className={styles.heading__titleWrapper}>
@@ -80,8 +80,7 @@ export const MainAdvertisingRent: FC<{data: CatalogueState}> = ({ data }) => {
                     <p className={styles.TotalCountDescription}>Предложений по Минску</p>
                 </div>
                 <button className={styles.ShowMoreButton}>
-                    Посмотреть все
-                    <Image src={arrow} alt="arrow" />
+                    Посмотреть все  <SvgArrowRight stroke="white"/>
                 </button>
 
             </div>

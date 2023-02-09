@@ -1,7 +1,4 @@
 
-import avatar from '../../../public/images/svg/avatar.svg'
-import lock from '../../../public/images/svg/lock.svg'
-
 export const inputProps = {
     labelRus: null,
     flexDirection: null,
@@ -13,17 +10,17 @@ export const inputProps = {
 export const loginProps = {
     type: 'text',
     placeholder: 'Логин',
-    imageSrc: avatar,
+    // imageSrc: avatar,
     label: 'login',
-    pattern: /^ [a - zA - Z][a - zA - Z0 - 9 - _\.]{ 1, 20}$/i,
+    pattern: /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/i,
 }
 
 export const passwordProps = {
     type: 'password',
     placeholder: 'Пароль',
-    imageSrc: lock,
+    // imageSrc: lock,
     label: 'password',
-    pattern: /^ (?=.*\d) (?=.* [a - z])(?=.* [A - Z])(?!.*\s).* $/i
+    pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/i
 }
 
 

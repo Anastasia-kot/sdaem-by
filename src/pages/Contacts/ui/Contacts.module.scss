@@ -167,13 +167,13 @@
 
 
     .contacts__socials {
-        .socials__list {
+        .ul {
             margin-left: 33px;
             display: flex;
             flex-direction: column;
             gap: 15px;
 
-            .socials__item {
+            .li {
 
                 display: flex;
                 justify-content: center;
@@ -236,7 +236,7 @@
         .contacts__socials {
             grid-template-columns: 1/2;
 
-            .socials__list {
+            .ul {
                 flex-direction: row;
                 justify-content: center;
             }

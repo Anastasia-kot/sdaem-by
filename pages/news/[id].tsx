@@ -1,7 +1,7 @@
-import React, {  FC, useEffect } from 'react';
+import React, {  FC } from 'react';
 import { New } from '../../src/pages/New/ui/New';
-import { Layout } from '../../src/layout/Layout';
 import { sortingNewsPerDate } from '../../src/shared/helpers/sortingFunctions';
+import { Layout } from '../../src/widgets/layout/Layout';
 import { NewsType } from '../../types/news_data';
 
 
@@ -35,8 +35,7 @@ export async function getServerSideProps(context: { params: { id: number } }) {
                         posts = [...posts, sortingNewsPerDate([...data2.items])[i]]
                     }
                 }
-            // console.log('post', post)
-            // console.log('posts', posts)
+
 
             return { props: { 
                 data: { 

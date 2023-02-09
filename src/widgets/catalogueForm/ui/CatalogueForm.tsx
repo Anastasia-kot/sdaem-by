@@ -1,6 +1,5 @@
 import styles from './CatalogueForm.module.scss'
 import React, { FC, useState } from 'react'
-import Image from "next/image";
 import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import { useForm } from 'react-hook-form'
@@ -10,10 +9,11 @@ import { InputBlock } from '../../../shared/ui/Input/Input'
 import { MoreOptionsModal } from '../../../entities/MoreOptionsModal/MoreOptionsModal'
 
 import { CatalogueFiltersFormType } from '../../../../types/formTypes'
-import more_options from './../../../../public/images/svg/more_options.svg'
-import arrow from './../../../../public/images/svg/arrow_right_white.svg'
+
 import { inputProps, selectOptions } from '../model';
 import { onSubmit } from '../lib/helpers';
+import SvgMoreOptions from '../../../shared/ui/icons/MoreOptions';
+import SvgArrowRight from '../../../shared/ui/icons/ArrowRight';
 
 
 export const CatalogueForm: FC = () => {
@@ -33,7 +33,7 @@ export const CatalogueForm: FC = () => {
                 </div>
 
                 <legend className={styles.PriceBlockLabel}>
-                    Цена за сутки (BYN)
+                    <span>Цена за сутки (BYN)</span>
                     <div className={styles.InputsBlock}>
                         <InputBlock register={register} placeholder={'От'} label={'priceMin'} {...inputProps} />
                         <InputBlock register={register} placeholder={'До'} label={'priceMax'} {...inputProps} />
@@ -42,9 +42,8 @@ export const CatalogueForm: FC = () => {
 
                 <div className={classNames(  styles.MoreOptionsBlock,  { [styles.Active]: isMoreOptions }   )}  >
                     <button onClick={() => setIsMoreOptions(actual => !actual)}>
-                        Больше опций
-                        <Image src={more_options} alt='more_options' />
-                    </button>
+                        Больше опций        <SvgMoreOptions/>
+                     </button>
 
                 </div>
 
@@ -55,8 +54,8 @@ export const CatalogueForm: FC = () => {
                 <div className={styles.ToShow}>
                     <button type='submit'>
                         Показать объекты
-                        <Image src={arrow} alt='arrow' />
-                    </button>
+                        <SvgArrowRight stroke="white"/>
+                     </button>
                 </div>
 
             </div>

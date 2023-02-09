@@ -1,25 +1,28 @@
 import React, { FC, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux'
-import type { RootState } from '../../store/store'
-
 import styles from './Header.module.scss';
-import Link from "../../../node_modules/next/link";
+
 import Image from "next/image";
-import classNames from "classnames";
-import { setAuthUserData, setToggleLogIn, UserDataInterface } from "../../store/authSlice";
 import { useRouter } from "next/router";
-import { cityNameConverters, cityNameEngToRus } from "../../shared/helpers/nameConverters";
-import { categoriesItems, navItems } from "../../../types/main_data";
-import { CategoryType, citiesList, CityType } from "../../../types/formTypes";
-import { filtersToUrlString } from "../../shared/helpers/urlHelpers";
+import Link from "next/link";
 
-import SvgNavIcon from "../../shared/ui/icons/NavigationIcon";
+import classNames from "classnames";
 
-const logo = require('../../../public/images/logo.png');
-const avatar = require('../../../public/images/avatar.png');
+import { useDispatch, useSelector } from 'react-redux'
+import type { RootState } from '../../../../store/store'
+import { setAuthUserData, setToggleLogIn, UserDataInterface } from "../../../../store/authSlice";
 
-const arrowDown = require('../../../public/images/svg/arrow_down.svg');
+import { cityNameConverters, cityNameEngToRus } from "../../../../shared/helpers/nameConverters";
+import { categoriesItems, navItems } from "../../../../../types/main_data";
+import { CategoryType, citiesList, CityType } from "../../../../../types/formTypes";
+import { filtersToUrlString } from "../../../../shared/helpers/urlHelpers";
 
+import SvgNavIcon from "../../../../shared/ui/icons/NavigationIcon";
+import SvgArrowDown from "../../../../shared/ui/icons/ArrowDown";
+
+const logo = require('../../../../../public/images/logo.png');
+const avatar = require('../../../../../public/images/avatar.png');
+
+ 
 
 
 
@@ -107,7 +110,7 @@ const Header: FC = () => {
                                     type='button'
                                     className={styles.UnloginButton}
                                     onClick={onUnloginMenuClick}>
-                                    <Image src={arrowDown} alt='arrowDown' />
+                                    <SvgArrowDown/>
                                 </button>
 
                                 <ul className={styles.UnloginMenuList} >

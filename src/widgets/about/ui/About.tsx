@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import styles from './About.module.scss'
 import React, { FC } from 'react'
-import  room from '../../../../public/images/room-about.png'
-import dotes from './../../../../public/images/svg/dotes.svg'
+import room from '../../../../public/images/room-about.png'
+import SvgDotes from '../../../shared/ui/icons/Dotes'
+
 
 export const About: FC = () => 
     <div className={styles.about}>
@@ -10,8 +11,8 @@ export const About: FC = () =>
         <h2 className={styles.about__title}>Квартира на сутки в Минске</h2>
 
         <Image src={room} alt="room" className={styles.about__image} />
-        <Image src={dotes} alt="dotes" className={styles.about__dotes} />
-
+        <SvgDotes className={styles.about__dotes}/>
+ 
         <div className={styles.about__description}>
             <h4> Нужна квартира на сутки в Минске? </h4>
             <p> На веб-сайте sdaem.by вас ждет масса выгодных предложений. Каталог насчитывает более 500 квартир. Благодаря удобной навигации вы быстро найдете подходящий вариант.</p>

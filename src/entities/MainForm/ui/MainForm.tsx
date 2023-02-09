@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import classNames from 'classnames'
 import styles from './MainForm.module.scss'
 import { useRouter } from 'next/router'
-import Image from "next/image";
 
 
 import { MoreOptionsModal } from '../../MoreOptionsModal/MoreOptionsModal'
@@ -14,11 +13,10 @@ import { onSubmit } from '../lib/helpers'
 import { citiesList, MainFiltersFormType } from '../../../../types/formTypes'
 import { categoriesItems } from '../../../../types/main_data'
 import { cityNameEngToRus } from '../../../shared/helpers/nameConverters'
-
-import more_options from '../../../../public/images/svg/more_options.svg'
-import arrow from './../../../../public/images/svg/arrow_right.svg'
- import SvgNavIcon from '../../../shared/ui/icons/NavigationIcon'
-
+ 
+import SvgNavIcon from '../../../shared/ui/icons/NavigationIcon'
+import SvgMoreOptions from '../../../shared/ui/icons/MoreOptions'
+import SvgArrowRight from '../../../shared/ui/icons/ArrowRight'
 
 
 
@@ -89,19 +87,19 @@ export const MainForm: FC = () => {
                     <div className={classNames(   styles.filters__moreOptions,  { [styles.active]: isMoreOptions }   )} >
                         <button type="button" onClick={() => setIsMoreOptions(actual => !actual)}>
                             Больше опций
-                            <Image src={more_options} alt='more_options' />
+                            <SvgMoreOptions/>
                         </button>
                     </div>
 
                     <div className={styles.filters__toMap}>
-                        <button type="button">    На карте   <SvgNavIcon fill='violet'/>    </button>
+                        <button type="button">    На карте   <SvgNavIcon fill='#664EF9'/>    </button>
                     </div>
 
                     <div className={styles.filters__submit}>
                         <button type="submit">
                             Показать 
-                            <Image src={arrow} alt='arrow' />
-                        </button>
+                            <SvgArrowRight stroke='black'/>
+                         </button>
                     </div>
                     </div>
 

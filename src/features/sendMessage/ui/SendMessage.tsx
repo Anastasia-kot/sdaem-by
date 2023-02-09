@@ -31,7 +31,7 @@ export const SendMessage: FC = () => {
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-            <InputBlock    register={register}    {...defaultInputProps}
+            <InputBlock  register={register}  {...defaultInputProps}
                 {...nameInputProps} 
                 defaultValue={isAuth && userData?.login ? userData.login : null} />
 

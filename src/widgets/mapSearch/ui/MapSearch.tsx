@@ -4,8 +4,8 @@ import React, { FC } from 'react'
 import { PreferenceCard } from '../../../entities/PreferenceCard/ui/PreferenceCard'
 import { MapBlock } from '../../../entities/MapBlock/MapBlock'
 
-import dotes from './../../../../public/images/svg/dotes.svg'
 import { mapProps, prefCards } from '../model/store'
+import SvgDotes from '../../../shared/ui/icons/Dotes'
 
 
 
@@ -19,9 +19,8 @@ export const MapSearch: FC = () => {
             <div className={styles.map_search__preference_list}>
                 {prefCards.map((item, index) => <PreferenceCard key={index} data={item}  />)}
             </div>
-            
-            <Image src={dotes} alt="dotes" className={styles.map_search__dotes} />
-
+            <SvgDotes className={styles.map_search__dotes}/>
+ 
         </div>
     )
 }

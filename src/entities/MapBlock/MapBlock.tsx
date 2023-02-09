@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import styles from './MapBlock.module.scss'
 import dotes from './../../../public/images/svg/dotes.svg'
 import SvgNavIcon from '../../shared/ui/icons/NavigationIcon';
+import SvgDotes from '../../shared/ui/icons/Dotes';
 
 
  
@@ -34,10 +35,7 @@ export const MapBlock: FC<Props> = ({
             minHeight: minHeight,
             height: minHeight
         }}>
-            {isDotes && 
-                <div className={styles.map__dotes}>
-                    <Image src={dotes} alt="dotes" />
-                </div>}
+            {isDotes &&  <SvgDotes className={styles.map__dotes} />}
 
             <h2 className={styles.map__title}>{title}</h2>
             <p className={styles.map__description} style={{ maxWidth: `${descriptionWidth}px` }}>{description}</p>

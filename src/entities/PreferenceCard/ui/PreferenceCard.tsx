@@ -2,9 +2,8 @@ import classNames from 'classnames'
 import Image, { StaticImageData } from 'next/image'
 import React, { FC } from 'react';
 import styles from './PreferenceCard.module.scss'
-import arrow from './../../../../public/images/svg/arrow_right.svg';
-import arrow_white from './../../../../public/images/svg/arrow_right_white.svg';
 import { textTransformer } from '../lib/helpers';
+import SvgArrowRight from '../../../shared/ui/icons/ArrowRight';
 
 
 type Props = {
@@ -57,11 +56,7 @@ export const PreferenceCard: FC<Props> = ({ data }) => {
 
             <button className={styles.card__button}>
                 {button.text}
-                {button.image && (
-                    isGold
-                        ? <Image src={arrow_white} alt="arrow" />
-                        : <Image src={arrow} alt="arrow" />               
-                    )}
+                {button.image &&   <SvgArrowRight stroke={isGold ? "white" : "black"}/>   }
             </button>
 
         </div>

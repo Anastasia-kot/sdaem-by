@@ -1,9 +1,8 @@
-import Head from 'next/head'
 import { FC } from 'react';
 import { Catalogue } from '../src/pages/Catalogue/ui/Catalogue'
-import { Layout } from '../src/layout/Layout';
 import { GetServerSideProps } from 'next';
 import { CatalogueState } from '../types/catalogue_data';
+import { Layout } from '../src/widgets/layout/Layout';
 
 
 

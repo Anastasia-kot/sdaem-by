@@ -2,24 +2,21 @@ import React, { FC } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import { cityNameConverters, cityNameEngToRus } from "../../shared/helpers/nameConverters";
-import { filtersToUrlString } from "../../shared/helpers/urlHelpers";
-import { CategoryType } from "../../../types/formTypes";
-import { citiesList, CityType } from "../../../types/formTypes";
+import { cityNameConverters, cityNameEngToRus } from "../../../../shared/helpers/nameConverters";
+import { filtersToUrlString } from "../../../../shared/helpers/urlHelpers";
+import { CategoryType } from "../../../../../types/formTypes";
+import { citiesList, CityType } from "../../../../../types/formTypes";
 import styles from './Footer.module.scss';
+import { Socials_list } from "../../../../shared/ui/Socials_list/Socials_list";
 
-const logo = require('../../../public/images/logo.png');
-const belkart = require('../../../public/images/payment/belkart.png');
-const mastercard = require('../../../public/images/payment/mastercard.png');
-const securecode = require('../../../public/images/payment/securecode.png');
-const verified = require('../../../public/images/payment/verified-by-visa.png');
-const visa = require('../../../public/images/payment/visa.png');
-const webpay = require('../../../public/images/payment/webpay.png');
-
-import inst from '../../../public/images/svg/socials/instagram_black.svg'
-import vk from '../../../public/images/svg/socials/vk_black.svg'
-import facebook from '../../../public/images/svg/socials/facebook_black.svg'
-import SvgHouse from "../../shared/ui/icons/House";
+const logo = require('../../../../../public/images/logo.png');
+const belkart = require('../../../../../public/images/payment/belkart.png');
+const mastercard = require('../../../../../public/images/payment/mastercard.png');
+const securecode = require('../../../../../public/images/payment/securecode.png');
+const verified = require('../../../../../public/images/payment/verified-by-visa.png');
+const visa = require('../../../../../public/images/payment/visa.png');
+const webpay = require('../../../../../public/images/payment/webpay.png');
+ 
 
 
 const Footer: FC = () => {
@@ -78,16 +75,12 @@ const Footer: FC = () => {
             </div>
 
 
-         
-
 
             <div className={styles.footer__socialsAndPayment}>
                 <div className={styles.Socials}>
                     <span className={styles.SocialsHeader}>Мы в соцсетях</span>
-                    <ul className={styles.SocialsList}>
-                        <li><Image src={inst} alt='inst' /></li>
-                        <li><Image src={vk} alt='vk' /></li>
-                        <li><Image src={facebook} alt='facebook' /></li>
+                    <ul className={styles.SocialsList}> 
+                        <Socials_list socials={['inst', 'vk', 'fb']} fill="black" background='none'/>
                     </ul>
                 </div>
                 <ul className={styles.Payment}>
@@ -106,4 +99,7 @@ const Footer: FC = () => {
 export default Footer;
 
 
-   
+
+     
+
+ 

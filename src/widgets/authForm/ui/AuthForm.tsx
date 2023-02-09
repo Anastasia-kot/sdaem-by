@@ -11,9 +11,10 @@ import { setAuthUserData, setToggleLogIn } from './../../../store/authSlice';
 import React, { FC } from 'react';
 import { inputProps, loginProps, passwordProps } from '../model';
 import { AuthModalEnum } from '../../../pages/Auth/ui/Auth'
+import SvgAvatar from '../../../shared/ui/icons/Avatar';
+import SvgLock from '../../../shared/ui/icons/Lock';
 
-
-
+ 
 
 export const AuthForm: FC<{ setAuthModalState }> = ({ setAuthModalState }) => {
     const dispatch = useDispatch();
@@ -48,11 +49,11 @@ export const AuthForm: FC<{ setAuthModalState }> = ({ setAuthModalState }) => {
 
 
             <div className={styles.form__login}>
-                <InputBlock {...inputProps} register={register} {...loginProps} />
+                <InputBlock {...inputProps} register={register} {...loginProps} /> <SvgAvatar/>
             </div>
 
             <div className={styles.form__password}>
-                <InputBlock {...inputProps} register={register} {...passwordProps} />
+                <InputBlock {...inputProps} register={register} {...passwordProps} /> <SvgLock/>
             </div>
 
             <div className={styles.form__rememberMe}>

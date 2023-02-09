@@ -1,8 +1,8 @@
 import { News } from '../../src/pages/News/ui/News';
-import { Layout } from '../../src/layout/Layout';
 import { GetServerSideProps } from 'next';
 import { FC } from 'react';
 import { NewsState } from '../../types/news_data';
+import { Layout } from '../../src/widgets/layout/Layout';
 
 
 export const getServerSideProps: GetServerSideProps = async () => {

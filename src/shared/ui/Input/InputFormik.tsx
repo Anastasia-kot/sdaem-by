@@ -1,9 +1,8 @@
 import React, { FC, ReactElement } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { RegisterFormType } from '../../../types/authTypes'
 import styles from './Input.module.scss'
-import error from './../../../public/images/svg/error.svg'
 import Image from 'next/image'
+import SvgError from '../icons/Error';
 
 type Props = {
     type:  'text' | 'password' | 'number'|'email' | 'textarea' 
@@ -112,8 +111,8 @@ export const InputFormik: FC<Props> = (props) => {
                 <div className={styles.SvgImage} >{children}</div>  
                 
                 {!!errors[name] && touched[name] && <>
-                    <Image src={error} alt='error' className={styles.ErrorSvg} />                     
-                     <div className={styles.ErrorMessage}>
+                    <SvgError className={styles.ErrorSvg} />
+                    <div className={styles.ErrorMessage}>
                             <ErrorMessage name={name} component="div" /> 
                      </div> 
                 </>}

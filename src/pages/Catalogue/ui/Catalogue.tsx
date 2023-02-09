@@ -12,8 +12,8 @@ import { CatalogueForm } from '../../../widgets/catalogueForm/ui/CatalogueForm'
 import { SetRecommendationTip } from '../../../features/setRecomendotionTip/ui/SetRecomendationTip'
 import { Breadcrumbs } from '../../../entities/Breadcrumbs/Breadcrumbs'
 import { useRouter } from 'next/router'
-import { CategoriesEnum } from '../../../../types/formTypes'
 import { getTitle } from '../lib/helpers'
+import { mapProps } from '../model'
  
 
 
@@ -22,10 +22,11 @@ export const Catalogue: FC<{ data: CatalogueState }> = ({data}) => {
     const [filters, setFilters] = useState<FiltersPayloadType>({})
 
 
-    // setFilters from URL
     const router = useRouter();
     const { query } = router;
-    console.log(query)
+
+    
+    // setFilters from URL
     useEffect(() => {
         if (Object.keys(query).length > 0) {
             setFilters({ ...query })
@@ -67,29 +68,23 @@ export const Catalogue: FC<{ data: CatalogueState }> = ({data}) => {
 
             </div>
 
-            {/* <Filters setFilters={setFilters} /> */}
-
-
-
             <div className={styles.objects}>
                 <ViewModeForm isListCatalogue={isListCatalogue} setIsListCatalogue={setIsListCatalogue} />
 
                 <div className={styles.objects__items}>
                     <CatalogueList data={data} filters={filters} isListCatalogue={isListCatalogue} />
                     <div className={styles.items__socials}>
-                        <Socials_sharing color='gray' />
+                        <Socials_sharing 
+                        socials={['vk', 'fb', 'viber', 'tg', 'wa']} 
+                        background='#F4F5FA' 
+                        fill="#1E2123"
+  
+                        />
                     </div>
                 </div>
             </div>
             
-            
-            <MapBlock
-                title={'Показать найденные квартиры на карте'}
-                description={'Ищите новостройки рядом с работой, парком или родственниками'}
-                descriptionWidth={350}
-                isDotes={false}
-                buttonText={'Открыть карту'}
-                minHeight={310}/>
+            <MapBlock {...mapProps} />
         </main>
     )
 }

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import styles from './CatalogueCard.module.scss'
 import Slider from "react-slick";
 import Image from 'next/image'
@@ -7,12 +6,15 @@ import { ContactsButton } from '../../shared/ui/buttons/Contacts/Contacts';
 import { LikeButton } from '../../shared/ui/buttons/Like/Like';
 import { SimpleButton } from '../../shared/ui/buttons/Simple/Simple';
 import classNames from 'classnames';
-const room = require('../../../public/images/room.png');
 const avatar = require('../../../public/images/avatar.png');
 
-import avatar16 from './../../../public/images/svg/avatar16.svg'
-import metro from './../../../public/images/svg/metro.svg'
+// import avatar16 from './../../../public/images/svg/avatar16.svg'
+// import metro from './../../../public/images/svg/metro.svg'
 import { CatalogueType } from '../../../types/catalogue_data';
+import SvgMetro from '../../shared/ui/icons/Metro';
+import SvgAvatar from '../../shared/ui/icons/Avatar';
+import { Socials_sharing } from '../../shared/ui/Socials_sharing/Socials_sharing';
+import { Socials_list } from '../../shared/ui/Socials_list/Socials_list';
  
 type Props = {
  data: CatalogueType, 
@@ -58,27 +60,7 @@ export const CatalogueCard: FC<Props> = ({ data, style }) => {
         slidesToShow: 1,
         slidesToScroll: 1
     };
-    
-    const socialsList = [
-        { url: 'socials/viber.svg',
-            params: {
-                width: 16,
-                height: 17
-            }
-        },
-        { url: 'socials/whatsapp.svg',
-            params: {
-                width: 16,
-                height: 16
-            }
-        },
-        { url:      'postal_envelope_white.svg',
-            params:{
-                width: 18,
-                height: 16
-            }
-        },
-    ]
+ 
 
     //modal 
     const [isShownModal, setIsShownModal] = useState<boolean>(false);
@@ -100,10 +82,11 @@ export const CatalogueCard: FC<Props> = ({ data, style }) => {
                 <p className={styles.modal__phone}><a href={`tel:${data.roomOwner.phone}`}> {data.roomOwner.phone} </a></p>
                 <p className={styles.modal__email}><a href={`mailto:${data.roomOwner.email}`}>{data.roomOwner.email}</a></p>
                 <ul className={styles.modal__contacts}>
-                    {socialsList.map(({url, params}, index)=>
+                    <Socials_list socials={['viber', 'wa', 'mail']} fill="white" background='auto'/>
+                    {/* {socialsList.map(({url, params}, index)=>
                         <li key={index} className={styles.contacts__item}>
-                            {/* <Image src={`/../../images/svg/${url}`} alt={url} width={params.width} height={params.height} /> */}
-                        </li>)}
+                         </li>)
+                         } */}
                 </ul>
             </div>}
 
@@ -135,7 +118,7 @@ export const CatalogueCard: FC<Props> = ({ data, style }) => {
                 <ul className={styles.features} >
                     <li key={0} className={styles.features__item}>
                         <button className={styles.features__button}>
-                            <Image src={avatar16} alt='avatar'/>
+                            <SvgAvatar fill="#686868"/>
                             {data?.roomFeatures?.sizeAsPeople}
                         </button>
                     </li>
@@ -156,7 +139,7 @@ export const CatalogueCard: FC<Props> = ({ data, style }) => {
                         <>
                             <li className={styles.features__item}>
                                 <button className={styles.features__button}>
-                                    <Image src={metro} alt='metro' />
+                                    <SvgMetro/>
                                     {data.addressFeatures.metro}
                                 </button> 
                             </li>
@@ -179,7 +162,7 @@ export const CatalogueCard: FC<Props> = ({ data, style }) => {
 
                 <div className={styles.CardAddressTags}>
                     <div className={styles.CardAddressMetro}>
-                        <Image src={metro} alt='metro' />
+                        <SvgMetro/>
                         <span>{data?.addressFeatures?.metro}</span>
                     </div>
                     <div className={styles.CardAddressDistrict}>
@@ -200,7 +183,7 @@ export const CatalogueCard: FC<Props> = ({ data, style }) => {
                             order: style === 'list' ? '0' : '1',
                             margin: 0,
                         }}
-                        onClick={() => setIsShownModal(actual => { return (!actual) })}
+                        onClick={() => setIsShownModal( actual => !actual )}
                     />
 
                     <SimpleButton
