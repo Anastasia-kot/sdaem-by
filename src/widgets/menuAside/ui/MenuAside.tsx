@@ -20,7 +20,7 @@ export const MenuAside: FC = () => {
             <div className={styles.menu__list}>
                 <h3 className={styles.list__title} onClick={() => onClick({ category: 'room' }, router)}>Квартиры</h3>
                 <ul className={styles.list__list}>
-                    {kvartiri.map(({ name , value}, index) =>
+                    {kvartiri.map(({ name, value}, index) =>
                         <li key={index + 7} onClick={() => onClick({ category: 'room', city: name }, router)}>
                             <span>  Квартиры  в  {cityNameConverters(cityNameEngToRus(name))}</span>
                             <span> {value} </span>

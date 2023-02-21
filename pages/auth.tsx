@@ -1,7 +1,7 @@
-import { FC } from 'react'
-import { Auth } from '../src/pages/Auth/ui/Auth'
+    import { FC } from 'react'
+    import { Auth } from '../src/pages/Auth/ui/Auth'
 
-const Home: FC = () => <Auth />
-export default Home
+    const Home: FC = () => <Auth />
+    export default Home
 
- 
+    
