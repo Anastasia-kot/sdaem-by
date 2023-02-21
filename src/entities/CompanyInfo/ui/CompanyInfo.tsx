@@ -1,14 +1,13 @@
 import React, { FC } from 'react'
 import styles from './CompanyInfo.module.scss'
-import Image from 'next/image';
 
-import { contactsList } from './../model';
-import SvgExclamatory from '../../../shared/ui/icons/Exclamatory';
-import { Socials_list } from '../../../shared/ui/Socials_list/Socials_list';
-import SvgNavIcon from '../../../shared/ui/icons/NavigationIcon';
-import SvgMobile from '../../../shared/ui/icons/Mobile';
-import SvgPostalEnvelope from '../../../shared/ui/icons/PostalEnvelope';
-import SvgClock from '../../../shared/ui/icons/Clock';
+import { contactsList } from './../model'
+import SvgExclamatory from '../../../shared/ui/icons/Exclamatory'
+import { Socials_list } from '../../../shared/ui/Socials_list/Socials_list'
+import SvgNavIcon from '../../../shared/ui/icons/NavigationIcon'
+import SvgMobile from '../../../shared/ui/icons/Mobile'
+import SvgPostalEnvelope from '../../../shared/ui/icons/PostalEnvelope'
+import SvgClock from '../../../shared/ui/icons/Clock'
 
 
 export const CompanyInfo: FC = () =>{

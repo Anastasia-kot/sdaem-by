@@ -168,9 +168,7 @@ const Header: FC = () => {
                     {categoriesItems.map(({ id, name, value }) =>
                         <li key={id}
                             onClick={name === 'room' ? onRoomsClick : ()=> onClick({ category: name })}
-                            className={classNames(
-                                { [styles.active]: isRoomsActive },
-                            )}
+                            className={isRoomsActive ? styles.active :'' }
                         >
                             {value}
 
